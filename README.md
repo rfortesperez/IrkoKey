@@ -1,11 +1,14 @@
 # Proyecto fin de ciclo
 
-> *TODO*: Este documento será la "*página de aterrizaje*" de tu proyecto. Será lo primero que vean los que se interesen por él. Cúida su redacción con todo tu mimo. Elimina posteriormente todas las lineas "*TODO*" cuando creas finalizada su redacción.
-> Puedes acompañar a la redacción de este fichero con imágenes o gifs, pero no abuses de ellos.
+
 
 ## Descripción
 
-> *TODO*: Realiza una breve descripción del proyecto. No menos de 100 palabras y no más de 300. Resalta lo fundamental **con tus propias palabras**. Utiliza un lenguaje correcto, **pero natural**, que lo entienda todo el mundo, incluso y en especial, las personas que no tengan un conocimiento técnico avanzado. Puede ser un estracto o resumen de apartados que ya contemples en otros ficheros.
+
+
+Hoy en día, la gestión de contraseñas de manera adecuada es algo imprescindible. Cada día que pasa hay nuevas amenazas de ciberseguridad, y una de las debilidades más grandes que tenemos son las contraseñas débiles, por miedo a no recordarlas cuando son necesarias, o el emplear siempre y para todo la misma contraseña por miedo a olvidarla.
+
+Irko Key es una aplicación Android que permitirá a los usuarios guardar y gestionar sus contraseñas de manera segura.Contará con un mecanismo de backup y todo esto acompañado de una interfaz de usuario lo más sencilla, intuitiva y fácil de aprender posible para el usuario.
 
 ## Instalación / Puesta en marcha
 
@@ -39,6 +42,52 @@
 4. [Diseño](doc/templates/5_deseño.md)
 5. [Implantación](doc/templates/6_implantacion.md)
 
+
+## 1. Anteproyecto
+
+Hoy en día, la gestión de contraseñas de manera adecuada es algo imprescindible. Cada día que pasa hay nuevas amenazas de ciberseguridad, y una de las mayores debilidades que tenemos son las contraseñas débiles o, emplear siempre y para todo la misma contraseña por miedo a olvidarla.
+
+La idea es desarrollar una aplicación Android que permita a los usuarios guardar y gestionar sus contraseñas de manera segura. Todo esto con una interfaz que sea lo más simple e intuitiva posible para el usuario.
+
+La aplicación incluirá funcionalidades básicas de gestión de contraseñas, tales como el almacenamiento seguro en local, mediante el cifrado de las contraseñas. En próximas versiones de la aplicación se podrían añadir funciones más avanzadas.
+
+Esta primera versión también incluirá un mecanismo de exportación e importación de los datos. Previa a la exportación se pedirá al usuario que introduzca una contraseña, se cifrará el archivo, de manera que nadie salvo el usuario pueda acceder a la información del mismo, y después se guardarán en el dispositivo del usuario.
+
+Llegados a ese punto, el usuario podrá enviarlo o guardarlo donde considere preciso (en un pendrive, enviarlo por correo electrónico, Whatsapp, guardarlo en Drive...), y posteriormente descargarlo en un nuevo dispositivo y recuperar las contraseñas. Para eso deberá introducir la contraseña empleada en el momento de la exportación, y que tan sólo el usuario conoce. A mayores esta funcionalidad permitirá que el usuario pueda tener copias de seguridad.
+
+* ## 1.1 Idea 
+
+* El proyecto consiste en crear una aplicación instalable, es decir, un apk que será apto para cualquier dispositivo con un Android Nougat 7.0 ó superior. 
+* El poryecto tal y como se ha indicado, será un gestor de contraseñas, y su propósito principal es dar al usuario la oportunidad de tener una contraseña distinta para cada aplicación o website que necesite, así como el hecho de poder tener una copia de seguridad de las mismas, y exportarlas/importarlas de forma segura a otros dispositivos.
+* Esta aplicación está destinada a cualquier persona, ya que hoy en día todo el mundo tiene más de una aplicación o web en la que es necesario un usuario y contraseña para poder acceder, y de esta manera el usuario no necesita tener la misma para todo, ni el problema de poder llegar a olvidarla.
+* Se pretende de esta manera que el usuario pueda emplear símbolos, mayúsculas, minúsculas, números, etc. sin necesidad de que signifique nada. De todos es sabidos que los ciberdelincuentes pueden saber nuestras fechas importantes, nombres de mascotas, familiares, equipos deportivos favoritos,... y es algo que mucha gente utiliza, cambiando apenas una o dos letras para crear sus contraseñas. Si contamos con una aplicación que la "recuerda por nosotros" tenemos la posibilidad de emplear contraseñas más largas y más complejas sin miedo a olvidarlas o perderlas. Sería posible subirla a tienda Play de Google, pero dado que hay muchas más en el mercado, al menos la versión inicial sería gratuita, y en un futuro se podría plantear el generar funcionalidades nuevas de pago.
+* Actualmente hay aplicaciones con esta misma idea, tales como son LastPass, Proton Pass, Bitwarden, Keeper... que son aplicaciones muy eficientes y muy completas y que cubren las necesidades de los usuarios con respecto a la gestión de las contraseñas.
+  
+* ### Objetivos:
+    * Desarrollar una aplicación Android que permita ver, crear, guardar, actualizar, borrar y copiar contraseñas, así como guardar el nombre de usuario de cada sitio web.
+    * Implementar un almacenamiento seguro en local empleando cifrado.
+    * Emplear Room para la persistencia de datos.
+    * Diseñar una interfaz de usuario moderna, sencilla y fácil de usar.
+    * Incluír un mecanismo de exportación e importación de los datos guardados en la aplicación, para su posterior recuperación en el mismo o en otro dispositivo.
+  
+* ### Requisitos Funcionales
+    * Gestión de contraseñas: Los usuarios podrán ver, crear, guardar, actualizar, borrar y copiar al portapapeles las contraseñas, así como los nombres de usuario empleados.
+    * Cifrado: Las contraseñas se van a almacenar cifradas en la base de datos local.
+    * Interfaz de usuario: Una interfaz moderna, y que sea muy amigable e intuitiva para el usuario.
+    * Persistencia de datos: Room será la encargada de la gestión de la base de datos local.
+    * Cifrado de datos: de la base de datos previa a su exportación.
+  
+* ### Requisitos no funcionales
+    * Seguridad: se aportará mediante la implementación de técnicas seguras de autenticación para un acceso seguro.
+    * Usabilidad: la interfaz de usuario será intuitiva, simple y fácil de emplear.
+    * Rendimiento: la aplicación deberá ser rápida y eficiente manejando los datos, ya que los móviles no tienen tanta capacidad como un ordenador, y además para no malgastar batería.
+  
+
+* ### Tecnologías
+    * Desarrollo de la app: Android Studio.
+    * Base de datos local: Room
+    * Lenguaje de programación: Kotlin
+    * Cifrado: Biblioteca de cifrado AES.
 
 ## Guía de contribución
 
