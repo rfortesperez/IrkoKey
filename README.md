@@ -34,12 +34,12 @@ Irko Key es una aplicación Android que permitirá a los usuarios guardar y gest
 
 > *TODO*: Simplemente indexa ordenadamente todo tu proyecto.
 
-1. [Anteproyecto](#1-anteproyecto)
-     1.1. [Idea](#11-idea)
-     1.2. [Objetivos](#objetivos)
-     1.3. [Requisitos Funcionales](#requisitos-funcionales)
-     1.4. [Requisitos No Funcionaes](#requisitos-no-funcionales)
-     1.5. [Tecnologías](#tecnologías)
+1. Anteproyecto
+     * 1.1. [Idea](#11-idea)
+     * 1.2. [Objetivos](#12-objetivos)
+     * 1.3. [Requisitos Funcionales](#13-requisitos-funcionales)
+     * 1.4. [Requisitos No Funcionaes](#14-requisitos-no-funcionales)
+     * 1.5. [Tecnologías](#15-tecnologías)
 2. [Planificación](doc/templates/4_planificacion.md)
 3. [Diseño](doc/templates/5_deseño.md)
 4. [Implantación](doc/templates/6_implantacion.md)
@@ -57,7 +57,7 @@ Esta primera versión también incluirá un mecanismo de exportación e importac
 
 Llegados a ese punto, el usuario podrá enviarlo o guardarlo donde considere preciso (en un pendrive, enviarlo por correo electrónico, Whatsapp, guardarlo en Drive...), y posteriormente descargarlo en un nuevo dispositivo y recuperar las contraseñas. Para eso deberá introducir la contraseña empleada en el momento de la exportación, y que tan sólo el usuario conoce. A mayores esta funcionalidad permitirá que el usuario pueda tener copias de seguridad.
 
-* ## 1.1 Idea 
+## 1.1 Idea
 
 * El proyecto consiste en crear una aplicación instalable, es decir, un apk que será apto para cualquier dispositivo con un Android Nougat 7.0 ó superior. 
 * El poryecto tal y como se ha indicado, será un gestor de contraseñas, y su propósito principal es dar al usuario la oportunidad de tener una contraseña distinta para cada aplicación o website que necesite, así como el hecho de poder tener una copia de seguridad de las mismas, y exportarlas/importarlas de forma segura a otros dispositivos.
@@ -65,27 +65,27 @@ Llegados a ese punto, el usuario podrá enviarlo o guardarlo donde considere pre
 * Se pretende de esta manera que el usuario pueda emplear símbolos, mayúsculas, minúsculas, números, etc. sin necesidad de que signifique nada. De todos es sabidos que los ciberdelincuentes pueden saber nuestras fechas importantes, nombres de mascotas, familiares, equipos deportivos favoritos,... y es algo que mucha gente utiliza, cambiando apenas una o dos letras para crear sus contraseñas. Si contamos con una aplicación que la "recuerda por nosotros" tenemos la posibilidad de emplear contraseñas más largas y más complejas sin miedo a olvidarlas o perderlas. Sería posible subirla a tienda Play de Google, pero dado que hay muchas más en el mercado, al menos la versión inicial sería gratuita, y en un futuro se podría plantear el generar funcionalidades nuevas de pago.
 * Actualmente hay aplicaciones con esta misma idea, tales como son LastPass, Proton Pass, Bitwarden, Keeper... que son aplicaciones muy eficientes y muy completas y que cubren las necesidades de los usuarios con respecto a la gestión de las contraseñas.
   
-### Objetivos
+## 1.2 Objetivos
 * Desarrollar una aplicación Android que permita ver, crear, guardar, actualizar, borrar y copiar contraseñas, así como guardar el nombre de usuario de cada sitio web.
 * Implementar un almacenamiento seguro en local empleando cifrado.
 * Emplear Room para la persistencia de datos.
 * Diseñar una interfaz de usuario moderna, sencilla y fácil de usar.
 * Incluír un mecanismo de exportación e importación de los datos guardados en la aplicación, para su posterior recuperación en el mismo o en otro dispositivo.
   
-### Requisitos Funcionales
+## 1.3 Requisitos Funcionales
 * Gestión de contraseñas: Los usuarios podrán ver, crear, guardar, actualizar, borrar y copiar al portapapeles las contraseñas, así como los nombres de usuario empleados.
 * Cifrado: Las contraseñas se van a almacenar cifradas en la base de datos local.
 * Interfaz de usuario: Una interfaz moderna, y que sea muy amigable e intuitiva para el usuario.
 * Persistencia de datos: Room será la encargada de la gestión de la base de datos local.
 * Cifrado de datos: de la base de datos previa a su exportación.
   
-### Requisitos no funcionales
+## 1.4 Requisitos no funcionales
 * Seguridad: se aportará mediante la implementación de técnicas seguras de autenticación para un acceso seguro.
 * Usabilidad: la interfaz de usuario será intuitiva, simple y fácil de emplear.
 * Rendimiento: la aplicación deberá ser rápida y eficiente manejando los datos, ya que los móviles no tienen tanta capacidad como un ordenador, y además para no malgastar batería.
   
 
-### Tecnologías
+## 1.5 Tecnologías
 * Desarrollo de la app: Android Studio.
 * Base de datos local: Room
 * Lenguaje de programación: Kotlin
