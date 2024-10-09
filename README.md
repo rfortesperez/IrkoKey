@@ -8,7 +8,7 @@
 
 Hoy en día, la gestión de contraseñas de manera adecuada es algo imprescindible. Cada día que pasa hay nuevas amenazas de ciberseguridad, y una de las debilidades más grandes que tenemos son las contraseñas débiles, por miedo a no recordarlas cuando son necesarias, o el emplear siempre y para todo la misma contraseña por miedo a olvidarla.
 
-Irko Key es una aplicación Android que permitirá a los usuarios guardar y gestionar sus contraseñas de manera segura.Contará con un mecanismo de backup y todo esto acompañado de una interfaz de usuario lo más sencilla, intuitiva y fácil de aprender posible para el usuario.
+IrkoKey es una aplicación Android que permitirá a los usuarios guardar y gestionar sus contraseñas de manera segura.Contará con un mecanismo de backup y todo esto acompañado de una interfaz de usuario lo más sencilla, intuitiva y fácil de aprender posible para el usuario.
 
 ## Instalación / Puesta en marcha
 
