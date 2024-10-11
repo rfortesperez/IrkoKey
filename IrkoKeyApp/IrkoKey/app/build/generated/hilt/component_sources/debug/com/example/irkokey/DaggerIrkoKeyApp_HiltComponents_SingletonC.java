@@ -578,7 +578,7 @@ public final class DaggerIrkoKeyApp_HiltComponents_SingletonC {
     }
 
     @Override
-    public void injectIrkoKeyApp(IrkoKeyApp arg0) {
+    public void injectIrkoKeyApp(IrkoKeyApp irkoKeyApp) {
     }
 
     @Override
