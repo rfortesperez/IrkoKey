@@ -42,10 +42,10 @@ com.example.irkokey.app-lifecycle-viewmodel-ktx-2.6.2-40 C:\Users\rfort\.gradle\
 com.example.irkokey.app-navigation-runtime-ktx-2.8.1-41 C:\Users\rfort\.gradle\caches\transforms-4\f587d0b5416ffa06cca890b2a043c798\transformed\navigation-runtime-ktx-2.8.1\res
 com.example.irkokey.app-navigation-ui-2.8.1-42 C:\Users\rfort\.gradle\caches\transforms-4\f6751630d043fc9b922d71a8a65f1201\transformed\navigation-ui-2.8.1\res
 com.example.irkokey.app-startup-runtime-1.1.1-43 C:\Users\rfort\.gradle\caches\transforms-4\fd87570df24d3e669e4c7529a20f192f\transformed\startup-runtime-1.1.1\res
-com.example.irkokey.app-pngs-44 C:\Users\rfort\AndroidStudioProjects\IrkoKey\app\build\generated\res\pngs\debug
-com.example.irkokey.app-resValues-45 C:\Users\rfort\AndroidStudioProjects\IrkoKey\app\build\generated\res\resValues\debug
-com.example.irkokey.app-packageDebugResources-46 C:\Users\rfort\AndroidStudioProjects\IrkoKey\app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
-com.example.irkokey.app-packageDebugResources-47 C:\Users\rfort\AndroidStudioProjects\IrkoKey\app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
-com.example.irkokey.app-debug-48 C:\Users\rfort\AndroidStudioProjects\IrkoKey\app\build\intermediates\merged_res\debug\mergeDebugResources
-com.example.irkokey.app-debug-49 C:\Users\rfort\AndroidStudioProjects\IrkoKey\app\src\debug\res
-com.example.irkokey.app-main-50 C:\Users\rfort\AndroidStudioProjects\IrkoKey\app\src\main\res
+com.example.irkokey.app-pngs-44 C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\build\generated\res\pngs\debug
+com.example.irkokey.app-resValues-45 C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\build\generated\res\resValues\debug
+com.example.irkokey.app-packageDebugResources-46 C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
+com.example.irkokey.app-packageDebugResources-47 C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
+com.example.irkokey.app-debug-48 C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\build\intermediates\merged_res\debug\mergeDebugResources
+com.example.irkokey.app-debug-49 C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\debug\res
+com.example.irkokey.app-main-50 C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\res

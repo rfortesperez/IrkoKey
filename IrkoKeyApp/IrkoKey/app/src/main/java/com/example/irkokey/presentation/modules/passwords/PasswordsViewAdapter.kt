@@ -6,26 +6,27 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.irkokey.data.PasswordsList
 import com.example.irkokey.databinding.RowPasswordBinding
+import com.example.irkokey.domain.models.Password
 
-class PasswordsViewAdapter : RecyclerView.Adapter<PasswordsViewAdapter.ViewHolder>() {
+class PasswordsViewAdapter(private val passwords: List<Password>) : RecyclerView.Adapter<PasswordsViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(RowPasswordBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.website.text = PasswordsList.getPassword()[position].website
-        holder.username.text = PasswordsList.getPassword()[position].userName
-        holder.password.text = PasswordsList.getPassword()[position].password
+       holder.bind(passwords[position])
     }
 
-    override fun getItemCount(): Int {
-        return PasswordsList.getPassword().size
-    }
+    override fun getItemCount() = passwords.size
 
-    class ViewHolder(binding: RowPasswordBinding) : RecyclerView.ViewHolder(binding.root) {
-        val website: TextView = binding.tvWebsite
-        val username: TextView = binding.tvUserName
-        val password: TextView = binding.tvPassword
+    class ViewHolder(private val binding: RowPasswordBinding) : RecyclerView.ViewHolder(binding.root) {
+       fun bind (password: Password) {
+           with(binding) {
+               tvWebsite.text = password.website
+               tvUserName.text = password.userName
+               tvPassword.text = password.password
+           }
+       }
     }
 }

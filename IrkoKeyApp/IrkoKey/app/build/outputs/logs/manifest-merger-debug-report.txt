@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\rfort\AndroidStudioProjects\IrkoKey\app\src\main\AndroidManifest.xml:2:1-36:12
-INJECTED from C:\Users\rfort\AndroidStudioProjects\IrkoKey\app\src\main\AndroidManifest.xml:2:1-36:12
-INJECTED from C:\Users\rfort\AndroidStudioProjects\IrkoKey\app\src\main\AndroidManifest.xml:2:1-36:12
-INJECTED from C:\Users\rfort\AndroidStudioProjects\IrkoKey\app\src\main\AndroidManifest.xml:2:1-36:12
+ADDED from C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml:2:1-36:12
+INJECTED from C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml:2:1-36:12
+INJECTED from C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml:2:1-36:12
+INJECTED from C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml:2:1-36:12
 MERGED from [androidx.databinding:viewbinding:8.4.0] C:\Users\rfort\.gradle\caches\transforms-4\109d5a5903709d51f58e04e74f102013\transformed\viewbinding-8.4.0\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.navigation:navigation-common:2.8.1] C:\Users\rfort\.gradle\caches\transforms-4\9145a30e9e4e085470c84978314e664b\transformed\navigation-common-2.8.1\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.navigation:navigation-common-ktx:2.8.1] C:\Users\rfort\.gradle\caches\transforms-4\0f274cafe2d63c57cbbf2de688e2f4da\transformed\navigation-common-ktx-2.8.1\AndroidManifest.xml:2:1-7:12
@@ -66,18 +66,18 @@ MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\User
 MERGED from [androidx.print:print:1.0.0] C:\Users\rfort\.gradle\caches\transforms-4\b5b209afa204ac95c16b86ce5244ea7e\transformed\print-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.dagger:dagger-lint-aar:2.48] C:\Users\rfort\.gradle\caches\transforms-4\65cdcfd63ade65707c39adfaf00c08c3\transformed\dagger-lint-aar-2.48\AndroidManifest.xml:16:1-19:12
 	package
-		INJECTED from C:\Users\rfort\AndroidStudioProjects\IrkoKey\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml
 	android:versionName
-		INJECTED from C:\Users\rfort\AndroidStudioProjects\IrkoKey\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml
 	xmlns:tools
-		ADDED from C:\Users\rfort\AndroidStudioProjects\IrkoKey\app\src\main\AndroidManifest.xml:3:5-51
+		ADDED from C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml:3:5-51
 	android:versionCode
-		INJECTED from C:\Users\rfort\AndroidStudioProjects\IrkoKey\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml
 	xmlns:android
-		ADDED from C:\Users\rfort\AndroidStudioProjects\IrkoKey\app\src\main\AndroidManifest.xml:2:11-69
+		ADDED from C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml:2:11-69
 application
-ADDED from C:\Users\rfort\AndroidStudioProjects\IrkoKey\app\src\main\AndroidManifest.xml:5:5-34:19
-INJECTED from C:\Users\rfort\AndroidStudioProjects\IrkoKey\app\src\main\AndroidManifest.xml:5:5-34:19
+ADDED from C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml:5:5-34:19
+INJECTED from C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml:5:5-34:19
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\rfort\.gradle\caches\transforms-4\6c4bb2aa17f3f516657b37d98b620346\transformed\material-1.12.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\rfort\.gradle\caches\transforms-4\6c4bb2aa17f3f516657b37d98b620346\transformed\material-1.12.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\rfort\.gradle\caches\transforms-4\289a3b0c972e545569f0a7e7f64b8178\transformed\constraintlayout-2.1.4\AndroidManifest.xml:9:5-20
@@ -97,65 +97,65 @@ MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rfort\.g
 MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\rfort\.gradle\caches\transforms-4\fd87570df24d3e669e4c7529a20f192f\transformed\startup-runtime-1.1.1\AndroidManifest.xml:25:5-31:19
 MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\rfort\.gradle\caches\transforms-4\fd87570df24d3e669e4c7529a20f192f\transformed\startup-runtime-1.1.1\AndroidManifest.xml:25:5-31:19
 	android:extractNativeLibs
-		INJECTED from C:\Users\rfort\AndroidStudioProjects\IrkoKey\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.13.1] C:\Users\rfort\.gradle\caches\transforms-4\e4a896e0a6dbe5f7c26af2fd53e5aee9\transformed\core-1.13.1\AndroidManifest.xml:28:18-86
 	android:supportsRtl
-		ADDED from C:\Users\rfort\AndroidStudioProjects\IrkoKey\app\src\main\AndroidManifest.xml:13:9-35
+		ADDED from C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml:13:9-35
 	android:label
-		ADDED from C:\Users\rfort\AndroidStudioProjects\IrkoKey\app\src\main\AndroidManifest.xml:11:9-41
+		ADDED from C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml:11:9-41
 	android:fullBackupContent
-		ADDED from C:\Users\rfort\AndroidStudioProjects\IrkoKey\app\src\main\AndroidManifest.xml:9:9-54
+		ADDED from C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml:9:9-54
 	android:roundIcon
-		ADDED from C:\Users\rfort\AndroidStudioProjects\IrkoKey\app\src\main\AndroidManifest.xml:12:9-54
+		ADDED from C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml:12:9-54
 	tools:targetApi
-		ADDED from C:\Users\rfort\AndroidStudioProjects\IrkoKey\app\src\main\AndroidManifest.xml:15:9-29
+		ADDED from C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml:15:9-29
 	android:icon
-		ADDED from C:\Users\rfort\AndroidStudioProjects\IrkoKey\app\src\main\AndroidManifest.xml:10:9-43
+		ADDED from C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml:10:9-43
 	android:allowBackup
-		ADDED from C:\Users\rfort\AndroidStudioProjects\IrkoKey\app\src\main\AndroidManifest.xml:7:9-35
+		ADDED from C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml:7:9-35
 	android:theme
-		ADDED from C:\Users\rfort\AndroidStudioProjects\IrkoKey\app\src\main\AndroidManifest.xml:14:9-44
+		ADDED from C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml:14:9-44
 	android:dataExtractionRules
-		ADDED from C:\Users\rfort\AndroidStudioProjects\IrkoKey\app\src\main\AndroidManifest.xml:8:9-65
+		ADDED from C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml:8:9-65
 	android:name
-		ADDED from C:\Users\rfort\AndroidStudioProjects\IrkoKey\app\src\main\AndroidManifest.xml:6:9-35
+		ADDED from C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml:6:9-35
 activity#com.example.irkokey.presentation.modules.splash.SplashActivity
-ADDED from C:\Users\rfort\AndroidStudioProjects\IrkoKey\app\src\main\AndroidManifest.xml:16:9-23:20
+ADDED from C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml:16:9-23:20
 	android:exported
-		ADDED from C:\Users\rfort\AndroidStudioProjects\IrkoKey\app\src\main\AndroidManifest.xml:18:13-36
+		ADDED from C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml:18:13-36
 	android:name
-		ADDED from C:\Users\rfort\AndroidStudioProjects\IrkoKey\app\src\main\AndroidManifest.xml:17:13-71
+		ADDED from C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml:17:13-71
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\rfort\AndroidStudioProjects\IrkoKey\app\src\main\AndroidManifest.xml:19:13-22:29
+ADDED from C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml:19:13-22:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\rfort\AndroidStudioProjects\IrkoKey\app\src\main\AndroidManifest.xml:20:17-69
+ADDED from C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml:20:17-69
 	android:name
-		ADDED from C:\Users\rfort\AndroidStudioProjects\IrkoKey\app\src\main\AndroidManifest.xml:20:25-66
+		ADDED from C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml:20:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\rfort\AndroidStudioProjects\IrkoKey\app\src\main\AndroidManifest.xml:21:17-77
+ADDED from C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml:21:17-77
 	android:name
-		ADDED from C:\Users\rfort\AndroidStudioProjects\IrkoKey\app\src\main\AndroidManifest.xml:21:27-74
+		ADDED from C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml:21:27-74
 activity#com.example.irkokey.presentation.modules.auth.AuthActivity
-ADDED from C:\Users\rfort\AndroidStudioProjects\IrkoKey\app\src\main\AndroidManifest.xml:25:9-28:51
+ADDED from C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml:25:9-28:51
 	android:exported
-		ADDED from C:\Users\rfort\AndroidStudioProjects\IrkoKey\app\src\main\AndroidManifest.xml:27:13-37
+		ADDED from C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml:27:13-37
 	android:theme
-		ADDED from C:\Users\rfort\AndroidStudioProjects\IrkoKey\app\src\main\AndroidManifest.xml:28:13-48
+		ADDED from C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml:28:13-48
 	android:name
-		ADDED from C:\Users\rfort\AndroidStudioProjects\IrkoKey\app\src\main\AndroidManifest.xml:26:13-67
+		ADDED from C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml:26:13-67
 activity#com.example.irkokey.presentation.modules.main.MainActivity
-ADDED from C:\Users\rfort\AndroidStudioProjects\IrkoKey\app\src\main\AndroidManifest.xml:30:9-33:57
+ADDED from C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml:30:9-33:57
 	android:exported
-		ADDED from C:\Users\rfort\AndroidStudioProjects\IrkoKey\app\src\main\AndroidManifest.xml:32:13-37
+		ADDED from C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml:32:13-37
 	android:theme
-		ADDED from C:\Users\rfort\AndroidStudioProjects\IrkoKey\app\src\main\AndroidManifest.xml:33:13-54
+		ADDED from C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml:33:13-54
 	android:name
-		ADDED from C:\Users\rfort\AndroidStudioProjects\IrkoKey\app\src\main\AndroidManifest.xml:31:13-67
+		ADDED from C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml:31:13-67
 uses-sdk
-INJECTED from C:\Users\rfort\AndroidStudioProjects\IrkoKey\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from C:\Users\rfort\AndroidStudioProjects\IrkoKey\app\src\main\AndroidManifest.xml
-INJECTED from C:\Users\rfort\AndroidStudioProjects\IrkoKey\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml
 MERGED from [androidx.databinding:viewbinding:8.4.0] C:\Users\rfort\.gradle\caches\transforms-4\109d5a5903709d51f58e04e74f102013\transformed\viewbinding-8.4.0\AndroidManifest.xml:5:5-44
 MERGED from [androidx.databinding:viewbinding:8.4.0] C:\Users\rfort\.gradle\caches\transforms-4\109d5a5903709d51f58e04e74f102013\transformed\viewbinding-8.4.0\AndroidManifest.xml:5:5-44
 MERGED from [androidx.navigation:navigation-common:2.8.1] C:\Users\rfort\.gradle\caches\transforms-4\9145a30e9e4e085470c84978314e664b\transformed\navigation-common-2.8.1\AndroidManifest.xml:20:5-44
@@ -279,9 +279,9 @@ MERGED from [androidx.print:print:1.0.0] C:\Users\rfort\.gradle\caches\transform
 MERGED from [com.google.dagger:dagger-lint-aar:2.48] C:\Users\rfort\.gradle\caches\transforms-4\65cdcfd63ade65707c39adfaf00c08c3\transformed\dagger-lint-aar-2.48\AndroidManifest.xml:18:3-42
 MERGED from [com.google.dagger:dagger-lint-aar:2.48] C:\Users\rfort\.gradle\caches\transforms-4\65cdcfd63ade65707c39adfaf00c08c3\transformed\dagger-lint-aar-2.48\AndroidManifest.xml:18:3-42
 	android:targetSdkVersion
-		INJECTED from C:\Users\rfort\AndroidStudioProjects\IrkoKey\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from C:\Users\rfort\AndroidStudioProjects\IrkoKey\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml
 provider#androidx.startup.InitializationProvider
 ADDED from [androidx.emoji2:emoji2:1.3.0] C:\Users\rfort\.gradle\caches\transforms-4\c51812741f5d124d49757ad70c365a8f\transformed\emoji2-1.3.0\AndroidManifest.xml:24:9-32:20
 MERGED from [androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\rfort\.gradle\caches\transforms-4\277b717d4cb31f14aef1d42cc64abc12\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:24:9-32:20
