@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.irkokey.app-mergeDebugResources-46:/values-be/values-be.xml",
+            "outputFile": "com.example.irkokey.app-mergeDebugResources-50:/values-be/values-be.xml",
             "map": [
                 {
                     "source": "C:\\Users\\rfort\\.gradle\\caches\\transforms-4\\f6751630d043fc9b922d71a8a65f1201\\transformed\\navigation-ui-2.8.1\\res\\values-be\\values-be.xml",

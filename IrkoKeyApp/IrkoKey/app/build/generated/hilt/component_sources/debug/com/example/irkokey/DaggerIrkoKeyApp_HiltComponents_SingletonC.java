@@ -10,8 +10,14 @@ import androidx.lifecycle.SavedStateHandle;
 import androidx.lifecycle.ViewModel;
 import com.example.irkokey.common.di.AppModule;
 import com.example.irkokey.common.di.AppModule_ProvideContextFactory;
+import com.example.irkokey.common.di.AppModule_ProvideDatabaseFactory;
+import com.example.irkokey.common.di.AppModule_ProvidePasswordDaoFactory;
+import com.example.irkokey.common.di.AppModule_ProvidePasswordRepositoryFactory;
 import com.example.irkokey.common.di.AppModule_ProvidePreferencesFactory;
 import com.example.irkokey.common.infraestructure.Preferences;
+import com.example.irkokey.data.dao.PasswordDao;
+import com.example.irkokey.data.database.PasswordRoomDatabase;
+import com.example.irkokey.data.repository.PasswordRepository;
 import com.example.irkokey.presentation.modules.auth.AuthActivity;
 import com.example.irkokey.presentation.modules.createPassword.CreateFragment;
 import com.example.irkokey.presentation.modules.explorePasswords.ExplorePasswordFragment;
@@ -19,9 +25,14 @@ import com.example.irkokey.presentation.modules.login.LoginFragment;
 import com.example.irkokey.presentation.modules.login.LoginViewModel;
 import com.example.irkokey.presentation.modules.login.LoginViewModel_HiltModules_KeyModule_ProvideFactory;
 import com.example.irkokey.presentation.modules.main.MainActivity;
+import com.example.irkokey.presentation.modules.passwords.PasswordsFragment;
+import com.example.irkokey.presentation.modules.passwords.PasswordsFragment_MembersInjector;
+import com.example.irkokey.presentation.modules.passwords.PasswordsViewModel;
+import com.example.irkokey.presentation.modules.passwords.PasswordsViewModel_HiltModules_KeyModule_ProvideFactory;
 import com.example.irkokey.presentation.modules.splash.SplashActivity;
 import com.example.irkokey.presentation.modules.splash.SplashViewModel;
 import com.example.irkokey.presentation.modules.splash.SplashViewModel_HiltModules_KeyModule_ProvideFactory;
+import com.google.errorprone.annotations.CanIgnoreReturnValue;
 import dagger.hilt.android.ActivityRetainedLifecycle;
 import dagger.hilt.android.ViewModelLifecycle;
 import dagger.hilt.android.flags.HiltWrapper_FragmentGetContextFix_FragmentGetContextFixModule;
@@ -328,15 +339,20 @@ public final class DaggerIrkoKeyApp_HiltComponents_SingletonC {
     }
 
     @Override
-    public void injectCreateFragment(CreateFragment arg0) {
+    public void injectCreateFragment(CreateFragment createFragment) {
     }
 
     @Override
-    public void injectExplorePasswordFragment(ExplorePasswordFragment arg0) {
+    public void injectExplorePasswordFragment(ExplorePasswordFragment explorePasswordFragment) {
     }
 
     @Override
-    public void injectLoginFragment(LoginFragment arg0) {
+    public void injectLoginFragment(LoginFragment loginFragment) {
+    }
+
+    @Override
+    public void injectPasswordsFragment(PasswordsFragment passwordsFragment) {
+      injectPasswordsFragment2(passwordsFragment);
     }
 
     @Override
@@ -347,6 +363,12 @@ public final class DaggerIrkoKeyApp_HiltComponents_SingletonC {
     @Override
     public ViewWithFragmentComponentBuilder viewWithFragmentComponentBuilder() {
       return new ViewWithFragmentCBuilder(singletonCImpl, activityRetainedCImpl, activityCImpl, fragmentCImpl);
+    }
+
+    @CanIgnoreReturnValue
+    private PasswordsFragment injectPasswordsFragment2(PasswordsFragment instance) {
+      PasswordsFragment_MembersInjector.injectPasswordRepository(instance, singletonCImpl.providePasswordRepositoryProvider.get());
+      return instance;
     }
   }
 
@@ -385,15 +407,15 @@ public final class DaggerIrkoKeyApp_HiltComponents_SingletonC {
     }
 
     @Override
-    public void injectAuthActivity(AuthActivity arg0) {
+    public void injectAuthActivity(AuthActivity authActivity) {
     }
 
     @Override
-    public void injectMainActivity(MainActivity arg0) {
+    public void injectMainActivity(MainActivity mainActivity) {
     }
 
     @Override
-    public void injectSplashActivity(SplashActivity arg0) {
+    public void injectSplashActivity(SplashActivity splashActivity) {
     }
 
     @Override
@@ -403,7 +425,7 @@ public final class DaggerIrkoKeyApp_HiltComponents_SingletonC {
 
     @Override
     public Set<String> getViewModelKeys() {
-      return SetBuilder.<String>newSetBuilder(2).add(LoginViewModel_HiltModules_KeyModule_ProvideFactory.provide()).add(SplashViewModel_HiltModules_KeyModule_ProvideFactory.provide()).build();
+      return SetBuilder.<String>newSetBuilder(3).add(LoginViewModel_HiltModules_KeyModule_ProvideFactory.provide()).add(PasswordsViewModel_HiltModules_KeyModule_ProvideFactory.provide()).add(SplashViewModel_HiltModules_KeyModule_ProvideFactory.provide()).build();
     }
 
     @Override
@@ -431,6 +453,8 @@ public final class DaggerIrkoKeyApp_HiltComponents_SingletonC {
 
     private Provider<LoginViewModel> loginViewModelProvider;
 
+    private Provider<PasswordsViewModel> passwordsViewModelProvider;
+
     private Provider<SplashViewModel> splashViewModelProvider;
 
     private ViewModelCImpl(SingletonCImpl singletonCImpl,
@@ -447,12 +471,13 @@ public final class DaggerIrkoKeyApp_HiltComponents_SingletonC {
     private void initialize(final SavedStateHandle savedStateHandleParam,
         final ViewModelLifecycle viewModelLifecycleParam) {
       this.loginViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 0);
-      this.splashViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 1);
+      this.passwordsViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 1);
+      this.splashViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 2);
     }
 
     @Override
     public Map<String, Provider<ViewModel>> getHiltViewModelMap() {
-      return MapBuilder.<String, Provider<ViewModel>>newMapBuilder(2).put("com.example.irkokey.presentation.modules.login.LoginViewModel", ((Provider) loginViewModelProvider)).put("com.example.irkokey.presentation.modules.splash.SplashViewModel", ((Provider) splashViewModelProvider)).build();
+      return MapBuilder.<String, Provider<ViewModel>>newMapBuilder(3).put("com.example.irkokey.presentation.modules.login.LoginViewModel", ((Provider) loginViewModelProvider)).put("com.example.irkokey.presentation.modules.passwords.PasswordsViewModel", ((Provider) passwordsViewModelProvider)).put("com.example.irkokey.presentation.modules.splash.SplashViewModel", ((Provider) splashViewModelProvider)).build();
     }
 
     private static final class SwitchingProvider<T> implements Provider<T> {
@@ -479,7 +504,10 @@ public final class DaggerIrkoKeyApp_HiltComponents_SingletonC {
           case 0: // com.example.irkokey.presentation.modules.login.LoginViewModel 
           return (T) new LoginViewModel(singletonCImpl.providePreferencesProvider.get());
 
-          case 1: // com.example.irkokey.presentation.modules.splash.SplashViewModel 
+          case 1: // com.example.irkokey.presentation.modules.passwords.PasswordsViewModel 
+          return (T) new PasswordsViewModel(singletonCImpl.providePasswordRepositoryProvider.get());
+
+          case 2: // com.example.irkokey.presentation.modules.splash.SplashViewModel 
           return (T) new SplashViewModel(singletonCImpl.providePreferencesProvider.get());
 
           default: throw new AssertionError(id);
@@ -563,6 +591,12 @@ public final class DaggerIrkoKeyApp_HiltComponents_SingletonC {
 
     private Provider<Context> provideContextProvider;
 
+    private Provider<PasswordRoomDatabase> provideDatabaseProvider;
+
+    private Provider<PasswordDao> providePasswordDaoProvider;
+
+    private Provider<PasswordRepository> providePasswordRepositoryProvider;
+
     private Provider<Preferences> providePreferencesProvider;
 
     private SingletonCImpl(ApplicationContextModule applicationContextModuleParam) {
@@ -573,8 +607,11 @@ public final class DaggerIrkoKeyApp_HiltComponents_SingletonC {
 
     @SuppressWarnings("unchecked")
     private void initialize(final ApplicationContextModule applicationContextModuleParam) {
-      this.provideContextProvider = DoubleCheck.provider(new SwitchingProvider<Context>(singletonCImpl, 1));
-      this.providePreferencesProvider = DoubleCheck.provider(new SwitchingProvider<Preferences>(singletonCImpl, 0));
+      this.provideContextProvider = DoubleCheck.provider(new SwitchingProvider<Context>(singletonCImpl, 3));
+      this.provideDatabaseProvider = DoubleCheck.provider(new SwitchingProvider<PasswordRoomDatabase>(singletonCImpl, 2));
+      this.providePasswordDaoProvider = DoubleCheck.provider(new SwitchingProvider<PasswordDao>(singletonCImpl, 1));
+      this.providePasswordRepositoryProvider = DoubleCheck.provider(new SwitchingProvider<PasswordRepository>(singletonCImpl, 0));
+      this.providePreferencesProvider = DoubleCheck.provider(new SwitchingProvider<Preferences>(singletonCImpl, 4));
     }
 
     @Override
@@ -610,11 +647,20 @@ public final class DaggerIrkoKeyApp_HiltComponents_SingletonC {
       @Override
       public T get() {
         switch (id) {
-          case 0: // com.example.irkokey.common.infraestructure.Preferences 
-          return (T) AppModule_ProvidePreferencesFactory.providePreferences(singletonCImpl.provideContextProvider.get());
+          case 0: // com.example.irkokey.data.repository.PasswordRepository 
+          return (T) AppModule_ProvidePasswordRepositoryFactory.providePasswordRepository(singletonCImpl.providePasswordDaoProvider.get());
 
-          case 1: // android.content.Context 
+          case 1: // com.example.irkokey.data.dao.PasswordDao 
+          return (T) AppModule_ProvidePasswordDaoFactory.providePasswordDao(singletonCImpl.provideDatabaseProvider.get());
+
+          case 2: // com.example.irkokey.data.database.PasswordRoomDatabase 
+          return (T) AppModule_ProvideDatabaseFactory.provideDatabase(singletonCImpl.provideContextProvider.get());
+
+          case 3: // android.content.Context 
           return (T) AppModule_ProvideContextFactory.provideContext(ApplicationContextModule_ProvideApplicationFactory.provideApplication(singletonCImpl.applicationContextModule));
+
+          case 4: // com.example.irkokey.common.infraestructure.Preferences 
+          return (T) AppModule_ProvidePreferencesFactory.providePreferences(singletonCImpl.provideContextProvider.get());
 
           default: throw new AssertionError(id);
         }

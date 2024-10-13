@@ -7,14 +7,19 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.irkokey.data.PasswordsList
+import com.example.irkokey.data.repository.PasswordRepository
 import com.example.irkokey.databinding.FragmentPasswordsBinding
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-
+@AndroidEntryPoint
 class PasswordsFragment : Fragment() {
 
     private lateinit var binding: FragmentPasswordsBinding
-    private val passwordsViewModel: PasswordsViewModel by viewModels()
+
+    @Inject
+    lateinit var passwordRepository: PasswordRepository
+    private val viewModel: PasswordsViewModel by viewModels()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentPasswordsBinding.inflate(inflater, container, false)
@@ -26,7 +31,10 @@ class PasswordsFragment : Fragment() {
 
         with(binding) {
             rvPasswords.layoutManager = LinearLayoutManager(context)
-            rvPasswords.adapter = PasswordsViewAdapter(PasswordsList.getPassword())
+
+            viewModel.allPasswords.observe(viewLifecycleOwner) { passwords ->
+                rvPasswords.adapter = PasswordsViewAdapter(passwords)
+            }
         }
     }
 }

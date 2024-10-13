@@ -32,5 +32,4 @@
             android:exported="false"
             android:theme="@style/Base.Theme.IrkoKey" />
     </application>
-
 </manifest>

@@ -2,9 +2,7 @@ package com.example.irkokey.presentation.modules.passwords;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
-import com.example.irkokey.data.PasswordsList;
 import com.example.irkokey.databinding.RowPasswordBinding;
 import com.example.irkokey.domain.models.Password;
 
