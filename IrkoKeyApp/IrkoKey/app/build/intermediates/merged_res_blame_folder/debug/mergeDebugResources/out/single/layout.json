@@ -38,5 +38,9 @@
     {
         "merged": "com.example.irkokey.app-mergeDebugResources-51:/layout/row_password.xml",
         "source": "com.example.irkokey.app-main-54:/layout/row_password.xml"
+    },
+    {
+        "merged": "com.example.irkokey.app-mergeDebugResources-51:/layout/item_favorite_password.xml",
+        "source": "com.example.irkokey.app-main-54:/layout/item_favorite_password.xml"
     }
 ]

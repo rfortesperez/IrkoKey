@@ -23,6 +23,10 @@ import com.example.irkokey.presentation.modules.createPassword.CreateFragment;
 import com.example.irkokey.presentation.modules.createPassword.CreateViewModel;
 import com.example.irkokey.presentation.modules.createPassword.CreateViewModel_HiltModules_KeyModule_ProvideFactory;
 import com.example.irkokey.presentation.modules.explorePasswords.ExplorePasswordFragment;
+import com.example.irkokey.presentation.modules.favoritePasswords.FavoriteFragment;
+import com.example.irkokey.presentation.modules.favoritePasswords.FavoriteFragment_MembersInjector;
+import com.example.irkokey.presentation.modules.favoritePasswords.FavoriteViewModel;
+import com.example.irkokey.presentation.modules.favoritePasswords.FavoriteViewModel_HiltModules_KeyModule_ProvideFactory;
 import com.example.irkokey.presentation.modules.login.LoginFragment;
 import com.example.irkokey.presentation.modules.login.LoginViewModel;
 import com.example.irkokey.presentation.modules.login.LoginViewModel_HiltModules_KeyModule_ProvideFactory;
@@ -349,6 +353,11 @@ public final class DaggerIrkoKeyApp_HiltComponents_SingletonC {
     }
 
     @Override
+    public void injectFavoriteFragment(FavoriteFragment favoriteFragment) {
+      injectFavoriteFragment2(favoriteFragment);
+    }
+
+    @Override
     public void injectLoginFragment(LoginFragment loginFragment) {
     }
 
@@ -365,6 +374,12 @@ public final class DaggerIrkoKeyApp_HiltComponents_SingletonC {
     @Override
     public ViewWithFragmentComponentBuilder viewWithFragmentComponentBuilder() {
       return new ViewWithFragmentCBuilder(singletonCImpl, activityRetainedCImpl, activityCImpl, fragmentCImpl);
+    }
+
+    @CanIgnoreReturnValue
+    private FavoriteFragment injectFavoriteFragment2(FavoriteFragment instance) {
+      FavoriteFragment_MembersInjector.injectPasswordRepository(instance, singletonCImpl.providePasswordRepositoryProvider.get());
+      return instance;
     }
 
     @CanIgnoreReturnValue
@@ -427,7 +442,7 @@ public final class DaggerIrkoKeyApp_HiltComponents_SingletonC {
 
     @Override
     public Set<String> getViewModelKeys() {
-      return SetBuilder.<String>newSetBuilder(4).add(CreateViewModel_HiltModules_KeyModule_ProvideFactory.provide()).add(LoginViewModel_HiltModules_KeyModule_ProvideFactory.provide()).add(PasswordsViewModel_HiltModules_KeyModule_ProvideFactory.provide()).add(SplashViewModel_HiltModules_KeyModule_ProvideFactory.provide()).build();
+      return SetBuilder.<String>newSetBuilder(5).add(CreateViewModel_HiltModules_KeyModule_ProvideFactory.provide()).add(FavoriteViewModel_HiltModules_KeyModule_ProvideFactory.provide()).add(LoginViewModel_HiltModules_KeyModule_ProvideFactory.provide()).add(PasswordsViewModel_HiltModules_KeyModule_ProvideFactory.provide()).add(SplashViewModel_HiltModules_KeyModule_ProvideFactory.provide()).build();
     }
 
     @Override
@@ -455,6 +470,8 @@ public final class DaggerIrkoKeyApp_HiltComponents_SingletonC {
 
     private Provider<CreateViewModel> createViewModelProvider;
 
+    private Provider<FavoriteViewModel> favoriteViewModelProvider;
+
     private Provider<LoginViewModel> loginViewModelProvider;
 
     private Provider<PasswordsViewModel> passwordsViewModelProvider;
@@ -475,14 +492,15 @@ public final class DaggerIrkoKeyApp_HiltComponents_SingletonC {
     private void initialize(final SavedStateHandle savedStateHandleParam,
         final ViewModelLifecycle viewModelLifecycleParam) {
       this.createViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 0);
-      this.loginViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 1);
-      this.passwordsViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 2);
-      this.splashViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 3);
+      this.favoriteViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 1);
+      this.loginViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 2);
+      this.passwordsViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 3);
+      this.splashViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 4);
     }
 
     @Override
     public Map<String, Provider<ViewModel>> getHiltViewModelMap() {
-      return MapBuilder.<String, Provider<ViewModel>>newMapBuilder(4).put("com.example.irkokey.presentation.modules.createPassword.CreateViewModel", ((Provider) createViewModelProvider)).put("com.example.irkokey.presentation.modules.login.LoginViewModel", ((Provider) loginViewModelProvider)).put("com.example.irkokey.presentation.modules.passwords.PasswordsViewModel", ((Provider) passwordsViewModelProvider)).put("com.example.irkokey.presentation.modules.splash.SplashViewModel", ((Provider) splashViewModelProvider)).build();
+      return MapBuilder.<String, Provider<ViewModel>>newMapBuilder(5).put("com.example.irkokey.presentation.modules.createPassword.CreateViewModel", ((Provider) createViewModelProvider)).put("com.example.irkokey.presentation.modules.favoritePasswords.FavoriteViewModel", ((Provider) favoriteViewModelProvider)).put("com.example.irkokey.presentation.modules.login.LoginViewModel", ((Provider) loginViewModelProvider)).put("com.example.irkokey.presentation.modules.passwords.PasswordsViewModel", ((Provider) passwordsViewModelProvider)).put("com.example.irkokey.presentation.modules.splash.SplashViewModel", ((Provider) splashViewModelProvider)).build();
     }
 
     private static final class SwitchingProvider<T> implements Provider<T> {
@@ -509,13 +527,16 @@ public final class DaggerIrkoKeyApp_HiltComponents_SingletonC {
           case 0: // com.example.irkokey.presentation.modules.createPassword.CreateViewModel 
           return (T) new CreateViewModel(singletonCImpl.providePasswordRepositoryProvider.get());
 
-          case 1: // com.example.irkokey.presentation.modules.login.LoginViewModel 
+          case 1: // com.example.irkokey.presentation.modules.favoritePasswords.FavoriteViewModel 
+          return (T) new FavoriteViewModel(singletonCImpl.providePasswordRepositoryProvider.get());
+
+          case 2: // com.example.irkokey.presentation.modules.login.LoginViewModel 
           return (T) new LoginViewModel(singletonCImpl.providePreferencesProvider.get());
 
-          case 2: // com.example.irkokey.presentation.modules.passwords.PasswordsViewModel 
+          case 3: // com.example.irkokey.presentation.modules.passwords.PasswordsViewModel 
           return (T) new PasswordsViewModel(singletonCImpl.providePasswordRepositoryProvider.get());
 
-          case 3: // com.example.irkokey.presentation.modules.splash.SplashViewModel 
+          case 4: // com.example.irkokey.presentation.modules.splash.SplashViewModel 
           return (T) new SplashViewModel(singletonCImpl.providePreferencesProvider.get());
 
           default: throw new AssertionError(id);

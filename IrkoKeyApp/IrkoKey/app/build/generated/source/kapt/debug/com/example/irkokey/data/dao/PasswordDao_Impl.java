@@ -258,6 +258,64 @@ public final class PasswordDao_Impl implements PasswordDao {
     });
   }
 
+  @Override
+  public Flow<List<Password>> getAllFavorites() {
+    final String _sql = "SELECT * FROM passwords_table WHERE favorite = true ORDER BY website ASC";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
+    return CoroutinesRoom.createFlow(__db, false, new String[] {"passwords_table"}, new Callable<List<Password>>() {
+      @Override
+      @NonNull
+      public List<Password> call() throws Exception {
+        final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+        try {
+          final int _cursorIndexOfId = CursorUtil.getColumnIndexOrThrow(_cursor, "id");
+          final int _cursorIndexOfWebsite = CursorUtil.getColumnIndexOrThrow(_cursor, "website");
+          final int _cursorIndexOfUserName = CursorUtil.getColumnIndexOrThrow(_cursor, "userName");
+          final int _cursorIndexOfPassword = CursorUtil.getColumnIndexOrThrow(_cursor, "password_hash");
+          final int _cursorIndexOfFavorite = CursorUtil.getColumnIndexOrThrow(_cursor, "favorite");
+          final List<Password> _result = new ArrayList<Password>(_cursor.getCount());
+          while (_cursor.moveToNext()) {
+            final Password _item;
+            final int _tmpId;
+            _tmpId = _cursor.getInt(_cursorIndexOfId);
+            final String _tmpWebsite;
+            if (_cursor.isNull(_cursorIndexOfWebsite)) {
+              _tmpWebsite = null;
+            } else {
+              _tmpWebsite = _cursor.getString(_cursorIndexOfWebsite);
+            }
+            final String _tmpUserName;
+            if (_cursor.isNull(_cursorIndexOfUserName)) {
+              _tmpUserName = null;
+            } else {
+              _tmpUserName = _cursor.getString(_cursorIndexOfUserName);
+            }
+            final String _tmpPassword;
+            if (_cursor.isNull(_cursorIndexOfPassword)) {
+              _tmpPassword = null;
+            } else {
+              _tmpPassword = _cursor.getString(_cursorIndexOfPassword);
+            }
+            final boolean _tmpFavorite;
+            final int _tmp;
+            _tmp = _cursor.getInt(_cursorIndexOfFavorite);
+            _tmpFavorite = _tmp != 0;
+            _item = new Password(_tmpId,_tmpWebsite,_tmpUserName,_tmpPassword,_tmpFavorite);
+            _result.add(_item);
+          }
+          return _result;
+        } finally {
+          _cursor.close();
+        }
+      }
+
+      @Override
+      protected void finalize() {
+        _statement.release();
+      }
+    });
+  }
+
   @NonNull
   public static List<Class<?>> getRequiredConverters() {
     return Collections.emptyList();

@@ -3845,9 +3845,11 @@ id rightToLeft
 id right_icon
 id right_side
 id rounded
+id row_favorite
 id row_index_key
 id row_password
 id rtl
+id rv_favorite_passwords
 id rv_passwords
 id save_non_transition_alpha
 id save_overlay_view
@@ -3965,7 +3967,6 @@ id transition_transform
 id triangle
 id tv_backup
 id tv_capital_letters
-id tv_favorite
 id tv_have_lenght
 id tv_introduce_data
 id tv_lowercase_letters
@@ -4141,6 +4142,7 @@ layout fragment_login
 layout fragment_passwords
 layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity
+layout item_favorite_password
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
 layout m3_alert_dialog_title

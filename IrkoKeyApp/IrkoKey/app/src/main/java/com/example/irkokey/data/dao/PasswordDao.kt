@@ -30,4 +30,8 @@ interface PasswordDao {
     @Query("UPDATE passwords_table SET favorite = :favorite WHERE id = :id")
     suspend fun changeFavorite(id: Int, favorite: Boolean)
 
+    // get all the favorite passwords
+    @Query("SELECT * FROM passwords_table WHERE favorite = true ORDER BY website ASC")
+    fun getAllFavorites(): Flow<List<Password>>
+
 }

@@ -23,22 +23,25 @@ class PasswordRepository @Inject constructor(private val passwordDao: PasswordDa
         return passwordDao.getAllPasswords()
     }
 
-    // update the password of a website
+    // get all the favorite passwords
+    @WorkerThread
+    fun getAllFavorites(): Flow<List<Password>> {
+        return passwordDao.getAllFavorites()
+    }
 
+    // update the password of a website
     @WorkerThread
     suspend fun updatePassword(id: Int, password: String) {
         passwordDao.updatePassword(id, password)
     }
 
     // delete a password from the table passwords_table
-
     @WorkerThread
     suspend fun deletePassword(id: Int) {
         passwordDao.deletePassword(id)
     }
 
     // change the favorite status of a password
-
     @WorkerThread
     suspend fun changeFavorite(id: Int, favorite: Boolean) {
         passwordDao.changeFavorite(id, favorite)

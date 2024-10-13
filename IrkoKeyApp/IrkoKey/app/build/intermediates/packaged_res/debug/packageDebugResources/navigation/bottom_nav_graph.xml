@@ -11,7 +11,7 @@
         tools:layout="@layout/fragment_backup" />
     <fragment
         android:id="@+id/navigate_favorite"
-        android:name="com.example.irkokey.presentation.modules.favoritePasswords.FavoritePasswordsFragment"
+        android:name="com.example.irkokey.presentation.modules.favoritePasswords.FavoriteFragment"
         android:label="fragment_favorite"
         tools:layout="@layout/fragment_favorite" />
     <fragment

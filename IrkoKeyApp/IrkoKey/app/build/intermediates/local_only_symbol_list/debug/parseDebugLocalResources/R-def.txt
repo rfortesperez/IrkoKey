@@ -337,13 +337,14 @@ id nav_host_fragment_container
 id navigate_backup
 id navigate_explore_passwords
 id navigate_favorite
+id row_favorite
 id row_password
+id rv_favorite_passwords
 id rv_passwords
 id splashActivity
 id tabLayout
 id tv_backup
 id tv_capital_letters
-id tv_favorite
 id tv_have_lenght
 id tv_introduce_data
 id tv_lowercase_letters
@@ -363,6 +364,7 @@ layout fragment_explore_password
 layout fragment_favorite
 layout fragment_login
 layout fragment_passwords
+layout item_favorite_password
 layout row_password
 menu bottom_nav_menu
 menu option_menu

@@ -5,6 +5,8 @@ import com.example.irkokey.presentation.modules.auth.AuthActivity_GeneratedInjec
 import com.example.irkokey.presentation.modules.createPassword.CreateFragment_GeneratedInjector;
 import com.example.irkokey.presentation.modules.createPassword.CreateViewModel_HiltModules;
 import com.example.irkokey.presentation.modules.explorePasswords.ExplorePasswordFragment_GeneratedInjector;
+import com.example.irkokey.presentation.modules.favoritePasswords.FavoriteFragment_GeneratedInjector;
+import com.example.irkokey.presentation.modules.favoritePasswords.FavoriteViewModel_HiltModules;
 import com.example.irkokey.presentation.modules.login.LoginFragment_GeneratedInjector;
 import com.example.irkokey.presentation.modules.login.LoginViewModel_HiltModules;
 import com.example.irkokey.presentation.modules.main.MainActivity_GeneratedInjector;
@@ -154,6 +156,7 @@ public final class IrkoKeyApp_HiltComponents {
   @Subcomponent(
       modules = {
           CreateViewModel_HiltModules.KeyModule.class,
+          FavoriteViewModel_HiltModules.KeyModule.class,
           HiltWrapper_ActivityRetainedComponentManager_LifecycleModule.class,
           ActivityCBuilderModule.class,
           ViewModelCBuilderModule.class,
@@ -198,6 +201,7 @@ public final class IrkoKeyApp_HiltComponents {
   @Subcomponent(
       modules = {
           CreateViewModel_HiltModules.BindsModule.class,
+          FavoriteViewModel_HiltModules.BindsModule.class,
           HiltWrapper_HiltViewModelFactory_ViewModelModule.class,
           LoginViewModel_HiltModules.BindsModule.class,
           PasswordsViewModel_HiltModules.BindsModule.class,
@@ -228,6 +232,7 @@ public final class IrkoKeyApp_HiltComponents {
   @FragmentScoped
   public abstract static class FragmentC implements CreateFragment_GeneratedInjector,
       ExplorePasswordFragment_GeneratedInjector,
+      FavoriteFragment_GeneratedInjector,
       LoginFragment_GeneratedInjector,
       PasswordsFragment_GeneratedInjector,
       FragmentComponent,

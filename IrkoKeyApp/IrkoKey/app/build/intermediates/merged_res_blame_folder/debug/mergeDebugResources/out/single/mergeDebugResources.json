@@ -56,6 +56,10 @@
         "source": "com.example.irkokey.app-main-54:/mipmap-hdpi/ic_launcher.webp"
     },
     {
+        "merged": "com.example.irkokey.app-debug-52:/layout_item_favorite_password.xml.flat",
+        "source": "com.example.irkokey.app-main-54:/layout/item_favorite_password.xml"
+    },
+    {
         "merged": "com.example.irkokey.app-debug-52:/layout_fragment_passwords.xml.flat",
         "source": "com.example.irkokey.app-main-54:/layout/fragment_passwords.xml"
     },
