@@ -3,8 +3,15 @@ package com.example.irkokey.presentation.modules.createPassword
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.irkokey.data.repository.PasswordRepository
+import com.example.irkokey.domain.models.Password
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class CreateViewModel : ViewModel() {
+@HiltViewModel
+class CreateViewModel @Inject constructor(private val passwordRepository: PasswordRepository) : ViewModel() {
 
     private val _isCorrect = MutableLiveData<Boolean>()
     val isCorrect: LiveData<Boolean> get() = _isCorrect
@@ -18,6 +25,7 @@ class CreateViewModel : ViewModel() {
             if (isPasswordStrong(password)) {
                 _isCorrect.value = true
                 savePassword(website, username, password)
+                _isComplete.value = false
             } else {
                 _isCorrect.value = false
             }
@@ -60,7 +68,12 @@ class CreateViewModel : ViewModel() {
 
     // method to save the website, username and password
     private fun savePassword(website: String, username: String, password: String) {
-        // TODO save the password
+        // variable to store the password
+        val password = Password(website =website, userName = username, password = password)
+        viewModelScope.launch {
+            passwordRepository.insertPassword(password)
+        }
+
     }
 
 }

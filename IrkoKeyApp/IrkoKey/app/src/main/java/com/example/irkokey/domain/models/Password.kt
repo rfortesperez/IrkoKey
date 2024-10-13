@@ -7,8 +7,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "passwords_table")
 data class Password(
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "id")
-    val id: Int,
+    val id: Int = 0,
     @ColumnInfo(name = "website")
     val website: String,
     @ColumnInfo(name = "userName")
@@ -16,5 +15,5 @@ data class Password(
     @ColumnInfo(name = "password_hash")
     val password: String,
     @ColumnInfo(name = "favorite")
-    val favorite: Boolean
+    val favorite: Boolean = false
 )
