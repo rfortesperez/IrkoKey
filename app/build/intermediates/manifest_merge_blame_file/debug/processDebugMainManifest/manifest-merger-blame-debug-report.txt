@@ -20,63 +20,63 @@
 15-->[androidx.core:core:1.13.1] C:\Users\rfort\.gradle\caches\transforms-4\e4a896e0a6dbe5f7c26af2fd53e5aee9\transformed\core-1.13.1\AndroidManifest.xml:26:22-94
 16
 17    <application
-17-->C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml:5:5-34:19
+17-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:5:5-34:19
 18        android:name="com.example.irkokey.IrkoKeyApp"
-18-->C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml:6:9-35
+18-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:6:9-35
 19        android:allowBackup="true"
-19-->C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml:7:9-35
+19-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:7:9-35
 20        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 20-->[androidx.core:core:1.13.1] C:\Users\rfort\.gradle\caches\transforms-4\e4a896e0a6dbe5f7c26af2fd53e5aee9\transformed\core-1.13.1\AndroidManifest.xml:28:18-86
 21        android:dataExtractionRules="@xml/data_extraction_rules"
-21-->C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml:8:9-65
+21-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:8:9-65
 22        android:debuggable="true"
 23        android:extractNativeLibs="false"
 24        android:fullBackupContent="@xml/backup_rules"
-24-->C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml:9:9-54
+24-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:9:9-54
 25        android:icon="@mipmap/ic_launcher"
-25-->C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml:10:9-43
+25-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:10:9-43
 26        android:label="@string/app_name"
-26-->C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml:11:9-41
+26-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:11:9-41
 27        android:roundIcon="@mipmap/ic_launcher_round"
-27-->C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml:12:9-54
+27-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:12:9-54
 28        android:supportsRtl="true"
-28-->C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml:13:9-35
+28-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:13:9-35
 29        android:testOnly="true"
 30        android:theme="@style/Theme.Splash" >
-30-->C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml:14:9-44
+30-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:14:9-44
 31        <activity
-31-->C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml:16:9-23:20
+31-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:16:9-23:20
 32            android:name="com.example.irkokey.presentation.modules.splash.SplashActivity"
-32-->C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml:17:13-71
+32-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:17:13-71
 33            android:exported="true" >
-33-->C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml:18:13-36
+33-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:18:13-36
 34            <intent-filter>
-34-->C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml:19:13-22:29
+34-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:19:13-22:29
 35                <action android:name="android.intent.action.MAIN" />
-35-->C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml:20:17-69
-35-->C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml:20:25-66
+35-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:20:17-69
+35-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:20:25-66
 36
 37                <category android:name="android.intent.category.LAUNCHER" />
-37-->C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml:21:17-77
-37-->C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml:21:27-74
+37-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:21:17-77
+37-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:21:27-74
 38            </intent-filter>
 39        </activity>
 40        <activity
-40-->C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml:25:9-28:51
+40-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:25:9-28:51
 41            android:name="com.example.irkokey.presentation.modules.auth.AuthActivity"
-41-->C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml:26:13-67
+41-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:26:13-67
 42            android:exported="false"
-42-->C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml:27:13-37
+42-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:27:13-37
 43            android:theme="@style/Theme.Splash" />
-43-->C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml:28:13-48
+43-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:28:13-48
 44        <activity
-44-->C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml:30:9-33:57
+44-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:30:9-33:57
 45            android:name="com.example.irkokey.presentation.modules.main.MainActivity"
-45-->C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml:31:13-67
+45-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:31:13-67
 46            android:exported="false"
-46-->C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml:32:13-37
+46-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:32:13-37
 47            android:theme="@style/Base.Theme.IrkoKey" />
-47-->C:\Users\rfort\Desktop\a21rociofp\IrkoKeyApp\IrkoKey\app\src\main\AndroidManifest.xml:33:13-54
+47-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:33:13-54
 48
 49        <provider
 49-->[androidx.emoji2:emoji2:1.3.0] C:\Users\rfort\.gradle\caches\transforms-4\c51812741f5d124d49757ad70c365a8f\transformed\emoji2-1.3.0\AndroidManifest.xml:24:9-32:20

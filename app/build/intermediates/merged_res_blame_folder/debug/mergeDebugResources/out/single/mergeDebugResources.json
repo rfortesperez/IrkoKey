@@ -52,12 +52,12 @@
         "source": "com.example.irkokey.app-main-54:/mipmap-xxhdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.irkokey.app-debug-52:/mipmap-hdpi_ic_launcher.webp.flat",
-        "source": "com.example.irkokey.app-main-54:/mipmap-hdpi/ic_launcher.webp"
-    },
-    {
         "merged": "com.example.irkokey.app-debug-52:/layout_item_favorite_password.xml.flat",
         "source": "com.example.irkokey.app-main-54:/layout/item_favorite_password.xml"
+    },
+    {
+        "merged": "com.example.irkokey.app-debug-52:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "com.example.irkokey.app-main-54:/mipmap-hdpi/ic_launcher.webp"
     },
     {
         "merged": "com.example.irkokey.app-debug-52:/layout_fragment_passwords.xml.flat",
@@ -166,6 +166,10 @@
     {
         "merged": "com.example.irkokey.app-debug-52:/mipmap-xhdpi_ic_launcher.webp.flat",
         "source": "com.example.irkokey.app-main-54:/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.irkokey.app-debug-52:/layout_dialog_edit.xml.flat",
+        "source": "com.example.irkokey.app-main-54:/layout/dialog_edit.xml"
     },
     {
         "merged": "com.example.irkokey.app-debug-52:/layout_fragment_explore_password.xml.flat",

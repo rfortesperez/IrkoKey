@@ -3641,6 +3641,7 @@ id enterAlways
 id enterAlwaysCollapsed
 id escape
 id et_email
+id et_new_password
 id et_password
 id et_password_input
 id et_username_input
@@ -4136,6 +4137,7 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
+layout dialog_edit
 layout fragment_backup
 layout fragment_create
 layout fragment_explore_password

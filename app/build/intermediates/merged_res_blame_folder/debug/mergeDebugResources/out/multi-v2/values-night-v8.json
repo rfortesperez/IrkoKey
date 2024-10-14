@@ -21,25 +21,6 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\rfort\\Desktop\\a21rociofp\\IrkoKeyApp\\IrkoKey\\app\\src\\main\\res\\values-night\\themes.xml",
-                    "from": {
-                        "startLines": "2,54",
-                        "startColumns": "4,4",
-                        "startOffsets": "100,4017",
-                        "endLines": "51,101",
-                        "endColumns": "12,12",
-                        "endOffsets": "3972,7770"
-                    },
-                    "to": {
-                        "startLines": "2,85",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,7348",
-                        "endLines": "51,132",
-                        "endColumns": "12,12",
-                        "endOffsets": "3823,11101"
-                    }
-                },
-                {
                     "source": "C:\\Users\\rfort\\.gradle\\caches\\transforms-4\\6c4bb2aa17f3f516657b37d98b620346\\transformed\\material-1.12.0\\res\\values-night-v8\\values-night-v8.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35",
@@ -54,6 +35,25 @@
                         "startOffsets": "4460,4535,4646,4735,4836,4943,5050,5149,5256,5359,5486,5574,5698,5800,5902,6018,6120,6234,6362,6478,6600,6736,6856,6990,7110,7222,11195,11312,11436,11566,11688,11826,11960,12076",
                         "endColumns": "74,110,88,100,106,106,98,106,102,126,87,123,101,101,115,101,113,127,115,121,135,119,133,119,111,125,116,123,129,121,137,133,115,119",
                         "endOffsets": "4530,4641,4730,4831,4938,5045,5144,5251,5354,5481,5569,5693,5795,5897,6013,6115,6229,6357,6473,6595,6731,6851,6985,7105,7217,7343,11307,11431,11561,11683,11821,11955,12071,12191"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\rfort\\AndroidStudioProjects\\a21rociofp\\app\\src\\main\\res\\values-night\\themes.xml",
+                    "from": {
+                        "startLines": "2,54",
+                        "startColumns": "4,4",
+                        "startOffsets": "102,4071",
+                        "endLines": "51,101",
+                        "endColumns": "12,12",
+                        "endOffsets": "4023,7871"
+                    },
+                    "to": {
+                        "startLines": "2,85",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,7348",
+                        "endLines": "51,132",
+                        "endColumns": "12,12",
+                        "endOffsets": "3823,11101"
                     }
                 }
             ]
