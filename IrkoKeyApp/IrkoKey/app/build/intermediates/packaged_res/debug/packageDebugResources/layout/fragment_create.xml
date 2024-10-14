@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-
+<?xml version="1.0" encoding="utf-8" ?>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -22,7 +21,6 @@
             android:fontFamily="@font/capriola_regular"
             android:text="@string/new_password"
             android:textAlignment="center"
-            android:textColor="@color/md_theme_inversePrimary_mediumContrast"
             android:textSize="32sp"
             android:textStyle="italic"
             app:layout_constraintEnd_toEndOf="parent"
@@ -43,8 +41,6 @@
             android:inputType="text"
             android:padding="16dp"
             android:singleLine="true"
-            android:textColor="@color/md_theme_inverseOnSurface_highContrast"
-            android:textColorHint="@color/md_theme_inverseOnSurface_highContrast"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/create_title" />
@@ -62,8 +58,6 @@
             android:inputType="text"
             android:padding="16dp"
             android:singleLine="true"
-            android:textColor="@color/md_theme_inverseOnSurface_highContrast"
-            android:textColorHint="@color/md_theme_background"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/et_website_input" />
@@ -82,8 +76,6 @@
             android:inputType="textPassword"
             android:padding="16dp"
             android:singleLine="true"
-            android:textColor="@color/md_theme_inverseOnSurface_highContrast"
-            android:textColorHint="@color/md_theme_inverseOnSurface_highContrast"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/et_username_input" />
@@ -95,7 +87,6 @@
             android:layout_marginTop="16dp"
             android:fontFamily="@font/capriola_regular"
             android:text="@string/your_password"
-            android:textColor="@color/md_theme_inverseOnSurface"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -112,7 +103,6 @@
             android:drawablePadding="16dp"
             android:text="@string/have_lenght"
             app:drawableStartCompat="@drawable/baseline_check_24"
-            app:drawableTint="@color/md_theme_inversePrimary_mediumContrast"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -127,7 +117,6 @@
             android:drawablePadding="16dp"
             android:text="@string/lowercase_letters"
             app:drawableStartCompat="@drawable/baseline_check_24"
-            app:drawableTint="@color/md_theme_inversePrimary_mediumContrast"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -143,7 +132,6 @@
             android:drawablePadding="16dp"
             android:text="@string/capital_letters"
             app:drawableStartCompat="@drawable/baseline_check_24"
-            app:drawableTint="@color/md_theme_inversePrimary_mediumContrast"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -158,7 +146,6 @@
             android:drawablePadding="16dp"
             android:text="@string/numbers"
             app:drawableStartCompat="@drawable/baseline_check_24"
-            app:drawableTint="@color/md_theme_inversePrimary_mediumContrast"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -173,7 +160,6 @@
             android:drawablePadding="16dp"
             android:text="@string/symbols"
             app:drawableStartCompat="@drawable/baseline_check_24"
-            app:drawableTint="@color/md_theme_inversePrimary_mediumContrast"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
