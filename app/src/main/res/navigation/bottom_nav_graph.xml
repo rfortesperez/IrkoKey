@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_nav_graph"
+    app:startDestination="@id/navigate_explore_passwords">
+    <fragment
+        android:id="@+id/navigate_backup"
+        android:name="com.example.irkokey.presentation.modules.backup.BackupFragment"
+        android:label="fragment_backup"
+        tools:layout="@layout/fragment_backup" />
+    <fragment
+        android:id="@+id/navigate_favorite"
+        android:name="com.example.irkokey.presentation.modules.favoritePasswords.FavoriteFragment"
+        android:label="fragment_favorite"
+        tools:layout="@layout/fragment_favorite" />
+    <fragment
+        android:id="@+id/navigate_explore_passwords"
+        android:name="com.example.irkokey.presentation.modules.explorePasswords.ExplorePasswordFragment"
+        android:label="fragment_tab"
+        tools:layout="@layout/fragment_explore_password" />
+</navigation>

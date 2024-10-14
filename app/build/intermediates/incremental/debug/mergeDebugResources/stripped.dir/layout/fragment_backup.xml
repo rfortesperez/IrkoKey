@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.modules.backup.BackupFragment">
+
+    <TextView
+        android:id="@+id/tv_backup"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="Import / Export Backup"
+        android:textColor="@color/md_theme_errorContainer_mediumContrast"
+        android:textSize="40sp"
+        android:textStyle="bold" />
+
+</FrameLayout>
