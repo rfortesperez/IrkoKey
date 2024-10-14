@@ -337,12 +337,14 @@ id nav_host_fragment_container
 id navigate_backup
 id navigate_explore_passwords
 id navigate_favorite
+id relativeLayout
 id row_favorite
 id row_password
 id rv_favorite_passwords
 id rv_passwords
 id splashActivity
 id tabLayout
+id textInputLayout
 id tv_backup
 id tv_capital_letters
 id tv_have_lenght

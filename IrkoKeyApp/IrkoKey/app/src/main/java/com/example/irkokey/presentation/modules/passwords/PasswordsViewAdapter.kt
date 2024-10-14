@@ -1,5 +1,6 @@
 package com.example.irkokey.presentation.modules.passwords
 
+import android.text.Editable
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -22,7 +23,7 @@ class PasswordsViewAdapter(private val passwords: List<Password>, private val li
        fun bind(password: Password, listener: OnItemClick) = with(binding) {
            tvWebsite.text = password.website
            tvUserName.text = password.userName
-           tvPassword.text = password.password
+           tvPassword.text = Editable.Factory.getInstance().newEditable(password.password)
 
            btnDelete.setOnClickListener { listener.onDeleteClick(adapterPosition) }
            btnEditPassword.setOnClickListener { listener.onEditClick(adapterPosition) }

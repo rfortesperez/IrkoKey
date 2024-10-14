@@ -1,5 +1,6 @@
 package com.example.irkokey.presentation.modules.passwords;
 
+import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import androidx.recyclerview.widget.RecyclerView;

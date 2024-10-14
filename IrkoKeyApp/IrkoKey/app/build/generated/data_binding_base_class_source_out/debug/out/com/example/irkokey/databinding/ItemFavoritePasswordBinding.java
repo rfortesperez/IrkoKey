@@ -11,6 +11,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.irkokey.R;
+import com.google.android.material.textfield.TextInputEditText;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -23,7 +24,7 @@ public final class ItemFavoritePasswordBinding implements ViewBinding {
   public final ConstraintLayout rowFavorite;
 
   @NonNull
-  public final TextView tvPassword;
+  public final TextInputEditText tvPassword;
 
   @NonNull
   public final TextView tvUserName;
@@ -32,7 +33,7 @@ public final class ItemFavoritePasswordBinding implements ViewBinding {
   public final TextView tvWebsite;
 
   private ItemFavoritePasswordBinding(@NonNull ConstraintLayout rootView,
-      @NonNull ConstraintLayout rowFavorite, @NonNull TextView tvPassword,
+      @NonNull ConstraintLayout rowFavorite, @NonNull TextInputEditText tvPassword,
       @NonNull TextView tvUserName, @NonNull TextView tvWebsite) {
     this.rootView = rootView;
     this.rowFavorite = rowFavorite;
@@ -71,7 +72,7 @@ public final class ItemFavoritePasswordBinding implements ViewBinding {
       ConstraintLayout rowFavorite = (ConstraintLayout) rootView;
 
       id = R.id.tv_password;
-      TextView tvPassword = ViewBindings.findChildViewById(rootView, id);
+      TextInputEditText tvPassword = ViewBindings.findChildViewById(rootView, id);
       if (tvPassword == null) {
         break missingId;
       }

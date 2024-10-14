@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,6 +13,8 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.irkokey.R;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -36,10 +39,16 @@ public final class RowPasswordBinding implements ViewBinding {
   public final ImageButton btnEditPassword;
 
   @NonNull
+  public final RelativeLayout relativeLayout;
+
+  @NonNull
   public final ConstraintLayout rowPassword;
 
   @NonNull
-  public final TextView tvPassword;
+  public final TextInputLayout textInputLayout;
+
+  @NonNull
+  public final TextInputEditText tvPassword;
 
   @NonNull
   public final TextView tvUserName;
@@ -50,15 +59,19 @@ public final class RowPasswordBinding implements ViewBinding {
   private RowPasswordBinding(@NonNull ConstraintLayout rootView,
       @NonNull ImageButton btnAddFavorite, @NonNull ImageButton btnCopyPassword,
       @NonNull ImageButton btnCopyUsername, @NonNull ImageButton btnDelete,
-      @NonNull ImageButton btnEditPassword, @NonNull ConstraintLayout rowPassword,
-      @NonNull TextView tvPassword, @NonNull TextView tvUserName, @NonNull TextView tvWebsite) {
+      @NonNull ImageButton btnEditPassword, @NonNull RelativeLayout relativeLayout,
+      @NonNull ConstraintLayout rowPassword, @NonNull TextInputLayout textInputLayout,
+      @NonNull TextInputEditText tvPassword, @NonNull TextView tvUserName,
+      @NonNull TextView tvWebsite) {
     this.rootView = rootView;
     this.btnAddFavorite = btnAddFavorite;
     this.btnCopyPassword = btnCopyPassword;
     this.btnCopyUsername = btnCopyUsername;
     this.btnDelete = btnDelete;
     this.btnEditPassword = btnEditPassword;
+    this.relativeLayout = relativeLayout;
     this.rowPassword = rowPassword;
+    this.textInputLayout = textInputLayout;
     this.tvPassword = tvPassword;
     this.tvUserName = tvUserName;
     this.tvWebsite = tvWebsite;
@@ -121,10 +134,22 @@ public final class RowPasswordBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.relativeLayout;
+      RelativeLayout relativeLayout = ViewBindings.findChildViewById(rootView, id);
+      if (relativeLayout == null) {
+        break missingId;
+      }
+
       ConstraintLayout rowPassword = (ConstraintLayout) rootView;
 
+      id = R.id.textInputLayout;
+      TextInputLayout textInputLayout = ViewBindings.findChildViewById(rootView, id);
+      if (textInputLayout == null) {
+        break missingId;
+      }
+
       id = R.id.tv_password;
-      TextView tvPassword = ViewBindings.findChildViewById(rootView, id);
+      TextInputEditText tvPassword = ViewBindings.findChildViewById(rootView, id);
       if (tvPassword == null) {
         break missingId;
       }
@@ -142,8 +167,8 @@ public final class RowPasswordBinding implements ViewBinding {
       }
 
       return new RowPasswordBinding((ConstraintLayout) rootView, btnAddFavorite, btnCopyPassword,
-          btnCopyUsername, btnDelete, btnEditPassword, rowPassword, tvPassword, tvUserName,
-          tvWebsite);
+          btnCopyUsername, btnDelete, btnEditPassword, relativeLayout, rowPassword, textInputLayout,
+          tvPassword, tvUserName, tvWebsite);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
