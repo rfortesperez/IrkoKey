@@ -34,7 +34,7 @@ class CreateViewModel @Inject constructor(private val passwordRepository: Passwo
         }
     }
 
-    private fun isPasswordStrong(password: String): Boolean {
+     fun isPasswordStrong(password: String): Boolean {
         return password.length >= 12 &&
                 containsLowerCase(password) &&
                 containsUpperCase(password) &&

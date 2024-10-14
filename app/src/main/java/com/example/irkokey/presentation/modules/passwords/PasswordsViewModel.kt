@@ -7,6 +7,7 @@ import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.irkokey.data.repository.PasswordRepository
 import com.example.irkokey.domain.models.Password
+import com.example.irkokey.presentation.modules.createPassword.CreateViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -22,6 +23,11 @@ class PasswordsViewModel @Inject constructor(private val passwordRepository: Pas
     private val _isFavorite = MutableLiveData<Boolean>()
     val isFavorite: LiveData<Boolean> get() = _isFavorite
 
+    // liveData to check if new password is good enough to replace old password
+    private val _isCorrect = MutableLiveData<Boolean>()
+    val isCorrect: LiveData<Boolean> get() = _isCorrect
+
+    val createViewModel = CreateViewModel(passwordRepository)
 
     // get all passwords
     fun getAllPasswords() {
@@ -48,7 +54,11 @@ class PasswordsViewModel @Inject constructor(private val passwordRepository: Pas
 
     fun editPassword(password: Password, newPassword: String): Unit {
         viewModelScope.launch {
-            passwordRepository.updatePassword(password.id, newPassword)
+            if (createViewModel.isPasswordStrong(newPassword)) {
+                passwordRepository.updatePassword(password.id, newPassword)
+            } else {
+                _isCorrect.value = false
+            }
         }
     }
 

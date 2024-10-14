@@ -4,9 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.irkokey.R
 import com.example.irkokey.data.repository.PasswordRepository
 import com.example.irkokey.databinding.FragmentPasswordsBinding
 import com.example.irkokey.domain.models.Password
@@ -33,7 +37,27 @@ class PasswordsFragment : Fragment() {
 
         override fun onEditClick(position: Int) {
             val password = passwordsList[position]
-            // Handle edit click, e.g., show a dialog to edit the password
+            val dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_edit, null)
+            val editText = dialogView.findViewById<EditText>(R.id.et_new_password)
+            val dialog = AlertDialog.Builder(requireContext())
+                .setTitle("Edit Password")
+                .setView(dialogView)
+                .setPositiveButton("Save") { _, _ ->
+                    val newPassword = editText.text.toString()
+
+                    viewModel.isCorrect.observe(viewLifecycleOwner) { isCorrect ->
+                        if(isCorrect) {
+                            viewModel.editPassword(password, newPassword)
+                        }else{
+                            // show error message
+                            Toast.makeText(context, "Password is not strong enough", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+                .setNegativeButton("Cancel", null)
+                .create()
+
+            dialog.show()
         }
 
         override fun onAddFavoriteClick(position: Int) {
