@@ -4260,13 +4260,18 @@ string character_counter_content_description
 string character_counter_overflowed_content_description
 string character_counter_pattern
 string clear_text_end_icon_content_description
+string copy_password
+string copy_user
+string delete
 string dest_title
+string edit
 string email
 string error_a11y_label
 string error_icon_content_description
 string exposed_dropdown_menu_content_description
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
+string favorite
 string have_lenght
 string hello_blank_fragment
 string hide_bottom_view_on_scroll_behavior
@@ -4276,7 +4281,6 @@ string item_view_role_description
 string login
 string logout
 string logout_info
-string lorem
 string lowercase_letters
 string m3_exceed_max_badge_text_suffix
 string m3_ref_typeface_brand_medium
