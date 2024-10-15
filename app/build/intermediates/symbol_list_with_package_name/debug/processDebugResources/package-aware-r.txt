@@ -3781,6 +3781,7 @@ id nav_host_fragment_container
 id navigate_backup
 id navigate_explore_passwords
 id navigate_favorite
+id navigate_logout
 id navigation_bar_item_active_indicator_view
 id navigation_bar_item_icon_container
 id navigation_bar_item_icon_view

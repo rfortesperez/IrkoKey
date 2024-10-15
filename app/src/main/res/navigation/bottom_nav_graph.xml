@@ -19,4 +19,8 @@
         android:name="com.example.irkokey.presentation.modules.explorePasswords.ExplorePasswordFragment"
         android:label="fragment_tab"
         tools:layout="@layout/fragment_explore_password" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.irkokey.presentation.modules.login.LoginFragment"
+        android:label="LoginFragment" />
 </navigation>

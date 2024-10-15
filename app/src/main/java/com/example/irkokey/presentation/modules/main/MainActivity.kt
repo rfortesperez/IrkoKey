@@ -24,5 +24,22 @@ class MainActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
         val navView: BottomNavigationView = binding.bottomNavigationView
         navView.setupWithNavController(navController)
+
+        navView.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.navigate_logout -> {
+                    logout()
+                    true
+                }
+                else -> {
+                    navController.navigate(item.itemId)
+                    true
+                }
+            }
+        }
+    }
+
+    private fun logout() {
+        finish()
     }
 }

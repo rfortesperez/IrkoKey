@@ -338,6 +338,7 @@ id nav_host_fragment_container
 id navigate_backup
 id navigate_explore_passwords
 id navigate_favorite
+id navigate_logout
 id relativeLayout
 id row_favorite
 id row_password
