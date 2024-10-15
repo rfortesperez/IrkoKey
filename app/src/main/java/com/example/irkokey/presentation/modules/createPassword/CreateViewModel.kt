@@ -1,9 +1,9 @@
 package com.example.irkokey.presentation.modules.createPassword
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.irkokey.common.utils.SingleLiveEvent
 import com.example.irkokey.data.repository.PasswordRepository
 import com.example.irkokey.domain.models.Password
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -13,13 +13,13 @@ import javax.inject.Inject
 @HiltViewModel
 class CreateViewModel @Inject constructor(private val passwordRepository: PasswordRepository) : ViewModel() {
 
-    private val _isCorrect = MutableLiveData<Boolean>()
+    private val _isCorrect = SingleLiveEvent<Boolean>()
     val isCorrect: LiveData<Boolean> get() = _isCorrect
 
-    private val _isComplete = MutableLiveData<Boolean>()
+    private val _isComplete = SingleLiveEvent<Boolean>()
     val isComplete: LiveData<Boolean> get() = _isComplete
 
-    fun dicClickSaveButton(website: String, username: String, password: String) {
+    fun didClickSaveButton(website: String, username: String, password: String) {
         if (website.isNotEmpty() && username.isNotEmpty() && password.isNotEmpty()) {
             _isComplete.value = true
             if (isPasswordStrong(password)) {
@@ -34,7 +34,7 @@ class CreateViewModel @Inject constructor(private val passwordRepository: Passwo
         }
     }
 
-     fun isPasswordStrong(password: String): Boolean {
+    fun isPasswordStrong(password: String): Boolean {
         return password.length >= 12 &&
                 containsLowerCase(password) &&
                 containsUpperCase(password) &&
@@ -66,14 +66,12 @@ class CreateViewModel @Inject constructor(private val passwordRepository: Passwo
         return regex.containsMatchIn(password)
     }
 
-    // method to save the website, username and password
+    //method to save the website, username and password
     private fun savePassword(website: String, username: String, password: String) {
         // variable to store the password
-        val password = Password(website =website, userName = username, password = password)
+        val newPassword = Password( website = website, userName =  username, password =  password )
         viewModelScope.launch {
-            passwordRepository.insertPassword(password)
+            passwordRepository.insertPassword(newPassword)
         }
-
     }
-
 }

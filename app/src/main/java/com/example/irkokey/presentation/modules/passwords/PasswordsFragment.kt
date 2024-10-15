@@ -14,6 +14,7 @@ import com.example.irkokey.R
 import com.example.irkokey.data.repository.PasswordRepository
 import com.example.irkokey.databinding.FragmentPasswordsBinding
 import com.example.irkokey.domain.models.Password
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -23,10 +24,10 @@ class PasswordsFragment : Fragment() {
     private lateinit var binding: FragmentPasswordsBinding
     private val viewModel: PasswordsViewModel by viewModels()
     private lateinit var passwordsList: List<Password>
+    private lateinit var adapter: PasswordsViewAdapter
 
     @Inject
     lateinit var passwordRepository: PasswordRepository
-
 
     private val listener = object : OnItemClick {
 
@@ -44,15 +45,7 @@ class PasswordsFragment : Fragment() {
                 .setView(dialogView)
                 .setPositiveButton("Save") { _, _ ->
                     val newPassword = editText.text.toString()
-
-                    viewModel.isCorrect.observe(viewLifecycleOwner) { isCorrect ->
-                        if(isCorrect) {
-                            viewModel.editPassword(password, newPassword)
-                        }else{
-                            // show error message
-                            Toast.makeText(context, "Password is not strong enough", Toast.LENGTH_SHORT).show()
-                        }
-                    }
+                    viewModel.editPassword(password, newPassword)
                 }
                 .setNegativeButton("Cancel", null)
                 .create()
@@ -63,6 +56,7 @@ class PasswordsFragment : Fragment() {
         override fun onAddFavoriteClick(position: Int) {
             val password = passwordsList[position]
             viewModel.addFavorite(password)
+            adapter.notifyItemChanged(position)
         }
 
         override fun onCopyUserNameClick(position: Int) {
@@ -84,13 +78,24 @@ class PasswordsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.getAllPasswords()
+        viewModel.allPasswords
 
         viewModel.allPasswords.observe(viewLifecycleOwner) { passwords ->
             passwordsList = passwords
+            adapter = PasswordsViewAdapter(passwords, listener)
             with(binding) {
-                rvPasswords.adapter = PasswordsViewAdapter(passwords, listener)
+                rvPasswords.adapter = PasswordsViewAdapter(passwordsList, listener)
                 rvPasswords.layoutManager = LinearLayoutManager(context)
+            }
+        }
+
+        viewModel.isCorrect.observe(viewLifecycleOwner) { isCorrect ->
+            if (!isCorrect) {
+                Snackbar.make(view, "Password is not strong enough", Snackbar.LENGTH_LONG)
+                    .setAction("Got it!") { }
+                    .show()
+            }else{
+                Toast.makeText(context, "Password updated", Toast.LENGTH_SHORT).show()
             }
         }
     }

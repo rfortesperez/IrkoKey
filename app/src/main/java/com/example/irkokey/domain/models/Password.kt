@@ -15,5 +15,5 @@ data class Password(
     @ColumnInfo(name = "password_hash")
     val password: String,
     @ColumnInfo(name = "favorite")
-    val favorite: Boolean = false
+    val isFavorite: Boolean = false
 )

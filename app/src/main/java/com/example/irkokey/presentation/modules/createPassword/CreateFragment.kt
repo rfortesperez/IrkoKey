@@ -14,25 +14,26 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class CreateFragment : Fragment() {
 
-    private lateinit var binding: FragmentCreateBinding
     private val createViewModel: CreateViewModel by viewModels()
+    private lateinit var binding: FragmentCreateBinding
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentCreateBinding.inflate(inflater, container, false)
         return binding.root
     }
 
-    override fun onViewCreated(view:View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
             btnSave.setOnClickListener {
-                createViewModel.dicClickSaveButton(
+                createViewModel.didClickSaveButton(
                     etWebsiteInput.text.toString(),
                     etUsernameInput.text.toString(),
                     etPasswordInput.text.toString()
                 )
             }
         }
+
         createViewModel.isComplete.observe(viewLifecycleOwner) { isComplete ->
             if(isComplete){
                 createViewModel.isCorrect.observe(viewLifecycleOwner){ isCorrect->
@@ -53,3 +54,6 @@ class CreateFragment : Fragment() {
         }
     }
 }
+
+
+
