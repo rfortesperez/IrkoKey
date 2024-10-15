@@ -24,6 +24,9 @@ class PasswordsViewModel @Inject constructor(private val passwordRepository: Pas
     private val _isCorrect = SingleLiveEvent<Boolean>()
     val isCorrect: LiveData<Boolean> get() = _isCorrect
 
+    private val _showDeleteConfirmation = SingleLiveEvent<Password>()
+    val showDeleteConfirmation: LiveData<Password> get() = _showDeleteConfirmation
+
     private val secretKey: SecretKey = EncryptionUtil.generateKey()
     private val keyString: String = EncryptionUtil.keyToString(secretKey)
 
@@ -35,6 +38,10 @@ class PasswordsViewModel @Inject constructor(private val passwordRepository: Pas
             val encryptedPasswordObj = password.copy(password = encryptedPassword)
             passwordRepository.insertPassword(encryptedPasswordObj)
         }
+    }
+
+    fun confirmDeletePassword(password: Password) {
+        _showDeleteConfirmation.value = password
     }
 
     fun getDecryptedPassword(encryptedPassword: String): String {

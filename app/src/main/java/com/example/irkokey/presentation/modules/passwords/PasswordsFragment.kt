@@ -34,7 +34,7 @@ class PasswordsFragment : Fragment() {
 
         override fun onDeleteClick(position: Int) {
             val password = passwordsList[position]
-            viewModel.deletePassword(password)
+            viewModel.confirmDeletePassword(password)
         }
 
         override fun onEditClick(position: Int) {
@@ -103,5 +103,22 @@ class PasswordsFragment : Fragment() {
                 Toast.makeText(context, "Password updated", Toast.LENGTH_SHORT).show()
             }
         }
+
+        viewModel.showDeleteConfirmation.observe(viewLifecycleOwner) { password ->
+            password?.let {
+                showDeleteConfirmationDialog(it)
+            }
+        }
+    }
+
+    private fun showDeleteConfirmationDialog(password: Password) {
+        AlertDialog.Builder(requireContext())
+            .setTitle("Delete Password")
+            .setMessage("Are you sure you want to delete this password?")
+            .setPositiveButton("Yes") { dialog, which ->
+                viewModel.deletePassword(password)
+            }
+            .setNegativeButton("No", null)
+            .show()
     }
 }
