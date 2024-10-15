@@ -38,7 +38,6 @@ class PasswordsViewAdapter(private val passwordList: MutableList<Password>, priv
             btnDelete.setOnClickListener { listener.onDeleteClick(adapterPosition) }
             btnEditPassword.setOnClickListener { listener.onEditClick(adapterPosition) }
             btnAddFavorite.setOnClickListener { listener.onAddFavoriteClick(adapterPosition) }
-            btnCopyUsername.setOnClickListener { listener.onCopyUserNameClick(adapterPosition) }
             btnCopyPassword.setOnClickListener { listener.onCopyPasswordClick(adapterPosition) }
         }
     }

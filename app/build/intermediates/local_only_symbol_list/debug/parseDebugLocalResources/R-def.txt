@@ -315,7 +315,6 @@ id bottomNavigationView
 id bottom_nav_graph
 id btn_add_favorite
 id btn_copy_password
-id btn_copy_username
 id btn_delete
 id btn_edit_password
 id btn_login
@@ -327,6 +326,7 @@ id et_password
 id et_password_input
 id et_username_input
 id et_website_input
+id guideline
 id imageView2
 id loginFragment
 id logout
@@ -339,7 +339,6 @@ id navigate_backup
 id navigate_explore_passwords
 id navigate_favorite
 id navigate_logout
-id relativeLayout
 id row_favorite
 id row_password
 id rv_favorite_passwords

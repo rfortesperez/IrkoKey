@@ -3552,7 +3552,6 @@ id bounceEnd
 id bounceStart
 id btn_add_favorite
 id btn_copy_password
-id btn_copy_username
 id btn_delete
 id btn_edit_password
 id btn_login
@@ -3674,6 +3673,7 @@ id graph_wrap
 id group_divider
 id grouping
 id groups
+id guideline
 id header_title
 id hide_ime_id
 id hideable
@@ -3840,7 +3840,6 @@ id progress_horizontal
 id radio
 id ratio
 id rectangles
-id relativeLayout
 id report_drawn
 id reverseSawtooth
 id right

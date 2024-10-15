@@ -60,11 +60,6 @@ class PasswordsFragment : Fragment() {
             adapter.updatePassword(position, password)
         }
 
-        override fun onCopyUserNameClick(position: Int) {
-            val password = passwordsList[position]
-            viewModel.copyUserName(password)
-        }
-
         override fun onCopyPasswordClick(position: Int) {
             val password = passwordsList[position]
             viewModel.copyPassword(password)

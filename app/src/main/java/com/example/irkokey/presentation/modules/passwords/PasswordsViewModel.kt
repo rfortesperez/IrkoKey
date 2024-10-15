@@ -80,7 +80,4 @@ class PasswordsViewModel @Inject constructor(private val passwordRepository: Pas
         // TODO: Implement this method
     }
 
-    fun copyUserName(password: Password) {
-        // TODO: Implement this method
-    }
 }
