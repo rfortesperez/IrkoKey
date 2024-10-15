@@ -1,5 +1,7 @@
 package com.example.irkokey.presentation.modules.passwords
 
+import android.content.ClipData
+import android.content.ClipboardManager
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
@@ -15,7 +17,7 @@ import javax.crypto.SecretKey
 import javax.inject.Inject
 
 @HiltViewModel
-class PasswordsViewModel @Inject constructor(private val passwordRepository: PasswordRepository) : ViewModel() {
+class PasswordsViewModel @Inject constructor(private val passwordRepository: PasswordRepository, private val clipboardManager: ClipboardManager) : ViewModel() {
 
     private val _allPasswords: LiveData<List<Password>> = passwordRepository.getAllPasswords().asLiveData()
     val allPasswords: LiveData<List<Password>> get() = _allPasswords
@@ -27,18 +29,11 @@ class PasswordsViewModel @Inject constructor(private val passwordRepository: Pas
     private val _showDeleteConfirmation = SingleLiveEvent<Password>()
     val showDeleteConfirmation: LiveData<Password> get() = _showDeleteConfirmation
 
+    private val _isCopied = SingleLiveEvent<Boolean>()
+    val isCopied: LiveData<Boolean> get() = _isCopied
+
     private val secretKey: SecretKey = EncryptionUtil.generateKey()
     private val keyString: String = EncryptionUtil.keyToString(secretKey)
-
-
-
-    fun savePassword(password: Password) {
-        viewModelScope.launch {
-            val encryptedPassword = EncryptionUtil.encrypt(secretKey, password.password)
-            val encryptedPasswordObj = password.copy(password = encryptedPassword)
-            passwordRepository.insertPassword(encryptedPasswordObj)
-        }
-    }
 
     fun confirmDeletePassword(password: Password) {
         _showDeleteConfirmation.value = password
@@ -76,8 +71,10 @@ class PasswordsViewModel @Inject constructor(private val passwordRepository: Pas
         return PasswordStrengthUtil.isPasswordStrong(newPassword)
     }
 
-    fun copyPassword(password: Password) {
-        // TODO: Implement this method
+    fun copyPassword(password: String) {
+        val clipboard = ClipData.newPlainText("password", password)
+        clipboardManager.setPrimaryClip(clipboard)
+        _isCopied.value = true
     }
 
 }

@@ -1,6 +1,7 @@
 package com.example.irkokey.common.di
 
 import android.app.Application
+import android.content.ClipboardManager
 import android.content.Context
 import com.example.irkokey.common.infraestructure.Preferences
 import com.example.irkokey.common.utils.EncryptionUtil
@@ -75,6 +76,12 @@ object AppModule {
     @Singleton
     fun providePasswordStrengthUtil(): PasswordStrengthUtil {
         return PasswordStrengthUtil
+    }
+
+    @Provides
+    @Singleton
+    fun provideClipboardManager(context: Context): ClipboardManager {
+        return context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
     }
 
 

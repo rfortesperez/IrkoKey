@@ -3,12 +3,14 @@ package com.example.irkokey;
 
 import android.app.Activity;
 import android.app.Service;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.view.View;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.SavedStateHandle;
 import androidx.lifecycle.ViewModel;
 import com.example.irkokey.common.di.AppModule;
+import com.example.irkokey.common.di.AppModule_ProvideClipboardManagerFactory;
 import com.example.irkokey.common.di.AppModule_ProvideContextFactory;
 import com.example.irkokey.common.di.AppModule_ProvideDatabaseFactory;
 import com.example.irkokey.common.di.AppModule_ProvideEncryptionUtilFactory;
@@ -538,7 +540,7 @@ public final class DaggerIrkoKeyApp_HiltComponents_SingletonC {
           return (T) new LoginViewModel(singletonCImpl.providePreferencesProvider.get());
 
           case 3: // com.example.irkokey.presentation.modules.passwords.PasswordsViewModel 
-          return (T) new PasswordsViewModel(singletonCImpl.providePasswordRepositoryProvider.get());
+          return (T) new PasswordsViewModel(singletonCImpl.providePasswordRepositoryProvider.get(), singletonCImpl.provideClipboardManagerProvider.get());
 
           case 4: // com.example.irkokey.presentation.modules.splash.SplashViewModel 
           return (T) new SplashViewModel(singletonCImpl.providePreferencesProvider.get());
@@ -636,6 +638,8 @@ public final class DaggerIrkoKeyApp_HiltComponents_SingletonC {
 
     private Provider<Preferences> providePreferencesProvider;
 
+    private Provider<ClipboardManager> provideClipboardManagerProvider;
+
     private SingletonCImpl(ApplicationContextModule applicationContextModuleParam) {
       this.applicationContextModule = applicationContextModuleParam;
       initialize(applicationContextModuleParam);
@@ -651,6 +655,7 @@ public final class DaggerIrkoKeyApp_HiltComponents_SingletonC {
       this.provideEncryptionUtilProvider = DoubleCheck.provider(new SwitchingProvider<EncryptionUtil>(singletonCImpl, 4));
       this.provideSecretKeyProvider = DoubleCheck.provider(new SwitchingProvider<SecretKey>(singletonCImpl, 5));
       this.providePreferencesProvider = DoubleCheck.provider(new SwitchingProvider<Preferences>(singletonCImpl, 6));
+      this.provideClipboardManagerProvider = DoubleCheck.provider(new SwitchingProvider<ClipboardManager>(singletonCImpl, 7));
     }
 
     @Override
@@ -706,6 +711,9 @@ public final class DaggerIrkoKeyApp_HiltComponents_SingletonC {
 
           case 6: // com.example.irkokey.common.infraestructure.Preferences 
           return (T) AppModule_ProvidePreferencesFactory.providePreferences(singletonCImpl.provideContextProvider.get());
+
+          case 7: // android.content.ClipboardManager 
+          return (T) AppModule_ProvideClipboardManagerFactory.provideClipboardManager(singletonCImpl.provideContextProvider.get());
 
           default: throw new AssertionError(id);
         }

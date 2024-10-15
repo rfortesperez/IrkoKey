@@ -62,7 +62,8 @@ class PasswordsFragment : Fragment() {
 
         override fun onCopyPasswordClick(position: Int) {
             val password = passwordsList[position]
-            viewModel.copyPassword(password)
+//            val decryptedPassword = viewModel.getDecryptedPassword(password.password)
+            viewModel.copyPassword(password.password)
         }
     }
 
@@ -102,6 +103,12 @@ class PasswordsFragment : Fragment() {
         viewModel.showDeleteConfirmation.observe(viewLifecycleOwner) { password ->
             password?.let {
                 showDeleteConfirmationDialog(it)
+            }
+        }
+
+        viewModel.isCopied.observe(viewLifecycleOwner) { isCopied ->
+            if (isCopied) {
+                Toast.makeText(context, "Password copied to clipboard", Toast.LENGTH_SHORT).show()
             }
         }
     }
