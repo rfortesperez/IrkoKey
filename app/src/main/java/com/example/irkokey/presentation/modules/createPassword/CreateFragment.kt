@@ -42,7 +42,7 @@ class CreateFragment : Fragment() {
                         with(binding){
                             etWebsiteInput.text.clear()
                             etUsernameInput.text.clear()
-                            etPasswordInput.text.clear()
+                            etPasswordInput.text?.clear()
                         }
                     }else{
                         Toast.makeText(context, "Password is not strong enough", Toast.LENGTH_SHORT).show()

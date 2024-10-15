@@ -1,3 +1,0 @@
-com.example.irkokey.test
-style WhiteBackgroundDialogTheme
-style WhiteBackgroundTheme

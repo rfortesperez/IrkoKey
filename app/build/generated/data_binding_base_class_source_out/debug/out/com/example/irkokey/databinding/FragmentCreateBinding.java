@@ -13,6 +13,8 @@ import androidx.annotation.Nullable;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.irkokey.R;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -28,13 +30,16 @@ public final class FragmentCreateBinding implements ViewBinding {
   public final TextView createTitle;
 
   @NonNull
-  public final EditText etPasswordInput;
+  public final TextInputEditText etPasswordInput;
 
   @NonNull
   public final EditText etUsernameInput;
 
   @NonNull
   public final EditText etWebsiteInput;
+
+  @NonNull
+  public final TextInputLayout tilCreatePassword;
 
   @NonNull
   public final TextView tvCapitalLetters;
@@ -55,17 +60,19 @@ public final class FragmentCreateBinding implements ViewBinding {
   public final TextView tvSymbols;
 
   private FragmentCreateBinding(@NonNull ScrollView rootView, @NonNull Button btnSave,
-      @NonNull TextView createTitle, @NonNull EditText etPasswordInput,
+      @NonNull TextView createTitle, @NonNull TextInputEditText etPasswordInput,
       @NonNull EditText etUsernameInput, @NonNull EditText etWebsiteInput,
-      @NonNull TextView tvCapitalLetters, @NonNull TextView tvHaveLenght,
-      @NonNull TextView tvLowercaseLetters, @NonNull TextView tvNumbers,
-      @NonNull TextView tvPasswordRequirements, @NonNull TextView tvSymbols) {
+      @NonNull TextInputLayout tilCreatePassword, @NonNull TextView tvCapitalLetters,
+      @NonNull TextView tvHaveLenght, @NonNull TextView tvLowercaseLetters,
+      @NonNull TextView tvNumbers, @NonNull TextView tvPasswordRequirements,
+      @NonNull TextView tvSymbols) {
     this.rootView = rootView;
     this.btnSave = btnSave;
     this.createTitle = createTitle;
     this.etPasswordInput = etPasswordInput;
     this.etUsernameInput = etUsernameInput;
     this.etWebsiteInput = etWebsiteInput;
+    this.tilCreatePassword = tilCreatePassword;
     this.tvCapitalLetters = tvCapitalLetters;
     this.tvHaveLenght = tvHaveLenght;
     this.tvLowercaseLetters = tvLowercaseLetters;
@@ -114,7 +121,7 @@ public final class FragmentCreateBinding implements ViewBinding {
       }
 
       id = R.id.et_password_input;
-      EditText etPasswordInput = ViewBindings.findChildViewById(rootView, id);
+      TextInputEditText etPasswordInput = ViewBindings.findChildViewById(rootView, id);
       if (etPasswordInput == null) {
         break missingId;
       }
@@ -128,6 +135,12 @@ public final class FragmentCreateBinding implements ViewBinding {
       id = R.id.et_website_input;
       EditText etWebsiteInput = ViewBindings.findChildViewById(rootView, id);
       if (etWebsiteInput == null) {
+        break missingId;
+      }
+
+      id = R.id.til_create_password;
+      TextInputLayout tilCreatePassword = ViewBindings.findChildViewById(rootView, id);
+      if (tilCreatePassword == null) {
         break missingId;
       }
 
@@ -168,8 +181,8 @@ public final class FragmentCreateBinding implements ViewBinding {
       }
 
       return new FragmentCreateBinding((ScrollView) rootView, btnSave, createTitle, etPasswordInput,
-          etUsernameInput, etWebsiteInput, tvCapitalLetters, tvHaveLenght, tvLowercaseLetters,
-          tvNumbers, tvPasswordRequirements, tvSymbols);
+          etUsernameInput, etWebsiteInput, tilCreatePassword, tvCapitalLetters, tvHaveLenght,
+          tvLowercaseLetters, tvNumbers, tvPasswordRequirements, tvSymbols);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
