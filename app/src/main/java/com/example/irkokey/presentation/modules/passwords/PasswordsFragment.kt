@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.irkokey.R
 import com.example.irkokey.data.repository.PasswordRepository
@@ -23,7 +24,7 @@ class PasswordsFragment : Fragment() {
 
     private lateinit var binding: FragmentPasswordsBinding
     private val viewModel: PasswordsViewModel by viewModels()
-    private lateinit var passwordsList: List<Password>
+    private lateinit var passwordsList: MutableList<Password>
     private lateinit var adapter: PasswordsViewAdapter
 
     @Inject
@@ -56,7 +57,7 @@ class PasswordsFragment : Fragment() {
         override fun onAddFavoriteClick(position: Int) {
             val password = passwordsList[position]
             viewModel.addFavorite(password)
-            adapter.notifyItemChanged(position)
+            adapter.updatePassword(position, password)
         }
 
         override fun onCopyUserNameClick(position: Int) {
@@ -78,23 +79,27 @@ class PasswordsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.allPasswords
-
-        viewModel.allPasswords.observe(viewLifecycleOwner) { passwords ->
-            passwordsList = passwords
-            adapter = PasswordsViewAdapter(passwords, listener)
-            with(binding) {
-                rvPasswords.adapter = PasswordsViewAdapter(passwordsList, listener)
-                rvPasswords.layoutManager = LinearLayoutManager(context)
-            }
+        passwordsList = mutableListOf()
+        adapter = PasswordsViewAdapter(passwordsList, listener)
+        with(binding){
+            rvPasswords.adapter = adapter
+            rvPasswords.layoutManager = LinearLayoutManager(context)
         }
 
-        viewModel.isCorrect.observe(viewLifecycleOwner) { isCorrect ->
+        viewModel.allPasswords.observe(viewLifecycleOwner){ passwords ->
+            val diffCallback = PasswordDiffCallback(passwordsList, passwords)
+            val diffResult = DiffUtil.calculateDiff(diffCallback)
+
+            passwordsList.clear()
+            passwordsList.addAll(passwords)
+            diffResult.dispatchUpdatesTo(adapter)
+        }
+        viewModel.isCorrect.observe(viewLifecycleOwner){ isCorrect ->
             if (!isCorrect) {
                 Snackbar.make(view, "Password is not strong enough", Snackbar.LENGTH_LONG)
                     .setAction("Got it!") { }
                     .show()
-            }else{
+            } else {
                 Toast.makeText(context, "Password updated", Toast.LENGTH_SHORT).show()
             }
         }

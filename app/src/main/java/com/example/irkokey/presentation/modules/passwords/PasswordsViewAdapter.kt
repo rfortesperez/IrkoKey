@@ -9,7 +9,7 @@ import com.example.irkokey.databinding.RowPasswordBinding
 import com.example.irkokey.domain.models.Password
 
 
-class PasswordsViewAdapter(private val passwordList: List<Password>,private val listener: OnItemClick) : RecyclerView.Adapter<PasswordsViewAdapter.ViewHolder>() {
+class PasswordsViewAdapter(private val passwordList: MutableList<Password>, private val listener: OnItemClick) : RecyclerView.Adapter<PasswordsViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(RowPasswordBinding.inflate(LayoutInflater.from(parent.context), parent,false))
@@ -20,6 +20,11 @@ class PasswordsViewAdapter(private val passwordList: List<Password>,private val 
     }
 
     override fun getItemCount() = passwordList.size
+
+    fun updatePassword(position: Int, password: Password){
+        passwordList[position] = password
+        notifyItemChanged(position)
+    }
 
     class ViewHolder(private val binding: RowPasswordBinding) : RecyclerView.ViewHolder(binding.root) {
 
