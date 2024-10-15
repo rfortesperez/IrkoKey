@@ -11,10 +11,13 @@ import androidx.lifecycle.ViewModel;
 import com.example.irkokey.common.di.AppModule;
 import com.example.irkokey.common.di.AppModule_ProvideContextFactory;
 import com.example.irkokey.common.di.AppModule_ProvideDatabaseFactory;
+import com.example.irkokey.common.di.AppModule_ProvideEncryptionUtilFactory;
 import com.example.irkokey.common.di.AppModule_ProvidePasswordDaoFactory;
 import com.example.irkokey.common.di.AppModule_ProvidePasswordRepositoryFactory;
 import com.example.irkokey.common.di.AppModule_ProvidePreferencesFactory;
+import com.example.irkokey.common.di.AppModule_ProvideSecretKeyFactory;
 import com.example.irkokey.common.infraestructure.Preferences;
+import com.example.irkokey.common.utils.EncryptionUtil;
 import com.example.irkokey.data.dao.PasswordDao;
 import com.example.irkokey.data.database.PasswordRoomDatabase;
 import com.example.irkokey.data.repository.PasswordRepository;
@@ -62,6 +65,7 @@ import dagger.internal.SetBuilder;
 import java.util.Collections;
 import java.util.Map;
 import java.util.Set;
+import javax.crypto.SecretKey;
 import javax.inject.Provider;
 
 @DaggerGenerated
@@ -525,7 +529,7 @@ public final class DaggerIrkoKeyApp_HiltComponents_SingletonC {
       public T get() {
         switch (id) {
           case 0: // com.example.irkokey.presentation.modules.createPassword.CreateViewModel 
-          return (T) new CreateViewModel(singletonCImpl.providePasswordRepositoryProvider.get());
+          return (T) new CreateViewModel(singletonCImpl.providePasswordRepositoryProvider.get(), singletonCImpl.provideEncryptionUtilProvider.get(), singletonCImpl.provideSecretKeyProvider.get());
 
           case 1: // com.example.irkokey.presentation.modules.favoritePasswords.FavoriteViewModel 
           return (T) new FavoriteViewModel(singletonCImpl.providePasswordRepositoryProvider.get());
@@ -626,6 +630,10 @@ public final class DaggerIrkoKeyApp_HiltComponents_SingletonC {
 
     private Provider<PasswordRepository> providePasswordRepositoryProvider;
 
+    private Provider<EncryptionUtil> provideEncryptionUtilProvider;
+
+    private Provider<SecretKey> provideSecretKeyProvider;
+
     private Provider<Preferences> providePreferencesProvider;
 
     private SingletonCImpl(ApplicationContextModule applicationContextModuleParam) {
@@ -640,7 +648,9 @@ public final class DaggerIrkoKeyApp_HiltComponents_SingletonC {
       this.provideDatabaseProvider = DoubleCheck.provider(new SwitchingProvider<PasswordRoomDatabase>(singletonCImpl, 2));
       this.providePasswordDaoProvider = DoubleCheck.provider(new SwitchingProvider<PasswordDao>(singletonCImpl, 1));
       this.providePasswordRepositoryProvider = DoubleCheck.provider(new SwitchingProvider<PasswordRepository>(singletonCImpl, 0));
-      this.providePreferencesProvider = DoubleCheck.provider(new SwitchingProvider<Preferences>(singletonCImpl, 4));
+      this.provideEncryptionUtilProvider = DoubleCheck.provider(new SwitchingProvider<EncryptionUtil>(singletonCImpl, 4));
+      this.provideSecretKeyProvider = DoubleCheck.provider(new SwitchingProvider<SecretKey>(singletonCImpl, 5));
+      this.providePreferencesProvider = DoubleCheck.provider(new SwitchingProvider<Preferences>(singletonCImpl, 6));
     }
 
     @Override
@@ -688,7 +698,13 @@ public final class DaggerIrkoKeyApp_HiltComponents_SingletonC {
           case 3: // android.content.Context 
           return (T) AppModule_ProvideContextFactory.provideContext(ApplicationContextModule_ProvideApplicationFactory.provideApplication(singletonCImpl.applicationContextModule));
 
-          case 4: // com.example.irkokey.common.infraestructure.Preferences 
+          case 4: // com.example.irkokey.common.utils.EncryptionUtil 
+          return (T) AppModule_ProvideEncryptionUtilFactory.provideEncryptionUtil();
+
+          case 5: // javax.crypto.SecretKey 
+          return (T) AppModule_ProvideSecretKeyFactory.provideSecretKey();
+
+          case 6: // com.example.irkokey.common.infraestructure.Preferences 
           return (T) AppModule_ProvidePreferencesFactory.providePreferences(singletonCImpl.provideContextProvider.get());
 
           default: throw new AssertionError(id);

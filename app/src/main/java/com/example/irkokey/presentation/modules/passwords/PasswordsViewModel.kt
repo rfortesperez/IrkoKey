@@ -4,12 +4,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.irkokey.common.utils.EncryptionUtil
+import com.example.irkokey.common.utils.PasswordStrengthUtil
 import com.example.irkokey.common.utils.SingleLiveEvent
 import com.example.irkokey.data.repository.PasswordRepository
 import com.example.irkokey.domain.models.Password
-import com.example.irkokey.presentation.modules.createPassword.CreateViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.crypto.SecretKey
 import javax.inject.Inject
 
 @HiltViewModel
@@ -22,8 +24,23 @@ class PasswordsViewModel @Inject constructor(private val passwordRepository: Pas
     private val _isCorrect = SingleLiveEvent<Boolean>()
     val isCorrect: LiveData<Boolean> get() = _isCorrect
 
-    private val createViewModel = CreateViewModel(passwordRepository)
+    private val secretKey: SecretKey = EncryptionUtil.generateKey()
+    private val keyString: String = EncryptionUtil.keyToString(secretKey)
 
+
+
+    fun savePassword(password: Password) {
+        viewModelScope.launch {
+            val encryptedPassword = EncryptionUtil.encrypt(secretKey, password.password)
+            val encryptedPasswordObj = password.copy(password = encryptedPassword)
+            passwordRepository.insertPassword(encryptedPasswordObj)
+        }
+    }
+
+    fun getDecryptedPassword(encryptedPassword: String): String {
+        val key = EncryptionUtil.getKeyFromString(keyString)
+        return EncryptionUtil.decrypt(key, encryptedPassword)
+    }
 
     fun addFavorite(password: Password) {
         viewModelScope.launch {
@@ -39,12 +56,17 @@ class PasswordsViewModel @Inject constructor(private val passwordRepository: Pas
 
     fun editPassword(password: Password, newPassword: String) {
         viewModelScope.launch {
-            if (createViewModel.isPasswordStrong(newPassword)) {
-                passwordRepository.updatePassword(password.id, newPassword)
+            if (isPasswordStrong(newPassword)) {
+                val encryptedPassword = EncryptionUtil.encrypt(secretKey, newPassword)
+                passwordRepository.updatePassword(password.id, encryptedPassword)
             } else {
                 _isCorrect.value = false
             }
         }
+    }
+
+    private fun isPasswordStrong(newPassword: String): Boolean {
+        return PasswordStrengthUtil.isPasswordStrong(newPassword)
     }
 
     fun copyPassword(password: Password) {
