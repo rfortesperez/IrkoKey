@@ -12,6 +12,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.irkokey.R
+import com.example.irkokey.common.utils.EncryptionUtil
 import com.example.irkokey.data.repository.PasswordRepository
 import com.example.irkokey.databinding.FragmentPasswordsBinding
 import com.example.irkokey.domain.models.Password
@@ -29,6 +30,9 @@ class PasswordsFragment : Fragment() {
 
     @Inject
     lateinit var passwordRepository: PasswordRepository
+
+    @Inject
+    lateinit var encryptionUtil: EncryptionUtil
 
     private val listener = object : OnItemClick {
 
@@ -76,14 +80,17 @@ class PasswordsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         passwordsList = mutableListOf()
-        adapter = PasswordsViewAdapter(passwordsList, listener)
+        adapter = PasswordsViewAdapter(passwordsList, listener, encryptionUtil)
         with(binding){
             rvPasswords.adapter = adapter
             rvPasswords.layoutManager = LinearLayoutManager(context)
         }
 
         viewModel.allPasswords.observe(viewLifecycleOwner){ passwords ->
-            val diffCallback = PasswordDiffCallback(passwordsList, passwords)
+            val decryptedPasswords = passwords.map{password ->
+                password.copy(password = viewModel.getDecryptedPassword(password.password))
+            }
+            val diffCallback = PasswordDiffCallback(passwordsList, decryptedPasswords)
             val diffResult = DiffUtil.calculateDiff(diffCallback)
 
             passwordsList.clear()
@@ -117,7 +124,7 @@ class PasswordsFragment : Fragment() {
         AlertDialog.Builder(requireContext())
             .setTitle("Delete Password")
             .setMessage("Are you sure you want to delete this password?")
-            .setPositiveButton("Yes") { dialog, which ->
+            .setPositiveButton("Yes") { _, _ ->
                 viewModel.deletePassword(password)
             }
             .setNegativeButton("No", null)

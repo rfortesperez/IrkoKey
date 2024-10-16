@@ -1,12 +1,12 @@
 package com.example.irkokey.presentation.modules.favoritePasswords
-
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.irkokey.common.utils.EncryptionUtil
 import com.example.irkokey.data.repository.PasswordRepository
 import com.example.irkokey.databinding.FragmentFavoriteBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -19,24 +19,26 @@ class FavoriteFragment : Fragment() {
 
     @Inject
     lateinit var passwordRepository: PasswordRepository
+
+    @Inject
+    lateinit var encryptionUtil: EncryptionUtil
+
     private val viewModel: FavoriteViewModel by viewModels()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentFavoriteBinding.inflate(inflater, container, false)
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?){
         super.onViewCreated(view, savedInstanceState)
 
-        with(binding) {
+        with(binding){
             rvFavoritePasswords.layoutManager = LinearLayoutManager(context)
 
-            viewModel.allFavorites.observe(viewLifecycleOwner) { passwords ->
-                rvFavoritePasswords.adapter = FavoriteViewAdapter(passwords)
+            viewModel.allFavorites.observe(viewLifecycleOwner){passwords ->
+                rvFavoritePasswords.adapter = FavoriteViewAdapter(passwords, encryptionUtil)
             }
         }
     }
-
-
 }

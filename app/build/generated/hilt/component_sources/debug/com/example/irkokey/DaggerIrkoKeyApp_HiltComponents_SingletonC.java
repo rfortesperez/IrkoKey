@@ -17,7 +17,6 @@ import com.example.irkokey.common.di.AppModule_ProvideEncryptionUtilFactory;
 import com.example.irkokey.common.di.AppModule_ProvidePasswordDaoFactory;
 import com.example.irkokey.common.di.AppModule_ProvidePasswordRepositoryFactory;
 import com.example.irkokey.common.di.AppModule_ProvidePreferencesFactory;
-import com.example.irkokey.common.di.AppModule_ProvideSecretKeyFactory;
 import com.example.irkokey.common.infraestructure.Preferences;
 import com.example.irkokey.common.utils.EncryptionUtil;
 import com.example.irkokey.data.dao.PasswordDao;
@@ -67,7 +66,6 @@ import dagger.internal.SetBuilder;
 import java.util.Collections;
 import java.util.Map;
 import java.util.Set;
-import javax.crypto.SecretKey;
 import javax.inject.Provider;
 
 @DaggerGenerated
@@ -385,12 +383,14 @@ public final class DaggerIrkoKeyApp_HiltComponents_SingletonC {
     @CanIgnoreReturnValue
     private FavoriteFragment injectFavoriteFragment2(FavoriteFragment instance) {
       FavoriteFragment_MembersInjector.injectPasswordRepository(instance, singletonCImpl.providePasswordRepositoryProvider.get());
+      FavoriteFragment_MembersInjector.injectEncryptionUtil(instance, singletonCImpl.provideEncryptionUtilProvider.get());
       return instance;
     }
 
     @CanIgnoreReturnValue
     private PasswordsFragment injectPasswordsFragment2(PasswordsFragment instance) {
       PasswordsFragment_MembersInjector.injectPasswordRepository(instance, singletonCImpl.providePasswordRepositoryProvider.get());
+      PasswordsFragment_MembersInjector.injectEncryptionUtil(instance, singletonCImpl.provideEncryptionUtilProvider.get());
       return instance;
     }
   }
@@ -531,7 +531,7 @@ public final class DaggerIrkoKeyApp_HiltComponents_SingletonC {
       public T get() {
         switch (id) {
           case 0: // com.example.irkokey.presentation.modules.createPassword.CreateViewModel 
-          return (T) new CreateViewModel(singletonCImpl.providePasswordRepositoryProvider.get(), singletonCImpl.provideEncryptionUtilProvider.get(), singletonCImpl.provideSecretKeyProvider.get());
+          return (T) new CreateViewModel(ApplicationContextModule_ProvideApplicationFactory.provideApplication(singletonCImpl.applicationContextModule), singletonCImpl.providePasswordRepositoryProvider.get(), singletonCImpl.provideEncryptionUtilProvider.get());
 
           case 1: // com.example.irkokey.presentation.modules.favoritePasswords.FavoriteViewModel 
           return (T) new FavoriteViewModel(singletonCImpl.providePasswordRepositoryProvider.get());
@@ -540,7 +540,7 @@ public final class DaggerIrkoKeyApp_HiltComponents_SingletonC {
           return (T) new LoginViewModel(singletonCImpl.providePreferencesProvider.get());
 
           case 3: // com.example.irkokey.presentation.modules.passwords.PasswordsViewModel 
-          return (T) new PasswordsViewModel(singletonCImpl.providePasswordRepositoryProvider.get(), singletonCImpl.provideClipboardManagerProvider.get());
+          return (T) new PasswordsViewModel(ApplicationContextModule_ProvideApplicationFactory.provideApplication(singletonCImpl.applicationContextModule), singletonCImpl.providePasswordRepositoryProvider.get(), singletonCImpl.provideClipboardManagerProvider.get(), singletonCImpl.provideEncryptionUtilProvider.get());
 
           case 4: // com.example.irkokey.presentation.modules.splash.SplashViewModel 
           return (T) new SplashViewModel(singletonCImpl.providePreferencesProvider.get());
@@ -634,8 +634,6 @@ public final class DaggerIrkoKeyApp_HiltComponents_SingletonC {
 
     private Provider<EncryptionUtil> provideEncryptionUtilProvider;
 
-    private Provider<SecretKey> provideSecretKeyProvider;
-
     private Provider<Preferences> providePreferencesProvider;
 
     private Provider<ClipboardManager> provideClipboardManagerProvider;
@@ -653,9 +651,8 @@ public final class DaggerIrkoKeyApp_HiltComponents_SingletonC {
       this.providePasswordDaoProvider = DoubleCheck.provider(new SwitchingProvider<PasswordDao>(singletonCImpl, 1));
       this.providePasswordRepositoryProvider = DoubleCheck.provider(new SwitchingProvider<PasswordRepository>(singletonCImpl, 0));
       this.provideEncryptionUtilProvider = DoubleCheck.provider(new SwitchingProvider<EncryptionUtil>(singletonCImpl, 4));
-      this.provideSecretKeyProvider = DoubleCheck.provider(new SwitchingProvider<SecretKey>(singletonCImpl, 5));
-      this.providePreferencesProvider = DoubleCheck.provider(new SwitchingProvider<Preferences>(singletonCImpl, 6));
-      this.provideClipboardManagerProvider = DoubleCheck.provider(new SwitchingProvider<ClipboardManager>(singletonCImpl, 7));
+      this.providePreferencesProvider = DoubleCheck.provider(new SwitchingProvider<Preferences>(singletonCImpl, 5));
+      this.provideClipboardManagerProvider = DoubleCheck.provider(new SwitchingProvider<ClipboardManager>(singletonCImpl, 6));
     }
 
     @Override
@@ -706,13 +703,10 @@ public final class DaggerIrkoKeyApp_HiltComponents_SingletonC {
           case 4: // com.example.irkokey.common.utils.EncryptionUtil 
           return (T) AppModule_ProvideEncryptionUtilFactory.provideEncryptionUtil();
 
-          case 5: // javax.crypto.SecretKey 
-          return (T) AppModule_ProvideSecretKeyFactory.provideSecretKey();
-
-          case 6: // com.example.irkokey.common.infraestructure.Preferences 
+          case 5: // com.example.irkokey.common.infraestructure.Preferences 
           return (T) AppModule_ProvidePreferencesFactory.providePreferences(singletonCImpl.provideContextProvider.get());
 
-          case 7: // android.content.ClipboardManager 
+          case 6: // android.content.ClipboardManager 
           return (T) AppModule_ProvideClipboardManagerFactory.provideClipboardManager(singletonCImpl.provideContextProvider.get());
 
           default: throw new AssertionError(id);

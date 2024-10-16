@@ -5,7 +5,6 @@ import com.example.irkokey.data.dao.PasswordDao
 import com.example.irkokey.domain.models.Password
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
-
 class PasswordRepository @Inject constructor(private val passwordDao: PasswordDao) {
 
     // Insert a new website, username and password in the app

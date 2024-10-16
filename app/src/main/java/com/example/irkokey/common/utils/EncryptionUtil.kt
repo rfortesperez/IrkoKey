@@ -1,48 +1,44 @@
 package com.example.irkokey.common.utils
 
+
+import android.content.Context
 import android.util.Base64
-import javax.crypto.Cipher
-import javax.crypto.KeyGenerator
-import javax.crypto.SecretKey
-import javax.crypto.spec.SecretKeySpec
+import com.google.crypto.tink.Aead
+import com.google.crypto.tink.KeyTemplates
+import com.google.crypto.tink.KeysetHandle
+import com.google.crypto.tink.aead.AeadConfig
+import com.google.crypto.tink.integration.android.AndroidKeysetManager
 
 object EncryptionUtil {
 
-    private const val ALGORITHM = "AES"
-    private const val TRANSFORMATION = "AES.ECB/PKCS5Padding"
+    private const val KEYSET_NAME = "my_keyset"
+    private const val PREF_FILE_NAME = "my_pref"
+    private const val MASTER_KEY_URI = "android-keystore://my_master_key"
 
-    // Generate a new AES key
-    fun generateKey(): SecretKey {
-        val keyGenerator = KeyGenerator.getInstance(ALGORITHM)
-        keyGenerator.init(256)
-        return keyGenerator.generateKey()
+    init {
+        AeadConfig.register()
     }
 
-    // Encrypt the plain text of the passwords
-    fun encrypt(key: SecretKey, data: String): String{
-        val cipher = Cipher.getInstance(TRANSFORMATION)
-        cipher.init(Cipher.ENCRYPT_MODE, key)
-        val encryptedData = cipher.doFinal(data.toByteArray())
-        return Base64.encodeToString(encryptedData, Base64.DEFAULT)
+    private lateinit var aead: Aead
+
+    fun initialize(context: Context) {
+        val keysetHandle: KeysetHandle = AndroidKeysetManager.Builder()
+            .withSharedPref(context, KEYSET_NAME, PREF_FILE_NAME)
+            .withKeyTemplate(KeyTemplates.get("AES256_GCM"))
+            .withMasterKeyUri(MASTER_KEY_URI)
+            .build()
+            .keysetHandle
+        aead = keysetHandle.getPrimitive(Aead::class.java)
     }
 
-    // Decrypt the encrypted text of the passwords
-    fun decrypt(key: SecretKey, encryptedData: String): String{
-        val cipher = Cipher.getInstance(TRANSFORMATION)
-        cipher.init(Cipher.DECRYPT_MODE, key)
-        val decodedBytes = Base64.decode(encryptedData, Base64.DEFAULT)
-        val decryptedBytes = cipher.doFinal(decodedBytes)
-        return String(decryptedBytes)
+    fun encrypt(data: String): String {
+        val ciphertext = aead.encrypt(data.toByteArray(), null)
+        return Base64.encodeToString(ciphertext, Base64.DEFAULT)
     }
 
-    // Convert a string key to a SecretKey
-    fun getKeyFromString(keyString: String): SecretKey {
-        val decodedKey = Base64.decode(keyString, Base64.DEFAULT)
-        return SecretKeySpec(decodedKey, 0, decodedKey.size, ALGORITHM)
-    }
-
-    // Convert a SecretKey to a string
-    fun keyToString(key: SecretKey): String {
-        return Base64.encodeToString(key.encoded, Base64.DEFAULT)
+    fun decrypt(encryptedData: String): String {
+        val decodedData = Base64.decode(encryptedData, Base64.DEFAULT)
+        val plaintext = aead.decrypt(decodedData, null)
+        return String(plaintext)
     }
 }

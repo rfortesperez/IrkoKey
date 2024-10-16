@@ -1,7 +1,9 @@
 package com.example.irkokey.presentation.modules.passwords
 
+import android.app.Application
 import android.content.ClipData
 import android.content.ClipboardManager
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
@@ -13,11 +15,15 @@ import com.example.irkokey.data.repository.PasswordRepository
 import com.example.irkokey.domain.models.Password
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import javax.crypto.SecretKey
 import javax.inject.Inject
 
 @HiltViewModel
-class PasswordsViewModel @Inject constructor(private val passwordRepository: PasswordRepository, private val clipboardManager: ClipboardManager) : ViewModel() {
+class PasswordsViewModel @Inject constructor(
+    application: Application,
+    private val passwordRepository: PasswordRepository,
+    private val clipboardManager: ClipboardManager,
+    private val encryptionUtil: EncryptionUtil,
+) : ViewModel() {
 
     private val _allPasswords: LiveData<List<Password>> = passwordRepository.getAllPasswords().asLiveData()
     val allPasswords: LiveData<List<Password>> get() = _allPasswords
@@ -32,17 +38,19 @@ class PasswordsViewModel @Inject constructor(private val passwordRepository: Pas
     private val _isCopied = SingleLiveEvent<Boolean>()
     val isCopied: LiveData<Boolean> get() = _isCopied
 
-    private val secretKey: SecretKey = EncryptionUtil.generateKey()
-    private val keyString: String = EncryptionUtil.keyToString(secretKey)
+    init {
+        encryptionUtil.initialize(application)
+    }
+
 
     fun confirmDeletePassword(password: Password) {
         _showDeleteConfirmation.value = password
     }
 
-    fun getDecryptedPassword(encryptedPassword: String): String {
-        val key = EncryptionUtil.getKeyFromString(keyString)
-        return EncryptionUtil.decrypt(key, encryptedPassword)
-    }
+//    fun getDecryptedPassword(encryptedPassword: String): String? {
+//        val key = keyString?.let { encryptionUtil.getKeyFromString(it) }
+//        return key?.let { encryptionUtil.decrypt(it, encryptedPassword) }
+//    }
 
     fun addFavorite(password: Password) {
         viewModelScope.launch {
@@ -59,7 +67,7 @@ class PasswordsViewModel @Inject constructor(private val passwordRepository: Pas
     fun editPassword(password: Password, newPassword: String) {
         viewModelScope.launch {
             if (isPasswordStrong(newPassword)) {
-                val encryptedPassword = EncryptionUtil.encrypt(secretKey, newPassword)
+                val encryptedPassword = encryptionUtil.encrypt(newPassword)
                 passwordRepository.updatePassword(password.id, encryptedPassword)
             } else {
                 _isCorrect.value = false
@@ -71,10 +79,16 @@ class PasswordsViewModel @Inject constructor(private val passwordRepository: Pas
         return PasswordStrengthUtil.isPasswordStrong(newPassword)
     }
 
-    fun copyPassword(password: String) {
-        val clipboard = ClipData.newPlainText("password", password)
+    fun copyPassword(encryptedPassword: String) {
+        val decryptedPassword = encryptionUtil.decrypt(encryptedPassword)
+        val clipboard = ClipData.newPlainText("password", decryptedPassword)
         clipboardManager.setPrimaryClip(clipboard)
         _isCopied.value = true
+    }
+
+    fun getDecryptedPassword(encryptedPassword: String): String {
+        Log.d("PasswordsViewModel", "Decrypting password")
+        return encryptionUtil.decrypt(encryptedPassword)
     }
 
 }

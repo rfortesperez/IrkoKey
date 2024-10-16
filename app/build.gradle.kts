@@ -73,7 +73,7 @@ dependencies {
     implementation("androidx.room:room-ktx:2.6.1")
 
     // Encryption and Decryption
-    implementation("org.bouncycastle:bcprov-jdk15on:1.68")
+    implementation("com.google.crypto.tink:tink-android:1.6.1")
 
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.4.0")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0")

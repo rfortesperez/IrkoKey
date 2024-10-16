@@ -17,5 +17,4 @@ class PasswordDiffCallback(private val oldList: List<Password>, private val newL
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
         return oldList[oldItemPosition] == newList[newItemPosition]
     }
-
 }

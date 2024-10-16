@@ -68,12 +68,6 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideSecretKey(): SecretKey {
-        return EncryptionUtil.generateKey()
-    }
-
-    @Provides
-    @Singleton
     fun providePasswordStrengthUtil(): PasswordStrengthUtil {
         return PasswordStrengthUtil
     }
@@ -83,6 +77,4 @@ object AppModule {
     fun provideClipboardManager(context: Context): ClipboardManager {
         return context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
     }
-
-
 }
