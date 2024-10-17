@@ -16,7 +16,7 @@ import com.example.irkokey.common.utils.EncryptionUtil
 import com.example.irkokey.data.repository.PasswordRepository
 import com.example.irkokey.databinding.FragmentFavoriteBinding
 import com.example.irkokey.domain.models.Password
-import com.example.irkokey.presentation.modules.passwords.PasswordDiffCallback
+import com.example.irkokey.common.utils.PasswordDiffCallback
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 

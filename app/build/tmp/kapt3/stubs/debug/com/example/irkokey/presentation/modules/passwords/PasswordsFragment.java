@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import com.example.irkokey.R;
 import com.example.irkokey.common.utils.EncryptionUtil;
+import com.example.irkokey.common.utils.PasswordDiffCallback;
 import com.example.irkokey.data.repository.PasswordRepository;
 import com.example.irkokey.databinding.FragmentPasswordsBinding;
 import com.example.irkokey.domain.models.Password;

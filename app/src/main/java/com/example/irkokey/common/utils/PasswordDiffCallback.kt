@@ -1,4 +1,4 @@
-package com.example.irkokey.presentation.modules.passwords
+package com.example.irkokey.common.utils
 
 
 import androidx.recyclerview.widget.DiffUtil
