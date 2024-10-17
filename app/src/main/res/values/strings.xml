@@ -24,6 +24,7 @@
     <string name="edit">Edit Password</string>
     <string name="favorite">Add to Favorites</string>
     <string name="delete">Delete Password</string>
-    <string name="copy_user">Copy Username</string>
     <string name="copy_password">Copy Password</string>
+    <string name="generate_password">Generate Password</string>
+    <string name="choice">Or if you prefer, you can get an automatic generated password: </string>
 </resources>

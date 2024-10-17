@@ -24,6 +24,9 @@ public final class FragmentCreateBinding implements ViewBinding {
   private final ScrollView rootView;
 
   @NonNull
+  public final Button btnGenerate;
+
+  @NonNull
   public final Button btnSave;
 
   @NonNull
@@ -45,6 +48,9 @@ public final class FragmentCreateBinding implements ViewBinding {
   public final TextView tvCapitalLetters;
 
   @NonNull
+  public final TextView tvChoice;
+
+  @NonNull
   public final TextView tvHaveLenght;
 
   @NonNull
@@ -59,14 +65,16 @@ public final class FragmentCreateBinding implements ViewBinding {
   @NonNull
   public final TextView tvSymbols;
 
-  private FragmentCreateBinding(@NonNull ScrollView rootView, @NonNull Button btnSave,
-      @NonNull TextView createTitle, @NonNull TextInputEditText etPasswordInput,
-      @NonNull EditText etUsernameInput, @NonNull EditText etWebsiteInput,
-      @NonNull TextInputLayout tilCreatePassword, @NonNull TextView tvCapitalLetters,
+  private FragmentCreateBinding(@NonNull ScrollView rootView, @NonNull Button btnGenerate,
+      @NonNull Button btnSave, @NonNull TextView createTitle,
+      @NonNull TextInputEditText etPasswordInput, @NonNull EditText etUsernameInput,
+      @NonNull EditText etWebsiteInput, @NonNull TextInputLayout tilCreatePassword,
+      @NonNull TextView tvCapitalLetters, @NonNull TextView tvChoice,
       @NonNull TextView tvHaveLenght, @NonNull TextView tvLowercaseLetters,
       @NonNull TextView tvNumbers, @NonNull TextView tvPasswordRequirements,
       @NonNull TextView tvSymbols) {
     this.rootView = rootView;
+    this.btnGenerate = btnGenerate;
     this.btnSave = btnSave;
     this.createTitle = createTitle;
     this.etPasswordInput = etPasswordInput;
@@ -74,6 +82,7 @@ public final class FragmentCreateBinding implements ViewBinding {
     this.etWebsiteInput = etWebsiteInput;
     this.tilCreatePassword = tilCreatePassword;
     this.tvCapitalLetters = tvCapitalLetters;
+    this.tvChoice = tvChoice;
     this.tvHaveLenght = tvHaveLenght;
     this.tvLowercaseLetters = tvLowercaseLetters;
     this.tvNumbers = tvNumbers;
@@ -108,6 +117,12 @@ public final class FragmentCreateBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.btn_generate;
+      Button btnGenerate = ViewBindings.findChildViewById(rootView, id);
+      if (btnGenerate == null) {
+        break missingId;
+      }
+
       id = R.id.btn_save;
       Button btnSave = ViewBindings.findChildViewById(rootView, id);
       if (btnSave == null) {
@@ -150,6 +165,12 @@ public final class FragmentCreateBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.tv_choice;
+      TextView tvChoice = ViewBindings.findChildViewById(rootView, id);
+      if (tvChoice == null) {
+        break missingId;
+      }
+
       id = R.id.tv_have_lenght;
       TextView tvHaveLenght = ViewBindings.findChildViewById(rootView, id);
       if (tvHaveLenght == null) {
@@ -180,9 +201,9 @@ public final class FragmentCreateBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentCreateBinding((ScrollView) rootView, btnSave, createTitle, etPasswordInput,
-          etUsernameInput, etWebsiteInput, tilCreatePassword, tvCapitalLetters, tvHaveLenght,
-          tvLowercaseLetters, tvNumbers, tvPasswordRequirements, tvSymbols);
+      return new FragmentCreateBinding((ScrollView) rootView, btnGenerate, btnSave, createTitle,
+          etPasswordInput, etUsernameInput, etWebsiteInput, tilCreatePassword, tvCapitalLetters,
+          tvChoice, tvHaveLenght, tvLowercaseLetters, tvNumbers, tvPasswordRequirements, tvSymbols);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

@@ -317,6 +317,7 @@ id btn_add_favorite
 id btn_copy_password
 id btn_delete
 id btn_edit_password
+id btn_generate
 id btn_login
 id btn_save
 id create_title
@@ -349,6 +350,7 @@ id textInputLayout
 id til_create_password
 id tv_backup
 id tv_capital_letters
+id tv_choice
 id tv_have_lenght
 id tv_introduce_data
 id tv_lowercase_letters
@@ -379,12 +381,13 @@ navigation bottom_nav_graph
 navigation nav_graph
 string app_name
 string capital_letters
+string choice
 string copy_password
-string copy_user
 string delete
 string edit
 string email
 string favorite
+string generate_password
 string have_lenght
 string hello_blank_fragment
 string intoduce_data

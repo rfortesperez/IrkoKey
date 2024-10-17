@@ -28,6 +28,9 @@ class CreateViewModel @Inject constructor(
     private val _isComplete = SingleLiveEvent<Boolean>()
     val isComplete: LiveData<Boolean> get() = _isComplete
 
+    private val _generatedPassword = SingleLiveEvent<String>()
+    val generatedPassword: LiveData<String> get() = _generatedPassword
+
     init {
         encryptionUtil.initialize(application)
     }
@@ -57,6 +60,22 @@ class CreateViewModel @Inject constructor(
         } else {
             _isComplete.value = false
         }
+    }
+
+    fun didClickGenerateButton() {
+      val generatedPassword = generateStrongPassword()
+        if(isPasswordStrong(generatedPassword)){
+            _generatedPassword.value = generatedPassword
+        }else{
+            didClickGenerateButton()
+        }
+    }
+
+    private fun generateStrongPassword(length: Int = 12): String{
+        val chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#\$%^&*()-_=+<>?"
+        return (1..length)
+            .map { chars.random() }
+            .joinToString("")
     }
 
     private fun isPasswordStrong(password: String): Boolean {

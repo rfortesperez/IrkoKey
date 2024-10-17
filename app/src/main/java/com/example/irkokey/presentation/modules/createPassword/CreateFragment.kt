@@ -31,6 +31,14 @@ class CreateFragment : Fragment() {
                     etPasswordInput.text.toString()
                 )
             }
+
+            btnGenerate.setOnClickListener{
+                createViewModel.didClickGenerateButton()
+            }
+        }
+
+        createViewModel.generatedPassword.observe(viewLifecycleOwner){ password ->
+            binding.etPasswordInput.setText(password)
         }
 
         createViewModel.isComplete.observe(viewLifecycleOwner) { isComplete ->
@@ -53,5 +61,3 @@ class CreateFragment : Fragment() {
         }
     }
 }
-
-

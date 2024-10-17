@@ -3553,6 +3553,7 @@ int id btn_add_favorite 0x7f090069
 int id btn_copy_password 0x7f09006a
 int id btn_delete 0x7f09006b
 int id btn_edit_password 0x7f09006c
+int id btn_generate 0x7f09022f
 int id btn_login 0x7f09006d
 int id btn_save 0x7f09006e
 int id buttonPanel 0x7f09006f
@@ -3970,6 +3971,7 @@ int id transition_transform 0x7f09020a
 int id triangle 0x7f09020b
 int id tv_backup 0x7f09020c
 int id tv_capital_letters 0x7f09020d
+int id tv_choice 0x7f090230
 int id tv_have_lenght 0x7f09020e
 int id tv_introduce_data 0x7f09020f
 int id tv_lowercase_letters 0x7f090210
@@ -4263,9 +4265,9 @@ int string capital_letters 0x7f12002b
 int string character_counter_content_description 0x7f12002c
 int string character_counter_overflowed_content_description 0x7f12002d
 int string character_counter_pattern 0x7f12002e
+int string choice 0x7f1200c4
 int string clear_text_end_icon_content_description 0x7f12002f
 int string copy_password 0x7f120030
-int string copy_user 0x7f120031
 int string delete 0x7f120032
 int string dest_title 0x7f120033
 int string edit 0x7f120034
@@ -4276,6 +4278,7 @@ int string exposed_dropdown_menu_content_description 0x7f120038
 int string fab_transformation_scrim_behavior 0x7f120039
 int string fab_transformation_sheet_behavior 0x7f12003a
 int string favorite 0x7f12003b
+int string generate_password 0x7f1200c5
 int string have_lenght 0x7f12003c
 int string hello_blank_fragment 0x7f12003d
 int string hide_bottom_view_on_scroll_behavior 0x7f12003e

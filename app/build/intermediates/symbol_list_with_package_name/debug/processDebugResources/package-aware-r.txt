@@ -3554,6 +3554,7 @@ id btn_add_favorite
 id btn_copy_password
 id btn_delete
 id btn_edit_password
+id btn_generate
 id btn_login
 id btn_save
 id buttonPanel
@@ -3971,6 +3972,7 @@ id transition_transform
 id triangle
 id tv_backup
 id tv_capital_letters
+id tv_choice
 id tv_have_lenght
 id tv_introduce_data
 id tv_lowercase_letters
@@ -4264,9 +4266,9 @@ string capital_letters
 string character_counter_content_description
 string character_counter_overflowed_content_description
 string character_counter_pattern
+string choice
 string clear_text_end_icon_content_description
 string copy_password
-string copy_user
 string delete
 string dest_title
 string edit
@@ -4277,6 +4279,7 @@ string exposed_dropdown_menu_content_description
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
 string favorite
+string generate_password
 string have_lenght
 string hello_blank_fragment
 string hide_bottom_view_on_scroll_behavior
