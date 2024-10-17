@@ -14,6 +14,7 @@ import com.example.irkokey.common.utils.SingleLiveEvent
 import com.example.irkokey.data.repository.PasswordRepository
 import com.example.irkokey.domain.models.Password
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
@@ -77,6 +78,7 @@ class PasswordsViewModel @Inject constructor(
         return PasswordStrengthUtil.isPasswordStrong(newPassword)
     }
 
+    @OptIn(DelicateCoroutinesApi::class)
     fun copyPassword(encryptedPassword: String) {
         val decryptedPassword = encryptionUtil.decrypt(encryptedPassword)
         val clipboard = ClipData.newPlainText("password", decryptedPassword)

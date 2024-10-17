@@ -4,6 +4,7 @@ package com.example.irkokey.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,6 +13,7 @@ import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.irkokey.R;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -21,10 +23,19 @@ public final class ItemFavoritePasswordBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
+  public final ImageButton btnCopyPassword;
+
+  @NonNull
+  public final ImageButton btnRemoveFavorite;
+
+  @NonNull
   public final ConstraintLayout rowFavorite;
 
   @NonNull
-  public final TextInputEditText tvPassword;
+  public final TextInputLayout textInputLayoutFav;
+
+  @NonNull
+  public final TextInputEditText tvPasswordFav;
 
   @NonNull
   public final TextView tvUserName;
@@ -33,11 +44,16 @@ public final class ItemFavoritePasswordBinding implements ViewBinding {
   public final TextView tvWebsite;
 
   private ItemFavoritePasswordBinding(@NonNull ConstraintLayout rootView,
-      @NonNull ConstraintLayout rowFavorite, @NonNull TextInputEditText tvPassword,
-      @NonNull TextView tvUserName, @NonNull TextView tvWebsite) {
+      @NonNull ImageButton btnCopyPassword, @NonNull ImageButton btnRemoveFavorite,
+      @NonNull ConstraintLayout rowFavorite, @NonNull TextInputLayout textInputLayoutFav,
+      @NonNull TextInputEditText tvPasswordFav, @NonNull TextView tvUserName,
+      @NonNull TextView tvWebsite) {
     this.rootView = rootView;
+    this.btnCopyPassword = btnCopyPassword;
+    this.btnRemoveFavorite = btnRemoveFavorite;
     this.rowFavorite = rowFavorite;
-    this.tvPassword = tvPassword;
+    this.textInputLayoutFav = textInputLayoutFav;
+    this.tvPasswordFav = tvPasswordFav;
     this.tvUserName = tvUserName;
     this.tvWebsite = tvWebsite;
   }
@@ -69,11 +85,29 @@ public final class ItemFavoritePasswordBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.btn_copy_password;
+      ImageButton btnCopyPassword = ViewBindings.findChildViewById(rootView, id);
+      if (btnCopyPassword == null) {
+        break missingId;
+      }
+
+      id = R.id.btn_remove_favorite;
+      ImageButton btnRemoveFavorite = ViewBindings.findChildViewById(rootView, id);
+      if (btnRemoveFavorite == null) {
+        break missingId;
+      }
+
       ConstraintLayout rowFavorite = (ConstraintLayout) rootView;
 
-      id = R.id.tv_password;
-      TextInputEditText tvPassword = ViewBindings.findChildViewById(rootView, id);
-      if (tvPassword == null) {
+      id = R.id.textInputLayoutFav;
+      TextInputLayout textInputLayoutFav = ViewBindings.findChildViewById(rootView, id);
+      if (textInputLayoutFav == null) {
+        break missingId;
+      }
+
+      id = R.id.tv_password_fav;
+      TextInputEditText tvPasswordFav = ViewBindings.findChildViewById(rootView, id);
+      if (tvPasswordFav == null) {
         break missingId;
       }
 
@@ -89,8 +123,8 @@ public final class ItemFavoritePasswordBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ItemFavoritePasswordBinding((ConstraintLayout) rootView, rowFavorite, tvPassword,
-          tvUserName, tvWebsite);
+      return new ItemFavoritePasswordBinding((ConstraintLayout) rootView, btnCopyPassword,
+          btnRemoveFavorite, rowFavorite, textInputLayoutFav, tvPasswordFav, tvUserName, tvWebsite);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

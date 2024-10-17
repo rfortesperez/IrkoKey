@@ -319,6 +319,7 @@ id btn_delete
 id btn_edit_password
 id btn_generate
 id btn_login
+id btn_remove_favorite
 id btn_save
 id create_title
 id et_email
@@ -347,6 +348,7 @@ id rv_passwords
 id splashActivity
 id tabLayout
 id textInputLayout
+id textInputLayoutFav
 id til_create_password
 id tv_backup
 id tv_capital_letters
@@ -356,6 +358,7 @@ id tv_introduce_data
 id tv_lowercase_letters
 id tv_numbers
 id tv_password
+id tv_password_fav
 id tv_password_requirements
 id tv_symbols
 id tv_userName

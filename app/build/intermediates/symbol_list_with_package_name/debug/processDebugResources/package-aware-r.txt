@@ -3556,6 +3556,7 @@ id btn_delete
 id btn_edit_password
 id btn_generate
 id btn_login
+id btn_remove_favorite
 id btn_save
 id buttonPanel
 id cache_measures
@@ -3937,6 +3938,7 @@ id text
 id text2
 id textEnd
 id textInputLayout
+id textInputLayoutFav
 id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
@@ -3978,6 +3980,7 @@ id tv_introduce_data
 id tv_lowercase_letters
 id tv_numbers
 id tv_password
+id tv_password_fav
 id tv_password_requirements
 id tv_symbols
 id tv_userName
