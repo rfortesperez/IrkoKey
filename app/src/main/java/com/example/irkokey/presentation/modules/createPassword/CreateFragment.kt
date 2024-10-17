@@ -30,6 +30,7 @@ class CreateFragment : Fragment() {
                     etUsernameInput.text.toString(),
                     etPasswordInput.text.toString()
                 )
+                etWebsiteInput.requestFocus() // Return focus to website input
             }
 
             btnGenerate.setOnClickListener{
