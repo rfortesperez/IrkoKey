@@ -14,6 +14,9 @@ import com.example.irkokey.common.utils.SingleLiveEvent
 import com.example.irkokey.data.repository.PasswordRepository
 import com.example.irkokey.domain.models.Password
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -47,11 +50,6 @@ class PasswordsViewModel @Inject constructor(
         _showDeleteConfirmation.value = password
     }
 
-//    fun getDecryptedPassword(encryptedPassword: String): String? {
-//        val key = keyString?.let { encryptionUtil.getKeyFromString(it) }
-//        return key?.let { encryptionUtil.decrypt(it, encryptedPassword) }
-//    }
-
     fun addFavorite(password: Password) {
         viewModelScope.launch {
             passwordRepository.changeFavorite(password.id)
@@ -84,6 +82,11 @@ class PasswordsViewModel @Inject constructor(
         val clipboard = ClipData.newPlainText("password", decryptedPassword)
         clipboardManager.setPrimaryClip(clipboard)
         _isCopied.value = true
+        // Clear clipboard after 30 seconds
+        GlobalScope.launch(Dispatchers.IO) {
+            delay(30000L)
+            clipboardManager.setPrimaryClip(ClipData.newPlainText("", ""))
+        }
     }
 
     fun getDecryptedPassword(encryptedPassword: String): String {

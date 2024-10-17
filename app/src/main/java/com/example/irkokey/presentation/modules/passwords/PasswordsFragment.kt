@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.core.text.HtmlCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DiffUtil
@@ -116,18 +117,28 @@ class PasswordsFragment : Fragment() {
         viewModel.isCopied.observe(viewLifecycleOwner) { isCopied ->
             if (isCopied) {
                 Toast.makeText(context, "Password copied to clipboard", Toast.LENGTH_SHORT).show()
+                showCopyConfirmationDialog()
             }
         }
     }
-
     private fun showDeleteConfirmationDialog(password: Password) {
         AlertDialog.Builder(requireContext())
-            .setTitle("Delete Password")
+            .setTitle(HtmlCompat.fromHtml("<font color='red' style= 'bold'>Delete Password</font>", HtmlCompat.FROM_HTML_MODE_LEGACY))
             .setMessage("Are you sure you want to delete this password?")
             .setPositiveButton("Yes") { _, _ ->
                 viewModel.deletePassword(password)
             }
             .setNegativeButton("No", null)
+            .show()
+    }
+
+    //builder.setMessage(Html.fromHtml("<font color='red'>Este es un mensaje importante.</font>"))
+
+    private fun showCopyConfirmationDialog() {
+        AlertDialog.Builder(requireContext())
+            .setTitle(HtmlCompat.fromHtml("<font color='red' style= 'bold'>Security Warning!!!.</font>", HtmlCompat.FROM_HTML_MODE_LEGACY))
+            .setMessage("Make sure to erase the password from the clipboard after use it!")
+            .setPositiveButton(HtmlCompat.fromHtml("<font color='red'> Got it!</font>", HtmlCompat.FROM_HTML_MODE_LEGACY)) { _, _ -> }
             .show()
     }
 }

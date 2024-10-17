@@ -10,10 +10,9 @@ import com.google.crypto.tink.aead.AeadConfig
 import com.google.crypto.tink.integration.android.AndroidKeysetManager
 
 object EncryptionUtil {
-
-    private const val KEYSET_NAME = "my_keyset"
-    private const val PREF_FILE_NAME = "my_pref"
-    private const val MASTER_KEY_URI = "android-keystore://my_master_key"
+    private const val KEYSET_NAME = "irkokey_keyset"
+    private const val PREF_FILE_NAME = "irkokey_pref"
+    private const val MASTER_KEY_URI = "android-keystore://irkokey_master_key"
 
     init {
         AeadConfig.register()
