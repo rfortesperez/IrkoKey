@@ -97,8 +97,7 @@ public final class PasswordDao_Impl implements PasswordDao {
   }
 
   @Override
-  public Object insertPassword(final Password password,
-      final Continuation<? super Unit> $completion) {
+  public Object insertPassword(final Password password, final Continuation<? super Unit> arg1) {
     return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
       @Override
       @NonNull
@@ -112,12 +111,12 @@ public final class PasswordDao_Impl implements PasswordDao {
           __db.endTransaction();
         }
       }
-    }, $completion);
+    }, arg1);
   }
 
   @Override
   public Object updatePassword(final int id, final String password,
-      final Continuation<? super Unit> $completion) {
+      final Continuation<? super Unit> arg2) {
     return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
       @Override
       @NonNull
@@ -144,11 +143,11 @@ public final class PasswordDao_Impl implements PasswordDao {
           __preparedStmtOfUpdatePassword.release(_stmt);
         }
       }
-    }, $completion);
+    }, arg2);
   }
 
   @Override
-  public Object deletePassword(final int id, final Continuation<? super Unit> $completion) {
+  public Object deletePassword(final int id, final Continuation<? super Unit> arg1) {
     return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
       @Override
       @NonNull
@@ -169,12 +168,12 @@ public final class PasswordDao_Impl implements PasswordDao {
           __preparedStmtOfDeletePassword.release(_stmt);
         }
       }
-    }, $completion);
+    }, arg1);
   }
 
   @Override
   public Object changeFavorite(final int id, final boolean favorite,
-      final Continuation<? super Unit> $completion) {
+      final Continuation<? super Unit> arg2) {
     return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
       @Override
       @NonNull
@@ -198,7 +197,7 @@ public final class PasswordDao_Impl implements PasswordDao {
           __preparedStmtOfChangeFavorite.release(_stmt);
         }
       }
-    }, $completion);
+    }, arg2);
   }
 
   @Override
@@ -260,7 +259,7 @@ public final class PasswordDao_Impl implements PasswordDao {
   }
 
   @Override
-  public Object getPasswordById(final int id, final Continuation<? super Password> $completion) {
+  public Object getPasswordById(final int id, final Continuation<? super Password> arg1) {
     final String _sql = "SELECT * FROM passwords_table WHERE id = ?";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
     int _argIndex = 1;
@@ -313,7 +312,7 @@ public final class PasswordDao_Impl implements PasswordDao {
           _statement.release();
         }
       }
-    }, $completion);
+    }, arg1);
   }
 
   @Override

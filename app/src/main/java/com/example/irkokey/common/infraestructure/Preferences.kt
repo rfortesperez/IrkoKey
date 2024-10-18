@@ -19,7 +19,7 @@ class Preferences @Inject constructor(context: Context) {
         get() = storage.getString(SHARED_MAIL, null)
         set(value) = storage.edit().putString(SHARED_MAIL, value).apply()
 
-    //fun getMail(): String? = storage.getString(SHARED_MAIL, null)
+
 }
 /*
 * 1. Se crea la clase Shared Preferences que se encarga de manejar las preferencias de la aplicación.

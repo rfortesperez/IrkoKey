@@ -8,6 +8,7 @@ import com.google.crypto.tink.KeyTemplates
 import com.google.crypto.tink.KeysetHandle
 import com.google.crypto.tink.aead.AeadConfig
 import com.google.crypto.tink.integration.android.AndroidKeysetManager
+import java.security.MessageDigest
 
 object EncryptionUtil {
     private const val KEYSET_NAME = "irkokey_keyset"
@@ -40,4 +41,10 @@ object EncryptionUtil {
         val plaintext = aead.decrypt(decodedData, null)
         return String(plaintext)
     }
+    fun hash(data: String): String {
+        val digest = MessageDigest.getInstance("SHA-256")
+        val hashBytes = digest.digest(data.toByteArray())
+        return Base64.encodeToString(hashBytes, Base64.DEFAULT)
+    }
+
 }

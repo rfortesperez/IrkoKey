@@ -3507,14 +3507,14 @@ int id action_context_bar 0x7f09003b
 int id action_divider 0x7f09003c
 int id action_image 0x7f09003d
 int id action_loginFragment_to_mainActivity 0x7f09003e
-int id action_mainActivity_to_SplashActivity 0x7f09003f
 int id action_menu_divider 0x7f090040
 int id action_menu_presenter 0x7f090041
 int id action_mode_bar 0x7f090042
 int id action_mode_bar_stub 0x7f090043
 int id action_mode_close_button 0x7f090044
+int id action_registerActivity_to_mainActivity 0x7f090234
 int id action_splashActivity_to_loginFragment 0x7f090045
-int id action_splashActivity_to_mainActivity 0x7f090046
+int id action_splashActivity_to_registerActivity 0x7f090235
 int id action_text 0x7f090047
 int id actions 0x7f090048
 int id activity_chooser_view_content 0x7f090049
@@ -3555,6 +3555,7 @@ int id btn_delete 0x7f09006b
 int id btn_edit_password 0x7f09006c
 int id btn_generate 0x7f09022f
 int id btn_login 0x7f09006d
+int id btn_register 0x7f090236
 int id btn_remove_favorite 0x7f090231
 int id btn_save 0x7f09006e
 int id buttonPanel 0x7f09006f
@@ -3640,10 +3641,12 @@ int id endToStart 0x7f0900be
 int id enterAlways 0x7f0900bf
 int id enterAlwaysCollapsed 0x7f0900c0
 int id escape 0x7f0900c1
+int id et_confirm_pin 0x7f090237
 int id et_email 0x7f0900c2
 int id et_new_password 0x7f0900c3
 int id et_password 0x7f0900c4
 int id et_password_input 0x7f0900c5
+int id et_pin 0x7f090238
 int id et_username_input 0x7f0900c6
 int id et_website_input 0x7f0900c7
 int id exitUntilCollapsed 0x7f0900c8
@@ -3841,6 +3844,8 @@ int id progress_horizontal 0x7f090187
 int id radio 0x7f090188
 int id ratio 0x7f090189
 int id rectangles 0x7f09018a
+int id register 0x7f090239
+int id registerActivity 0x7f09023a
 int id report_drawn 0x7f09018b
 int id reverseSawtooth 0x7f09018c
 int id right 0x7f09018d
@@ -4125,6 +4130,7 @@ int layout abc_select_dialog_material 0x7f0c001a
 int layout abc_tooltip 0x7f0c001b
 int layout activity_auth 0x7f0c001c
 int layout activity_main 0x7f0c001d
+int layout activity_register 0x7f0c0077
 int layout activity_splash 0x7f0c001e
 int layout custom_dialog 0x7f0c001f
 int layout design_bottom_navigation_item 0x7f0c0020

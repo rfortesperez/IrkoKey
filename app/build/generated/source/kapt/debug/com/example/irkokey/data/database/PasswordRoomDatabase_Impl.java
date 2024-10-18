@@ -39,11 +39,11 @@ public final class PasswordRoomDatabase_Impl extends PasswordRoomDatabase {
     final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(config, new RoomOpenHelper.Delegate(1) {
       @Override
       public void createAllTables(@NonNull final SupportSQLiteDatabase db) {
-        db.execSQL("CREATE TABLE IF NOT EXISTS `user_table` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `email` TEXT NOT NULL, `user_password_hash` TEXT NOT NULL)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS `user_table` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `hashed_email` TEXT NOT NULL, `hashed_password` TEXT NOT NULL)");
         db.execSQL("CREATE TABLE IF NOT EXISTS `passwords_table` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `website` TEXT NOT NULL, `userName` TEXT NOT NULL, `password_hash` TEXT NOT NULL, `favorite` INTEGER NOT NULL)");
         db.execSQL("CREATE UNIQUE INDEX IF NOT EXISTS `index_passwords_table_website_userName` ON `passwords_table` (`website`, `userName`)");
         db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '83dc58836883b2f04bbdded589754d8f')");
+        db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '0e6df9cf07fcbd1cbe6652f4c7b139eb')");
       }
 
       @Override
@@ -95,8 +95,8 @@ public final class PasswordRoomDatabase_Impl extends PasswordRoomDatabase {
           @NonNull final SupportSQLiteDatabase db) {
         final HashMap<String, TableInfo.Column> _columnsUserTable = new HashMap<String, TableInfo.Column>(3);
         _columnsUserTable.put("id", new TableInfo.Column("id", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsUserTable.put("email", new TableInfo.Column("email", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsUserTable.put("user_password_hash", new TableInfo.Column("user_password_hash", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsUserTable.put("hashed_email", new TableInfo.Column("hashed_email", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsUserTable.put("hashed_password", new TableInfo.Column("hashed_password", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         final HashSet<TableInfo.ForeignKey> _foreignKeysUserTable = new HashSet<TableInfo.ForeignKey>(0);
         final HashSet<TableInfo.Index> _indicesUserTable = new HashSet<TableInfo.Index>(0);
         final TableInfo _infoUserTable = new TableInfo("user_table", _columnsUserTable, _foreignKeysUserTable, _indicesUserTable);
@@ -124,7 +124,7 @@ public final class PasswordRoomDatabase_Impl extends PasswordRoomDatabase {
         }
         return new RoomOpenHelper.ValidationResult(true, null);
       }
-    }, "83dc58836883b2f04bbdded589754d8f", "f785a0a9ea536fff09361f39f7b61c1f");
+    }, "0e6df9cf07fcbd1cbe6652f4c7b139eb", "4591115a7c27c1e564b21b9ca56fc2c0");
     final SupportSQLiteOpenHelper.Configuration _sqliteConfig = SupportSQLiteOpenHelper.Configuration.builder(config.context).name(config.name).callback(_openCallback).build();
     final SupportSQLiteOpenHelper _helper = config.sqliteOpenHelperFactory.create(_sqliteConfig);
     return _helper;

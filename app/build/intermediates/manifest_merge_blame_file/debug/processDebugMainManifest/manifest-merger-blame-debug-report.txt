@@ -11,164 +11,173 @@
 11    <uses-permission android:name="android.permission.USE_KEYSTORE" />
 11-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:5:5-71
 11-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:5:22-68
-12
-13    <permission
-13-->[androidx.core:core:1.13.1] C:\Users\rfort\.gradle\caches\transforms-4\e4a896e0a6dbe5f7c26af2fd53e5aee9\transformed\core-1.13.1\AndroidManifest.xml:22:5-24:47
-14        android:name="com.example.irkokey.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
-14-->[androidx.core:core:1.13.1] C:\Users\rfort\.gradle\caches\transforms-4\e4a896e0a6dbe5f7c26af2fd53e5aee9\transformed\core-1.13.1\AndroidManifest.xml:23:9-81
-15        android:protectionLevel="signature" />
-15-->[androidx.core:core:1.13.1] C:\Users\rfort\.gradle\caches\transforms-4\e4a896e0a6dbe5f7c26af2fd53e5aee9\transformed\core-1.13.1\AndroidManifest.xml:24:9-44
-16
-17    <uses-permission android:name="com.example.irkokey.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
-17-->[androidx.core:core:1.13.1] C:\Users\rfort\.gradle\caches\transforms-4\e4a896e0a6dbe5f7c26af2fd53e5aee9\transformed\core-1.13.1\AndroidManifest.xml:26:5-97
-17-->[androidx.core:core:1.13.1] C:\Users\rfort\.gradle\caches\transforms-4\e4a896e0a6dbe5f7c26af2fd53e5aee9\transformed\core-1.13.1\AndroidManifest.xml:26:22-94
-18
-19    <application
-19-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:6:5-35:19
-20        android:name="com.example.irkokey.IrkoKeyApp"
-20-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:7:9-35
-21        android:allowBackup="true"
-21-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:8:9-35
-22        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-22-->[androidx.core:core:1.13.1] C:\Users\rfort\.gradle\caches\transforms-4\e4a896e0a6dbe5f7c26af2fd53e5aee9\transformed\core-1.13.1\AndroidManifest.xml:28:18-86
-23        android:dataExtractionRules="@xml/data_extraction_rules"
-23-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:9:9-65
-24        android:debuggable="true"
-25        android:extractNativeLibs="false"
-26        android:fullBackupContent="@xml/backup_rules"
-26-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:10:9-54
-27        android:icon="@mipmap/ic_launcher"
-27-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:11:9-43
-28        android:label="@string/app_name"
-28-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:12:9-41
-29        android:roundIcon="@mipmap/ic_launcher_round"
-29-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:13:9-54
-30        android:supportsRtl="true"
-30-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:14:9-35
-31        android:testOnly="true"
-32        android:theme="@style/Theme.Splash" >
-32-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:15:9-44
-33        <activity
-33-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:17:9-24:20
-34            android:name="com.example.irkokey.presentation.modules.splash.SplashActivity"
-34-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:18:13-71
-35            android:exported="true" >
-35-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:19:13-36
-36            <intent-filter>
-36-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:20:13-23:29
-37                <action android:name="android.intent.action.MAIN" />
-37-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:21:17-69
-37-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:21:25-66
-38
-39                <category android:name="android.intent.category.LAUNCHER" />
-39-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:22:17-77
-39-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:22:27-74
-40            </intent-filter>
-41        </activity>
-42        <activity
-42-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:26:9-29:51
-43            android:name="com.example.irkokey.presentation.modules.auth.AuthActivity"
-43-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:27:13-67
-44            android:exported="false"
-44-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:28:13-37
-45            android:theme="@style/Theme.Splash" />
-45-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:29:13-48
+12    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
+12-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:6:5-72
+12-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:6:22-69
+13
+14    <permission
+14-->[androidx.core:core:1.13.1] C:\Users\rfort\.gradle\caches\transforms-4\e4a896e0a6dbe5f7c26af2fd53e5aee9\transformed\core-1.13.1\AndroidManifest.xml:22:5-24:47
+15        android:name="com.example.irkokey.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+15-->[androidx.core:core:1.13.1] C:\Users\rfort\.gradle\caches\transforms-4\e4a896e0a6dbe5f7c26af2fd53e5aee9\transformed\core-1.13.1\AndroidManifest.xml:23:9-81
+16        android:protectionLevel="signature" />
+16-->[androidx.core:core:1.13.1] C:\Users\rfort\.gradle\caches\transforms-4\e4a896e0a6dbe5f7c26af2fd53e5aee9\transformed\core-1.13.1\AndroidManifest.xml:24:9-44
+17
+18    <uses-permission android:name="com.example.irkokey.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+18-->[androidx.core:core:1.13.1] C:\Users\rfort\.gradle\caches\transforms-4\e4a896e0a6dbe5f7c26af2fd53e5aee9\transformed\core-1.13.1\AndroidManifest.xml:26:5-97
+18-->[androidx.core:core:1.13.1] C:\Users\rfort\.gradle\caches\transforms-4\e4a896e0a6dbe5f7c26af2fd53e5aee9\transformed\core-1.13.1\AndroidManifest.xml:26:22-94
+19
+20    <application
+20-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:8:5-41:19
+21        android:name="com.example.irkokey.IrkoKeyApp"
+21-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:9:9-35
+22        android:allowBackup="true"
+22-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:10:9-35
+23        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+23-->[androidx.core:core:1.13.1] C:\Users\rfort\.gradle\caches\transforms-4\e4a896e0a6dbe5f7c26af2fd53e5aee9\transformed\core-1.13.1\AndroidManifest.xml:28:18-86
+24        android:dataExtractionRules="@xml/data_extraction_rules"
+24-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:11:9-65
+25        android:debuggable="true"
+26        android:extractNativeLibs="false"
+27        android:fullBackupContent="@xml/backup_rules"
+27-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:12:9-54
+28        android:icon="@mipmap/ic_launcher"
+28-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:13:9-43
+29        android:label="@string/app_name"
+29-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:14:9-41
+30        android:roundIcon="@mipmap/ic_launcher_round"
+30-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:15:9-54
+31        android:supportsRtl="true"
+31-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:16:9-35
+32        android:testOnly="true"
+33        android:theme="@style/Theme.Splash" >
+33-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:17:9-44
+34        <activity
+34-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:19:9-21:40
+35            android:name="com.example.irkokey.presentation.modules.register.RegisterActivity"
+35-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:20:13-75
+36            android:exported="false" />
+36-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:21:13-37
+37        <activity
+37-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:23:9-30:20
+38            android:name="com.example.irkokey.presentation.modules.splash.SplashActivity"
+38-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:24:13-71
+39            android:exported="true" >
+39-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:25:13-36
+40            <intent-filter>
+40-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:26:13-29:29
+41                <action android:name="android.intent.action.MAIN" />
+41-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:27:17-69
+41-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:27:25-66
+42
+43                <category android:name="android.intent.category.LAUNCHER" />
+43-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:28:17-77
+43-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:28:27-74
+44            </intent-filter>
+45        </activity>
 46        <activity
-46-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:31:9-34:57
-47            android:name="com.example.irkokey.presentation.modules.main.MainActivity"
-47-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:32:13-67
+46-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:32:9-35:51
+47            android:name="com.example.irkokey.presentation.modules.auth.AuthActivity"
+47-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:33:13-67
 48            android:exported="false"
-48-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:33:13-37
-49            android:theme="@style/Base.Theme.IrkoKey" />
-49-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:34:13-54
-50
-51        <provider
-51-->[androidx.emoji2:emoji2:1.3.0] C:\Users\rfort\.gradle\caches\transforms-4\c51812741f5d124d49757ad70c365a8f\transformed\emoji2-1.3.0\AndroidManifest.xml:24:9-32:20
-52            android:name="androidx.startup.InitializationProvider"
-52-->[androidx.emoji2:emoji2:1.3.0] C:\Users\rfort\.gradle\caches\transforms-4\c51812741f5d124d49757ad70c365a8f\transformed\emoji2-1.3.0\AndroidManifest.xml:25:13-67
-53            android:authorities="com.example.irkokey.androidx-startup"
-53-->[androidx.emoji2:emoji2:1.3.0] C:\Users\rfort\.gradle\caches\transforms-4\c51812741f5d124d49757ad70c365a8f\transformed\emoji2-1.3.0\AndroidManifest.xml:26:13-68
-54            android:exported="false" >
-54-->[androidx.emoji2:emoji2:1.3.0] C:\Users\rfort\.gradle\caches\transforms-4\c51812741f5d124d49757ad70c365a8f\transformed\emoji2-1.3.0\AndroidManifest.xml:27:13-37
-55            <meta-data
-55-->[androidx.emoji2:emoji2:1.3.0] C:\Users\rfort\.gradle\caches\transforms-4\c51812741f5d124d49757ad70c365a8f\transformed\emoji2-1.3.0\AndroidManifest.xml:29:13-31:52
-56                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-56-->[androidx.emoji2:emoji2:1.3.0] C:\Users\rfort\.gradle\caches\transforms-4\c51812741f5d124d49757ad70c365a8f\transformed\emoji2-1.3.0\AndroidManifest.xml:30:17-75
-57                android:value="androidx.startup" />
-57-->[androidx.emoji2:emoji2:1.3.0] C:\Users\rfort\.gradle\caches\transforms-4\c51812741f5d124d49757ad70c365a8f\transformed\emoji2-1.3.0\AndroidManifest.xml:31:17-49
-58            <meta-data
-58-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\rfort\.gradle\caches\transforms-4\277b717d4cb31f14aef1d42cc64abc12\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:29:13-31:52
-59                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-59-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\rfort\.gradle\caches\transforms-4\277b717d4cb31f14aef1d42cc64abc12\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:30:17-78
-60                android:value="androidx.startup" />
-60-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\rfort\.gradle\caches\transforms-4\277b717d4cb31f14aef1d42cc64abc12\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:31:17-49
-61            <meta-data
-61-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rfort\.gradle\caches\transforms-4\71729acbbb805b09947a067487d8b509\transformed\profileinstaller-1.3.1\AndroidManifest.xml:29:13-31:52
-62                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
-62-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rfort\.gradle\caches\transforms-4\71729acbbb805b09947a067487d8b509\transformed\profileinstaller-1.3.1\AndroidManifest.xml:30:17-85
-63                android:value="androidx.startup" />
-63-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rfort\.gradle\caches\transforms-4\71729acbbb805b09947a067487d8b509\transformed\profileinstaller-1.3.1\AndroidManifest.xml:31:17-49
-64        </provider>
-65
-66        <uses-library
-66-->[androidx.window:window:1.0.0] C:\Users\rfort\.gradle\caches\transforms-4\05c14365aec52f848cbb6ec7e143fefd\transformed\window-1.0.0\AndroidManifest.xml:25:9-27:40
-67            android:name="androidx.window.extensions"
-67-->[androidx.window:window:1.0.0] C:\Users\rfort\.gradle\caches\transforms-4\05c14365aec52f848cbb6ec7e143fefd\transformed\window-1.0.0\AndroidManifest.xml:26:13-54
-68            android:required="false" />
-68-->[androidx.window:window:1.0.0] C:\Users\rfort\.gradle\caches\transforms-4\05c14365aec52f848cbb6ec7e143fefd\transformed\window-1.0.0\AndroidManifest.xml:27:13-37
-69        <uses-library
-69-->[androidx.window:window:1.0.0] C:\Users\rfort\.gradle\caches\transforms-4\05c14365aec52f848cbb6ec7e143fefd\transformed\window-1.0.0\AndroidManifest.xml:28:9-30:40
-70            android:name="androidx.window.sidecar"
-70-->[androidx.window:window:1.0.0] C:\Users\rfort\.gradle\caches\transforms-4\05c14365aec52f848cbb6ec7e143fefd\transformed\window-1.0.0\AndroidManifest.xml:29:13-51
-71            android:required="false" />
-71-->[androidx.window:window:1.0.0] C:\Users\rfort\.gradle\caches\transforms-4\05c14365aec52f848cbb6ec7e143fefd\transformed\window-1.0.0\AndroidManifest.xml:30:13-37
-72
-73        <service
-73-->[androidx.room:room-runtime:2.6.1] C:\Users\rfort\.gradle\caches\transforms-4\852cb44629f7f230bb375b12231f12c2\transformed\room-runtime-2.6.1\AndroidManifest.xml:24:9-28:63
-74            android:name="androidx.room.MultiInstanceInvalidationService"
-74-->[androidx.room:room-runtime:2.6.1] C:\Users\rfort\.gradle\caches\transforms-4\852cb44629f7f230bb375b12231f12c2\transformed\room-runtime-2.6.1\AndroidManifest.xml:25:13-74
-75            android:directBootAware="true"
-75-->[androidx.room:room-runtime:2.6.1] C:\Users\rfort\.gradle\caches\transforms-4\852cb44629f7f230bb375b12231f12c2\transformed\room-runtime-2.6.1\AndroidManifest.xml:26:13-43
-76            android:exported="false" />
-76-->[androidx.room:room-runtime:2.6.1] C:\Users\rfort\.gradle\caches\transforms-4\852cb44629f7f230bb375b12231f12c2\transformed\room-runtime-2.6.1\AndroidManifest.xml:27:13-37
-77
-78        <receiver
-78-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rfort\.gradle\caches\transforms-4\71729acbbb805b09947a067487d8b509\transformed\profileinstaller-1.3.1\AndroidManifest.xml:34:9-52:20
-79            android:name="androidx.profileinstaller.ProfileInstallReceiver"
-79-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rfort\.gradle\caches\transforms-4\71729acbbb805b09947a067487d8b509\transformed\profileinstaller-1.3.1\AndroidManifest.xml:35:13-76
-80            android:directBootAware="false"
-80-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rfort\.gradle\caches\transforms-4\71729acbbb805b09947a067487d8b509\transformed\profileinstaller-1.3.1\AndroidManifest.xml:36:13-44
-81            android:enabled="true"
-81-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rfort\.gradle\caches\transforms-4\71729acbbb805b09947a067487d8b509\transformed\profileinstaller-1.3.1\AndroidManifest.xml:37:13-35
-82            android:exported="true"
-82-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rfort\.gradle\caches\transforms-4\71729acbbb805b09947a067487d8b509\transformed\profileinstaller-1.3.1\AndroidManifest.xml:38:13-36
-83            android:permission="android.permission.DUMP" >
-83-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rfort\.gradle\caches\transforms-4\71729acbbb805b09947a067487d8b509\transformed\profileinstaller-1.3.1\AndroidManifest.xml:39:13-57
-84            <intent-filter>
-84-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rfort\.gradle\caches\transforms-4\71729acbbb805b09947a067487d8b509\transformed\profileinstaller-1.3.1\AndroidManifest.xml:40:13-42:29
-85                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
-85-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rfort\.gradle\caches\transforms-4\71729acbbb805b09947a067487d8b509\transformed\profileinstaller-1.3.1\AndroidManifest.xml:41:17-91
-85-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rfort\.gradle\caches\transforms-4\71729acbbb805b09947a067487d8b509\transformed\profileinstaller-1.3.1\AndroidManifest.xml:41:25-88
-86            </intent-filter>
-87            <intent-filter>
-87-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rfort\.gradle\caches\transforms-4\71729acbbb805b09947a067487d8b509\transformed\profileinstaller-1.3.1\AndroidManifest.xml:43:13-45:29
-88                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
-88-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rfort\.gradle\caches\transforms-4\71729acbbb805b09947a067487d8b509\transformed\profileinstaller-1.3.1\AndroidManifest.xml:44:17-85
-88-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rfort\.gradle\caches\transforms-4\71729acbbb805b09947a067487d8b509\transformed\profileinstaller-1.3.1\AndroidManifest.xml:44:25-82
-89            </intent-filter>
-90            <intent-filter>
-90-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rfort\.gradle\caches\transforms-4\71729acbbb805b09947a067487d8b509\transformed\profileinstaller-1.3.1\AndroidManifest.xml:46:13-48:29
-91                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
-91-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rfort\.gradle\caches\transforms-4\71729acbbb805b09947a067487d8b509\transformed\profileinstaller-1.3.1\AndroidManifest.xml:47:17-88
-91-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rfort\.gradle\caches\transforms-4\71729acbbb805b09947a067487d8b509\transformed\profileinstaller-1.3.1\AndroidManifest.xml:47:25-85
-92            </intent-filter>
-93            <intent-filter>
-93-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rfort\.gradle\caches\transforms-4\71729acbbb805b09947a067487d8b509\transformed\profileinstaller-1.3.1\AndroidManifest.xml:49:13-51:29
-94                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
-94-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rfort\.gradle\caches\transforms-4\71729acbbb805b09947a067487d8b509\transformed\profileinstaller-1.3.1\AndroidManifest.xml:50:17-95
-94-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rfort\.gradle\caches\transforms-4\71729acbbb805b09947a067487d8b509\transformed\profileinstaller-1.3.1\AndroidManifest.xml:50:25-92
-95            </intent-filter>
-96        </receiver>
-97    </application>
-98
-99</manifest>
+48-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:34:13-37
+49            android:theme="@style/Theme.Splash" />
+49-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:35:13-48
+50        <activity
+50-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:37:9-40:57
+51            android:name="com.example.irkokey.presentation.modules.main.MainActivity"
+51-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:38:13-67
+52            android:exported="false"
+52-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:39:13-37
+53            android:theme="@style/Base.Theme.IrkoKey" />
+53-->C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:40:13-54
+54
+55        <provider
+55-->[androidx.emoji2:emoji2:1.3.0] C:\Users\rfort\.gradle\caches\transforms-4\c51812741f5d124d49757ad70c365a8f\transformed\emoji2-1.3.0\AndroidManifest.xml:24:9-32:20
+56            android:name="androidx.startup.InitializationProvider"
+56-->[androidx.emoji2:emoji2:1.3.0] C:\Users\rfort\.gradle\caches\transforms-4\c51812741f5d124d49757ad70c365a8f\transformed\emoji2-1.3.0\AndroidManifest.xml:25:13-67
+57            android:authorities="com.example.irkokey.androidx-startup"
+57-->[androidx.emoji2:emoji2:1.3.0] C:\Users\rfort\.gradle\caches\transforms-4\c51812741f5d124d49757ad70c365a8f\transformed\emoji2-1.3.0\AndroidManifest.xml:26:13-68
+58            android:exported="false" >
+58-->[androidx.emoji2:emoji2:1.3.0] C:\Users\rfort\.gradle\caches\transforms-4\c51812741f5d124d49757ad70c365a8f\transformed\emoji2-1.3.0\AndroidManifest.xml:27:13-37
+59            <meta-data
+59-->[androidx.emoji2:emoji2:1.3.0] C:\Users\rfort\.gradle\caches\transforms-4\c51812741f5d124d49757ad70c365a8f\transformed\emoji2-1.3.0\AndroidManifest.xml:29:13-31:52
+60                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+60-->[androidx.emoji2:emoji2:1.3.0] C:\Users\rfort\.gradle\caches\transforms-4\c51812741f5d124d49757ad70c365a8f\transformed\emoji2-1.3.0\AndroidManifest.xml:30:17-75
+61                android:value="androidx.startup" />
+61-->[androidx.emoji2:emoji2:1.3.0] C:\Users\rfort\.gradle\caches\transforms-4\c51812741f5d124d49757ad70c365a8f\transformed\emoji2-1.3.0\AndroidManifest.xml:31:17-49
+62            <meta-data
+62-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\rfort\.gradle\caches\transforms-4\277b717d4cb31f14aef1d42cc64abc12\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:29:13-31:52
+63                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+63-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\rfort\.gradle\caches\transforms-4\277b717d4cb31f14aef1d42cc64abc12\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:30:17-78
+64                android:value="androidx.startup" />
+64-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\rfort\.gradle\caches\transforms-4\277b717d4cb31f14aef1d42cc64abc12\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:31:17-49
+65            <meta-data
+65-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rfort\.gradle\caches\transforms-4\71729acbbb805b09947a067487d8b509\transformed\profileinstaller-1.3.1\AndroidManifest.xml:29:13-31:52
+66                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+66-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rfort\.gradle\caches\transforms-4\71729acbbb805b09947a067487d8b509\transformed\profileinstaller-1.3.1\AndroidManifest.xml:30:17-85
+67                android:value="androidx.startup" />
+67-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rfort\.gradle\caches\transforms-4\71729acbbb805b09947a067487d8b509\transformed\profileinstaller-1.3.1\AndroidManifest.xml:31:17-49
+68        </provider>
+69
+70        <uses-library
+70-->[androidx.window:window:1.0.0] C:\Users\rfort\.gradle\caches\transforms-4\05c14365aec52f848cbb6ec7e143fefd\transformed\window-1.0.0\AndroidManifest.xml:25:9-27:40
+71            android:name="androidx.window.extensions"
+71-->[androidx.window:window:1.0.0] C:\Users\rfort\.gradle\caches\transforms-4\05c14365aec52f848cbb6ec7e143fefd\transformed\window-1.0.0\AndroidManifest.xml:26:13-54
+72            android:required="false" />
+72-->[androidx.window:window:1.0.0] C:\Users\rfort\.gradle\caches\transforms-4\05c14365aec52f848cbb6ec7e143fefd\transformed\window-1.0.0\AndroidManifest.xml:27:13-37
+73        <uses-library
+73-->[androidx.window:window:1.0.0] C:\Users\rfort\.gradle\caches\transforms-4\05c14365aec52f848cbb6ec7e143fefd\transformed\window-1.0.0\AndroidManifest.xml:28:9-30:40
+74            android:name="androidx.window.sidecar"
+74-->[androidx.window:window:1.0.0] C:\Users\rfort\.gradle\caches\transforms-4\05c14365aec52f848cbb6ec7e143fefd\transformed\window-1.0.0\AndroidManifest.xml:29:13-51
+75            android:required="false" />
+75-->[androidx.window:window:1.0.0] C:\Users\rfort\.gradle\caches\transforms-4\05c14365aec52f848cbb6ec7e143fefd\transformed\window-1.0.0\AndroidManifest.xml:30:13-37
+76
+77        <service
+77-->[androidx.room:room-runtime:2.6.1] C:\Users\rfort\.gradle\caches\transforms-4\852cb44629f7f230bb375b12231f12c2\transformed\room-runtime-2.6.1\AndroidManifest.xml:24:9-28:63
+78            android:name="androidx.room.MultiInstanceInvalidationService"
+78-->[androidx.room:room-runtime:2.6.1] C:\Users\rfort\.gradle\caches\transforms-4\852cb44629f7f230bb375b12231f12c2\transformed\room-runtime-2.6.1\AndroidManifest.xml:25:13-74
+79            android:directBootAware="true"
+79-->[androidx.room:room-runtime:2.6.1] C:\Users\rfort\.gradle\caches\transforms-4\852cb44629f7f230bb375b12231f12c2\transformed\room-runtime-2.6.1\AndroidManifest.xml:26:13-43
+80            android:exported="false" />
+80-->[androidx.room:room-runtime:2.6.1] C:\Users\rfort\.gradle\caches\transforms-4\852cb44629f7f230bb375b12231f12c2\transformed\room-runtime-2.6.1\AndroidManifest.xml:27:13-37
+81
+82        <receiver
+82-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rfort\.gradle\caches\transforms-4\71729acbbb805b09947a067487d8b509\transformed\profileinstaller-1.3.1\AndroidManifest.xml:34:9-52:20
+83            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+83-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rfort\.gradle\caches\transforms-4\71729acbbb805b09947a067487d8b509\transformed\profileinstaller-1.3.1\AndroidManifest.xml:35:13-76
+84            android:directBootAware="false"
+84-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rfort\.gradle\caches\transforms-4\71729acbbb805b09947a067487d8b509\transformed\profileinstaller-1.3.1\AndroidManifest.xml:36:13-44
+85            android:enabled="true"
+85-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rfort\.gradle\caches\transforms-4\71729acbbb805b09947a067487d8b509\transformed\profileinstaller-1.3.1\AndroidManifest.xml:37:13-35
+86            android:exported="true"
+86-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rfort\.gradle\caches\transforms-4\71729acbbb805b09947a067487d8b509\transformed\profileinstaller-1.3.1\AndroidManifest.xml:38:13-36
+87            android:permission="android.permission.DUMP" >
+87-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rfort\.gradle\caches\transforms-4\71729acbbb805b09947a067487d8b509\transformed\profileinstaller-1.3.1\AndroidManifest.xml:39:13-57
+88            <intent-filter>
+88-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rfort\.gradle\caches\transforms-4\71729acbbb805b09947a067487d8b509\transformed\profileinstaller-1.3.1\AndroidManifest.xml:40:13-42:29
+89                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+89-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rfort\.gradle\caches\transforms-4\71729acbbb805b09947a067487d8b509\transformed\profileinstaller-1.3.1\AndroidManifest.xml:41:17-91
+89-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rfort\.gradle\caches\transforms-4\71729acbbb805b09947a067487d8b509\transformed\profileinstaller-1.3.1\AndroidManifest.xml:41:25-88
+90            </intent-filter>
+91            <intent-filter>
+91-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rfort\.gradle\caches\transforms-4\71729acbbb805b09947a067487d8b509\transformed\profileinstaller-1.3.1\AndroidManifest.xml:43:13-45:29
+92                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+92-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rfort\.gradle\caches\transforms-4\71729acbbb805b09947a067487d8b509\transformed\profileinstaller-1.3.1\AndroidManifest.xml:44:17-85
+92-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rfort\.gradle\caches\transforms-4\71729acbbb805b09947a067487d8b509\transformed\profileinstaller-1.3.1\AndroidManifest.xml:44:25-82
+93            </intent-filter>
+94            <intent-filter>
+94-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rfort\.gradle\caches\transforms-4\71729acbbb805b09947a067487d8b509\transformed\profileinstaller-1.3.1\AndroidManifest.xml:46:13-48:29
+95                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+95-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rfort\.gradle\caches\transforms-4\71729acbbb805b09947a067487d8b509\transformed\profileinstaller-1.3.1\AndroidManifest.xml:47:17-88
+95-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rfort\.gradle\caches\transforms-4\71729acbbb805b09947a067487d8b509\transformed\profileinstaller-1.3.1\AndroidManifest.xml:47:25-85
+96            </intent-filter>
+97            <intent-filter>
+97-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rfort\.gradle\caches\transforms-4\71729acbbb805b09947a067487d8b509\transformed\profileinstaller-1.3.1\AndroidManifest.xml:49:13-51:29
+98                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+98-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rfort\.gradle\caches\transforms-4\71729acbbb805b09947a067487d8b509\transformed\profileinstaller-1.3.1\AndroidManifest.xml:50:17-95
+98-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\rfort\.gradle\caches\transforms-4\71729acbbb805b09947a067487d8b509\transformed\profileinstaller-1.3.1\AndroidManifest.xml:50:25-92
+99            </intent-filter>
+100        </receiver>
+101    </application>
+102
+103</manifest>

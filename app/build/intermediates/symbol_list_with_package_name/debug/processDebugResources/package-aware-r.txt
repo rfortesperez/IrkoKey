@@ -3508,14 +3508,14 @@ id action_context_bar
 id action_divider
 id action_image
 id action_loginFragment_to_mainActivity
-id action_mainActivity_to_SplashActivity
 id action_menu_divider
 id action_menu_presenter
 id action_mode_bar
 id action_mode_bar_stub
 id action_mode_close_button
+id action_registerActivity_to_mainActivity
 id action_splashActivity_to_loginFragment
-id action_splashActivity_to_mainActivity
+id action_splashActivity_to_registerActivity
 id action_text
 id actions
 id activity_chooser_view_content
@@ -3556,6 +3556,7 @@ id btn_delete
 id btn_edit_password
 id btn_generate
 id btn_login
+id btn_register
 id btn_remove_favorite
 id btn_save
 id buttonPanel
@@ -3641,10 +3642,12 @@ id endToStart
 id enterAlways
 id enterAlwaysCollapsed
 id escape
+id et_confirm_pin
 id et_email
 id et_new_password
 id et_password
 id et_password_input
+id et_pin
 id et_username_input
 id et_website_input
 id exitUntilCollapsed
@@ -3842,6 +3845,8 @@ id progress_horizontal
 id radio
 id ratio
 id rectangles
+id register
+id registerActivity
 id report_drawn
 id reverseSawtooth
 id right
@@ -4126,6 +4131,7 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_auth
 layout activity_main
+layout activity_register
 layout activity_splash
 layout custom_dialog
 layout design_bottom_navigation_item

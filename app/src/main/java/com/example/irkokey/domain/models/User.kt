@@ -9,9 +9,9 @@ import androidx.room.PrimaryKey
 data class User(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
-    val id: Int,
-    @ColumnInfo(name = "email")
-    val email: String,
-    @ColumnInfo(name = "user_password_hash")
-    val userPassword: String
+    val id: Int = 1,
+    @ColumnInfo(name = "hashed_email")
+    val hashedEmail: String,
+    @ColumnInfo(name = "hashed_password")
+    val hashedPassword: String
 )

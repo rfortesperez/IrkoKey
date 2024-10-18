@@ -308,9 +308,9 @@ font poppins_light
 font poppins_regular
 font poppins_semibold
 id action_loginFragment_to_mainActivity
-id action_mainActivity_to_SplashActivity
+id action_registerActivity_to_mainActivity
 id action_splashActivity_to_loginFragment
-id action_splashActivity_to_mainActivity
+id action_splashActivity_to_registerActivity
 id bottomNavigationView
 id bottom_nav_graph
 id btn_add_favorite
@@ -319,13 +319,16 @@ id btn_delete
 id btn_edit_password
 id btn_generate
 id btn_login
+id btn_register
 id btn_remove_favorite
 id btn_save
 id create_title
+id et_confirm_pin
 id et_email
 id et_new_password
 id et_password
 id et_password_input
+id et_pin
 id et_username_input
 id et_website_input
 id guideline
@@ -341,6 +344,8 @@ id navigate_backup
 id navigate_explore_passwords
 id navigate_favorite
 id navigate_logout
+id register
+id registerActivity
 id row_favorite
 id row_password
 id rv_favorite_passwords
@@ -366,6 +371,7 @@ id tv_website
 id viewPager2
 layout activity_auth
 layout activity_main
+layout activity_register
 layout activity_splash
 layout dialog_edit
 layout fragment_backup

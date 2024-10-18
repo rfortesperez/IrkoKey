@@ -72,10 +72,6 @@
         "source": "C:\\Users\\rfort\\.gradle\\daemon\\8.6\\com.example.irkokey.app-main-54:\\layout\\fragment_favorite.xml"
     },
     {
-        "merged": "com.example.irkokey.app-debug-52:/layout_item_favorite_password.xml.flat",
-        "source": "com.example.irkokey.app-main-54:/layout/item_favorite_password.xml"
-    },
-    {
         "merged": "C:\\Users\\rfort\\.gradle\\daemon\\8.6\\com.example.irkokey.app-debug-52:\\drawable_irko_key_high_resolution_logo_white_transparent_.png.flat",
         "source": "C:\\Users\\rfort\\.gradle\\daemon\\8.6\\com.example.irkokey.app-main-54:\\drawable\\irko_key_high_resolution_logo_white_transparent_.png"
     },
@@ -92,12 +88,12 @@
         "source": "C:\\Users\\rfort\\.gradle\\daemon\\8.6\\com.example.irkokey.app-main-54:\\drawable\\ic_launcher_background.xml"
     },
     {
-        "merged": "C:\\Users\\rfort\\.gradle\\daemon\\8.6\\com.example.irkokey.app-debug-52:\\layout_activity_main.xml.flat",
-        "source": "C:\\Users\\rfort\\.gradle\\daemon\\8.6\\com.example.irkokey.app-main-54:\\layout\\activity_main.xml"
-    },
-    {
         "merged": "C:\\Users\\rfort\\.gradle\\daemon\\8.6\\com.example.irkokey.app-debug-52:\\drawable_baseline_password_24.xml.flat",
         "source": "C:\\Users\\rfort\\.gradle\\daemon\\8.6\\com.example.irkokey.app-main-54:\\drawable\\baseline_password_24.xml"
+    },
+    {
+        "merged": "C:\\Users\\rfort\\.gradle\\daemon\\8.6\\com.example.irkokey.app-debug-52:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\rfort\\.gradle\\daemon\\8.6\\com.example.irkokey.app-main-54:\\layout\\activity_main.xml"
     },
     {
         "merged": "C:\\Users\\rfort\\.gradle\\daemon\\8.6\\com.example.irkokey.app-debug-52:\\mipmap-hdpi_ic_launcher_round.webp.flat",
@@ -208,7 +204,15 @@
         "source": "C:\\Users\\rfort\\.gradle\\daemon\\8.6\\com.example.irkokey.app-main-54:\\navigation\\bottom_nav_graph.xml"
     },
     {
+        "merged": "com.example.irkokey.app-debug-52:/navigation_nav_graph.xml.flat",
+        "source": "com.example.irkokey.app-main-54:/navigation/nav_graph.xml"
+    },
+    {
         "merged": "C:\\Users\\rfort\\.gradle\\daemon\\8.6\\com.example.irkokey.app-debug-52:\\mipmap-mdpi_ic_launcher_round.webp.flat",
         "source": "C:\\Users\\rfort\\.gradle\\daemon\\8.6\\com.example.irkokey.app-main-54:\\mipmap-mdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.irkokey.app-debug-52:/layout_activity_register.xml.flat",
+        "source": "com.example.irkokey.app-main-54:/layout/activity_register.xml"
     }
 ]

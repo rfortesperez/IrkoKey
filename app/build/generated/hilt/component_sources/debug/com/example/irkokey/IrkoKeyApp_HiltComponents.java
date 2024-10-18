@@ -12,6 +12,8 @@ import com.example.irkokey.presentation.modules.login.LoginViewModel_HiltModules
 import com.example.irkokey.presentation.modules.main.MainActivity_GeneratedInjector;
 import com.example.irkokey.presentation.modules.passwords.PasswordsFragment_GeneratedInjector;
 import com.example.irkokey.presentation.modules.passwords.PasswordsViewModel_HiltModules;
+import com.example.irkokey.presentation.modules.register.RegisterActivity_GeneratedInjector;
+import com.example.irkokey.presentation.modules.register.RegisterViewModel_HiltModules;
 import com.example.irkokey.presentation.modules.splash.SplashActivity_GeneratedInjector;
 import com.example.irkokey.presentation.modules.splash.SplashViewModel_HiltModules;
 import dagger.Binds;
@@ -162,6 +164,7 @@ public final class IrkoKeyApp_HiltComponents {
           ViewModelCBuilderModule.class,
           LoginViewModel_HiltModules.KeyModule.class,
           PasswordsViewModel_HiltModules.KeyModule.class,
+          RegisterViewModel_HiltModules.KeyModule.class,
           SplashViewModel_HiltModules.KeyModule.class
       }
   )
@@ -186,6 +189,7 @@ public final class IrkoKeyApp_HiltComponents {
   @ActivityScoped
   public abstract static class ActivityC implements AuthActivity_GeneratedInjector,
       MainActivity_GeneratedInjector,
+      RegisterActivity_GeneratedInjector,
       SplashActivity_GeneratedInjector,
       ActivityComponent,
       DefaultViewModelFactories.ActivityEntryPoint,
@@ -205,6 +209,7 @@ public final class IrkoKeyApp_HiltComponents {
           HiltWrapper_HiltViewModelFactory_ViewModelModule.class,
           LoginViewModel_HiltModules.BindsModule.class,
           PasswordsViewModel_HiltModules.BindsModule.class,
+          RegisterViewModel_HiltModules.BindsModule.class,
           SplashViewModel_HiltModules.BindsModule.class
       }
   )

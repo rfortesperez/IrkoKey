@@ -3,10 +3,11 @@ package com.example.irkokey.presentation.modules.splash;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.irkokey.R;
 import com.example.irkokey.presentation.modules.auth.AuthActivity;
-import com.example.irkokey.presentation.modules.main.MainActivity;
+import com.example.irkokey.presentation.modules.register.RegisterActivity;
 import dagger.hilt.android.AndroidEntryPoint;
 
 @dagger.hilt.android.AndroidEntryPoint

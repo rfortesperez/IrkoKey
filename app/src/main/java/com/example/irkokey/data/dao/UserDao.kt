@@ -13,7 +13,7 @@ interface UserDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertUser(user: User)
 
-    // Get a user by email
-    @Query("SELECT * FROM user_table WHERE email = :email")
-    suspend fun getUserByEmail(email: String): User?
+    //Get user by Id
+    @Query("SELECT * FROM user_table WHERE id = :id")
+    suspend fun getUserById(id: Int): User
 }

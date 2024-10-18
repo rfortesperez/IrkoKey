@@ -3,7 +3,6 @@ package com.example.irkokey.data.dao;
 import android.database.Cursor;
 import android.os.CancellationSignal;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.room.CoroutinesRoom;
 import androidx.room.EntityInsertionAdapter;
 import androidx.room.RoomDatabase;
@@ -36,29 +35,29 @@ public final class UserDao_Impl implements UserDao {
       @Override
       @NonNull
       protected String createQuery() {
-        return "INSERT OR REPLACE INTO `user_table` (`id`,`email`,`user_password_hash`) VALUES (nullif(?, 0),?,?)";
+        return "INSERT OR REPLACE INTO `user_table` (`id`,`hashed_email`,`hashed_password`) VALUES (nullif(?, 0),?,?)";
       }
 
       @Override
       protected void bind(@NonNull final SupportSQLiteStatement statement,
           @NonNull final User entity) {
         statement.bindLong(1, entity.getId());
-        if (entity.getEmail() == null) {
+        if (entity.getHashedEmail() == null) {
           statement.bindNull(2);
         } else {
-          statement.bindString(2, entity.getEmail());
+          statement.bindString(2, entity.getHashedEmail());
         }
-        if (entity.getUserPassword() == null) {
+        if (entity.getHashedPassword() == null) {
           statement.bindNull(3);
         } else {
-          statement.bindString(3, entity.getUserPassword());
+          statement.bindString(3, entity.getHashedPassword());
         }
       }
     };
   }
 
   @Override
-  public Object insertUser(final User user, final Continuation<? super Unit> arg1) {
+  public Object insertUser(final User user, final Continuation<? super Unit> $completion) {
     return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
       @Override
       @NonNull
@@ -72,46 +71,42 @@ public final class UserDao_Impl implements UserDao {
           __db.endTransaction();
         }
       }
-    }, arg1);
+    }, $completion);
   }
 
   @Override
-  public Object getUserByEmail(final String email, final Continuation<? super User> arg1) {
-    final String _sql = "SELECT * FROM user_table WHERE email = ?";
+  public Object getUserById(final int id, final Continuation<? super User> $completion) {
+    final String _sql = "SELECT * FROM user_table WHERE id = ?";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
     int _argIndex = 1;
-    if (email == null) {
-      _statement.bindNull(_argIndex);
-    } else {
-      _statement.bindString(_argIndex, email);
-    }
+    _statement.bindLong(_argIndex, id);
     final CancellationSignal _cancellationSignal = DBUtil.createCancellationSignal();
     return CoroutinesRoom.execute(__db, false, _cancellationSignal, new Callable<User>() {
       @Override
-      @Nullable
+      @NonNull
       public User call() throws Exception {
         final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
         try {
           final int _cursorIndexOfId = CursorUtil.getColumnIndexOrThrow(_cursor, "id");
-          final int _cursorIndexOfEmail = CursorUtil.getColumnIndexOrThrow(_cursor, "email");
-          final int _cursorIndexOfUserPassword = CursorUtil.getColumnIndexOrThrow(_cursor, "user_password_hash");
+          final int _cursorIndexOfHashedEmail = CursorUtil.getColumnIndexOrThrow(_cursor, "hashed_email");
+          final int _cursorIndexOfHashedPassword = CursorUtil.getColumnIndexOrThrow(_cursor, "hashed_password");
           final User _result;
           if (_cursor.moveToFirst()) {
             final int _tmpId;
             _tmpId = _cursor.getInt(_cursorIndexOfId);
-            final String _tmpEmail;
-            if (_cursor.isNull(_cursorIndexOfEmail)) {
-              _tmpEmail = null;
+            final String _tmpHashedEmail;
+            if (_cursor.isNull(_cursorIndexOfHashedEmail)) {
+              _tmpHashedEmail = null;
             } else {
-              _tmpEmail = _cursor.getString(_cursorIndexOfEmail);
+              _tmpHashedEmail = _cursor.getString(_cursorIndexOfHashedEmail);
             }
-            final String _tmpUserPassword;
-            if (_cursor.isNull(_cursorIndexOfUserPassword)) {
-              _tmpUserPassword = null;
+            final String _tmpHashedPassword;
+            if (_cursor.isNull(_cursorIndexOfHashedPassword)) {
+              _tmpHashedPassword = null;
             } else {
-              _tmpUserPassword = _cursor.getString(_cursorIndexOfUserPassword);
+              _tmpHashedPassword = _cursor.getString(_cursorIndexOfHashedPassword);
             }
-            _result = new User(_tmpId,_tmpEmail,_tmpUserPassword);
+            _result = new User(_tmpId,_tmpHashedEmail,_tmpHashedPassword);
           } else {
             _result = null;
           }
@@ -121,7 +116,7 @@ public final class UserDao_Impl implements UserDao {
           _statement.release();
         }
       }
-    }, arg1);
+    }, $completion);
   }
 
   @NonNull
