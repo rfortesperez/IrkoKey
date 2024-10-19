@@ -6,20 +6,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.irkokey.R;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
 
 public final class FragmentLoginBinding implements ViewBinding {
   @NonNull
-  private final ConstraintLayout rootView;
+  private final LinearLayout rootView;
 
   @NonNull
   public final Button btnLogin;
@@ -28,23 +30,28 @@ public final class FragmentLoginBinding implements ViewBinding {
   public final EditText etEmail;
 
   @NonNull
-  public final EditText etPassword;
+  public final TextInputEditText etPasswordInput;
+
+  @NonNull
+  public final TextInputLayout tilLoginPassword;
 
   @NonNull
   public final TextView tvIntroduceData;
 
-  private FragmentLoginBinding(@NonNull ConstraintLayout rootView, @NonNull Button btnLogin,
-      @NonNull EditText etEmail, @NonNull EditText etPassword, @NonNull TextView tvIntroduceData) {
+  private FragmentLoginBinding(@NonNull LinearLayout rootView, @NonNull Button btnLogin,
+      @NonNull EditText etEmail, @NonNull TextInputEditText etPasswordInput,
+      @NonNull TextInputLayout tilLoginPassword, @NonNull TextView tvIntroduceData) {
     this.rootView = rootView;
     this.btnLogin = btnLogin;
     this.etEmail = etEmail;
-    this.etPassword = etPassword;
+    this.etPasswordInput = etPasswordInput;
+    this.tilLoginPassword = tilLoginPassword;
     this.tvIntroduceData = tvIntroduceData;
   }
 
   @Override
   @NonNull
-  public ConstraintLayout getRoot() {
+  public LinearLayout getRoot() {
     return rootView;
   }
 
@@ -81,9 +88,15 @@ public final class FragmentLoginBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.et_password;
-      EditText etPassword = ViewBindings.findChildViewById(rootView, id);
-      if (etPassword == null) {
+      id = R.id.et_password_input;
+      TextInputEditText etPasswordInput = ViewBindings.findChildViewById(rootView, id);
+      if (etPasswordInput == null) {
+        break missingId;
+      }
+
+      id = R.id.til_login_password;
+      TextInputLayout tilLoginPassword = ViewBindings.findChildViewById(rootView, id);
+      if (tilLoginPassword == null) {
         break missingId;
       }
 
@@ -93,8 +106,8 @@ public final class FragmentLoginBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentLoginBinding((ConstraintLayout) rootView, btnLogin, etEmail, etPassword,
-          tvIntroduceData);
+      return new FragmentLoginBinding((LinearLayout) rootView, btnLogin, etEmail, etPasswordInput,
+          tilLoginPassword, tvIntroduceData);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

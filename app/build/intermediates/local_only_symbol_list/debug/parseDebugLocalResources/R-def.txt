@@ -296,6 +296,7 @@ drawable baseline_logout_24
 drawable baseline_password_24
 drawable button_rounded_corners
 drawable et_rounded
+drawable fondo_18
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable irko_key_high_resolution_logo_white_transparent_
@@ -326,7 +327,6 @@ id create_title
 id et_confirm_pin
 id et_email
 id et_new_password
-id et_password
 id et_password_input
 id et_pin
 id et_username_input
@@ -354,7 +354,10 @@ id splashActivity
 id tabLayout
 id textInputLayout
 id textInputLayoutFav
+id til_confirm_pin
 id til_create_password
+id til_login_password
+id til_pin
 id tv_backup
 id tv_capital_letters
 id tv_choice

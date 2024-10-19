@@ -12,6 +12,8 @@ import androidx.annotation.Nullable;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.irkokey.R;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -24,26 +26,35 @@ public final class ActivityRegisterBinding implements ViewBinding {
   public final Button btnRegister;
 
   @NonNull
-  public final EditText etConfirmPin;
+  public final TextInputEditText etConfirmPin;
 
   @NonNull
   public final EditText etEmail;
 
   @NonNull
-  public final EditText etPin;
+  public final TextInputEditText etPin;
 
   @NonNull
   public final LinearLayout register;
 
+  @NonNull
+  public final TextInputLayout tilConfirmPin;
+
+  @NonNull
+  public final TextInputLayout tilPin;
+
   private ActivityRegisterBinding(@NonNull LinearLayout rootView, @NonNull Button btnRegister,
-      @NonNull EditText etConfirmPin, @NonNull EditText etEmail, @NonNull EditText etPin,
-      @NonNull LinearLayout register) {
+      @NonNull TextInputEditText etConfirmPin, @NonNull EditText etEmail,
+      @NonNull TextInputEditText etPin, @NonNull LinearLayout register,
+      @NonNull TextInputLayout tilConfirmPin, @NonNull TextInputLayout tilPin) {
     this.rootView = rootView;
     this.btnRegister = btnRegister;
     this.etConfirmPin = etConfirmPin;
     this.etEmail = etEmail;
     this.etPin = etPin;
     this.register = register;
+    this.tilConfirmPin = tilConfirmPin;
+    this.tilPin = tilPin;
   }
 
   @Override
@@ -80,7 +91,7 @@ public final class ActivityRegisterBinding implements ViewBinding {
       }
 
       id = R.id.et_confirm_pin;
-      EditText etConfirmPin = ViewBindings.findChildViewById(rootView, id);
+      TextInputEditText etConfirmPin = ViewBindings.findChildViewById(rootView, id);
       if (etConfirmPin == null) {
         break missingId;
       }
@@ -92,15 +103,27 @@ public final class ActivityRegisterBinding implements ViewBinding {
       }
 
       id = R.id.et_pin;
-      EditText etPin = ViewBindings.findChildViewById(rootView, id);
+      TextInputEditText etPin = ViewBindings.findChildViewById(rootView, id);
       if (etPin == null) {
         break missingId;
       }
 
       LinearLayout register = (LinearLayout) rootView;
 
+      id = R.id.til_confirm_pin;
+      TextInputLayout tilConfirmPin = ViewBindings.findChildViewById(rootView, id);
+      if (tilConfirmPin == null) {
+        break missingId;
+      }
+
+      id = R.id.til_pin;
+      TextInputLayout tilPin = ViewBindings.findChildViewById(rootView, id);
+      if (tilPin == null) {
+        break missingId;
+      }
+
       return new ActivityRegisterBinding((LinearLayout) rootView, btnRegister, etConfirmPin,
-          etEmail, etPin, register);
+          etEmail, etPin, register, tilConfirmPin, tilPin);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

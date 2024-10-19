@@ -3340,6 +3340,7 @@ drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
 drawable et_rounded
+drawable fondo_18
 drawable ic_arrow_back_black_24
 drawable ic_call_answer
 drawable ic_call_answer_low
@@ -3645,7 +3646,6 @@ id escape
 id et_confirm_pin
 id et_email
 id et_new_password
-id et_password
 id et_password_input
 id et_pin
 id et_username_input
@@ -3957,7 +3957,10 @@ id textinput_helper_text
 id textinput_placeholder
 id textinput_prefix_text
 id textinput_suffix_text
+id til_confirm_pin
 id til_create_password
+id til_login_password
+id til_pin
 id time
 id title
 id titleDividerNoCustom

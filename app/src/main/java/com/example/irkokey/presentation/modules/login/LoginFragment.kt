@@ -35,7 +35,7 @@ class LoginFragment : Fragment() {
             btnLogin.setOnClickListener {
                 loginViewModel.didClickOnLogin(
                     etEmail.text.toString(),
-                    etPassword.text.toString()
+                    etPasswordInput.text.toString()
                 )
             }
         }
