@@ -38,6 +38,8 @@ public final class PasswordDao_Impl implements PasswordDao {
 
   private final SharedSQLiteStatement __preparedStmtOfChangeFavorite;
 
+  private final SharedSQLiteStatement __preparedStmtOfDeleteAllPasswords;
+
   public PasswordDao_Impl(@NonNull final RoomDatabase __db) {
     this.__db = __db;
     this.__insertionAdapterOfPassword = new EntityInsertionAdapter<Password>(__db) {
@@ -94,10 +96,19 @@ public final class PasswordDao_Impl implements PasswordDao {
         return _query;
       }
     };
+    this.__preparedStmtOfDeleteAllPasswords = new SharedSQLiteStatement(__db) {
+      @Override
+      @NonNull
+      public String createQuery() {
+        final String _query = "DELETE FROM passwords_table";
+        return _query;
+      }
+    };
   }
 
   @Override
-  public Object insertPassword(final Password password, final Continuation<? super Unit> arg1) {
+  public Object insertPassword(final Password password,
+      final Continuation<? super Unit> $completion) {
     return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
       @Override
       @NonNull
@@ -111,12 +122,12 @@ public final class PasswordDao_Impl implements PasswordDao {
           __db.endTransaction();
         }
       }
-    }, arg1);
+    }, $completion);
   }
 
   @Override
   public Object updatePassword(final int id, final String password,
-      final Continuation<? super Unit> arg2) {
+      final Continuation<? super Unit> $completion) {
     return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
       @Override
       @NonNull
@@ -143,11 +154,11 @@ public final class PasswordDao_Impl implements PasswordDao {
           __preparedStmtOfUpdatePassword.release(_stmt);
         }
       }
-    }, arg2);
+    }, $completion);
   }
 
   @Override
-  public Object deletePassword(final int id, final Continuation<? super Unit> arg1) {
+  public Object deletePassword(final int id, final Continuation<? super Unit> $completion) {
     return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
       @Override
       @NonNull
@@ -168,12 +179,12 @@ public final class PasswordDao_Impl implements PasswordDao {
           __preparedStmtOfDeletePassword.release(_stmt);
         }
       }
-    }, arg1);
+    }, $completion);
   }
 
   @Override
   public Object changeFavorite(final int id, final boolean favorite,
-      final Continuation<? super Unit> arg2) {
+      final Continuation<? super Unit> $completion) {
     return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
       @Override
       @NonNull
@@ -197,7 +208,30 @@ public final class PasswordDao_Impl implements PasswordDao {
           __preparedStmtOfChangeFavorite.release(_stmt);
         }
       }
-    }, arg2);
+    }, $completion);
+  }
+
+  @Override
+  public Object deleteAllPasswords(final Continuation<? super Unit> $completion) {
+    return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
+      @Override
+      @NonNull
+      public Unit call() throws Exception {
+        final SupportSQLiteStatement _stmt = __preparedStmtOfDeleteAllPasswords.acquire();
+        try {
+          __db.beginTransaction();
+          try {
+            _stmt.executeUpdateDelete();
+            __db.setTransactionSuccessful();
+            return Unit.INSTANCE;
+          } finally {
+            __db.endTransaction();
+          }
+        } finally {
+          __preparedStmtOfDeleteAllPasswords.release(_stmt);
+        }
+      }
+    }, $completion);
   }
 
   @Override
@@ -259,7 +293,7 @@ public final class PasswordDao_Impl implements PasswordDao {
   }
 
   @Override
-  public Object getPasswordById(final int id, final Continuation<? super Password> arg1) {
+  public Object getPasswordById(final int id, final Continuation<? super Password> $completion) {
     final String _sql = "SELECT * FROM passwords_table WHERE id = ?";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
     int _argIndex = 1;
@@ -312,7 +346,7 @@ public final class PasswordDao_Impl implements PasswordDao {
           _statement.release();
         }
       }
-    }, arg1);
+    }, $completion);
   }
 
   @Override

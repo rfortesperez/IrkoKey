@@ -3,6 +3,7 @@ package com.example.irkokey.common.di
 import android.app.Application
 import android.content.ClipboardManager
 import android.content.Context
+import android.os.Environment
 import com.example.irkokey.common.infraestructure.Preferences
 import com.example.irkokey.common.utils.EncryptionUtil
 import com.example.irkokey.common.utils.PasswordStrengthUtil
@@ -15,6 +16,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import java.io.File
 import javax.crypto.SecretKey
 import javax.inject.Singleton
 
@@ -76,5 +78,10 @@ object AppModule {
     @Singleton
     fun provideClipboardManager(context: Context): ClipboardManager {
         return context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+    }
+    @Provides
+    @Singleton
+    fun provideCsvFile(): File {
+        return File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "database_export.csv")
     }
 }

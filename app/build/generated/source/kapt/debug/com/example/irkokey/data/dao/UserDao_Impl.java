@@ -7,6 +7,7 @@ import androidx.room.CoroutinesRoom;
 import androidx.room.EntityInsertionAdapter;
 import androidx.room.RoomDatabase;
 import androidx.room.RoomSQLiteQuery;
+import androidx.room.SharedSQLiteStatement;
 import androidx.room.util.CursorUtil;
 import androidx.room.util.DBUtil;
 import androidx.sqlite.db.SupportSQLiteStatement;
@@ -28,6 +29,8 @@ public final class UserDao_Impl implements UserDao {
   private final RoomDatabase __db;
 
   private final EntityInsertionAdapter<User> __insertionAdapterOfUser;
+
+  private final SharedSQLiteStatement __preparedStmtOfDeleteAllUsers;
 
   public UserDao_Impl(@NonNull final RoomDatabase __db) {
     this.__db = __db;
@@ -54,6 +57,14 @@ public final class UserDao_Impl implements UserDao {
         }
       }
     };
+    this.__preparedStmtOfDeleteAllUsers = new SharedSQLiteStatement(__db) {
+      @Override
+      @NonNull
+      public String createQuery() {
+        final String _query = "DELETE FROM user_table";
+        return _query;
+      }
+    };
   }
 
   @Override
@@ -69,6 +80,29 @@ public final class UserDao_Impl implements UserDao {
           return Unit.INSTANCE;
         } finally {
           __db.endTransaction();
+        }
+      }
+    }, $completion);
+  }
+
+  @Override
+  public Object deleteAllUsers(final Continuation<? super Unit> $completion) {
+    return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
+      @Override
+      @NonNull
+      public Unit call() throws Exception {
+        final SupportSQLiteStatement _stmt = __preparedStmtOfDeleteAllUsers.acquire();
+        try {
+          __db.beginTransaction();
+          try {
+            _stmt.executeUpdateDelete();
+            __db.setTransactionSuccessful();
+            return Unit.INSTANCE;
+          } finally {
+            __db.endTransaction();
+          }
+        } finally {
+          __preparedStmtOfDeleteAllUsers.release(_stmt);
         }
       }
     }, $completion);

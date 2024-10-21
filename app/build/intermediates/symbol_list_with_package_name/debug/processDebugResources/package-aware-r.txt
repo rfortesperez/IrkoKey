@@ -3555,7 +3555,9 @@ id btn_add_favorite
 id btn_copy_password
 id btn_delete
 id btn_edit_password
+id btn_export
 id btn_generate
+id btn_import
 id btn_login
 id btn_register
 id btn_remove_favorite
@@ -3645,6 +3647,7 @@ id enterAlwaysCollapsed
 id escape
 id et_confirm_pin
 id et_email
+id et_introduce_pin
 id et_new_password
 id et_password_input
 id et_pin
@@ -3834,6 +3837,7 @@ id parent_matrix
 id password_toggle
 id path
 id pathRelative
+id pb_backup
 id peekHeight
 id percent
 id pin
@@ -3981,6 +3985,8 @@ id transition_scene_layoutid_cache
 id transition_transform
 id triangle
 id tv_backup
+id tv_backup_description
+id tv_backup_information
 id tv_capital_letters
 id tv_choice
 id tv_have_lenght
@@ -3990,6 +3996,7 @@ id tv_numbers
 id tv_password
 id tv_password_fav
 id tv_password_requirements
+id tv_question
 id tv_symbols
 id tv_userName
 id tv_website
@@ -4153,6 +4160,7 @@ layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout dialog_edit
+layout dialog_pin
 layout fragment_backup
 layout fragment_create
 layout fragment_explore_password

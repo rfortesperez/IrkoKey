@@ -4,7 +4,9 @@ package com.example.irkokey.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,19 +19,46 @@ import java.lang.String;
 
 public final class FragmentBackupBinding implements ViewBinding {
   @NonNull
-  private final FrameLayout rootView;
+  private final LinearLayout rootView;
+
+  @NonNull
+  public final Button btnExport;
+
+  @NonNull
+  public final Button btnImport;
+
+  @NonNull
+  public final ProgressBar pbBackup;
 
   @NonNull
   public final TextView tvBackup;
 
-  private FragmentBackupBinding(@NonNull FrameLayout rootView, @NonNull TextView tvBackup) {
+  @NonNull
+  public final TextView tvBackupDescription;
+
+  @NonNull
+  public final TextView tvBackupInformation;
+
+  @NonNull
+  public final TextView tvQuestion;
+
+  private FragmentBackupBinding(@NonNull LinearLayout rootView, @NonNull Button btnExport,
+      @NonNull Button btnImport, @NonNull ProgressBar pbBackup, @NonNull TextView tvBackup,
+      @NonNull TextView tvBackupDescription, @NonNull TextView tvBackupInformation,
+      @NonNull TextView tvQuestion) {
     this.rootView = rootView;
+    this.btnExport = btnExport;
+    this.btnImport = btnImport;
+    this.pbBackup = pbBackup;
     this.tvBackup = tvBackup;
+    this.tvBackupDescription = tvBackupDescription;
+    this.tvBackupInformation = tvBackupInformation;
+    this.tvQuestion = tvQuestion;
   }
 
   @Override
   @NonNull
-  public FrameLayout getRoot() {
+  public LinearLayout getRoot() {
     return rootView;
   }
 
@@ -54,13 +83,50 @@ public final class FragmentBackupBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.btn_export;
+      Button btnExport = ViewBindings.findChildViewById(rootView, id);
+      if (btnExport == null) {
+        break missingId;
+      }
+
+      id = R.id.btn_import;
+      Button btnImport = ViewBindings.findChildViewById(rootView, id);
+      if (btnImport == null) {
+        break missingId;
+      }
+
+      id = R.id.pb_backup;
+      ProgressBar pbBackup = ViewBindings.findChildViewById(rootView, id);
+      if (pbBackup == null) {
+        break missingId;
+      }
+
       id = R.id.tv_backup;
       TextView tvBackup = ViewBindings.findChildViewById(rootView, id);
       if (tvBackup == null) {
         break missingId;
       }
 
-      return new FragmentBackupBinding((FrameLayout) rootView, tvBackup);
+      id = R.id.tv_backup_description;
+      TextView tvBackupDescription = ViewBindings.findChildViewById(rootView, id);
+      if (tvBackupDescription == null) {
+        break missingId;
+      }
+
+      id = R.id.tv_backup_information;
+      TextView tvBackupInformation = ViewBindings.findChildViewById(rootView, id);
+      if (tvBackupInformation == null) {
+        break missingId;
+      }
+
+      id = R.id.tv_question;
+      TextView tvQuestion = ViewBindings.findChildViewById(rootView, id);
+      if (tvQuestion == null) {
+        break missingId;
+      }
+
+      return new FragmentBackupBinding((LinearLayout) rootView, btnExport, btnImport, pbBackup,
+          tvBackup, tvBackupDescription, tvBackupInformation, tvQuestion);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

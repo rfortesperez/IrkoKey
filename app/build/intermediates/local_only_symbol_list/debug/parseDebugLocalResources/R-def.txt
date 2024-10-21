@@ -318,7 +318,9 @@ id btn_add_favorite
 id btn_copy_password
 id btn_delete
 id btn_edit_password
+id btn_export
 id btn_generate
+id btn_import
 id btn_login
 id btn_register
 id btn_remove_favorite
@@ -326,6 +328,7 @@ id btn_save
 id create_title
 id et_confirm_pin
 id et_email
+id et_introduce_pin
 id et_new_password
 id et_password_input
 id et_pin
@@ -344,6 +347,7 @@ id navigate_backup
 id navigate_explore_passwords
 id navigate_favorite
 id navigate_logout
+id pb_backup
 id register
 id registerActivity
 id row_favorite
@@ -359,6 +363,8 @@ id til_create_password
 id til_login_password
 id til_pin
 id tv_backup
+id tv_backup_description
+id tv_backup_information
 id tv_capital_letters
 id tv_choice
 id tv_have_lenght
@@ -368,6 +374,7 @@ id tv_numbers
 id tv_password
 id tv_password_fav
 id tv_password_requirements
+id tv_question
 id tv_symbols
 id tv_userName
 id tv_website
@@ -377,6 +384,7 @@ layout activity_main
 layout activity_register
 layout activity_splash
 layout dialog_edit
+layout dialog_pin
 layout fragment_backup
 layout fragment_create
 layout fragment_explore_password

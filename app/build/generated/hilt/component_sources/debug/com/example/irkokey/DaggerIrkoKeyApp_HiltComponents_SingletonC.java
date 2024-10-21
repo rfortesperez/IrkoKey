@@ -27,6 +27,9 @@ import com.example.irkokey.data.database.PasswordRoomDatabase;
 import com.example.irkokey.data.repository.PasswordRepository;
 import com.example.irkokey.data.repository.UserRepository;
 import com.example.irkokey.presentation.modules.auth.AuthActivity;
+import com.example.irkokey.presentation.modules.backup.BackupFragment;
+import com.example.irkokey.presentation.modules.backup.BackupViewModel;
+import com.example.irkokey.presentation.modules.backup.BackupViewModel_HiltModules_KeyModule_ProvideFactory;
 import com.example.irkokey.presentation.modules.createPassword.CreateFragment;
 import com.example.irkokey.presentation.modules.createPassword.CreateViewModel;
 import com.example.irkokey.presentation.modules.createPassword.CreateViewModel_HiltModules_KeyModule_ProvideFactory;
@@ -356,6 +359,10 @@ public final class DaggerIrkoKeyApp_HiltComponents_SingletonC {
     }
 
     @Override
+    public void injectBackupFragment(BackupFragment backupFragment) {
+    }
+
+    @Override
     public void injectCreateFragment(CreateFragment createFragment) {
     }
 
@@ -459,7 +466,7 @@ public final class DaggerIrkoKeyApp_HiltComponents_SingletonC {
 
     @Override
     public Set<String> getViewModelKeys() {
-      return SetBuilder.<String>newSetBuilder(6).add(CreateViewModel_HiltModules_KeyModule_ProvideFactory.provide()).add(FavoriteViewModel_HiltModules_KeyModule_ProvideFactory.provide()).add(LoginViewModel_HiltModules_KeyModule_ProvideFactory.provide()).add(PasswordsViewModel_HiltModules_KeyModule_ProvideFactory.provide()).add(RegisterViewModel_HiltModules_KeyModule_ProvideFactory.provide()).add(SplashViewModel_HiltModules_KeyModule_ProvideFactory.provide()).build();
+      return SetBuilder.<String>newSetBuilder(7).add(BackupViewModel_HiltModules_KeyModule_ProvideFactory.provide()).add(CreateViewModel_HiltModules_KeyModule_ProvideFactory.provide()).add(FavoriteViewModel_HiltModules_KeyModule_ProvideFactory.provide()).add(LoginViewModel_HiltModules_KeyModule_ProvideFactory.provide()).add(PasswordsViewModel_HiltModules_KeyModule_ProvideFactory.provide()).add(RegisterViewModel_HiltModules_KeyModule_ProvideFactory.provide()).add(SplashViewModel_HiltModules_KeyModule_ProvideFactory.provide()).build();
     }
 
     @Override
@@ -484,6 +491,8 @@ public final class DaggerIrkoKeyApp_HiltComponents_SingletonC {
     private final ActivityRetainedCImpl activityRetainedCImpl;
 
     private final ViewModelCImpl viewModelCImpl = this;
+
+    private Provider<BackupViewModel> backupViewModelProvider;
 
     private Provider<CreateViewModel> createViewModelProvider;
 
@@ -510,17 +519,18 @@ public final class DaggerIrkoKeyApp_HiltComponents_SingletonC {
     @SuppressWarnings("unchecked")
     private void initialize(final SavedStateHandle savedStateHandleParam,
         final ViewModelLifecycle viewModelLifecycleParam) {
-      this.createViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 0);
-      this.favoriteViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 1);
-      this.loginViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 2);
-      this.passwordsViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 3);
-      this.registerViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 4);
-      this.splashViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 5);
+      this.backupViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 0);
+      this.createViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 1);
+      this.favoriteViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 2);
+      this.loginViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 3);
+      this.passwordsViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 4);
+      this.registerViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 5);
+      this.splashViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 6);
     }
 
     @Override
     public Map<String, Provider<ViewModel>> getHiltViewModelMap() {
-      return MapBuilder.<String, Provider<ViewModel>>newMapBuilder(6).put("com.example.irkokey.presentation.modules.createPassword.CreateViewModel", ((Provider) createViewModelProvider)).put("com.example.irkokey.presentation.modules.favoritePasswords.FavoriteViewModel", ((Provider) favoriteViewModelProvider)).put("com.example.irkokey.presentation.modules.login.LoginViewModel", ((Provider) loginViewModelProvider)).put("com.example.irkokey.presentation.modules.passwords.PasswordsViewModel", ((Provider) passwordsViewModelProvider)).put("com.example.irkokey.presentation.modules.register.RegisterViewModel", ((Provider) registerViewModelProvider)).put("com.example.irkokey.presentation.modules.splash.SplashViewModel", ((Provider) splashViewModelProvider)).build();
+      return MapBuilder.<String, Provider<ViewModel>>newMapBuilder(7).put("com.example.irkokey.presentation.modules.backup.BackupViewModel", ((Provider) backupViewModelProvider)).put("com.example.irkokey.presentation.modules.createPassword.CreateViewModel", ((Provider) createViewModelProvider)).put("com.example.irkokey.presentation.modules.favoritePasswords.FavoriteViewModel", ((Provider) favoriteViewModelProvider)).put("com.example.irkokey.presentation.modules.login.LoginViewModel", ((Provider) loginViewModelProvider)).put("com.example.irkokey.presentation.modules.passwords.PasswordsViewModel", ((Provider) passwordsViewModelProvider)).put("com.example.irkokey.presentation.modules.register.RegisterViewModel", ((Provider) registerViewModelProvider)).put("com.example.irkokey.presentation.modules.splash.SplashViewModel", ((Provider) splashViewModelProvider)).build();
     }
 
     private static final class SwitchingProvider<T> implements Provider<T> {
@@ -544,22 +554,25 @@ public final class DaggerIrkoKeyApp_HiltComponents_SingletonC {
       @Override
       public T get() {
         switch (id) {
-          case 0: // com.example.irkokey.presentation.modules.createPassword.CreateViewModel 
+          case 0: // com.example.irkokey.presentation.modules.backup.BackupViewModel 
+          return (T) new BackupViewModel(singletonCImpl.provideUserRepositoryProvider.get(), singletonCImpl.providePasswordRepositoryProvider.get(), singletonCImpl.provideEncryptionUtilProvider.get());
+
+          case 1: // com.example.irkokey.presentation.modules.createPassword.CreateViewModel 
           return (T) new CreateViewModel(ApplicationContextModule_ProvideApplicationFactory.provideApplication(singletonCImpl.applicationContextModule), singletonCImpl.providePasswordRepositoryProvider.get(), singletonCImpl.provideEncryptionUtilProvider.get());
 
-          case 1: // com.example.irkokey.presentation.modules.favoritePasswords.FavoriteViewModel 
+          case 2: // com.example.irkokey.presentation.modules.favoritePasswords.FavoriteViewModel 
           return (T) new FavoriteViewModel(singletonCImpl.providePasswordRepositoryProvider.get(), singletonCImpl.provideClipboardManagerProvider.get(), singletonCImpl.provideEncryptionUtilProvider.get());
 
-          case 2: // com.example.irkokey.presentation.modules.login.LoginViewModel 
+          case 3: // com.example.irkokey.presentation.modules.login.LoginViewModel 
           return (T) new LoginViewModel(singletonCImpl.provideUserRepositoryProvider.get(), singletonCImpl.provideEncryptionUtilProvider.get());
 
-          case 3: // com.example.irkokey.presentation.modules.passwords.PasswordsViewModel 
+          case 4: // com.example.irkokey.presentation.modules.passwords.PasswordsViewModel 
           return (T) new PasswordsViewModel(ApplicationContextModule_ProvideApplicationFactory.provideApplication(singletonCImpl.applicationContextModule), singletonCImpl.providePasswordRepositoryProvider.get(), singletonCImpl.provideClipboardManagerProvider.get(), singletonCImpl.provideEncryptionUtilProvider.get());
 
-          case 4: // com.example.irkokey.presentation.modules.register.RegisterViewModel 
+          case 5: // com.example.irkokey.presentation.modules.register.RegisterViewModel 
           return (T) new RegisterViewModel(singletonCImpl.providePreferencesProvider.get(), singletonCImpl.provideUserRepositoryProvider.get(), singletonCImpl.provideEncryptionUtilProvider.get());
 
-          case 5: // com.example.irkokey.presentation.modules.splash.SplashViewModel 
+          case 6: // com.example.irkokey.presentation.modules.splash.SplashViewModel 
           return (T) new SplashViewModel(singletonCImpl.providePreferencesProvider.get());
 
           default: throw new AssertionError(id);
@@ -651,11 +664,11 @@ public final class DaggerIrkoKeyApp_HiltComponents_SingletonC {
 
     private Provider<EncryptionUtil> provideEncryptionUtilProvider;
 
-    private Provider<ClipboardManager> provideClipboardManagerProvider;
-
     private Provider<UserDao> provideUserDaoProvider;
 
     private Provider<UserRepository> provideUserRepositoryProvider;
+
+    private Provider<ClipboardManager> provideClipboardManagerProvider;
 
     private Provider<Preferences> providePreferencesProvider;
 
@@ -672,9 +685,9 @@ public final class DaggerIrkoKeyApp_HiltComponents_SingletonC {
       this.providePasswordDaoProvider = DoubleCheck.provider(new SwitchingProvider<PasswordDao>(singletonCImpl, 1));
       this.providePasswordRepositoryProvider = DoubleCheck.provider(new SwitchingProvider<PasswordRepository>(singletonCImpl, 0));
       this.provideEncryptionUtilProvider = DoubleCheck.provider(new SwitchingProvider<EncryptionUtil>(singletonCImpl, 4));
-      this.provideClipboardManagerProvider = DoubleCheck.provider(new SwitchingProvider<ClipboardManager>(singletonCImpl, 5));
-      this.provideUserDaoProvider = DoubleCheck.provider(new SwitchingProvider<UserDao>(singletonCImpl, 7));
-      this.provideUserRepositoryProvider = DoubleCheck.provider(new SwitchingProvider<UserRepository>(singletonCImpl, 6));
+      this.provideUserDaoProvider = DoubleCheck.provider(new SwitchingProvider<UserDao>(singletonCImpl, 6));
+      this.provideUserRepositoryProvider = DoubleCheck.provider(new SwitchingProvider<UserRepository>(singletonCImpl, 5));
+      this.provideClipboardManagerProvider = DoubleCheck.provider(new SwitchingProvider<ClipboardManager>(singletonCImpl, 7));
       this.providePreferencesProvider = DoubleCheck.provider(new SwitchingProvider<Preferences>(singletonCImpl, 8));
     }
 
@@ -726,14 +739,14 @@ public final class DaggerIrkoKeyApp_HiltComponents_SingletonC {
           case 4: // com.example.irkokey.common.utils.EncryptionUtil 
           return (T) AppModule_ProvideEncryptionUtilFactory.provideEncryptionUtil();
 
-          case 5: // android.content.ClipboardManager 
-          return (T) AppModule_ProvideClipboardManagerFactory.provideClipboardManager(singletonCImpl.provideContextProvider.get());
-
-          case 6: // com.example.irkokey.data.repository.UserRepository 
+          case 5: // com.example.irkokey.data.repository.UserRepository 
           return (T) AppModule_ProvideUserRepositoryFactory.provideUserRepository(singletonCImpl.provideUserDaoProvider.get());
 
-          case 7: // com.example.irkokey.data.dao.UserDao 
+          case 6: // com.example.irkokey.data.dao.UserDao 
           return (T) AppModule_ProvideUserDaoFactory.provideUserDao(singletonCImpl.provideDatabaseProvider.get());
+
+          case 7: // android.content.ClipboardManager 
+          return (T) AppModule_ProvideClipboardManagerFactory.provideClipboardManager(singletonCImpl.provideContextProvider.get());
 
           case 8: // com.example.irkokey.common.infraestructure.Preferences 
           return (T) AppModule_ProvidePreferencesFactory.providePreferences(singletonCImpl.provideContextProvider.get());

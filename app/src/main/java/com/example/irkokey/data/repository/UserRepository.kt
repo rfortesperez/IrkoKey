@@ -22,4 +22,10 @@ class UserRepository @Inject constructor(private val userDao: UserDao){
         Log.d("UserRepository", "UserHashedEmail: ${user.hashedEmail}, UserHashedPassword: ${user.hashedPassword}")
         return user
     }
+
+    // Delete all users
+    @WorkerThread
+    suspend fun deleteAllUsers() {
+        userDao.deleteAllUsers()
+    }
 }

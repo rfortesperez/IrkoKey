@@ -3554,7 +3554,9 @@ int id btn_add_favorite 0x7f090069
 int id btn_copy_password 0x7f09006a
 int id btn_delete 0x7f09006b
 int id btn_edit_password 0x7f09006c
+int id btn_export 0x7f09023e
 int id btn_generate 0x7f09022f
+int id btn_import 0x7f09023f
 int id btn_login 0x7f09006d
 int id btn_register 0x7f090236
 int id btn_remove_favorite 0x7f090231
@@ -3644,6 +3646,7 @@ int id enterAlwaysCollapsed 0x7f0900c0
 int id escape 0x7f0900c1
 int id et_confirm_pin 0x7f090237
 int id et_email 0x7f0900c2
+int id et_introduce_pin 0x7f090240
 int id et_new_password 0x7f0900c3
 int id et_password_input 0x7f0900c5
 int id et_pin 0x7f090238
@@ -3833,6 +3836,7 @@ int id parent_matrix 0x7f09017c
 int id password_toggle 0x7f09017d
 int id path 0x7f09017e
 int id pathRelative 0x7f09017f
+int id pb_backup 0x7f090241
 int id peekHeight 0x7f090180
 int id percent 0x7f090181
 int id pin 0x7f090182
@@ -3980,6 +3984,8 @@ int id transition_scene_layoutid_cache 0x7f090209
 int id transition_transform 0x7f09020a
 int id triangle 0x7f09020b
 int id tv_backup 0x7f09020c
+int id tv_backup_description 0x7f090242
+int id tv_backup_information 0x7f090243
 int id tv_capital_letters 0x7f09020d
 int id tv_choice 0x7f090230
 int id tv_have_lenght 0x7f09020e
@@ -3989,6 +3995,7 @@ int id tv_numbers 0x7f090211
 int id tv_password 0x7f090212
 int id tv_password_fav 0x7f090233
 int id tv_password_requirements 0x7f090213
+int id tv_question 0x7f090244
 int id tv_symbols 0x7f090214
 int id tv_userName 0x7f090215
 int id tv_website 0x7f090216
@@ -4152,6 +4159,7 @@ int layout design_navigation_menu_item 0x7f0c002c
 int layout design_text_input_end_icon 0x7f0c002d
 int layout design_text_input_start_icon 0x7f0c002e
 int layout dialog_edit 0x7f0c002f
+int layout dialog_pin 0x7f0c0078
 int layout fragment_backup 0x7f0c0030
 int layout fragment_create 0x7f0c0031
 int layout fragment_explore_password 0x7f0c0032

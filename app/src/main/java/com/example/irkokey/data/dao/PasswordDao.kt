@@ -39,4 +39,8 @@ interface PasswordDao {
     @Query("SELECT * FROM passwords_table WHERE favorite = true ORDER BY website ASC")
     fun getAllFavorites(): Flow<List<Password>>
 
+    // delete all the passwords from the table passwords_table
+    @Query("DELETE FROM passwords_table")
+    suspend fun deleteAllPasswords()
+
 }

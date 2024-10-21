@@ -1,18 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fondo_18"
+    android:orientation="vertical"
     tools:context=".presentation.modules.backup.BackupFragment">
+
 
     <TextView
         android:id="@+id/tv_backup"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:fontFamily="@font/capriola_regular"
         android:gravity="center"
-        android:text="Import / Export Backup"
-        android:textColor="@color/md_theme_errorContainer_mediumContrast"
-        android:textSize="40sp"
+        android:text="Backup"
+        android:textColor="@color/md_theme_inversePrimary_mediumContrast"
+        android:textSize="36sp"
+        android:textStyle="italic|bold" />
+
+    <TextView
+        android:id="@+id/tv_backup_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center_horizontal"
+        android:text="Here you can import and export your data"
+        android:textColor="@color/md_theme_inversePrimary_mediumContrast"
+        android:textSize="20sp"
         android:textStyle="bold" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/tv_question"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center_horizontal"
+        android:text="What would you like to do?"
+        android:textColor="@color/md_theme_inversePrimary_mediumContrast"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btn_import"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/button_rounded_corners"
+        android:text="Import"
+        android:textColor="@color/ml_theme_onPrimary"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/btn_export"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/button_rounded_corners"
+        android:text="Export"
+        android:textColor="@color/ml_theme_onPrimary"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tv_backup_information"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center_horizontal"
+        android:text="Your data will be saved in a file in your Downloads folder. You'll need your email and pin in order to restore your data."
+        android:textColor="@color/md_theme_inversePrimary_mediumContrast"
+        android:textSize="16sp"
+        android:textStyle="italic|bold" />
+
+    <ProgressBar
+        android:id="@+id/pb_backup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:visibility="gone" />
+
+</LinearLayout>

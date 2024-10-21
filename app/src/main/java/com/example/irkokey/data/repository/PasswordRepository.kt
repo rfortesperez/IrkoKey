@@ -48,4 +48,10 @@ class PasswordRepository @Inject constructor(private val passwordDao: PasswordDa
         val favorite = getPasswordById(id).isFavorite
         passwordDao.changeFavorite(id, !favorite)
     }
+
+    // delete all the passwords from the table passwords_table
+    @WorkerThread
+    suspend fun deleteAllPasswords() {
+        passwordDao.deleteAllPasswords()
+    }
 }
