@@ -76,7 +76,7 @@ dependencies {
     implementation("com.google.crypto.tink:tink-android:1.6.1")
 
     // Backup to a csv file
-    implementation("com.opencsv:opencsv:5.6")
+    implementation("com.opencsv:opencsv:5.7.1")
 
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.4.0")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0")

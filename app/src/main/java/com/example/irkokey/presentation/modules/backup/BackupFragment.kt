@@ -24,34 +24,28 @@ import com.example.irkokey.databinding.FragmentBackupBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 
+
 @AndroidEntryPoint
 class BackupFragment : Fragment() {
 
     private lateinit var binding: FragmentBackupBinding
     private val backupViewModel: BackupViewModel by viewModels()
 
-    private val requestPermissionLauncher  = registerForActivityResult(
-        ActivityResultContracts.RequestMultiplePermissions()
-    ){permissions ->
-        if(permissions.all { it.value }) {
-            Log.d("BackupFragment", "Permissions granted")
+    private val requestPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()
+    ) { permissions ->
+        if (permissions.all { it.value }) {
             Toast.makeText(requireContext(), "Permissions granted", Toast.LENGTH_SHORT).show()
         } else {
-            Log.d("BackupFragment", "Permissions denied")
             Toast.makeText(requireContext(), "Permissions denied", Toast.LENGTH_SHORT).show()
         }
-
     }
 
-    companion object{
+    companion object {
         private const val REQUEST_CODE_PERMISSIONS = 1001
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentBackupBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -63,33 +57,24 @@ class BackupFragment : Fragment() {
 
             // Export the data to a CSV file
             btnExport.setOnClickListener {
-                Log.d("BackupFragment", "Export button clicked")
                 if (hasPermissions()) {
                     showPinDialog { pin ->
-                        Log.d("BackupFragment", "Requesting PIN and exporting...")
                         backupViewModel.requestPinAndExport(pin)
-                        Log.d("BackupFragment", "PIN requested")
                         observeExportProgress()
                     }
                 } else {
-                    Log.d("BackupFragment", "Requesting permissions to export...")
                     requestPermissions()
-                    Log.d("BackupFragment", "Permissions requested")
                 }
             }
 
             // Import the data from a CSV file
             btnImport.setOnClickListener {
-                Log.d("BackupFragment", "Import button clicked")
                 if (hasPermissions()) {
                     showPinDialog { pin ->
-                        Log.d("BackupFragment", "Requesting PIN and importing...")
                         backupViewModel.requestPinAndImport(pin)
-                        Log.d("BackupFragment", "PIN requested")
                         observeImportProgress()
                     }
                 } else {
-                    Log.d("BackupFragment", "Requesting permissions to import...")
                     requestPermissions()
                 }
             }
@@ -97,7 +82,6 @@ class BackupFragment : Fragment() {
             //show a toast when finished importing
             backupViewModel.isImported.observe(viewLifecycleOwner) { isImported ->
                 if (isImported) {
-                    Log.d("BackupFragment", "Imported")
                     pbBackup.visibility = View.GONE
                     Toast.makeText(requireContext(), "Backup imported", Toast.LENGTH_SHORT).show()
                 }
@@ -106,24 +90,19 @@ class BackupFragment : Fragment() {
             //show a toast when finished exporting
             backupViewModel.isExported.observe(viewLifecycleOwner) { isExported ->
                 if (isExported) {
-                    Log.d("BackupFragment", "Exported")
                     pbBackup.visibility = View.GONE
                     Toast.makeText(requireContext(), "Backup exported", Toast.LENGTH_SHORT).show()
                 }
             }
         }
     }
+
     private fun hasPermissions(): Boolean {
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             Environment.isExternalStorageManager()
         } else {
-            ContextCompat.checkSelfPermission(
-                requireContext(),
-                Manifest.permission.READ_EXTERNAL_STORAGE
-            ) == PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(
-                requireContext(),
-                Manifest.permission.WRITE_EXTERNAL_STORAGE
-            ) == PackageManager.PERMISSION_GRANTED
+            ContextCompat.checkSelfPermission(requireContext(),
+                Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
         }
     }
 
@@ -151,9 +130,7 @@ class BackupFragment : Fragment() {
         val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_pin, null)
         val pinEditText = dialogView.findViewById<EditText>(R.id.et_introduce_pin)
 
-        AlertDialog.Builder(requireContext())
-            .setTitle("Enter your PIN")
-            .setView(dialogView)
+        AlertDialog.Builder(requireContext()).setTitle("Enter your PIN").setView(dialogView)
             .setPositiveButton("Submit") { dialog, _ ->
                 val pin = pinEditText.text.toString()
                 if (pin.isNotEmpty()) {
@@ -162,12 +139,9 @@ class BackupFragment : Fragment() {
                 } else {
                     pinEditText.error = "PIN cannot be empty"
                 }
-            }
-            .setNegativeButton("Cancel") { dialog, _ ->
+            }.setNegativeButton("Cancel") { dialog, _ ->
                 dialog.dismiss()
-            }
-            .create()
-            .show()
+            }.create().show()
     }
 
     private fun observeExportProgress() {
@@ -177,7 +151,6 @@ class BackupFragment : Fragment() {
         // Observe the progress
         backupViewModel.progress.observe(viewLifecycleOwner) { progress ->
             binding.pbBackup.progress = progress
-            Log.d("BackupFragment", "Export Progress: $progress")
         }
     }
 
@@ -188,7 +161,6 @@ class BackupFragment : Fragment() {
         // Observe the progress
         backupViewModel.progress.observe(viewLifecycleOwner) { progress ->
             binding.pbBackup.progress = progress
-            Log.d("BackupFragment", "Import Progress: $progress")
         }
     }
 }
