@@ -296,7 +296,7 @@ drawable baseline_logout_24
 drawable baseline_password_24
 drawable button_rounded_corners
 drawable et_rounded
-drawable fondo_18
+drawable fondo_6
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable irko_key_high_resolution_logo_white_transparent_

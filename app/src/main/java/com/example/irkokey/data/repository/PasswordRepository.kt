@@ -54,4 +54,11 @@ class PasswordRepository @Inject constructor(private val passwordDao: PasswordDa
     suspend fun deleteAllPasswords() {
         passwordDao.deleteAllPasswords()
     }
+    //get all de passwords on a list
+    @WorkerThread
+    suspend fun getAllPasswordsList(): List<Password> {
+        return passwordDao.getAllPasswordsList()
+    }
+
+
 }

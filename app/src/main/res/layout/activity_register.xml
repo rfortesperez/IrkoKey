@@ -5,7 +5,7 @@
     android:id="@+id/register"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondo_18"
+    android:background="@drawable/fondo_6"
     android:orientation="vertical"
     tools:context=".presentation.modules.register.RegisterActivity">
 
@@ -16,7 +16,7 @@
         android:layout_marginBottom="24dp"
         android:fontFamily="@font/capriola_regular"
         android:gravity="center"
-        android:text="Wellcome to IrkoKey"
+        android:text="Wellcome to Irko Key"
         android:textColor="@color/md_theme_inversePrimary_mediumContrast"
         android:textSize="36sp"
         android:textStyle="bold" />

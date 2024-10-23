@@ -10,15 +10,12 @@ import com.example.irkokey.common.utils.EncryptionUtil
 import com.example.irkokey.common.utils.SingleLiveEvent
 import com.example.irkokey.data.repository.PasswordRepository
 import com.example.irkokey.data.repository.UserRepository
-import com.example.irkokey.domain.models.Password
-import com.example.irkokey.domain.models.User
-import com.opencsv.CSVReader
-import com.opencsv.CSVWriter
+import com.example.irkokey.domain.models.BackupData
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import java.io.File
-import java.io.FileWriter
 import javax.inject.Inject
 
 
@@ -46,10 +43,11 @@ class BackupViewModel @Inject constructor(
             val inputPinHash = encryptionUtil.hash(userPin).trim()
 
             if (storedPinHash == inputPinHash) {
-                exportDatabaseToCSV(userPin)
+                exportDatabaseToJson(userPin)
             } else {
                 _isExported.postValue(false)
-            }        }
+            }
+        }
     }
 
     // Request the user to enter the PIN and import the data
@@ -60,167 +58,98 @@ class BackupViewModel @Inject constructor(
             val inputPinHash = encryptionUtil.hash(userPin).trim()
 
             if (storedPinHash == inputPinHash) {
-                importDatafromCSV(userPin)
+                importDatafromJson(userPin)
             } else {
                 _isImported.postValue(false)
             }
         }
     }
 
-    private fun exportDatabaseToCSV(userPin: String) {
+
+    private fun exportDatabaseToJson(userPin: String) {
+        val downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
+        val jsonFile = File(downloadsDir, "backup.json")
+
+        val moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
+        val adapter = moshi.adapter(BackupData::class.java)
+
         viewModelScope.launch {
-            val downloadsDir =
-                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
-            val csvFile = File(downloadsDir, "backup.csv")
-            var csvWriter: CSVWriter? = null
-            try {
-                csvWriter = CSVWriter(FileWriter(csvFile))
 
-                // Export user
-                val user = userRepository.getUser(1)
-                csvWriter.writeNext(arrayOf("User ID", "Hashed Email", "Hashed Password"))
-                csvWriter.writeNext(
-                    arrayOf(
-                        user.id.toString(),
-                        user.hashedEmail.trim(),
-                        user.hashedPassword.trim()
-                    )
-                )
-                _progress.postValue(50) // 50% progress for user
+            val user = userRepository.getUser(1)
+            Log.d("BackupViewModel", "User retrieved: $user")
+            val passwords = passwordRepository.getAllPasswordsList()
+            Log.d("BackupViewModel", "Passwords retrieved: $passwords")
 
-                // Export passwords
-                val passwords = passwordRepository.getAllPasswords().first()
-                csvWriter.writeNext(
-                    arrayOf(
-                        "Password ID",
-                        "Website",
-                        "Username",
-                        "Password Hash",
-                        "Favorite"
-                    )
-                )
-                passwords.forEachIndexed { index, password ->
-                    csvWriter.writeNext(
-                        arrayOf(
-                            password.id.toString(),
-                            password.website.trim(),
-                            password.userName.trim(),
-                            password.password.trim(),
-                            password.isFavorite.toString().trim()
-                        )
-                    )
-                    _progress.postValue(50 + (index + 1) * 50 / passwords.size) // Remaining 50% progress for passwords
-                }
+            // get the keyset from the keystore
+            val keyset = encryptionUtil.getKeyset()
+            Log.d("BackupViewModel", "Keyset retrieved: $keyset")
 
-                // Export the encryption key securely
+            val backupData = BackupData(
+                user = user,
+                passwords = passwords,
+                keyset = keyset
+            )
+            _progress.postValue(50)
+            val json = adapter.toJson(backupData)
+            Log.d("BackupViewModel", "JSON created: $json")
 
-                val key = encryptionUtil.exportKey()
-                //val encryptedKey = encryptionUtil.encryptKeyWithPin(key, userPin)
-                val encryptedKey = encryptionUtil.encryptKeyWithPin(key, userPin)
-                val keyParts = encryptedKey.chunked(100) // Divide la clave en partes de 100 caracteres
-                keyParts.forEach { part ->
-                    csvWriter.writeNext(arrayOf("Encryption Key", part))
-                }
+            // Encrypt the JSON before saving it
+            val encryptedJson = encryptionUtil.encryptJson(json, userPin) // Use the PIN to encrypt
+            Log.d("BackupViewModel", "Encrypted JSON created: $encryptedJson")
 
-                _isExported.postValue(true)
-                _progress.postValue(100) // Complete progress
-            } catch (e: Exception) {
-                Log.e("BackupViewModel", "Error exporting data")
-                e.printStackTrace()
-            } finally {
-                try {
-                    csvWriter?.close()
-                } catch (e: Exception) {
-                    Log.e("BackupViewModel", "Error closing CSV writer")
-                    e.printStackTrace()
-                }
-            }
+            jsonFile.writeText(encryptedJson)
+            Log.d("BackupViewModel", "Encrypted JSON saved to file: ${jsonFile.absolutePath}")
+            _isExported.value= true
+            _progress.postValue(100)
+
         }
     }
 
-    private fun importDatafromCSV(userPin: String) {
-        viewModelScope.launch {
-            val downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
-            val file = File(downloadsDir, "backup.csv")
+    private fun importDatafromJson(userPin: String) {
+        val downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
+        val jsonFile = File(downloadsDir, "backup.json")
 
-            if (!file.exists()) {
-                return@launch
-            }
+        val moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
+        val adapter = moshi.adapter(BackupData::class.java)
 
-            try {
-                file.bufferedReader().use { reader ->
-                    val csvReader = CSVReader(reader)
-                    val csvLines = csvReader.readAll().filter { it.isNotEmpty() }
-                    if (csvLines.size < 4) {
-                        return@launch
+        try {
+            // Read the encrypted JSON from the file
+            val encryptedJson = jsonFile.readText()
+
+            // Decrypt the Json using the user Pin
+            val json = encryptionUtil.decryptJson(encryptedJson, userPin)
+            Log.d("BackupViewModel", "Decrypted JSON: $json")
+
+            // Parse the Json to retrieve the BackupData
+            val backupData = adapter.fromJson(json)
+
+            if (backupData != null) {
+                viewModelScope.launch {
+
+                    // Restore the user data
+                    userRepository.insertUser(backupData.user)
+                    Log.d("BackupViewModel", "User restored: ${backupData.user}")
+
+                    // Restore the passwords
+                    for (password in backupData.passwords) {
+                        passwordRepository.insertPassword(password)
+                        Log.d("BackupViewModel", "Password restored: $password")
                     }
 
-                    // Clear existing data in the database
-                    userRepository.deleteAllUsers()
-                    passwordRepository.deleteAllPasswords()
+                    // Restore keyset to the Android Keystore
+                    encryptionUtil.setKeySet(backupData.keyset)
+                    Log.d("BackupViewModel", "Keyset restored: ${backupData.keyset}")
 
-                    // Import user data
-                    val userData = csvLines[1].map { it.trim().removeSurrounding("\"") }
-                    if (userData.size != 3 || userData.any { it.isEmpty() }) {
-                        return@launch
-                    }
-                    val myUser = User(
-                        id = userData[0].toInt(),
-                        hashedEmail = userData[1],
-                        hashedPassword = userData[2]
-                    )
-                    userRepository.insertUser(myUser)
-
-                    // Import password data
-                    val passwordDataLines = csvLines.drop(3)
-                        .takeWhile { !it[0].trim().startsWith("Encryption Key", ignoreCase = true) }
-                    passwordDataLines.forEach { line ->
-                        val passwordData = line.map { it.trim().removeSurrounding("\"") }
-                        if (passwordData.size != 5 || passwordData.any { it.isEmpty() }) {
-                            return@forEach
-                        }
-                        val myPassword = Password(
-                            id = passwordData[0].toInt(),
-                            website = passwordData[1],
-                            userName = passwordData[2],
-                            password = passwordData[3],
-                            isFavorite = passwordData[4].toBoolean()
-                        )
-                        passwordRepository.insertPassword(myPassword)
-                    }
-
-                    // Import the encryption key securely
-                    val encryptedKey = StringBuilder()
-                    var readingKey = false
-                    for (line in csvLines) {
-
-                        if (line[0].trim().equals("Encryption Key", ignoreCase = true)) {
-                            readingKey = true
-                        }
-                        if(readingKey) {
-                            encryptedKey.append(line[1].trim().removeSurrounding("\n"))
-                            //Log.d("BackupViewModel", "Parches de encryptedKey = $encryptedKey")
-                        }
-
-                    }
-
-                    if (encryptedKey.isNotEmpty()) {
-                        try {
-                            val key = encryptionUtil.decryptKeyWithPin(encryptedKey.trim().toString(), userPin)
-                            encryptionUtil.importKey(key)
-                        } catch (e: Exception) {
-                            Log.e("BackupViewModel", "Error decrypting key", e)
-                        }
-                    } else {
-                        Log.e("BackupViewModel", "Invalid encryption key")
-                    }
-
+                    _progress.postValue(100)
                     _isImported.postValue(true)
                 }
-            } catch (e: Exception) {
-                Log.e("BackupViewModel", "Error importing data", e)
+            } else {
+                Log.e("BackupViewModel", "Failed to parse backup data")
                 _isImported.postValue(false)
             }
+        }catch(e: Exception){
+            Log.e("BackupViewModel", "Failed to import backup data", e)
+            _isImported.postValue(false)
         }
     }
 }

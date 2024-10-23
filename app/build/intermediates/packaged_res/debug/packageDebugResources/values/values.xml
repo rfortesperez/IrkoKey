@@ -296,7 +296,7 @@
     <string name="generate_password">Generate Password</string>
     <string name="have_lenght">have at least 12 characters.</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="intoduce_data">Introduce your Email and Password</string>
+    <string name="intoduce_data">Wellcome to Irko Key. Please Enter your Email and Pin</string>
     <string name="login">Login</string>
     <string name="logout">Logout</string>
     <string name="logout_info">You\'re about to Logout</string>

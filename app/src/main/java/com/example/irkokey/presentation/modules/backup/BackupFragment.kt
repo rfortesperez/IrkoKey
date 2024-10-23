@@ -25,6 +25,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 
 
+
 @AndroidEntryPoint
 class BackupFragment : Fragment() {
 
@@ -55,7 +56,7 @@ class BackupFragment : Fragment() {
 
         with(binding) {
 
-            // Export the data to a CSV file
+            // Export the data to a Json file
             btnExport.setOnClickListener {
                 if (hasPermissions()) {
                     showPinDialog { pin ->
@@ -67,7 +68,7 @@ class BackupFragment : Fragment() {
                 }
             }
 
-            // Import the data from a CSV file
+            // Import the data from a Json file
             btnImport.setOnClickListener {
                 if (hasPermissions()) {
                     showPinDialog { pin ->

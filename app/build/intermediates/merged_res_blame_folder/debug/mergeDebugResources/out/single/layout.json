@@ -1,23 +1,19 @@
 [
     {
-        "merged": "com.example.irkokey.app-mergeDebugResources-51:/layout/activity_auth.xml",
-        "source": "com.example.irkokey.app-main-54:/layout/activity_auth.xml"
+        "merged": "C:\\Users\\rfort\\.gradle\\daemon\\8.6\\com.example.irkokey.app-mergeDebugResources-51:\\layout\\dialog_pin.xml",
+        "source": "C:\\Users\\rfort\\.gradle\\daemon\\8.6\\com.example.irkokey.app-main-54:\\layout\\dialog_pin.xml"
     },
     {
         "merged": "C:\\Users\\rfort\\.gradle\\daemon\\8.6\\com.example.irkokey.app-mergeDebugResources-51:\\layout\\activity_splash.xml",
         "source": "C:\\Users\\rfort\\.gradle\\daemon\\8.6\\com.example.irkokey.app-main-54:\\layout\\activity_splash.xml"
     },
     {
-        "merged": "com.example.irkokey.app-mergeDebugResources-51:/layout/fragment_backup.xml",
-        "source": "com.example.irkokey.app-main-54:/layout/fragment_backup.xml"
-    },
-    {
-        "merged": "com.example.irkokey.app-mergeDebugResources-51:/layout/dialog_pin.xml",
-        "source": "com.example.irkokey.app-main-54:/layout/dialog_pin.xml"
-    },
-    {
         "merged": "C:\\Users\\rfort\\.gradle\\daemon\\8.6\\com.example.irkokey.app-mergeDebugResources-51:\\layout\\row_password.xml",
         "source": "C:\\Users\\rfort\\.gradle\\daemon\\8.6\\com.example.irkokey.app-main-54:\\layout\\row_password.xml"
+    },
+    {
+        "merged": "com.example.irkokey.app-mergeDebugResources-51:/layout/activity_register.xml",
+        "source": "com.example.irkokey.app-main-54:/layout/activity_register.xml"
     },
     {
         "merged": "C:\\Users\\rfort\\.gradle\\daemon\\8.6\\com.example.irkokey.app-mergeDebugResources-51:\\layout\\fragment_backup.xml",
