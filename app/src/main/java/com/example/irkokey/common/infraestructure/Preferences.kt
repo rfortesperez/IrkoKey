@@ -18,7 +18,9 @@ class Preferences @Inject constructor(context: Context) {
     var mail: String?
         get() = storage.getString(SHARED_MAIL, null)
         set(value) = storage.edit().putString(SHARED_MAIL, value).apply()
-
+    var pin: String?
+        get() = storage.getString(SHARED_MAIL, null)
+        set(value) = storage.edit().putString(SHARED_MAIL, value).apply()
 
 }
 /*

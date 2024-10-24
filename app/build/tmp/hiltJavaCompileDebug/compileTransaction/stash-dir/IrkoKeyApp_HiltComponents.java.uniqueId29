@@ -2,6 +2,8 @@ package com.example.irkokey;
 
 import com.example.irkokey.common.di.AppModule;
 import com.example.irkokey.presentation.modules.auth.AuthActivity_GeneratedInjector;
+import com.example.irkokey.presentation.modules.backup.BackupFragment_GeneratedInjector;
+import com.example.irkokey.presentation.modules.backup.BackupViewModel_HiltModules;
 import com.example.irkokey.presentation.modules.createPassword.CreateFragment_GeneratedInjector;
 import com.example.irkokey.presentation.modules.createPassword.CreateViewModel_HiltModules;
 import com.example.irkokey.presentation.modules.explorePasswords.ExplorePasswordFragment_GeneratedInjector;
@@ -157,6 +159,7 @@ public final class IrkoKeyApp_HiltComponents {
 
   @Subcomponent(
       modules = {
+          BackupViewModel_HiltModules.KeyModule.class,
           CreateViewModel_HiltModules.KeyModule.class,
           FavoriteViewModel_HiltModules.KeyModule.class,
           HiltWrapper_ActivityRetainedComponentManager_LifecycleModule.class,
@@ -204,6 +207,7 @@ public final class IrkoKeyApp_HiltComponents {
 
   @Subcomponent(
       modules = {
+          BackupViewModel_HiltModules.BindsModule.class,
           CreateViewModel_HiltModules.BindsModule.class,
           FavoriteViewModel_HiltModules.BindsModule.class,
           HiltWrapper_HiltViewModelFactory_ViewModelModule.class,
@@ -235,7 +239,8 @@ public final class IrkoKeyApp_HiltComponents {
       modules = ViewWithFragmentCBuilderModule.class
   )
   @FragmentScoped
-  public abstract static class FragmentC implements CreateFragment_GeneratedInjector,
+  public abstract static class FragmentC implements BackupFragment_GeneratedInjector,
+      CreateFragment_GeneratedInjector,
       ExplorePasswordFragment_GeneratedInjector,
       FavoriteFragment_GeneratedInjector,
       LoginFragment_GeneratedInjector,

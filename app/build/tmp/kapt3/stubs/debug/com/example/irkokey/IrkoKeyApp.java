@@ -2,7 +2,7 @@ package com.example.irkokey;
 
 import android.app.Application;
 import com.example.irkokey.common.utils.EncryptionUtil;
-import com.google.crypto.tink.aead.AeadConfig;
+import com.google.crypto.tink.daead.DeterministicAeadConfig;
 import dagger.hilt.android.HiltAndroidApp;
 
 @dagger.hilt.android.HiltAndroidApp

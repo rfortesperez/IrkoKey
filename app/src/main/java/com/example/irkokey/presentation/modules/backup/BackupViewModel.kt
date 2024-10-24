@@ -15,6 +15,7 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import org.json.JSONObject
 import java.io.File
 import javax.inject.Inject
 
@@ -43,7 +44,7 @@ class BackupViewModel @Inject constructor(
             val inputPinHash = encryptionUtil.hash(userPin).trim()
 
             if (storedPinHash == inputPinHash) {
-                exportDatabaseToJson(userPin)
+                exportDatabaseToJson()
             } else {
                 _isExported.postValue(false)
             }
@@ -58,7 +59,7 @@ class BackupViewModel @Inject constructor(
             val inputPinHash = encryptionUtil.hash(userPin).trim()
 
             if (storedPinHash == inputPinHash) {
-                importDatafromJson(userPin)
+                importDatafromJson()
             } else {
                 _isImported.postValue(false)
             }
@@ -66,7 +67,7 @@ class BackupViewModel @Inject constructor(
     }
 
 
-    private fun exportDatabaseToJson(userPin: String) {
+    private fun exportDatabaseToJson() {
         val downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
         val jsonFile = File(downloadsDir, "backup.json")
 
@@ -74,81 +75,88 @@ class BackupViewModel @Inject constructor(
         val adapter = moshi.adapter(BackupData::class.java)
 
         viewModelScope.launch {
-
             val user = userRepository.getUser(1)
-            Log.d("BackupViewModel", "User retrieved: $user")
             val passwords = passwordRepository.getAllPasswordsList()
-            Log.d("BackupViewModel", "Passwords retrieved: $passwords")
 
-            // get the keyset from the keystore
-            val keyset = encryptionUtil.getKeyset()
-            Log.d("BackupViewModel", "Keyset retrieved: $keyset")
-
-            val backupData = BackupData(
-                user = user,
-                passwords = passwords,
-                keyset = keyset
-            )
-            _progress.postValue(50)
+            val backupData = BackupData(user = user, passwords = passwords)
             val json = adapter.toJson(backupData)
-            Log.d("BackupViewModel", "JSON created: $json")
+            Log.d("BackupViewModel", "Backup JSON: $json")
 
             // Encrypt the JSON before saving it
-            val encryptedJson = encryptionUtil.encryptJson(json, userPin) // Use the PIN to encrypt
-            Log.d("BackupViewModel", "Encrypted JSON created: $encryptedJson")
+            val encryptedJson = encryptionUtil.encrypt(json)
+            Log.d("BackupViewModel", "Encrypted data: $encryptedJson")
 
-            jsonFile.writeText(encryptedJson)
-            Log.d("BackupViewModel", "Encrypted JSON saved to file: ${jsonFile.absolutePath}")
-            _isExported.value= true
+            // Export and encrypt the keyset
+            val encryptedKeyset = encryptionUtil.exportKeyset()
+            Log.d("BackupViewModel", "Encrypted keyset: $encryptedKeyset")
+
+            // Create a JSON object with both encrypted data and encrypted keyset
+            val backupJson = """
+            {
+                "keyset": "$encryptedKeyset",
+                "data": "$encryptedJson"
+            }
+        """.trimIndent()
+            Log.d("BackupViewModel", "Backup JSON: $backupJson")
+
+            // Save the JSON to a file
+            jsonFile.writeText(backupJson)
+            Log.d("BackupViewModel", "Backup JSON saved to file successfully!")
+            _isExported.value = true
             _progress.postValue(100)
-
         }
     }
 
-    private fun importDatafromJson(userPin: String) {
+    private fun importDatafromJson() {
+        Log.d("BackupViewModel", "Importing data from JSON")
         val downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
+        Log.d("BackupViewModel", "Downloads directory: $downloadsDir")
         val jsonFile = File(downloadsDir, "backup.json")
 
         val moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
         val adapter = moshi.adapter(BackupData::class.java)
 
         try {
-            // Read the encrypted JSON from the file
-            val encryptedJson = jsonFile.readText()
+            // Read the JSON from the file
+            Log.d("BackupViewModel", "Reading JSON from file")
+            val backupJson = jsonFile.readText()
+            Log.d("BackupViewModel", "Backup JSON: $backupJson")
+            val jsonObject = JSONObject(backupJson)
+            Log.d("BackupViewModel", "JSON object: $jsonObject")
+            val encryptedKeyset = jsonObject.getString("keyset").trim().replace("\n", "")
+            Log.d("BackupViewModel", "Encrypted keyset: $encryptedKeyset")
+            val encryptedData = jsonObject.getString("data").trim().replace("\n", "")
+            Log.d("BackupViewModel", "Encrypted data: $encryptedData")
 
-            // Decrypt the Json using the user Pin
-            val json = encryptionUtil.decryptJson(encryptedJson, userPin)
-            Log.d("BackupViewModel", "Decrypted JSON: $json")
+            // Decrypt and import the keyset
 
-            // Parse the Json to retrieve the BackupData
+            encryptionUtil.importKeyset(encryptedKeyset)
+            Log.d("BackupViewModel", "Keyset imported")
+
+            // Decrypt the JSON
+            val json = encryptionUtil.decrypt(encryptedData)
+            Log.d("BackupViewModel", "Decrypted data: $json")
             val backupData = adapter.fromJson(json)
+            Log.d("BackupViewModel", "Backup data: $backupData")
 
             if (backupData != null) {
                 viewModelScope.launch {
-
-                    // Restore the user data
                     userRepository.insertUser(backupData.user)
-                    Log.d("BackupViewModel", "User restored: ${backupData.user}")
-
-                    // Restore the passwords
+                    Log.d("BackupViewModel", "User = ${backupData.user}")
+                    Log.d("BackupViewModel", "User imported")
                     for (password in backupData.passwords) {
                         passwordRepository.insertPassword(password)
-                        Log.d("BackupViewModel", "Password restored: $password")
+                        Log.d("BackupViewModel", "Password = $password")
                     }
-
-                    // Restore keyset to the Android Keystore
-                    encryptionUtil.setKeySet(backupData.keyset)
-                    Log.d("BackupViewModel", "Keyset restored: ${backupData.keyset}")
+                    Log.d("BackupViewModel", "Passwords imported")
 
                     _progress.postValue(100)
                     _isImported.postValue(true)
                 }
             } else {
-                Log.e("BackupViewModel", "Failed to parse backup data")
                 _isImported.postValue(false)
             }
-        }catch(e: Exception){
-            Log.e("BackupViewModel", "Failed to import backup data", e)
+        } catch (e: Exception) {
             _isImported.postValue(false)
         }
     }
