@@ -13,6 +13,7 @@ import com.google.crypto.tink.KeysetHandle
 import com.google.crypto.tink.daead.DeterministicAeadConfig
 import com.google.crypto.tink.integration.android.AndroidKeysetManager
 import java.io.ByteArrayOutputStream
+import java.io.IOException
 import java.security.GeneralSecurityException
 import java.security.MessageDigest
 import javax.crypto.SecretKey
@@ -117,24 +118,38 @@ object EncryptionUtil {
         val writer = JsonKeysetWriter.withOutputStream(outputStream)
         CleartextKeysetHandle.write(keysetHandle, writer)
         val keysetBytes = outputStream.toByteArray()
+        Log.d("EncryptionUtil", "Keyset: ${Base64.encodeToString(keysetBytes, Base64.DEFAULT)}")
 
         // Encrypt the keyset using DeterministicAead
         val daead = keysetHandle.getPrimitive(DeterministicAead::class.java)
         val encryptedKeyset = daead.encryptDeterministically(keysetBytes, getDerivedKey().encoded)
-        return Base64.encodeToString(encryptedKeyset, Base64.DEFAULT)
+        return encryptedKeyset.let { Base64.encodeToString(it, Base64.DEFAULT) }
     }
 
     fun importKeyset(encryptedKeyset: String) {
         Log.d("EncryptionUtil", "Importing keyset")
-        val decodedKeyset = Base64.decode(encryptedKeyset, Base64.DEFAULT)
-        Log.d("EncryptionUtil", "Decoded keyset: ${Base64.encodeToString(decodedKeyset, Base64.DEFAULT)}")
-        val daead = keysetHandle.getPrimitive(DeterministicAead::class.java)
+        try {
+            val decodedKeyset = Base64.decode(encryptedKeyset, Base64.DEFAULT)
+            Log.d("EncryptionUtil", "Decoded keyset: ${Base64.encodeToString(decodedKeyset, Base64.DEFAULT)}")
 
-        val keysetBytes = daead.decryptDeterministically(decodedKeyset, getDerivedKey().encoded)
-        Log.d("EncryptionUtil", "Decrypted keyset: ${Base64.encodeToString(keysetBytes, Base64.DEFAULT)}")
-        val keysetHandle = KeysetHandle.read(JsonKeysetReader.withInputStream(keysetBytes.inputStream()), null)
-        Log.d("EncryptionUtil", "Keyset imported")
-        this.keysetHandle = keysetHandle
+            val derivedKey = getDerivedKey()
+            Log.d("EncryptionUtil", "Derived key: ${Base64.encodeToString(derivedKey.encoded, Base64.DEFAULT)}")
+
+            val daead = keysetHandle.getPrimitive(DeterministicAead::class.java)
+            val keysetBytes = daead.decryptDeterministically(decodedKeyset, derivedKey.encoded)
+            Log.d("EncryptionUtil", "Decrypted keyset: ${Base64.encodeToString(keysetBytes, Base64.DEFAULT)}")
+            Log.d("EncryptionUtil", "Decrypted keyset length: ${keysetBytes.size}")
+
+            val keysetHandle = KeysetHandle.read(JsonKeysetReader.withInputStream(keysetBytes.inputStream()), null)
+            Log.d("EncryptionUtil", "Keyset imported successfully")
+            this.keysetHandle = keysetHandle
+        } catch (e: GeneralSecurityException) {
+            Log.e("EncryptionUtil", "Decryption failed", e)
+        } catch (e: IOException) {
+            Log.e("EncryptionUtil", "Failed to read keyset", e)
+        } catch (e: Exception) {
+            Log.e("EncryptionUtil", "Unexpected error", e)
+        }
     }
 
     private fun checkInitialization() {
