@@ -34,25 +34,20 @@ class LoginViewModel @Inject constructor(
 
 
     fun didClickOnLogin(mail: String, pin: String) {
-
-        Log.d("LoginViewModel", "didClickOnLogin: $mail, $pin")
         val isMailCorrect = isEmailValidRegex(mail)
         val isPinCorrect = isPindValid(pin)
 
         viewModelScope.launch {
             val user = userRepository.getUser(1)
-            Log.d("LoginViewModel", "DATABASE HashedEmail: ${user.hashedEmail}, DATABASE HashedPassword: ${user.hashedPassword}")
             val dbHashEmail = user.hashedEmail
             val dbHashPassword = user.hashedPassword
             val hashEmail = encryptionUtil.hash(mail)
             val hashPassword = encryptionUtil.hash(pin)
-            Log.d("LoginViewModel", "HashEmail: $hashEmail, HashPassword: $hashPassword")
+
 
             if(isMailCorrect && isPinCorrect && dbHashEmail == hashEmail && dbHashPassword == hashPassword) {
-                Log.d("LoginViewModel", "Datos correctos")
                 _isError.value = false
             } else {
-                Log.d("LoginViewModel", "Datos incorrectos")
                 _isError.value = true
             }
         }

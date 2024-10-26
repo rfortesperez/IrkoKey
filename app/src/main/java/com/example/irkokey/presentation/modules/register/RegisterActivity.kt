@@ -37,11 +37,9 @@ class RegisterActivity : AppCompatActivity() {
                 Toast.makeText(this, "Wrong mail or pin. Please check!", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(this, "User registered", Toast.LENGTH_SHORT).show()
-                Log.d("RegisterActivity", "Usuario registrado")
                 val intent = Intent(this, MainActivity::class.java)
-                Log.d("RegisterActivity", "Intent creado")
+
                 startActivity(intent)
-                Log.d("RegisterActivity", "Navegando a MainActivity")
                 finish()
             }
         }

@@ -77,32 +77,19 @@ class BackupViewModel @Inject constructor(
             val user = userRepository.getUser(1)
             val passwords = passwordRepository.getAllPasswordsList()
 
-            Log.d("BackupViewModel", "PASO UNO DE EXPORTACION")
             val backupData = BackupData(user = user, passwords = passwords)
             val json = adapter.toJson(backupData)
-            Log.d("BackupViewModel", "Backup JSON: $json")
 
             // Encrypt the JSON before saving it
             val encryptedJson = encryptionUtil.encrypt(json).trim().replace("\n", "")
-            Log.d("BackupViewModel", "Encrypted data: $encryptedJson")
-
-            Log.d("BackupViewModel", "PASO DOS DE EXPORTACION")
-
 
             val backupJson = """
             {
                 "data": "$encryptedJson"
             }""".trimIndent()
 
-            Log.d("BackupViewModel", "Backup JSON: $backupJson")
-
-            Log.d("BackupViewModel", "PASO TRES DE EXPORTACION")
             // Save the JSON to a file
             jsonFile.writeText(backupJson)
-            Log.d("BackupViewModel", "Backup JSON saved to file successfully!")
-            Log.d("BackupViewModel", "------------------------------------------------")
-            Log.d("BackupViewModel", "- ******************************************** -")
-            Log.d("BackupViewModel", "------------------------------------------------")
             _isExported.value = true
             _progress.postValue(100)
         }
@@ -117,44 +104,22 @@ class BackupViewModel @Inject constructor(
         val adapter = moshi.adapter(BackupData::class.java)
 
         try {
-            Log.d("BackupViewModel", "PASO UNO DE IMPORTACION")
             // Read the JSON from the file
-            Log.d("BackupViewModel", "Reading JSON from file")
             val backupJson = jsonFile.readText()
-            Log.d("BackupViewModel", "Backup JSON: $backupJson")
             val jsonObject = JSONObject(backupJson)
-            Log.d("BackupViewModel", "convirtiendo a jsonobject")
-            Log.d("BackupViewModel", "JSON object: $jsonObject")
-
-
-            Log.d("BackupViewModel", "PASO DOS DE IMPORTACION")
             val encryptedData = jsonObject.getString("data")
-
-            Log.d("BackupViewModel", "PASO TRES DE IMPORTACION")
 
             // Decrypt the JSON
 
-            Log.d("BackupViewModel", "PASO CUATRO DE IMPORTACION")
             val json = encryptionUtil.decrypt(encryptedData)
-            Log.d("BackupViewModel", "Decrypted data: $encryptedData")
             val backupData = adapter.fromJson(json)
-            Log.d("BackupViewModel", "Backup data: $backupData")
 
-            Log.d("BackupViewModel", "PASO CINCO DE IMPORTACION")
             if (backupData != null) {
                 viewModelScope.launch {
                     userRepository.insertUser(backupData.user)
-                    Log.d("BackupViewModel", "User = ${backupData.user}")
-                    Log.d("BackupViewModel", "User imported")
                     for (password in backupData.passwords) {
                         passwordRepository.insertPassword(password)
-                        Log.d("BackupViewModel", "Password = $password")
                     }
-                    Log.d("BackupViewModel", "Passwords imported")
-                    Log.d("BackupViewModel", "Data imported successfully!")
-
-                    Log.d("BackupViewModel", "SE ACABÓ LA IMPORTASIOOON")
-
                     _progress.postValue(100)
                     _isImported.postValue(true)
                 }

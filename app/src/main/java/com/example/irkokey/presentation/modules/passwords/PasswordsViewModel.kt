@@ -42,22 +42,26 @@ class PasswordsViewModel @Inject constructor(
     private val _isCopied = SingleLiveEvent<Boolean>()
     val isCopied: LiveData<Boolean> get() = _isCopied
 
+    // Confirm delete password
     fun confirmDeletePassword(password: Password) {
         _showDeleteConfirmation.value = password
     }
 
+    // Add favorite
     fun addFavorite(password: Password) {
         viewModelScope.launch {
             passwordRepository.changeFavorite(password.id)
         }
     }
 
+    // Delete password
     fun deletePassword(password: Password) {
         viewModelScope.launch {
             passwordRepository.deletePassword(password.id)
         }
     }
 
+    // Edit password
     fun editPassword(password: Password, newPassword: String) {
         viewModelScope.launch {
             if (isPasswordStrong(newPassword)) {
@@ -69,10 +73,12 @@ class PasswordsViewModel @Inject constructor(
         }
     }
 
+    // Check if password is strong
     private fun isPasswordStrong(newPassword: String): Boolean {
         return PasswordStrengthUtil.isPasswordStrong(newPassword)
     }
 
+    // Copy password to clipboard
     @OptIn(DelicateCoroutinesApi::class)
     fun copyPassword(encryptedPassword: String) {
         val decryptedPassword = encryptionUtil.decrypt(encryptedPassword)
@@ -86,8 +92,8 @@ class PasswordsViewModel @Inject constructor(
         }
     }
 
+    // Decript password
     fun getDecryptedPassword(encryptedPassword: String): String {
-        Log.d("PasswordsViewModel", "Decrypting password")
         return encryptionUtil.decrypt(encryptedPassword)
     }
 

@@ -32,6 +32,7 @@ class CreateViewModel @Inject constructor(
     val generatedPassword: LiveData<String> get() = _generatedPassword
 
 
+    // Save password to database after encrypting it
     private fun savePassword(password: Password) {
         viewModelScope.launch {
             val encryptedPassword = encryptionUtil.encrypt(password.password)
@@ -41,6 +42,7 @@ class CreateViewModel @Inject constructor(
         }
     }
 
+    // Check if the password is strong enough and save it
 
     fun didClickSaveButton(website: String, username: String, password: String) {
         if (website.isNotEmpty() && username.isNotEmpty() && password.isNotEmpty()) {
@@ -58,6 +60,7 @@ class CreateViewModel @Inject constructor(
         }
     }
 
+    // Respond to the click of the generate button
     fun didClickGenerateButton() {
       val generatedPassword = generateStrongPassword()
         if(isPasswordStrong(generatedPassword)){
@@ -67,6 +70,7 @@ class CreateViewModel @Inject constructor(
         }
     }
 
+    // Generate a strong password
     private fun generateStrongPassword(length: Int = 12): String{
         val chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#\$%^&*()-_=+<>?"
         return (1..length)
@@ -74,6 +78,7 @@ class CreateViewModel @Inject constructor(
             .joinToString("")
     }
 
+    // Check if the password is strong enough
     private fun isPasswordStrong(password: String): Boolean {
         return PasswordStrengthUtil.isPasswordStrong(password)
     }

@@ -20,53 +20,71 @@ import java.io.File
 import javax.crypto.SecretKey
 import javax.inject.Singleton
 
+/**
+ * Module that provides the dependencies for the application.
+ */
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
+    // Provide the application context
     @Provides
     @Singleton
     fun provideContext(application: Application): Context {
         return application.applicationContext
     }
+
+    // Provide the preferences
     @Provides
     @Singleton
     fun providePreferences(context: Context): Preferences {
         return Preferences(context)
     }
+
+    // Provide password dao
     @Provides
     @Singleton
     fun providePasswordDao(database: PasswordRoomDatabase): PasswordDao {
         return database.passwordDao()
     }
+
+    // Provide user dao
     @Provides
     @Singleton
     fun provideUserDao(database: PasswordRoomDatabase): UserDao {
         return database.userDao()
     }
+
+    // Provide database
     @Provides
     @Singleton
     fun provideDatabase(context: Context): PasswordRoomDatabase {
         return PasswordRoomDatabase.getDatabase(context)
     }
 
+    // Provide password repository
     @Provides
     @Singleton
     fun providePasswordRepository(passwordDao: PasswordDao): PasswordRepository {
         return PasswordRepository(passwordDao)
     }
 
+    // Provide user repository
     @Provides
     @Singleton
     fun provideUserRepository(userDao: UserDao): UserRepository {
         return UserRepository(userDao)
     }
 
+
+    // Provide EncryptionUtil
     @Provides
     @Singleton
     fun provideEncryptionUtil(): EncryptionUtil {
         return EncryptionUtil
     }
+
+    // Provide PasswordStrengthUtil
 
     @Provides
     @Singleton
@@ -74,14 +92,12 @@ object AppModule {
         return PasswordStrengthUtil
     }
 
+
+    // Provide clipboard manager
     @Provides
     @Singleton
     fun provideClipboardManager(context: Context): ClipboardManager {
         return context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
     }
-    @Provides
-    @Singleton
-    fun provideCsvFile(): File {
-        return File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "database_export.csv")
-    }
+
 }

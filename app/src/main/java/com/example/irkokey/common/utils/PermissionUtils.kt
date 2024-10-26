@@ -8,6 +8,7 @@ import androidx.core.content.ContextCompat
 
 object PermissionUtils {
 
+    // Request storage permissions
     fun requestStoragePermissions(activity: Activity){
         val permissions = arrayOf(
             Manifest.permission.READ_EXTERNAL_STORAGE,

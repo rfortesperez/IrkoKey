@@ -27,10 +27,12 @@ object EncryptionUtil {
 
     private var derivedKey: SecretKey? = null
 
+    // Get the user pin from the preferences
     private fun getUserPin(): String {
         return preferences.pin ?: ""
     }
 
+    // Get the derived key from the user pin
     private fun getDerivedKey(): SecretKey {
         if (derivedKey == null) {
             val userPin = getUserPin()
@@ -44,6 +46,7 @@ object EncryptionUtil {
         return derivedKey!!
     }
 
+    // Encrypt the data using AES/GCM/NoPadding
     fun encrypt(data: String): String {
         val secretKey = getDerivedKey()
         val cipher = Cipher.getInstance("AES/GCM/NoPadding")
@@ -56,6 +59,7 @@ object EncryptionUtil {
         return Base64.encodeToString(encryptedIvAndData, Base64.DEFAULT)
     }
 
+    // Decrypt the data using AES/GCM/NoPadding
     fun decrypt(cipherText: String): String {
         val secretKey = getDerivedKey()
         val cipher = Cipher.getInstance("AES/GCM/NoPadding")
@@ -68,12 +72,14 @@ object EncryptionUtil {
         return String(decryptedData)
     }
 
+    // Hash the data using SHA-256
     fun hash(data: String): String {
         val digest = MessageDigest.getInstance("SHA-256")
         val hashBytes = digest.digest(data.toByteArray())
         return Base64.encodeToString(hashBytes, Base64.DEFAULT)
     }
 
+    // Initialize the preferences
     fun initialize(irkoKeyApp: IrkoKeyApp) {
         this.preferences = Preferences(irkoKeyApp)
     }

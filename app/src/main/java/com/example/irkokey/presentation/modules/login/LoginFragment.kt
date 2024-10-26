@@ -23,13 +23,13 @@ class LoginFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentLoginBinding.inflate(inflater, container, false)
-        Log.d("LoginFragment", "onCreateView: LoginFragment creado")
+
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.d("LoginFragment", "onViewCreated: LoginFragment creado")
+
 
         with(binding) {
             btnLogin.setOnClickListener {
