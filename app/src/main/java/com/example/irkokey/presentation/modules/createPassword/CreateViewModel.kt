@@ -31,10 +31,6 @@ class CreateViewModel @Inject constructor(
     private val _generatedPassword = SingleLiveEvent<String>()
     val generatedPassword: LiveData<String> get() = _generatedPassword
 
-    init {
-        encryptionUtil.initialize(application)
-    }
-
 
     private fun savePassword(password: Password) {
         viewModelScope.launch {

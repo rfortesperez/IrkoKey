@@ -656,6 +656,8 @@ public final class DaggerIrkoKeyApp_HiltComponents_SingletonC {
 
     private Provider<Context> provideContextProvider;
 
+    private Provider<Preferences> providePreferencesProvider;
+
     private Provider<PasswordRoomDatabase> provideDatabaseProvider;
 
     private Provider<PasswordDao> providePasswordDaoProvider;
@@ -670,8 +672,6 @@ public final class DaggerIrkoKeyApp_HiltComponents_SingletonC {
 
     private Provider<ClipboardManager> provideClipboardManagerProvider;
 
-    private Provider<Preferences> providePreferencesProvider;
-
     private SingletonCImpl(ApplicationContextModule applicationContextModuleParam) {
       this.applicationContextModule = applicationContextModuleParam;
       initialize(applicationContextModuleParam);
@@ -680,19 +680,20 @@ public final class DaggerIrkoKeyApp_HiltComponents_SingletonC {
 
     @SuppressWarnings("unchecked")
     private void initialize(final ApplicationContextModule applicationContextModuleParam) {
-      this.provideContextProvider = DoubleCheck.provider(new SwitchingProvider<Context>(singletonCImpl, 3));
-      this.provideDatabaseProvider = DoubleCheck.provider(new SwitchingProvider<PasswordRoomDatabase>(singletonCImpl, 2));
-      this.providePasswordDaoProvider = DoubleCheck.provider(new SwitchingProvider<PasswordDao>(singletonCImpl, 1));
-      this.providePasswordRepositoryProvider = DoubleCheck.provider(new SwitchingProvider<PasswordRepository>(singletonCImpl, 0));
-      this.provideEncryptionUtilProvider = DoubleCheck.provider(new SwitchingProvider<EncryptionUtil>(singletonCImpl, 4));
-      this.provideUserDaoProvider = DoubleCheck.provider(new SwitchingProvider<UserDao>(singletonCImpl, 6));
-      this.provideUserRepositoryProvider = DoubleCheck.provider(new SwitchingProvider<UserRepository>(singletonCImpl, 5));
-      this.provideClipboardManagerProvider = DoubleCheck.provider(new SwitchingProvider<ClipboardManager>(singletonCImpl, 7));
-      this.providePreferencesProvider = DoubleCheck.provider(new SwitchingProvider<Preferences>(singletonCImpl, 8));
+      this.provideContextProvider = DoubleCheck.provider(new SwitchingProvider<Context>(singletonCImpl, 1));
+      this.providePreferencesProvider = DoubleCheck.provider(new SwitchingProvider<Preferences>(singletonCImpl, 0));
+      this.provideDatabaseProvider = DoubleCheck.provider(new SwitchingProvider<PasswordRoomDatabase>(singletonCImpl, 4));
+      this.providePasswordDaoProvider = DoubleCheck.provider(new SwitchingProvider<PasswordDao>(singletonCImpl, 3));
+      this.providePasswordRepositoryProvider = DoubleCheck.provider(new SwitchingProvider<PasswordRepository>(singletonCImpl, 2));
+      this.provideEncryptionUtilProvider = DoubleCheck.provider(new SwitchingProvider<EncryptionUtil>(singletonCImpl, 5));
+      this.provideUserDaoProvider = DoubleCheck.provider(new SwitchingProvider<UserDao>(singletonCImpl, 7));
+      this.provideUserRepositoryProvider = DoubleCheck.provider(new SwitchingProvider<UserRepository>(singletonCImpl, 6));
+      this.provideClipboardManagerProvider = DoubleCheck.provider(new SwitchingProvider<ClipboardManager>(singletonCImpl, 8));
     }
 
     @Override
     public void injectIrkoKeyApp(IrkoKeyApp irkoKeyApp) {
+      injectIrkoKeyApp2(irkoKeyApp);
     }
 
     @Override
@@ -710,6 +711,12 @@ public final class DaggerIrkoKeyApp_HiltComponents_SingletonC {
       return new ServiceCBuilder(singletonCImpl);
     }
 
+    @CanIgnoreReturnValue
+    private IrkoKeyApp injectIrkoKeyApp2(IrkoKeyApp instance) {
+      IrkoKeyApp_MembersInjector.injectPreferences(instance, providePreferencesProvider.get());
+      return instance;
+    }
+
     private static final class SwitchingProvider<T> implements Provider<T> {
       private final SingletonCImpl singletonCImpl;
 
@@ -724,32 +731,32 @@ public final class DaggerIrkoKeyApp_HiltComponents_SingletonC {
       @Override
       public T get() {
         switch (id) {
-          case 0: // com.example.irkokey.data.repository.PasswordRepository 
-          return (T) AppModule_ProvidePasswordRepositoryFactory.providePasswordRepository(singletonCImpl.providePasswordDaoProvider.get());
+          case 0: // com.example.irkokey.common.infraestructure.Preferences 
+          return (T) AppModule_ProvidePreferencesFactory.providePreferences(singletonCImpl.provideContextProvider.get());
 
-          case 1: // com.example.irkokey.data.dao.PasswordDao 
-          return (T) AppModule_ProvidePasswordDaoFactory.providePasswordDao(singletonCImpl.provideDatabaseProvider.get());
-
-          case 2: // com.example.irkokey.data.database.PasswordRoomDatabase 
-          return (T) AppModule_ProvideDatabaseFactory.provideDatabase(singletonCImpl.provideContextProvider.get());
-
-          case 3: // android.content.Context 
+          case 1: // android.content.Context 
           return (T) AppModule_ProvideContextFactory.provideContext(ApplicationContextModule_ProvideApplicationFactory.provideApplication(singletonCImpl.applicationContextModule));
 
-          case 4: // com.example.irkokey.common.utils.EncryptionUtil 
+          case 2: // com.example.irkokey.data.repository.PasswordRepository 
+          return (T) AppModule_ProvidePasswordRepositoryFactory.providePasswordRepository(singletonCImpl.providePasswordDaoProvider.get());
+
+          case 3: // com.example.irkokey.data.dao.PasswordDao 
+          return (T) AppModule_ProvidePasswordDaoFactory.providePasswordDao(singletonCImpl.provideDatabaseProvider.get());
+
+          case 4: // com.example.irkokey.data.database.PasswordRoomDatabase 
+          return (T) AppModule_ProvideDatabaseFactory.provideDatabase(singletonCImpl.provideContextProvider.get());
+
+          case 5: // com.example.irkokey.common.utils.EncryptionUtil 
           return (T) AppModule_ProvideEncryptionUtilFactory.provideEncryptionUtil();
 
-          case 5: // com.example.irkokey.data.repository.UserRepository 
+          case 6: // com.example.irkokey.data.repository.UserRepository 
           return (T) AppModule_ProvideUserRepositoryFactory.provideUserRepository(singletonCImpl.provideUserDaoProvider.get());
 
-          case 6: // com.example.irkokey.data.dao.UserDao 
+          case 7: // com.example.irkokey.data.dao.UserDao 
           return (T) AppModule_ProvideUserDaoFactory.provideUserDao(singletonCImpl.provideDatabaseProvider.get());
 
-          case 7: // android.content.ClipboardManager 
+          case 8: // android.content.ClipboardManager 
           return (T) AppModule_ProvideClipboardManagerFactory.provideClipboardManager(singletonCImpl.provideContextProvider.get());
-
-          case 8: // com.example.irkokey.common.infraestructure.Preferences 
-          return (T) AppModule_ProvidePreferencesFactory.providePreferences(singletonCImpl.provideContextProvider.get());
 
           default: throw new AssertionError(id);
         }

@@ -87,17 +87,13 @@ class BackupViewModel @Inject constructor(
             Log.d("BackupViewModel", "Encrypted data: $encryptedJson")
 
             Log.d("BackupViewModel", "PASO DOS DE EXPORTACION")
-            // Export and encrypt the keyset
-            val encryptedKeyset = encryptionUtil.exportKeyset().trim().replace("\n", "")
-            Log.d("BackupViewModel", "Encrypted keyset: $encryptedKeyset")
 
-            // Create a JSON object with both encrypted data and encrypted keyset
+
             val backupJson = """
             {
-                "keyset": "$encryptedKeyset",
                 "data": "$encryptedJson"
-            }
-        """.trimIndent()
+            }""".trimIndent()
+
             Log.d("BackupViewModel", "Backup JSON: $backupJson")
 
             Log.d("BackupViewModel", "PASO TRES DE EXPORTACION")
@@ -132,17 +128,9 @@ class BackupViewModel @Inject constructor(
 
 
             Log.d("BackupViewModel", "PASO DOS DE IMPORTACION")
-            val encryptedKeyset = jsonObject.getString("keyset")
-            Log.d("BackupViewModel", "Encrypted keyset: $encryptedKeyset")
             val encryptedData = jsonObject.getString("data")
-            Log.d("BackupViewModel", "Encrypted data: $encryptedData")
-
-            // Decrypt and import the keyset
 
             Log.d("BackupViewModel", "PASO TRES DE IMPORTACION")
-            Log.d("BackupViewModel", "Importing keyset")
-            encryptionUtil.importKeyset(encryptedKeyset)
-            Log.d("BackupViewModel", "Keyset imported")
 
             // Decrypt the JSON
 

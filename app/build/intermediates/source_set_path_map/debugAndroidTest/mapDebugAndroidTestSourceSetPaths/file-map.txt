@@ -1,0 +1,5 @@
+com.example.irkokey.test.app-core-1.6.1-0 C:\Users\rfort\.gradle\caches\transforms-4\b5ea5ecd060b6c339df663a960ff7fd0\transformed\core-1.6.1\res
+com.example.irkokey.test.app-androidTest-1 C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\build\generated\res\resValues\androidTest\debug
+com.example.irkokey.test.app-mergeDebugAndroidTestResources-2 C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
+com.example.irkokey.test.app-mergeDebugAndroidTestResources-3 C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
+com.example.irkokey.test.app-debugAndroidTest-4 C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\build\intermediates\merged_res\debugAndroidTest\mergeDebugAndroidTestResources
