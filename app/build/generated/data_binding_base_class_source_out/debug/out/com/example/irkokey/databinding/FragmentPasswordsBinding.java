@@ -4,6 +4,7 @@ package com.example.irkokey.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -20,11 +21,15 @@ public final class FragmentPasswordsBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
+  public final EditText etSearch;
+
+  @NonNull
   public final RecyclerView rvPasswords;
 
-  private FragmentPasswordsBinding(@NonNull ConstraintLayout rootView,
+  private FragmentPasswordsBinding(@NonNull ConstraintLayout rootView, @NonNull EditText etSearch,
       @NonNull RecyclerView rvPasswords) {
     this.rootView = rootView;
+    this.etSearch = etSearch;
     this.rvPasswords = rvPasswords;
   }
 
@@ -55,13 +60,19 @@ public final class FragmentPasswordsBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.et_search;
+      EditText etSearch = ViewBindings.findChildViewById(rootView, id);
+      if (etSearch == null) {
+        break missingId;
+      }
+
       id = R.id.rv_passwords;
       RecyclerView rvPasswords = ViewBindings.findChildViewById(rootView, id);
       if (rvPasswords == null) {
         break missingId;
       }
 
-      return new FragmentPasswordsBinding((ConstraintLayout) rootView, rvPasswords);
+      return new FragmentPasswordsBinding((ConstraintLayout) rootView, etSearch, rvPasswords);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

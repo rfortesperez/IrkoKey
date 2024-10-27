@@ -1,6 +1,5 @@
 package com.example.irkokey.common.utils
 
-
 import android.util.Base64
 import android.util.Log
 import com.example.irkokey.IrkoKeyApp
@@ -13,8 +12,6 @@ import javax.crypto.spec.GCMParameterSpec
 import javax.crypto.spec.PBEKeySpec
 import javax.crypto.spec.SecretKeySpec
 
-
-
 object EncryptionUtil {
     private const val SALT = "irkokey_salt"
     private const val ITERATIONS = 10000
@@ -22,31 +19,35 @@ object EncryptionUtil {
     private const val GCM_IV_LENGTH = 12
     private const val GCM_TAG_LENGTH = 16
 
-
     private lateinit var preferences: Preferences
 
     private var derivedKey: SecretKey? = null
 
-    // Get the user pin from the preferences
     private fun getUserPin(): String {
+        Log.d("EncryptionUtil", "User pin: ${preferences.pin}")
         return preferences.pin ?: ""
     }
 
-    // Get the derived key from the user pin
     private fun getDerivedKey(): SecretKey {
         if (derivedKey == null) {
-            val userPin = getUserPin()
-            val salt = SALT.toByteArray()
-            val spec = PBEKeySpec(userPin.toCharArray(), salt, ITERATIONS, KEY_LENGTH)
-            val factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256")
-            val secretKey = factory.generateSecret(spec)
-            derivedKey = SecretKeySpec(secretKey.encoded, "AES")
+            val storedKey = preferences.derivedKey
+            if (storedKey != null) {
+                derivedKey = SecretKeySpec(Base64.decode(storedKey, Base64.DEFAULT), "AES")
+            } else {
+                val userPin = getUserPin()
+                Log.d("EncryptionUtil", "User pin: $userPin")
+                val salt = SALT.toByteArray()
+                val spec = PBEKeySpec(userPin.toCharArray(), salt, ITERATIONS, KEY_LENGTH)
+                val factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256")
+                val secretKey = factory.generateSecret(spec)
+                derivedKey = SecretKeySpec(secretKey.encoded, "AES")
+                preferences.derivedKey = Base64.encodeToString(derivedKey!!.encoded, Base64.DEFAULT)
+            }
         }
         Log.d("EncryptionUtil", "Derived key: ${Base64.encodeToString(derivedKey!!.encoded, Base64.DEFAULT)}")
         return derivedKey!!
     }
 
-    // Encrypt the data using AES/GCM/NoPadding
     fun encrypt(data: String): String {
         val secretKey = getDerivedKey()
         val cipher = Cipher.getInstance("AES/GCM/NoPadding")
@@ -59,7 +60,6 @@ object EncryptionUtil {
         return Base64.encodeToString(encryptedIvAndData, Base64.DEFAULT)
     }
 
-    // Decrypt the data using AES/GCM/NoPadding
     fun decrypt(cipherText: String): String {
         val secretKey = getDerivedKey()
         val cipher = Cipher.getInstance("AES/GCM/NoPadding")
@@ -72,14 +72,13 @@ object EncryptionUtil {
         return String(decryptedData)
     }
 
-    // Hash the data using SHA-256
     fun hash(data: String): String {
         val digest = MessageDigest.getInstance("SHA-256")
         val hashBytes = digest.digest(data.toByteArray())
         return Base64.encodeToString(hashBytes, Base64.DEFAULT)
     }
 
-    // Initialize the preferences
+
     fun initialize(irkoKeyApp: IrkoKeyApp) {
         this.preferences = Preferences(irkoKeyApp)
     }

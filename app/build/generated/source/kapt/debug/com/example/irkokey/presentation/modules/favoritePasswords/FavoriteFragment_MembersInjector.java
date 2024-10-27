@@ -3,6 +3,7 @@ package com.example.irkokey.presentation.modules.favoritePasswords;
 
 import com.example.irkokey.common.utils.EncryptionUtil;
 import com.example.irkokey.data.repository.PasswordRepository;
+import com.example.irkokey.data.repository.UserRepository;
 import dagger.MembersInjector;
 import dagger.internal.DaggerGenerated;
 import dagger.internal.InjectedFieldSignature;
@@ -22,22 +23,28 @@ public final class FavoriteFragment_MembersInjector implements MembersInjector<F
 
   private final Provider<EncryptionUtil> encryptionUtilProvider;
 
+  private final Provider<UserRepository> userRepositoryProvider;
+
   public FavoriteFragment_MembersInjector(Provider<PasswordRepository> passwordRepositoryProvider,
-      Provider<EncryptionUtil> encryptionUtilProvider) {
+      Provider<EncryptionUtil> encryptionUtilProvider,
+      Provider<UserRepository> userRepositoryProvider) {
     this.passwordRepositoryProvider = passwordRepositoryProvider;
     this.encryptionUtilProvider = encryptionUtilProvider;
+    this.userRepositoryProvider = userRepositoryProvider;
   }
 
   public static MembersInjector<FavoriteFragment> create(
       Provider<PasswordRepository> passwordRepositoryProvider,
-      Provider<EncryptionUtil> encryptionUtilProvider) {
-    return new FavoriteFragment_MembersInjector(passwordRepositoryProvider, encryptionUtilProvider);
+      Provider<EncryptionUtil> encryptionUtilProvider,
+      Provider<UserRepository> userRepositoryProvider) {
+    return new FavoriteFragment_MembersInjector(passwordRepositoryProvider, encryptionUtilProvider, userRepositoryProvider);
   }
 
   @Override
   public void injectMembers(FavoriteFragment instance) {
     injectPasswordRepository(instance, passwordRepositoryProvider.get());
     injectEncryptionUtil(instance, encryptionUtilProvider.get());
+    injectUserRepository(instance, userRepositoryProvider.get());
   }
 
   @InjectedFieldSignature("com.example.irkokey.presentation.modules.favoritePasswords.FavoriteFragment.passwordRepository")
@@ -50,5 +57,11 @@ public final class FavoriteFragment_MembersInjector implements MembersInjector<F
   public static void injectEncryptionUtil(FavoriteFragment instance,
       EncryptionUtil encryptionUtil) {
     instance.encryptionUtil = encryptionUtil;
+  }
+
+  @InjectedFieldSignature("com.example.irkokey.presentation.modules.favoritePasswords.FavoriteFragment.userRepository")
+  public static void injectUserRepository(FavoriteFragment instance,
+      UserRepository userRepository) {
+    instance.userRepository = userRepository;
   }
 }

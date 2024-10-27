@@ -1,6 +1,6 @@
 package com.example.irkokey.presentation.modules.passwords
 
-interface OnItemClick {
+interface OnPassItemClick {
     fun onDeleteClick(position: Int)
     fun onEditClick(position: Int)
     fun onAddFavoriteClick(position: Int)

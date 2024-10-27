@@ -12,7 +12,6 @@ import com.example.irkokey.common.utils.SingleLiveEvent;
 import com.example.irkokey.data.repository.PasswordRepository;
 import com.example.irkokey.domain.models.Password;
 import dagger.hilt.android.lifecycle.HiltViewModel;
-import kotlinx.coroutines.DelicateCoroutinesApi;
 import kotlinx.coroutines.Dispatchers;
 import kotlinx.coroutines.GlobalScope;
 import javax.inject.Inject;
@@ -85,7 +84,6 @@ public final class PasswordsViewModel extends androidx.lifecycle.ViewModel {
         return false;
     }
     
-    @kotlin.OptIn(markerClass = {kotlinx.coroutines.DelicateCoroutinesApi.class})
     public final void copyPassword(@org.jetbrains.annotations.NotNull
     java.lang.String encryptedPassword) {
     }

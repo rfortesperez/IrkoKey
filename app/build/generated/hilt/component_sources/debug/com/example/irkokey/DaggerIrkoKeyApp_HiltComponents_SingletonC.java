@@ -398,6 +398,7 @@ public final class DaggerIrkoKeyApp_HiltComponents_SingletonC {
     private FavoriteFragment injectFavoriteFragment2(FavoriteFragment instance) {
       FavoriteFragment_MembersInjector.injectPasswordRepository(instance, singletonCImpl.providePasswordRepositoryProvider.get());
       FavoriteFragment_MembersInjector.injectEncryptionUtil(instance, singletonCImpl.provideEncryptionUtilProvider.get());
+      FavoriteFragment_MembersInjector.injectUserRepository(instance, singletonCImpl.provideUserRepositoryProvider.get());
       return instance;
     }
 
@@ -405,6 +406,7 @@ public final class DaggerIrkoKeyApp_HiltComponents_SingletonC {
     private PasswordsFragment injectPasswordsFragment2(PasswordsFragment instance) {
       PasswordsFragment_MembersInjector.injectPasswordRepository(instance, singletonCImpl.providePasswordRepositoryProvider.get());
       PasswordsFragment_MembersInjector.injectEncryptionUtil(instance, singletonCImpl.provideEncryptionUtilProvider.get());
+      PasswordsFragment_MembersInjector.injectUserRepository(instance, singletonCImpl.provideUserRepositoryProvider.get());
       return instance;
     }
   }

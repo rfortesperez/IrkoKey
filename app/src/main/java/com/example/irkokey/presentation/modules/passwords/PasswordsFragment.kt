@@ -1,6 +1,8 @@
 package com.example.irkokey.presentation.modules.passwords
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +18,7 @@ import com.example.irkokey.R
 import com.example.irkokey.common.utils.EncryptionUtil
 import com.example.irkokey.common.utils.PasswordDiffCallback
 import com.example.irkokey.data.repository.PasswordRepository
+import com.example.irkokey.data.repository.UserRepository
 import com.example.irkokey.databinding.FragmentPasswordsBinding
 import com.example.irkokey.domain.models.Password
 import com.google.android.material.snackbar.Snackbar
@@ -36,7 +39,10 @@ class PasswordsFragment : Fragment() {
     @Inject
     lateinit var encryptionUtil: EncryptionUtil
 
-    private val listener = object : OnItemClick {
+    @Inject
+    lateinit var userRepository: UserRepository
+
+    private val listener = object : OnPassItemClick {
 
         override fun onDeleteClick(position: Int) {
             val password = passwordsList[position]
@@ -68,7 +74,6 @@ class PasswordsFragment : Fragment() {
 
         override fun onCopyPasswordClick(position: Int) {
             val password = passwordsList[position]
-//            val decryptedPassword = viewModel.getDecryptedPassword(password.password)
             viewModel.copyPassword(password.password)
         }
     }
@@ -86,6 +91,18 @@ class PasswordsFragment : Fragment() {
         with(binding){
             rvPasswords.adapter = adapter
             rvPasswords.layoutManager = LinearLayoutManager(context)
+
+            // Search bar
+            etSearch.addTextChangedListener(object: TextWatcher{
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) { }
+
+                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) { }
+
+                override fun afterTextChanged(p0: Editable?) {
+                    filter(p0.toString())
+                }
+
+            })
         }
 
         viewModel.allPasswords.observe(viewLifecycleOwner){ passwords ->
@@ -122,6 +139,7 @@ class PasswordsFragment : Fragment() {
             }
         }
     }
+
     private fun showDeleteConfirmationDialog(password: Password) {
         AlertDialog.Builder(requireContext())
             .setTitle(HtmlCompat.fromHtml("<font color='red' style= 'bold'>Delete Password</font>", HtmlCompat.FROM_HTML_MODE_LEGACY))
@@ -133,7 +151,7 @@ class PasswordsFragment : Fragment() {
             .show()
     }
 
-    //builder.setMessage(Html.fromHtml("<font color='red'>Este es un mensaje importante.</font>"))
+
 
     private fun showCopyConfirmationDialog() {
         AlertDialog.Builder(requireContext())
@@ -141,5 +159,15 @@ class PasswordsFragment : Fragment() {
             .setMessage("Make sure to erase the password from the clipboard after use it!")
             .setPositiveButton(HtmlCompat.fromHtml("<font color='red'> Got it!</font>", HtmlCompat.FROM_HTML_MODE_LEGACY)) { _, _ -> }
             .show()
+    }
+
+    private fun filter(text: String) {
+        val filteredList = passwordsList.filter { password ->
+            password.website.contains(text, ignoreCase = true)
+        }
+        // convert the filtered list to mutable list
+        val newList = filteredList.toMutableList()
+
+        adapter.filterList(newList)
     }
 }

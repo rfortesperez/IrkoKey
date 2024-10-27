@@ -62,7 +62,7 @@ class CreateViewModel @Inject constructor(
 
     // Respond to the click of the generate button
     fun didClickGenerateButton() {
-      val generatedPassword = generateStrongPassword()
+        val generatedPassword = generateStrongPassword()
         if(isPasswordStrong(generatedPassword)){
             _generatedPassword.value = generatedPassword
         }else{

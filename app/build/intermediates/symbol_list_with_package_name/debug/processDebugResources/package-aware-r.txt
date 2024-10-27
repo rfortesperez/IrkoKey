@@ -3325,6 +3325,7 @@ drawable baseline_favorite_border_24
 drawable baseline_import_export_24
 drawable baseline_logout_24
 drawable baseline_password_24
+drawable baseline_search_24
 drawable btn_checkbox_checked_mtrl
 drawable btn_checkbox_checked_to_unchecked_mtrl_animation
 drawable btn_checkbox_unchecked_mtrl
@@ -3651,6 +3652,7 @@ id et_introduce_pin
 id et_new_password
 id et_password_input
 id et_pin
+id et_search
 id et_username_input
 id et_website_input
 id exitUntilCollapsed

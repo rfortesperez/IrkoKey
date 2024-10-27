@@ -10,6 +10,7 @@ class Preferences @Inject constructor(context: Context) {
 
     private val SHARED_NAME = "sharedPreferences"
     private val SHARED_MAIL = "mail"
+    private val SHARED_PIN = "pin"
 
 
     // storage is the object that will be used to store the preferences
@@ -23,7 +24,11 @@ class Preferences @Inject constructor(context: Context) {
 
     // pin is a property that will be used to get and set the user's pin
     var pin: String?
-        get() = storage.getString(SHARED_MAIL, null)
-        set(value) = storage.edit().putString(SHARED_MAIL, value).apply()
+        get() = storage.getString(SHARED_PIN, null)
+        set(value) = storage.edit().putString(SHARED_PIN, value).apply()
+
+    var derivedKey: String?
+        get() = storage.getString("derived_key", null)
+        set(value) = storage.edit().putString("derived_key", value).apply()
 
 }

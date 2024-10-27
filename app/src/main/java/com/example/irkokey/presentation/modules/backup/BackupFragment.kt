@@ -23,9 +23,6 @@ import com.example.irkokey.R
 import com.example.irkokey.databinding.FragmentBackupBinding
 import dagger.hilt.android.AndroidEntryPoint
 
-
-
-
 @AndroidEntryPoint
 class BackupFragment : Fragment() {
 

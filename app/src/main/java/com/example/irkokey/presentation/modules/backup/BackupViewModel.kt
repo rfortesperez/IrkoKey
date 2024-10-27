@@ -1,7 +1,6 @@
 package com.example.irkokey.presentation.modules.backup
 
 import android.os.Environment
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -68,7 +67,7 @@ class BackupViewModel @Inject constructor(
 
     private fun exportDatabaseToJson() {
         val downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
-        val jsonFile = File(downloadsDir, "backup.json")
+        val jsonFile = File(downloadsDir, "irkokey_backup.json")
 
         val moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
         val adapter = moshi.adapter(BackupData::class.java)
@@ -98,7 +97,7 @@ class BackupViewModel @Inject constructor(
     private fun importDatafromJson() {
 
         val downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
-        val jsonFile = File(downloadsDir, "backup.json")
+        val jsonFile = File(downloadsDir, "irkokey_backup.json")
 
         val moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
         val adapter = moshi.adapter(BackupData::class.java)

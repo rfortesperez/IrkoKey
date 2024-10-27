@@ -17,6 +17,7 @@ import com.example.irkokey.data.repository.PasswordRepository
 import com.example.irkokey.databinding.FragmentFavoriteBinding
 import com.example.irkokey.domain.models.Password
 import com.example.irkokey.common.utils.PasswordDiffCallback
+import com.example.irkokey.data.repository.UserRepository
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -34,6 +35,9 @@ class FavoriteFragment : Fragment() {
     @Inject
     lateinit var encryptionUtil: EncryptionUtil
 
+    @Inject
+    lateinit var userRepository: UserRepository
+
     private val listener = object : OnFavItemClick {
 
         override fun onCopyPasswordClick(position: Int) {
@@ -47,7 +51,11 @@ class FavoriteFragment : Fragment() {
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         binding = FragmentFavoriteBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -88,4 +96,8 @@ class FavoriteFragment : Fragment() {
             .setPositiveButton(HtmlCompat.fromHtml("<font color='red'> Got it!</font>", HtmlCompat.FROM_HTML_MODE_LEGACY)) { _, _ -> }
             .show()
     }
+
+
+
 }
+

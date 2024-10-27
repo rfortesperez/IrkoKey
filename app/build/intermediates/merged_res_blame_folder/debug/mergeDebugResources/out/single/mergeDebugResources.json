@@ -92,6 +92,10 @@
         "source": "com.example.irkokey.app-main-54:/layout/row_password.xml"
     },
     {
+        "merged": "com.example.irkokey.app-debug-52:/drawable_baseline_search_24.xml.flat",
+        "source": "com.example.irkokey.app-main-54:/drawable/baseline_search_24.xml"
+    },
+    {
         "merged": "com.example.irkokey.app-debug-52:/drawable_baseline_delete_24.xml.flat",
         "source": "com.example.irkokey.app-main-54:/drawable/baseline_delete_24.xml"
     },

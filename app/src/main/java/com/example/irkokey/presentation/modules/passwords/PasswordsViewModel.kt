@@ -14,7 +14,6 @@ import com.example.irkokey.common.utils.SingleLiveEvent
 import com.example.irkokey.data.repository.PasswordRepository
 import com.example.irkokey.domain.models.Password
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
@@ -26,7 +25,7 @@ class PasswordsViewModel @Inject constructor(
     application: Application,
     private val passwordRepository: PasswordRepository,
     private val clipboardManager: ClipboardManager,
-    private val encryptionUtil: EncryptionUtil,
+    private val encryptionUtil: EncryptionUtil
 ) : ViewModel() {
 
     private val _allPasswords: LiveData<List<Password>> = passwordRepository.getAllPasswords().asLiveData()
@@ -42,29 +41,29 @@ class PasswordsViewModel @Inject constructor(
     private val _isCopied = SingleLiveEvent<Boolean>()
     val isCopied: LiveData<Boolean> get() = _isCopied
 
-    // Confirm delete password
+
+
+
     fun confirmDeletePassword(password: Password) {
         _showDeleteConfirmation.value = password
     }
 
-    // Add favorite
     fun addFavorite(password: Password) {
         viewModelScope.launch {
             passwordRepository.changeFavorite(password.id)
         }
     }
 
-    // Delete password
     fun deletePassword(password: Password) {
         viewModelScope.launch {
             passwordRepository.deletePassword(password.id)
         }
     }
 
-    // Edit password
     fun editPassword(password: Password, newPassword: String) {
         viewModelScope.launch {
             if (isPasswordStrong(newPassword)) {
+
                 val encryptedPassword = encryptionUtil.encrypt(newPassword)
                 passwordRepository.updatePassword(password.id, encryptedPassword)
             } else {
@@ -73,14 +72,12 @@ class PasswordsViewModel @Inject constructor(
         }
     }
 
-    // Check if password is strong
     private fun isPasswordStrong(newPassword: String): Boolean {
         return PasswordStrengthUtil.isPasswordStrong(newPassword)
     }
 
-    // Copy password to clipboard
-    @OptIn(DelicateCoroutinesApi::class)
     fun copyPassword(encryptedPassword: String) {
+
         val decryptedPassword = encryptionUtil.decrypt(encryptedPassword)
         val clipboard = ClipData.newPlainText("password", decryptedPassword)
         clipboardManager.setPrimaryClip(clipboard)
@@ -92,8 +89,12 @@ class PasswordsViewModel @Inject constructor(
         }
     }
 
-    // Decript password
+
+
     fun getDecryptedPassword(encryptedPassword: String): String {
+        Log.d("PasswordsViewModel", "Decrypting password")
+
+
         return encryptionUtil.decrypt(encryptedPassword)
     }
 

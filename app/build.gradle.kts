@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.irkokey"
-        minSdk = 24
+        minSdk = 28
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -53,13 +53,13 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     implementation("org.jetbrains.kotlin:kotlin-stdlib:1.9.0")
+    implementation("androidx.appcompat:appcompat:1.7.0")
+
     // Fragments
-//    implementation(libs.androidx.activity.ktx)
-//    implementation(libs.androidx.fragment.ktx.v140)
     implementation("androidx.activity:activity-ktx:1.9.2")
     implementation("androidx.fragment:fragment-ktx:1.4.0")
-    // Navigation
 
+    // Navigation
     implementation("androidx.navigation:navigation-fragment-ktx:2.8.1")
     implementation("androidx.navigation:navigation-ui-ktx:2.8.1")
 
@@ -75,7 +75,6 @@ dependencies {
     // Backup to a json file
     implementation("com.squareup.moshi:moshi:1.12.0")
     implementation("com.squareup.moshi:moshi-kotlin:1.12.0")
-
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.4.0")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0")
     implementation("androidx.annotation:annotation:1.3.0")

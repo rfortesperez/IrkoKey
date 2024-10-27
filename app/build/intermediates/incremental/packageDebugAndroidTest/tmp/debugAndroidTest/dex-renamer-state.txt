@@ -1,4 +1,4 @@
-#Sat Oct 26 20:58:38 CEST 2024
+#Sun Oct 27 18:32:40 CET 2024
 base.0=C\:\\Users\\rfort\\AndroidStudioProjects\\a21rociofp\\app\\build\\intermediates\\dex\\debugAndroidTest\\mergeExtDexDebugAndroidTest\\classes.dex
 base.1=C\:\\Users\\rfort\\AndroidStudioProjects\\a21rociofp\\app\\build\\intermediates\\dex\\debugAndroidTest\\mergeProjectDexDebugAndroidTest\\0\\classes.dex
 base.2=C\:\\Users\\rfort\\AndroidStudioProjects\\a21rociofp\\app\\build\\intermediates\\dex\\debugAndroidTest\\mergeProjectDexDebugAndroidTest\\7\\classes.dex

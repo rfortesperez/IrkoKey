@@ -17,8 +17,6 @@ import dagger.hilt.android.AndroidEntryPoint
 class ExplorePasswordFragment : Fragment() {
 
     private lateinit var binding: FragmentExplorePasswordBinding
-    private val ExplorePasswordViewModel: ExplorePasswordViewModel by viewModels()
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
         binding = FragmentExplorePasswordBinding.inflate(inflater, container, false)
         return binding.root
@@ -38,6 +36,4 @@ class ExplorePasswordFragment : Fragment() {
             }.attach()
         }
     }
-
-
 }

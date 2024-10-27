@@ -42,10 +42,15 @@ class FavoriteViewModel @Inject constructor(
 
     @OptIn(DelicateCoroutinesApi::class)
     fun copyPassword(encryptedPassword: String) {
-        val decryptedPassword = encryptionUtil.decrypt(encryptedPassword)
+        var decryptedPassword = ""
+        viewModelScope.launch {
+            decryptedPassword = encryptionUtil.decrypt(encryptedPassword)
+        }
+
         val clipboard = ClipData.newPlainText("password", decryptedPassword)
         clipboardManager.setPrimaryClip(clipboard)
         _isCopied.value = true
+
         // Clear clipboard after 30 seconds
         GlobalScope.launch(Dispatchers.IO) {
             delay(30000L)

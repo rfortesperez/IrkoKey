@@ -3,6 +3,7 @@ package com.example.irkokey.presentation.modules.passwords;
 
 import com.example.irkokey.common.utils.EncryptionUtil;
 import com.example.irkokey.data.repository.PasswordRepository;
+import com.example.irkokey.data.repository.UserRepository;
 import dagger.MembersInjector;
 import dagger.internal.DaggerGenerated;
 import dagger.internal.InjectedFieldSignature;
@@ -22,22 +23,28 @@ public final class PasswordsFragment_MembersInjector implements MembersInjector<
 
   private final Provider<EncryptionUtil> encryptionUtilProvider;
 
+  private final Provider<UserRepository> userRepositoryProvider;
+
   public PasswordsFragment_MembersInjector(Provider<PasswordRepository> passwordRepositoryProvider,
-      Provider<EncryptionUtil> encryptionUtilProvider) {
+      Provider<EncryptionUtil> encryptionUtilProvider,
+      Provider<UserRepository> userRepositoryProvider) {
     this.passwordRepositoryProvider = passwordRepositoryProvider;
     this.encryptionUtilProvider = encryptionUtilProvider;
+    this.userRepositoryProvider = userRepositoryProvider;
   }
 
   public static MembersInjector<PasswordsFragment> create(
       Provider<PasswordRepository> passwordRepositoryProvider,
-      Provider<EncryptionUtil> encryptionUtilProvider) {
-    return new PasswordsFragment_MembersInjector(passwordRepositoryProvider, encryptionUtilProvider);
+      Provider<EncryptionUtil> encryptionUtilProvider,
+      Provider<UserRepository> userRepositoryProvider) {
+    return new PasswordsFragment_MembersInjector(passwordRepositoryProvider, encryptionUtilProvider, userRepositoryProvider);
   }
 
   @Override
   public void injectMembers(PasswordsFragment instance) {
     injectPasswordRepository(instance, passwordRepositoryProvider.get());
     injectEncryptionUtil(instance, encryptionUtilProvider.get());
+    injectUserRepository(instance, userRepositoryProvider.get());
   }
 
   @InjectedFieldSignature("com.example.irkokey.presentation.modules.passwords.PasswordsFragment.passwordRepository")
@@ -50,5 +57,11 @@ public final class PasswordsFragment_MembersInjector implements MembersInjector<
   public static void injectEncryptionUtil(PasswordsFragment instance,
       EncryptionUtil encryptionUtil) {
     instance.encryptionUtil = encryptionUtil;
+  }
+
+  @InjectedFieldSignature("com.example.irkokey.presentation.modules.passwords.PasswordsFragment.userRepository")
+  public static void injectUserRepository(PasswordsFragment instance,
+      UserRepository userRepository) {
+    instance.userRepository = userRepository;
   }
 }
