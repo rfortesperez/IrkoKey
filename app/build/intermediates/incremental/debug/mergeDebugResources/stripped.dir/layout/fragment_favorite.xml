@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/fondo_14"
     android:paddingBottom="100dp"
-    tools:context=".presentation.modules.passwords.PasswordsFragment">
+    tools:context=".presentation.modules.favoritePasswords.FavoriteFragment">
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/sv_search"
@@ -24,8 +24,9 @@
         app:layout_constraintTop_toTopOf="parent"
         />
 
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_passwords"
+        android:id="@+id/rv_favorite_passwords"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:nestedScrollingEnabled="false"
@@ -36,5 +37,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/sv_search"
         app:layout_constraintVertical_bias="0.256"
-        tools:listitem="@layout/row_password" />
+        tools:listitem="@layout/item_favorite_password" />
 </androidx.constraintlayout.widget.ConstraintLayout>

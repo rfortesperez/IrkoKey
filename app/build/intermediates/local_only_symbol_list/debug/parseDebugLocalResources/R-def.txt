@@ -333,7 +333,6 @@ id et_introduce_pin
 id et_new_password
 id et_password_input
 id et_pin
-id et_search
 id et_username_input
 id et_website_input
 id guideline

@@ -4,6 +4,10 @@
         "source": "C:\\Users\\rfort\\.gradle\\daemon\\8.6\\com.example.irkokey.app-main-54:\\font\\poppins_semibold.ttf"
     },
     {
+        "merged": "com.example.irkokey.app-debug-52:/layout_fragment_favorite.xml.flat",
+        "source": "com.example.irkokey.app-main-54:/layout/fragment_favorite.xml"
+    },
+    {
         "merged": "C:\\Users\\rfort\\.gradle\\daemon\\8.6\\com.example.irkokey.app-debug-52:\\layout_fragment_explore_password.xml.flat",
         "source": "C:\\Users\\rfort\\.gradle\\daemon\\8.6\\com.example.irkokey.app-main-54:\\layout\\fragment_explore_password.xml"
     },
@@ -78,10 +82,6 @@
     {
         "merged": "C:\\Users\\rfort\\.gradle\\daemon\\8.6\\com.example.irkokey.app-debug-52:\\drawable_irko_key_high_resolution_logo_white_transparent_.png.flat",
         "source": "C:\\Users\\rfort\\.gradle\\daemon\\8.6\\com.example.irkokey.app-main-54:\\drawable\\irko_key_high_resolution_logo_white_transparent_.png"
-    },
-    {
-        "merged": "com.example.irkokey.app-debug-52:/layout_fragment_passwords.xml.flat",
-        "source": "com.example.irkokey.app-main-54:/layout/fragment_passwords.xml"
     },
     {
         "merged": "C:\\Users\\rfort\\.gradle\\daemon\\8.6\\com.example.irkokey.app-debug-52:\\xml_data_extraction_rules.xml.flat",

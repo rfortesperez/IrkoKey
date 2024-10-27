@@ -2,13 +2,12 @@ package com.example.irkokey.presentation.modules.favoritePasswords
 
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.widget.SearchView
 import androidx.core.text.HtmlCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -73,17 +72,30 @@ class FavoriteFragment : Fragment() {
             rvFavoritePasswords.adapter = adapter
 
             // Search bar
-            etSearch.addTextChangedListener(object: TextWatcher {
-                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) { }
 
-                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) { }
-
-                override fun afterTextChanged(p0: Editable?) {
-                    filter(p0.toString())
+            svSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                    return false
                 }
 
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    if (newText.isNullOrEmpty()) {
+                        favoritePasswordsList.clear() // Clear the list on empty search
+                        // Add back the original list
+                        favoritePasswordsList.addAll(adapter.getOriginalList())
+                        adapter.notifyDataSetChanged() // Update the adapter
+                    } else {
+                        val filteredList = favoritePasswordsList.filter { password ->
+                            password.website.contains(newText, ignoreCase = true)
+                        }.toMutableList()
+                        if (filteredList.isEmpty()){
+                            Toast.makeText(context, "No results found", Toast.LENGTH_SHORT).show()
+                        }
+                        adapter.filterList(filteredList)
+                    }
+                    return true
+                }
             })
-
         }
 
         viewModel.allFavorites.observe(viewLifecycleOwner) {
@@ -93,6 +105,7 @@ class FavoriteFragment : Fragment() {
 
             favoritePasswordsList.clear()
             favoritePasswordsList.addAll(it)
+            adapter.updateOriginalList(it.toMutableList())
             diffResult.dispatchUpdatesTo(adapter)
         }
         viewModel.isCopied.observe(viewLifecycleOwner) { isCopied ->

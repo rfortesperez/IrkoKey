@@ -1,5 +1,6 @@
 package com.example.irkokey.presentation.modules.favoritePasswords
 
+import android.annotation.SuppressLint
 import android.text.Editable
 import android.text.InputType
 import android.view.LayoutInflater
@@ -14,6 +15,8 @@ class FavoriteViewAdapter(
     private val listener: OnFavItemClick,
     private val encryptionUtil: EncryptionUtil
 ) : RecyclerView.Adapter<FavoriteViewAdapter.ViewHolder>() {
+
+    private var originalList: MutableList<Password> = favoriteList.toMutableList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -36,9 +39,24 @@ class FavoriteViewAdapter(
         notifyItemChanged(position)
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun filterList(filteredList: MutableList<Password>) {
-        this.favoriteList = filteredList
+        if (filteredList.isEmpty()) {
+            this.favoriteList.clear()
+            this.favoriteList.addAll(originalList)
+        } else {
+            this.favoriteList.clear()
+            this.favoriteList.addAll(filteredList)
+        }
         notifyDataSetChanged()
+    }
+
+    fun updateOriginalList(newList: MutableList<Password>) {
+        originalList = newList.toMutableList()
+    }
+
+    fun getOriginalList(): MutableList<Password> {
+        return originalList
     }
 
     class ViewHolder(private val binding: ItemFavoritePasswordBinding) :

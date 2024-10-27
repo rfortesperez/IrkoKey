@@ -3651,7 +3651,6 @@ int id et_introduce_pin 0x7f0900c9
 int id et_new_password 0x7f0900ca
 int id et_password_input 0x7f0900cb
 int id et_pin 0x7f0900cc
-int id et_search 0x7f0900cd
 int id et_username_input 0x7f0900ce
 int id et_website_input 0x7f0900cf
 int id exitUntilCollapsed 0x7f0900d0
