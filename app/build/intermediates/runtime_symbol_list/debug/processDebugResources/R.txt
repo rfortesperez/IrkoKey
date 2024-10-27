@@ -3340,7 +3340,7 @@ int drawable design_ic_visibility_off 0x7f07008e
 int drawable design_password_eye 0x7f07008f
 int drawable design_snackbar_background 0x7f070090
 int drawable et_rounded 0x7f070091
-int drawable fondo_6 0x7f070092
+int drawable fondo_14 0x7f070092
 int drawable ic_arrow_back_black_24 0x7f070093
 int drawable ic_call_answer 0x7f070094
 int drawable ic_call_answer_low 0x7f070095

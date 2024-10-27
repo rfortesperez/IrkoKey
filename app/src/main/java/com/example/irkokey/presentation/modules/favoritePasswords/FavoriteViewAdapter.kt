@@ -10,7 +10,7 @@ import com.example.irkokey.databinding.ItemFavoritePasswordBinding
 import com.example.irkokey.domain.models.Password
 
 class FavoriteViewAdapter(
-    private val favoriteList: MutableList<Password>,
+    private var favoriteList: MutableList<Password>,
     private val listener: OnFavItemClick,
     private val encryptionUtil: EncryptionUtil
 ) : RecyclerView.Adapter<FavoriteViewAdapter.ViewHolder>() {
@@ -34,6 +34,11 @@ class FavoriteViewAdapter(
     fun updatePassword(position: Int, password: Password) {
         favoriteList[position] = password
         notifyItemChanged(position)
+    }
+
+    fun filterList(filteredList: MutableList<Password>) {
+        this.favoriteList = filteredList
+        notifyDataSetChanged()
     }
 
     class ViewHolder(private val binding: ItemFavoritePasswordBinding) :

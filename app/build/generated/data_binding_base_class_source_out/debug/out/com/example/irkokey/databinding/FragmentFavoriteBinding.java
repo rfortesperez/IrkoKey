@@ -4,6 +4,7 @@ package com.example.irkokey.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -20,11 +21,15 @@ public final class FragmentFavoriteBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
+  public final EditText etSearch;
+
+  @NonNull
   public final RecyclerView rvFavoritePasswords;
 
-  private FragmentFavoriteBinding(@NonNull ConstraintLayout rootView,
+  private FragmentFavoriteBinding(@NonNull ConstraintLayout rootView, @NonNull EditText etSearch,
       @NonNull RecyclerView rvFavoritePasswords) {
     this.rootView = rootView;
+    this.etSearch = etSearch;
     this.rvFavoritePasswords = rvFavoritePasswords;
   }
 
@@ -55,13 +60,20 @@ public final class FragmentFavoriteBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.et_search;
+      EditText etSearch = ViewBindings.findChildViewById(rootView, id);
+      if (etSearch == null) {
+        break missingId;
+      }
+
       id = R.id.rv_favorite_passwords;
       RecyclerView rvFavoritePasswords = ViewBindings.findChildViewById(rootView, id);
       if (rvFavoritePasswords == null) {
         break missingId;
       }
 
-      return new FragmentFavoriteBinding((ConstraintLayout) rootView, rvFavoritePasswords);
+      return new FragmentFavoriteBinding((ConstraintLayout) rootView, etSearch,
+          rvFavoritePasswords);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

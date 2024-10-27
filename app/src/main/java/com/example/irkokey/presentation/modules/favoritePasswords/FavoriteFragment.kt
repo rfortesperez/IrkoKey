@@ -2,6 +2,8 @@ package com.example.irkokey.presentation.modules.favoritePasswords
 
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -69,6 +71,19 @@ class FavoriteFragment : Fragment() {
         with(binding) {
             rvFavoritePasswords.layoutManager = LinearLayoutManager(context)
             rvFavoritePasswords.adapter = adapter
+
+            // Search bar
+            etSearch.addTextChangedListener(object: TextWatcher {
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) { }
+
+                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) { }
+
+                override fun afterTextChanged(p0: Editable?) {
+                    filter(p0.toString())
+                }
+
+            })
+
         }
 
         viewModel.allFavorites.observe(viewLifecycleOwner) {
@@ -97,7 +112,15 @@ class FavoriteFragment : Fragment() {
             .show()
     }
 
+    private fun filter(text: String) {
+        val filteredList = favoritePasswordsList.filter { password ->
+            password.website.contains(text, ignoreCase = true)
+        }
+        // convert the filtered list to mutable list
+        val newList = filteredList.toMutableList()
 
+        adapter.filterList(newList)
+    }
 
 }
 

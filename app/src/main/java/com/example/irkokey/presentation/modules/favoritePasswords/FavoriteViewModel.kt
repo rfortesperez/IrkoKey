@@ -62,8 +62,5 @@ class FavoriteViewModel @Inject constructor(
         viewModelScope.launch {
             passwordRepository.changeFavorite(password.id)
         }
-
     }
-
-
 }
