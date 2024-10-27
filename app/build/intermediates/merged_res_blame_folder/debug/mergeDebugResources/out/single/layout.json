@@ -8,10 +8,6 @@
         "source": "C:\\Users\\rfort\\.gradle\\daemon\\8.6\\com.example.irkokey.app-main-54:\\layout\\activity_splash.xml"
     },
     {
-        "merged": "com.example.irkokey.app-mergeDebugResources-51:/layout/fragment_favorite.xml",
-        "source": "com.example.irkokey.app-main-54:/layout/fragment_favorite.xml"
-    },
-    {
         "merged": "C:\\Users\\rfort\\.gradle\\daemon\\8.6\\com.example.irkokey.app-mergeDebugResources-51:\\layout\\row_password.xml",
         "source": "C:\\Users\\rfort\\.gradle\\daemon\\8.6\\com.example.irkokey.app-main-54:\\layout\\row_password.xml"
     },
@@ -58,5 +54,9 @@
     {
         "merged": "C:\\Users\\rfort\\.gradle\\daemon\\8.6\\com.example.irkokey.app-mergeDebugResources-51:\\layout\\dialog_edit.xml",
         "source": "C:\\Users\\rfort\\.gradle\\daemon\\8.6\\com.example.irkokey.app-main-54:\\layout\\dialog_edit.xml"
+    },
+    {
+        "merged": "com.example.irkokey.app-mergeDebugResources-51:/layout/fragment_passwords.xml",
+        "source": "com.example.irkokey.app-main-54:/layout/fragment_passwords.xml"
     }
 ]

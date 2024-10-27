@@ -4,9 +4,9 @@ package com.example.irkokey.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
@@ -21,16 +21,16 @@ public final class FragmentPasswordsBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
-  public final EditText etSearch;
-
-  @NonNull
   public final RecyclerView rvPasswords;
 
-  private FragmentPasswordsBinding(@NonNull ConstraintLayout rootView, @NonNull EditText etSearch,
-      @NonNull RecyclerView rvPasswords) {
+  @NonNull
+  public final SearchView svSearch;
+
+  private FragmentPasswordsBinding(@NonNull ConstraintLayout rootView,
+      @NonNull RecyclerView rvPasswords, @NonNull SearchView svSearch) {
     this.rootView = rootView;
-    this.etSearch = etSearch;
     this.rvPasswords = rvPasswords;
+    this.svSearch = svSearch;
   }
 
   @Override
@@ -60,19 +60,19 @@ public final class FragmentPasswordsBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.et_search;
-      EditText etSearch = ViewBindings.findChildViewById(rootView, id);
-      if (etSearch == null) {
-        break missingId;
-      }
-
       id = R.id.rv_passwords;
       RecyclerView rvPasswords = ViewBindings.findChildViewById(rootView, id);
       if (rvPasswords == null) {
         break missingId;
       }
 
-      return new FragmentPasswordsBinding((ConstraintLayout) rootView, etSearch, rvPasswords);
+      id = R.id.sv_search;
+      SearchView svSearch = ViewBindings.findChildViewById(rootView, id);
+      if (svSearch == null) {
+        break missingId;
+      }
+
+      return new FragmentPasswordsBinding((ConstraintLayout) rootView, rvPasswords, svSearch);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

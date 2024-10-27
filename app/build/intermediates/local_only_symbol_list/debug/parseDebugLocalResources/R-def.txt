@@ -357,6 +357,7 @@ id row_password
 id rv_favorite_passwords
 id rv_passwords
 id splashActivity
+id sv_search
 id tabLayout
 id textInputLayout
 id textInputLayoutFav

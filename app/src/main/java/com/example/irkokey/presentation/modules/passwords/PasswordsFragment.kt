@@ -1,14 +1,13 @@
 package com.example.irkokey.presentation.modules.passwords
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.widget.SearchView
 import androidx.core.text.HtmlCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -41,6 +40,8 @@ class PasswordsFragment : Fragment() {
 
     @Inject
     lateinit var userRepository: UserRepository
+
+
 
     private val listener = object : OnPassItemClick {
 
@@ -80,6 +81,7 @@ class PasswordsFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentPasswordsBinding.inflate(inflater, container, false)
+        binding.svSearch.clearFocus()
         return binding.root
     }
 
@@ -93,15 +95,28 @@ class PasswordsFragment : Fragment() {
             rvPasswords.layoutManager = LinearLayoutManager(context)
 
             // Search bar
-            etSearch.addTextChangedListener(object: TextWatcher{
-                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) { }
-
-                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) { }
-
-                override fun afterTextChanged(p0: Editable?) {
-                    filter(p0.toString())
+            svSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                    return false
                 }
 
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    if (newText.isNullOrEmpty()) {
+                        passwordsList.clear() // Clear the list on empty search
+                        // Add back the original list
+                        passwordsList.addAll(adapter.getOriginalList())
+                        adapter.notifyDataSetChanged() // Update the adapter
+                    } else {
+                        val filteredList = passwordsList.filter { password ->
+                            password.website.contains(newText, ignoreCase = true)
+                        }.toMutableList()
+                        if (filteredList.isEmpty()){
+                            Toast.makeText(context, "No results found", Toast.LENGTH_SHORT).show()
+                        }
+                        adapter.filterList(filteredList)
+                    }
+                    return true
+                }
             })
         }
 
@@ -114,6 +129,7 @@ class PasswordsFragment : Fragment() {
 
             passwordsList.clear()
             passwordsList.addAll(passwords)
+            adapter.updateOriginalList(passwords.toMutableList())
             diffResult.dispatchUpdatesTo(adapter)
         }
         viewModel.isCorrect.observe(viewLifecycleOwner){ isCorrect ->
@@ -161,13 +177,5 @@ class PasswordsFragment : Fragment() {
             .show()
     }
 
-    private fun filter(text: String) {
-        val filteredList = passwordsList.filter { password ->
-            password.website.contains(text, ignoreCase = true)
-        }
-        // convert the filtered list to mutable list
-        val newList = filteredList.toMutableList()
 
-        adapter.filterList(newList)
-    }
 }

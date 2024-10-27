@@ -41,9 +41,6 @@ class PasswordsViewModel @Inject constructor(
     private val _isCopied = SingleLiveEvent<Boolean>()
     val isCopied: LiveData<Boolean> get() = _isCopied
 
-
-
-
     fun confirmDeletePassword(password: Password) {
         _showDeleteConfirmation.value = password
     }

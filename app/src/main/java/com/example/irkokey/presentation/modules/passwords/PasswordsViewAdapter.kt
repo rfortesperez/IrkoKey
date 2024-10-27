@@ -1,5 +1,6 @@
 package com.example.irkokey.presentation.modules.passwords
 
+import android.annotation.SuppressLint
 import android.text.Editable
 import android.text.InputType
 import android.view.LayoutInflater
@@ -14,6 +15,9 @@ class PasswordsViewAdapter(
     private val listener: OnPassItemClick,
     private val encryptionUtil: EncryptionUtil
 ) : RecyclerView.Adapter<PasswordsViewAdapter.ViewHolder>() {
+
+
+    private var originalList: MutableList<Password> = passwordList.toMutableList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -36,10 +40,27 @@ class PasswordsViewAdapter(
         notifyItemChanged(position)
     }
 
+
+    @SuppressLint("NotifyDataSetChanged")
     fun filterList(filteredList: MutableList<Password>) {
-        this.passwordList = filteredList
+        if (filteredList.isEmpty()) {
+            this.passwordList.clear()
+            this.passwordList.addAll(originalList)
+        } else {
+            this.passwordList.clear()
+            this.passwordList.addAll(filteredList)
+        }
         notifyDataSetChanged()
     }
+
+    fun updateOriginalList(newList: MutableList<Password>) {
+        originalList = newList.toMutableList()
+    }
+
+    fun getOriginalList(): MutableList<Password> {
+        return originalList
+    }
+
 
     class ViewHolder(private val binding: RowPasswordBinding) :
         RecyclerView.ViewHolder(binding.root) {
