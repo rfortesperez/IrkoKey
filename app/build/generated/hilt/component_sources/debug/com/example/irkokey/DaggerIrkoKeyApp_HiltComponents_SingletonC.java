@@ -557,7 +557,7 @@ public final class DaggerIrkoKeyApp_HiltComponents_SingletonC {
       public T get() {
         switch (id) {
           case 0: // com.example.irkokey.presentation.modules.backup.BackupViewModel 
-          return (T) new BackupViewModel(singletonCImpl.provideUserRepositoryProvider.get(), singletonCImpl.providePasswordRepositoryProvider.get(), singletonCImpl.provideEncryptionUtilProvider.get());
+          return (T) new BackupViewModel(ApplicationContextModule_ProvideApplicationFactory.provideApplication(singletonCImpl.applicationContextModule), singletonCImpl.provideUserRepositoryProvider.get(), singletonCImpl.providePasswordRepositoryProvider.get(), singletonCImpl.provideEncryptionUtilProvider.get());
 
           case 1: // com.example.irkokey.presentation.modules.createPassword.CreateViewModel 
           return (T) new CreateViewModel(ApplicationContextModule_ProvideApplicationFactory.provideApplication(singletonCImpl.applicationContextModule), singletonCImpl.providePasswordRepositoryProvider.get(), singletonCImpl.provideEncryptionUtilProvider.get());

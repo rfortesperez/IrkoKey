@@ -9,19 +9,20 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.Settings
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.result.contract.ActivityResultContracts.CreateDocument
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.irkokey.R
 import com.example.irkokey.databinding.FragmentBackupBinding
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class BackupFragment : Fragment() {
@@ -35,6 +36,25 @@ class BackupFragment : Fragment() {
             Toast.makeText(requireContext(), "Permissions granted", Toast.LENGTH_SHORT).show()
         } else {
             Toast.makeText(requireContext(), "Permissions denied", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private val createFileLauncher = registerForActivityResult(
+        CreateDocument("application/json")
+    ) { uri ->
+        uri?.let {
+            showPinDialog { pin ->
+                backupViewModel.requestPinAndExport(pin, it)
+            }
+        }
+    }
+
+    private val openFileLauncher = registerForActivityResult(ActivityResultContracts.OpenDocument()
+    ) { uri ->
+        uri?.let {
+            showPinDialog { pin ->
+                backupViewModel.requestPinAndImport(pin, it)
+            }
         }
     }
 
@@ -56,10 +76,16 @@ class BackupFragment : Fragment() {
             // Export the data to a Json file
             btnExport.setOnClickListener {
                 if (hasPermissions()) {
-                    showPinDialog { pin ->
-                        backupViewModel.requestPinAndExport(pin)
-                        observeExportProgress()
+                    createFileLauncher.launch("irkokey.json")
+                    backupViewModel.isPinCorrect.observe(viewLifecycleOwner) { isPinCorrect ->
+                        if (isPinCorrect) {
+                            Toast.makeText(requireContext(), "Correct PIN, exporting data...", Toast.LENGTH_SHORT).show()
+                            observeExportProgress()
+                        } else {
+                            Toast.makeText(requireContext(), "Incorrect PIN", Toast.LENGTH_SHORT).show()
+                        }
                     }
+
                 } else {
                     requestPermissions()
                 }
@@ -68,9 +94,14 @@ class BackupFragment : Fragment() {
             // Import the data from a Json file
             btnImport.setOnClickListener {
                 if (hasPermissions()) {
-                    showPinDialog { pin ->
-                        backupViewModel.requestPinAndImport(pin)
-                        observeImportProgress()
+                    openFileLauncher.launch(arrayOf("application/json"))
+                    backupViewModel.isPinCorrect.observe(viewLifecycleOwner) { isPinCorrect ->
+                        if (isPinCorrect) {
+                            Toast.makeText(requireContext(), "Correct PIN, importing data...", Toast.LENGTH_SHORT).show()
+                            observeImportProgress()
+                        } else {
+                            Toast.makeText(requireContext(), "Incorrect PIN", Toast.LENGTH_SHORT).show()
+                        }
                     }
                 } else {
                     requestPermissions()
