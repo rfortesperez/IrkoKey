@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/fondo_14"
     android:orientation="vertical"
     tools:context=".presentation.modules.backup.BackupFragment">
@@ -69,14 +70,66 @@
         android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/tv_backup_information"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="26dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:gravity="center_horizontal"
-        android:text="Your data will be saved in a file in your Downloads folder. You'll need your email and pin in order to restore your data."
+        app:drawableStartCompat="@drawable/baseline_check_24"
+        android:text="You need your pin to import or export your data."
+        android:textColor="@color/md_theme_inversePrimary_mediumContrast"
+        android:textSize="16sp"
+        android:textStyle="italic|bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center_horizontal"
+        app:drawableStartCompat="@drawable/baseline_check_24"
+        android:text="Your data will be saved in a folder of your choice."
+        android:textColor="@color/md_theme_inversePrimary_mediumContrast"
+        android:textSize="16sp"
+        android:textStyle="italic|bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center_horizontal"
+        app:drawableStartCompat="@drawable/baseline_check_24"
+        android:text="Be careful with your data!!! Save it in a safe place."
+        android:textColor="@color/md_theme_inversePrimary_mediumContrast"
+        android:textSize="16sp"
+        android:textStyle="italic|bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center_horizontal"
+        app:drawableStartCompat="@drawable/baseline_check_24"
+        android:text="Don't change the name of the exported file, or you won't be able to import them later."
+        android:textColor="@color/md_theme_inversePrimary_mediumContrast"
+        android:textSize="16sp"
+        android:textStyle="italic|bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center_horizontal"
+        app:drawableStartCompat="@drawable/baseline_check_24"
+        android:text="Don't share your data with anyone. Remember that your data is your responsibility."
         android:textColor="@color/md_theme_inversePrimary_mediumContrast"
         android:textSize="16sp"
         android:textStyle="italic|bold" />
