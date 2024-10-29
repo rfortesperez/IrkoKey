@@ -20,7 +20,7 @@
             android:id="@+id/et_new_password"
             android:layout_width="300dp"
             android:layout_height="50dp"
-            android:hint="New Password"
+            android:hint="@string/edit_hint"
             android:inputType="textPassword"
             app:boxStrokeWidth = "0dp"/>
 

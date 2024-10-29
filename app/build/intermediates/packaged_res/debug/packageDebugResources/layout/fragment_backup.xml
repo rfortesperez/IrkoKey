@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/fondo_14"
     android:orientation="vertical"
     tools:context=".presentation.modules.backup.BackupFragment">
@@ -15,7 +16,7 @@
         android:layout_margin="16dp"
         android:fontFamily="@font/capriola_regular"
         android:gravity="center"
-        android:text="Backup"
+        android:text="@string/backup"
         android:textColor="@color/md_theme_inversePrimary_mediumContrast"
         android:textSize="36sp"
         android:textStyle="italic|bold" />
@@ -28,7 +29,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:gravity="center_horizontal"
-        android:text="Here you can import and export your data"
+        android:text="@string/can_import_export"
         android:textColor="@color/md_theme_inversePrimary_mediumContrast"
         android:textSize="20sp"
         android:textStyle="bold" />
@@ -39,7 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:gravity="center_horizontal"
-        android:text="What would you like to do?"
+        android:text="@string/choose"
         android:textColor="@color/md_theme_inversePrimary_mediumContrast"
         android:textSize="20sp"
         android:textStyle="bold" />
@@ -52,7 +53,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/button_rounded_corners"
-        android:text="Import"
+        android:text="@string/choice_import"
         android:textColor="@color/ml_theme_onPrimary"
         android:textSize="20sp" />
 
@@ -64,19 +65,71 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/button_rounded_corners"
-        android:text="Export"
+        android:text="@string/choice_export"
         android:textColor="@color/ml_theme_onPrimary"
         android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/tv_backup_information"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="26dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:gravity="center_horizontal"
-        android:text="Your data will be saved in a file in your Downloads folder. You'll need your email and pin in order to restore your data."
+        app:drawableStartCompat="@drawable/baseline_check_24"
+        android:text="@string/need_pin"
+        android:textColor="@color/md_theme_inversePrimary_mediumContrast"
+        android:textSize="16sp"
+        android:textStyle="italic|bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center_horizontal"
+        app:drawableStartCompat="@drawable/baseline_check_24"
+        android:text="@string/choose_folder"
+        android:textColor="@color/md_theme_inversePrimary_mediumContrast"
+        android:textSize="16sp"
+        android:textStyle="italic|bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center_horizontal"
+        app:drawableStartCompat="@drawable/baseline_check_24"
+        android:text="@string/take_care_data"
+        android:textColor="@color/md_theme_inversePrimary_mediumContrast"
+        android:textSize="16sp"
+        android:textStyle="italic|bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center_horizontal"
+        app:drawableStartCompat="@drawable/baseline_check_24"
+        android:text="@string/do_not_change_name"
+        android:textColor="@color/md_theme_inversePrimary_mediumContrast"
+        android:textSize="16sp"
+        android:textStyle="italic|bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center_horizontal"
+        app:drawableStartCompat="@drawable/baseline_check_24"
+        android:text="@string/do_not_share_data"
         android:textColor="@color/md_theme_inversePrimary_mediumContrast"
         android:textSize="16sp"
         android:textStyle="italic|bold" />

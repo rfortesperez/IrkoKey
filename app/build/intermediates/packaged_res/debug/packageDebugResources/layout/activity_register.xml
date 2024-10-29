@@ -16,7 +16,7 @@
         android:layout_marginBottom="24dp"
         android:fontFamily="@font/capriola_regular"
         android:gravity="center"
-        android:text="Wellcome to Irko Key"
+        android:text="@string/wellcome"
         android:textColor="@color/md_theme_inversePrimary_mediumContrast"
         android:textSize="36sp"
         android:textStyle="bold" />
@@ -27,7 +27,7 @@
         android:layout_marginBottom="60dp"
         android:fontFamily="@font/capriola_regular"
         android:gravity="center"
-        android:text="You need to register!"
+        android:text="@string/need_register"
         android:textColor="@color/md_theme_inversePrimary_mediumContrast"
         android:textSize="24sp" />
 
@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/capriola_regular"
         android:gravity="center"
-        android:text="Please, introduce your email"
+        android:text="@string/introduce_email"
         android:textColor="@color/md_theme_inversePrimary_mediumContrast"
         android:textSize="18sp"
         android:textStyle="bold" />
@@ -48,7 +48,7 @@
         android:layout_margin="16dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/et_rounded"
-        android:hint="Email"
+        android:hint="@string/email"
         android:inputType="textEmailAddress"
         android:paddingStart="20dp" />
 
@@ -58,7 +58,7 @@
         android:layout_margin="8dp"
         android:fontFamily="@font/capriola_regular"
         android:gravity="center"
-        android:text="Please, now introduce an 6 digit pin. You'll need to remember this for login!!!"
+        android:text="@string/introduce_pin_register"
         android:textColor="@color/md_theme_inversePrimary_mediumContrast"
         android:textSize="16sp"
         android:textStyle="bold" />
@@ -80,7 +80,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_gravity="center"
-            android:hint="Pin"
+            android:hint="@string/pin"
             android:inputType="numberPassword"
             android:paddingStart="16dp"
             android:textSize="16sp" />
@@ -93,7 +93,7 @@
         android:layout_margin="8dp"
         android:fontFamily="@font/capriola_regular"
         android:gravity="center"
-        android:text="Please, confirm your pin"
+        android:text="@string/confirm_pin"
         android:textColor="@color/md_theme_inversePrimary_mediumContrast"
         android:textSize="18sp"
         android:textStyle="bold" />
@@ -114,7 +114,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_gravity="center"
-            android:hint="Confirm Pin"
+            android:hint="@string/confirm_pin_hint"
             android:inputType="numberPassword"
             android:paddingStart="16dp"
             android:textSize="16sp" />
@@ -131,7 +131,7 @@
         android:layout_marginEnd="8dp"
         android:background="@drawable/button_rounded_corners"
         android:fontFamily="@font/capriola_regular"
-        android:text="Register"
+        android:text="@string/register"
         android:textColor="@color/ml_theme_onPrimary"
         android:textSize="26sp"/>
 

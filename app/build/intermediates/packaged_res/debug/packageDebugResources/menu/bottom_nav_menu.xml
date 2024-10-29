@@ -3,20 +3,19 @@
     <item
         android:id="@+id/navigate_explore_passwords"
         android:icon="@drawable/baseline_password_24"
-        android:title="Passwords"
-        />
+        android:title="@string/passwords"/>
     <item
         android:id="@+id/navigate_backup"
         android:icon="@drawable/baseline_import_export_24"
-        android:title="Backup" />
+        android:title="@string/backup" />
     <item
         android:id="@+id/navigate_favorite"
         android:icon="@drawable/baseline_favorite_24"
-        android:title="Favorite" />
+        android:title="@string/title_favorite" />
 
     <item
         android:id="@+id/navigate_logout"
         android:icon="@drawable/baseline_logout_24"
-        android:title="Logout" />
+        android:title="@string/logout" />
 
 </menu>

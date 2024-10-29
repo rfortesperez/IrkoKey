@@ -20,7 +20,7 @@
             android:id="@+id/et_introduce_pin"
             android:layout_width="300dp"
             android:layout_height="50dp"
-            android:hint="Pin"
+            android:hint="@string/pin"
             android:inputType="numberPassword"
             app:boxStrokeWidth = "0dp"/>
 

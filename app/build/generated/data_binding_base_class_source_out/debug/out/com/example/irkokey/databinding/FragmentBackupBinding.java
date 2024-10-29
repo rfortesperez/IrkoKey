@@ -37,22 +37,17 @@ public final class FragmentBackupBinding implements ViewBinding {
   public final TextView tvBackupDescription;
 
   @NonNull
-  public final TextView tvBackupInformation;
-
-  @NonNull
   public final TextView tvQuestion;
 
   private FragmentBackupBinding(@NonNull LinearLayout rootView, @NonNull Button btnExport,
       @NonNull Button btnImport, @NonNull ProgressBar pbBackup, @NonNull TextView tvBackup,
-      @NonNull TextView tvBackupDescription, @NonNull TextView tvBackupInformation,
-      @NonNull TextView tvQuestion) {
+      @NonNull TextView tvBackupDescription, @NonNull TextView tvQuestion) {
     this.rootView = rootView;
     this.btnExport = btnExport;
     this.btnImport = btnImport;
     this.pbBackup = pbBackup;
     this.tvBackup = tvBackup;
     this.tvBackupDescription = tvBackupDescription;
-    this.tvBackupInformation = tvBackupInformation;
     this.tvQuestion = tvQuestion;
   }
 
@@ -113,12 +108,6 @@ public final class FragmentBackupBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.tv_backup_information;
-      TextView tvBackupInformation = ViewBindings.findChildViewById(rootView, id);
-      if (tvBackupInformation == null) {
-        break missingId;
-      }
-
       id = R.id.tv_question;
       TextView tvQuestion = ViewBindings.findChildViewById(rootView, id);
       if (tvQuestion == null) {
@@ -126,7 +115,7 @@ public final class FragmentBackupBinding implements ViewBinding {
       }
 
       return new FragmentBackupBinding((LinearLayout) rootView, btnExport, btnImport, pbBackup,
-          tvBackup, tvBackupDescription, tvBackupInformation, tvQuestion);
+          tvBackup, tvBackupDescription, tvQuestion);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
