@@ -1,7 +1,9 @@
 package com.example.irkokey.presentation.modules.main
 
 import android.os.Bundle
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.text.HtmlCompat
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.irkokey.R
@@ -28,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         navView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.navigate_logout -> {
-                    logout()
+                    showLogoutConfirmationDialog()
                     true
                 }
                 else -> {
@@ -39,7 +41,16 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun logout() {
-        finish()
+    private fun showLogoutConfirmationDialog() {
+        AlertDialog.Builder(this)
+            .setTitle(HtmlCompat.fromHtml("<font color='red' style= 'bold'>${getString(R.string.logout)}</font>", HtmlCompat.FROM_HTML_MODE_LEGACY))
+            .setMessage(getString(R.string.logout_info))
+            .setPositiveButton(getString(R.string.logout)) { _, _ ->
+                finish()
+            }
+            .setNegativeButton(getString(R.string.cancel)) { dialog, _ ->
+                dialog.dismiss()
+            }
+            .show()
     }
 }
