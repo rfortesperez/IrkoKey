@@ -4286,6 +4286,7 @@ int string call_notification_screening_text 0x7f12002a
 int string can_import_export 0x7f1200c6
 int string cancel 0x7f1200c7
 int string capital_letters 0x7f12002b
+int string careful 0x7f1200f5
 int string character_counter_content_description 0x7f12002c
 int string character_counter_overflowed_content_description 0x7f12002d
 int string character_counter_pattern 0x7f12002e
@@ -4312,6 +4313,8 @@ int string empty_pin 0x7f1200d4
 int string enter_pin 0x7f1200d5
 int string error_a11y_label 0x7f120036
 int string error_icon_content_description 0x7f120037
+int string exported 0x7f1200f0
+int string exporting_process 0x7f1200f1
 int string exposed_dropdown_menu_content_description 0x7f120038
 int string fab_transformation_scrim_behavior 0x7f120039
 int string fab_transformation_sheet_behavior 0x7f12003a
@@ -4320,9 +4323,11 @@ int string fill_fields 0x7f1200d6
 int string generate_password 0x7f12003c
 int string got_it 0x7f1200d7
 int string have_lenght 0x7f12003d
-int string hello_blank_fragment 0x7f12003e
 int string hide_bottom_view_on_scroll_behavior 0x7f12003f
 int string icon_content_description 0x7f120040
+int string imported 0x7f1200f2
+int string importing_process 0x7f1200f3
+int string incorrect_pin 0x7f1200f4
 int string intoduce_data 0x7f120041
 int string introduce_email 0x7f1200d8
 int string introduce_pin_register 0x7f1200d9
@@ -4455,6 +4460,7 @@ int string pin 0x7f1200e3
 int string register 0x7f1200e4
 int string save 0x7f1200b6
 int string search_menu_title 0x7f1200b7
+int string search_password 0x7f1200ef
 int string searchbar_scrolling_view_behavior 0x7f1200b8
 int string searchview_clear_text_content_description 0x7f1200b9
 int string searchview_navigation_content_description 0x7f1200ba

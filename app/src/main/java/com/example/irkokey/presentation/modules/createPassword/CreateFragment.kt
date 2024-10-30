@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.example.irkokey.R
 import com.example.irkokey.databinding.FragmentCreateBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -46,18 +47,18 @@ class CreateFragment : Fragment() {
             if(isComplete){
                 createViewModel.isCorrect.observe(viewLifecycleOwner){ isCorrect->
                     if(isCorrect){
-                        Toast.makeText(context, "Password saved", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, getString(R.string.password_saved), Toast.LENGTH_SHORT).show()
                         with(binding){
                             etWebsiteInput.text.clear()
                             etUsernameInput.text.clear()
                             etPasswordInput.text?.clear()
                         }
                     }else{
-                        Toast.makeText(context, "Password is not strong enough", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, getString(R.string.password_not_strong), Toast.LENGTH_SHORT).show()
                     }
                 }
             }else{
-                Toast.makeText(context, "Please fill all the fields", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(R.string.fill_fields), Toast.LENGTH_SHORT).show()
             }
         }
     }

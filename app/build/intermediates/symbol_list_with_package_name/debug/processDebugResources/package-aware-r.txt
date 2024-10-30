@@ -4287,6 +4287,7 @@ string call_notification_screening_text
 string can_import_export
 string cancel
 string capital_letters
+string careful
 string character_counter_content_description
 string character_counter_overflowed_content_description
 string character_counter_pattern
@@ -4313,6 +4314,8 @@ string empty_pin
 string enter_pin
 string error_a11y_label
 string error_icon_content_description
+string exported
+string exporting_process
 string exposed_dropdown_menu_content_description
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
@@ -4321,9 +4324,11 @@ string fill_fields
 string generate_password
 string got_it
 string have_lenght
-string hello_blank_fragment
 string hide_bottom_view_on_scroll_behavior
 string icon_content_description
+string imported
+string importing_process
+string incorrect_pin
 string intoduce_data
 string introduce_email
 string introduce_pin_register
@@ -4456,6 +4461,7 @@ string pin
 string register
 string save
 string search_menu_title
+string search_password
 string searchbar_scrolling_view_behavior
 string searchview_clear_text_content_description
 string searchview_navigation_content_description

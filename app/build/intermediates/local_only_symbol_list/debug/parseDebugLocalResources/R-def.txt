@@ -405,6 +405,7 @@ string backup
 string can_import_export
 string cancel
 string capital_letters
+string careful
 string check_again
 string choice
 string choice_export
@@ -424,12 +425,16 @@ string edit_hint
 string email
 string empty_pin
 string enter_pin
+string exported
+string exporting_process
 string favorite
 string fill_fields
 string generate_password
 string got_it
 string have_lenght
-string hello_blank_fragment
+string imported
+string importing_process
+string incorrect_pin
 string intoduce_data
 string introduce_email
 string introduce_pin_register
@@ -453,6 +458,7 @@ string passwords
 string pin
 string register
 string save
+string search_password
 string security_warning
 string submit
 string sure

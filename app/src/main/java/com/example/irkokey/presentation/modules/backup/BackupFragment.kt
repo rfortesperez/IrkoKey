@@ -79,10 +79,10 @@ class BackupFragment : Fragment() {
                     createFileLauncher.launch("irkokey.json")
                     backupViewModel.isPinCorrect.observe(viewLifecycleOwner) { isPinCorrect ->
                         if (isPinCorrect) {
-                            Toast.makeText(requireContext(), "Correct PIN, exporting data...", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(requireContext(), getString(R.string.exporting_process), Toast.LENGTH_SHORT).show()
                             observeExportProgress()
                         } else {
-                            Toast.makeText(requireContext(), "Incorrect PIN", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(requireContext(), getString(R.string.incorrect_pin), Toast.LENGTH_SHORT).show()
                         }
                     }
 
@@ -97,10 +97,10 @@ class BackupFragment : Fragment() {
                     openFileLauncher.launch(arrayOf("application/json"))
                     backupViewModel.isPinCorrect.observe(viewLifecycleOwner) { isPinCorrect ->
                         if (isPinCorrect) {
-                            Toast.makeText(requireContext(), "Correct PIN, importing data...", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(requireContext(), getString(R.string.importing_process), Toast.LENGTH_SHORT).show()
                             observeImportProgress()
                         } else {
-                            Toast.makeText(requireContext(), "Incorrect PIN", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(requireContext(), getString(R.string.incorrect_pin), Toast.LENGTH_SHORT).show()
                         }
                     }
                 } else {
@@ -112,7 +112,7 @@ class BackupFragment : Fragment() {
             backupViewModel.isImported.observe(viewLifecycleOwner) { isImported ->
                 if (isImported) {
                     pbBackup.visibility = View.GONE
-                    Toast.makeText(requireContext(), "Backup imported", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), getString(R.string.imported), Toast.LENGTH_SHORT).show()
                 }
             }
 
@@ -120,7 +120,7 @@ class BackupFragment : Fragment() {
             backupViewModel.isExported.observe(viewLifecycleOwner) { isExported ->
                 if (isExported) {
                     pbBackup.visibility = View.GONE
-                    Toast.makeText(requireContext(), "Backup exported", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), getString(R.string.exported), Toast.LENGTH_SHORT).show()
                 }
             }
         }
@@ -159,16 +159,16 @@ class BackupFragment : Fragment() {
         val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_pin, null)
         val pinEditText = dialogView.findViewById<EditText>(R.id.et_introduce_pin)
 
-        AlertDialog.Builder(requireContext()).setTitle("Enter your PIN").setView(dialogView)
-            .setPositiveButton("Submit") { dialog, _ ->
+        AlertDialog.Builder(requireContext()).setTitle(getString(R.string.enter_pin)).setView(dialogView)
+            .setPositiveButton(getString(R.string.submit)) { dialog, _ ->
                 val pin = pinEditText.text.toString()
                 if (pin.isNotEmpty()) {
                     onPinEntered(pin)
                     dialog.dismiss()
                 } else {
-                    pinEditText.error = "PIN cannot be empty"
+                    pinEditText.error = getString(R.string.enter_pin)
                 }
-            }.setNegativeButton("Cancel") { dialog, _ ->
+            }.setNegativeButton(getString(R.string.cancel)) { dialog, _ ->
                 dialog.dismiss()
             }.create().show()
     }

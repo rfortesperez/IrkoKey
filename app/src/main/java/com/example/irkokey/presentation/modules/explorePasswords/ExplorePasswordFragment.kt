@@ -25,7 +25,7 @@ class ExplorePasswordFragment : Fragment() {
     override fun onViewCreated(view: View, saveInstaceState: Bundle?){
         super.onViewCreated(view, saveInstaceState)
 
-        val titles = listOf("Create", "Password")
+        val titles = listOf(getString(R.string.create), getString(R.string.password))
         val icons = listOf(R.drawable.baseline_create_24, R.drawable.baseline_password_24)
 
         with(binding){

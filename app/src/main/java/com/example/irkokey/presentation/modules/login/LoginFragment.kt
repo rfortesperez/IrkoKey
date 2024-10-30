@@ -42,9 +42,9 @@ class LoginFragment : Fragment() {
 
         loginViewModel.isError.observe(viewLifecycleOwner) {
             if (it) {
-                Toast.makeText(context, "Wrong email or password", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(R.string.wrong), Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(context, "Login successful", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(R.string.login_success), Toast.LENGTH_SHORT).show()
                 startActivity(Intent(context, MainActivity::class.java))
                 activity?.finish()
             }

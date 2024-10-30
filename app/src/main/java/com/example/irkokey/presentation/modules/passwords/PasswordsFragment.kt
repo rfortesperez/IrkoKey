@@ -41,8 +41,6 @@ class PasswordsFragment : Fragment() {
     @Inject
     lateinit var userRepository: UserRepository
 
-
-
     private val listener = object : OnPassItemClick {
 
         override fun onDeleteClick(position: Int) {
@@ -55,13 +53,13 @@ class PasswordsFragment : Fragment() {
             val dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_edit, null)
             val editText = dialogView.findViewById<EditText>(R.id.et_new_password)
             val dialog = AlertDialog.Builder(requireContext())
-                .setTitle("Edit Password")
+                .setTitle(getString(R.string.edit))
                 .setView(dialogView)
-                .setPositiveButton("Save") { _, _ ->
+                .setPositiveButton(getString(R.string.save)) { _, _ ->
                     val newPassword = editText.text.toString()
                     viewModel.editPassword(password, newPassword)
                 }
-                .setNegativeButton("Cancel", null)
+                .setNegativeButton(getString(R.string.cancel), null)
                 .create()
 
             dialog.show()
@@ -111,7 +109,7 @@ class PasswordsFragment : Fragment() {
                             password.website.contains(newText, ignoreCase = true)
                         }.toMutableList()
                         if (filteredList.isEmpty()){
-                            Toast.makeText(context, "No results found", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(context, getString(R.string.no_results), Toast.LENGTH_SHORT).show()
                         }
                         adapter.filterList(filteredList)
                     }
@@ -134,11 +132,11 @@ class PasswordsFragment : Fragment() {
         }
         viewModel.isCorrect.observe(viewLifecycleOwner){ isCorrect ->
             if (!isCorrect) {
-                Snackbar.make(view, "Password is not strong enough", Snackbar.LENGTH_LONG)
-                    .setAction("Got it!") { }
+                Snackbar.make(view, getString(R.string.password_not_strong), Snackbar.LENGTH_LONG)
+                    .setAction(getString(R.string.got_it)) { }
                     .show()
             } else {
-                Toast.makeText(context, "Password updated", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(R.string.updated), Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -150,7 +148,7 @@ class PasswordsFragment : Fragment() {
 
         viewModel.isCopied.observe(viewLifecycleOwner) { isCopied ->
             if (isCopied) {
-                Toast.makeText(context, "Password copied to clipboard", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(R.string.password_copied), Toast.LENGTH_SHORT).show()
                 showCopyConfirmationDialog()
             }
         }
@@ -158,12 +156,12 @@ class PasswordsFragment : Fragment() {
 
     private fun showDeleteConfirmationDialog(password: Password) {
         AlertDialog.Builder(requireContext())
-            .setTitle(HtmlCompat.fromHtml("<font color='red' style= 'bold'>Delete Password</font>", HtmlCompat.FROM_HTML_MODE_LEGACY))
-            .setMessage("Are you sure you want to delete this password?")
-            .setPositiveButton("Yes") { _, _ ->
+            .setTitle(HtmlCompat.fromHtml("<font color='red' style= 'bold'>${getString(R.string.delete)}</font>", HtmlCompat.FROM_HTML_MODE_LEGACY))
+            .setMessage(getString(R.string.sure))
+            .setPositiveButton(getString(R.string.yes)) { _, _ ->
                 viewModel.deletePassword(password)
             }
-            .setNegativeButton("No", null)
+            .setNegativeButton(getString(R.string.no), null)
             .show()
     }
 
@@ -171,9 +169,9 @@ class PasswordsFragment : Fragment() {
 
     private fun showCopyConfirmationDialog() {
         AlertDialog.Builder(requireContext())
-            .setTitle(HtmlCompat.fromHtml("<font color='red' style= 'bold'>Security Warning!!!.</font>", HtmlCompat.FROM_HTML_MODE_LEGACY))
-            .setMessage("Make sure to erase the password from the clipboard after use it!")
-            .setPositiveButton(HtmlCompat.fromHtml("<font color='red'> Got it!</font>", HtmlCompat.FROM_HTML_MODE_LEGACY)) { _, _ -> }
+            .setTitle(HtmlCompat.fromHtml("<font color='red' style= 'bold'>${getString(R.string.security_warning)}</font>", HtmlCompat.FROM_HTML_MODE_LEGACY))
+            .setMessage(getString(R.string.copy_warning_message))
+            .setPositiveButton(HtmlCompat.fromHtml("<font color='red'>${getString(R.string.got_it)}</font>", HtmlCompat.FROM_HTML_MODE_LEGACY)) { _, _ -> }
             .show()
     }
 

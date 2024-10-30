@@ -2,9 +2,9 @@ package com.example.irkokey.presentation.modules.register;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.irkokey.R;
 import com.example.irkokey.databinding.ActivityRegisterBinding;
 import com.example.irkokey.presentation.modules.main.MainActivity;
 import dagger.hilt.android.AndroidEntryPoint;

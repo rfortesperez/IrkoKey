@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.irkokey.R
 import com.example.irkokey.common.utils.EncryptionUtil
 import com.example.irkokey.data.repository.PasswordRepository
 import com.example.irkokey.databinding.FragmentFavoriteBinding
@@ -89,7 +90,7 @@ class FavoriteFragment : Fragment() {
                             password.website.contains(newText, ignoreCase = true)
                         }.toMutableList()
                         if (filteredList.isEmpty()){
-                            Toast.makeText(context, "No results found", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(context, getString(R.string.no_results), Toast.LENGTH_SHORT).show()
                         }
                         adapter.filterList(filteredList)
                     }
@@ -110,7 +111,7 @@ class FavoriteFragment : Fragment() {
         }
         viewModel.isCopied.observe(viewLifecycleOwner) { isCopied ->
             if (isCopied) {
-                Toast.makeText(context, "Password copied to clipboard", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(R.string.password_copied), Toast.LENGTH_SHORT).show()
                 showCopyConfirmationDialog()
             }
         }
@@ -119,9 +120,9 @@ class FavoriteFragment : Fragment() {
 
     private fun showCopyConfirmationDialog() {
         AlertDialog.Builder(requireContext())
-            .setTitle(HtmlCompat.fromHtml("<font color='red' style= 'bold'>Security Warning!!!.</font>", HtmlCompat.FROM_HTML_MODE_LEGACY))
-            .setMessage("Make sure to erase the password from the clipboard after use it!")
-            .setPositiveButton(HtmlCompat.fromHtml("<font color='red'> Got it!</font>", HtmlCompat.FROM_HTML_MODE_LEGACY)) { _, _ -> }
+            .setTitle(HtmlCompat.fromHtml("<font color='red' style= 'bold'>${getString(R.string.security_warning)}</font>", HtmlCompat.FROM_HTML_MODE_LEGACY))
+            .setMessage(getString(R.string.copy_warning_message))
+            .setPositiveButton(HtmlCompat.fromHtml("<font color='red'>${getString(R.string.got_it)}</font>", HtmlCompat.FROM_HTML_MODE_LEGACY)) { _, _ -> }
             .show()
     }
 
