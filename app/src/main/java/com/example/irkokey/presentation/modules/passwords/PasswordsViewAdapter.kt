@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.text.Editable
 import android.text.InputType
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
@@ -85,6 +86,20 @@ class PasswordsViewAdapter(
                         null,
                         null
                     )
+                }
+
+                // show password and buttons for each password
+                ivDown.setOnClickListener{
+                    it.visibility = View.GONE
+                    ivUp.visibility = View.VISIBLE
+                    llHide.visibility = View.VISIBLE
+                }
+
+                // hide password and buttons for each password
+                ivUp.setOnClickListener{
+                    it.visibility = View.GONE
+                    ivDown.visibility = View.VISIBLE
+                    llHide.visibility = View.GONE
                 }
 
 

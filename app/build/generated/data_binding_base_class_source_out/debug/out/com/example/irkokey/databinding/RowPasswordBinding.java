@@ -5,10 +5,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.Guideline;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
@@ -21,7 +23,7 @@ import java.lang.String;
 
 public final class RowPasswordBinding implements ViewBinding {
   @NonNull
-  private final ConstraintLayout rootView;
+  private final CardView rootView;
 
   @NonNull
   public final ImageButton btnAddFavorite;
@@ -39,7 +41,13 @@ public final class RowPasswordBinding implements ViewBinding {
   public final Guideline guideline;
 
   @NonNull
-  public final ConstraintLayout rowPassword;
+  public final ImageView ivDown;
+
+  @NonNull
+  public final ImageView ivUp;
+
+  @NonNull
+  public final LinearLayout llHide;
 
   @NonNull
   public final TextInputLayout textInputLayout;
@@ -53,10 +61,10 @@ public final class RowPasswordBinding implements ViewBinding {
   @NonNull
   public final TextView tvWebsite;
 
-  private RowPasswordBinding(@NonNull ConstraintLayout rootView,
-      @NonNull ImageButton btnAddFavorite, @NonNull ImageButton btnCopyPassword,
-      @NonNull ImageButton btnDelete, @NonNull ImageButton btnEditPassword,
-      @NonNull Guideline guideline, @NonNull ConstraintLayout rowPassword,
+  private RowPasswordBinding(@NonNull CardView rootView, @NonNull ImageButton btnAddFavorite,
+      @NonNull ImageButton btnCopyPassword, @NonNull ImageButton btnDelete,
+      @NonNull ImageButton btnEditPassword, @NonNull Guideline guideline, @NonNull ImageView ivDown,
+      @NonNull ImageView ivUp, @NonNull LinearLayout llHide,
       @NonNull TextInputLayout textInputLayout, @NonNull TextInputEditText tvPassword,
       @NonNull TextView tvUserName, @NonNull TextView tvWebsite) {
     this.rootView = rootView;
@@ -65,7 +73,9 @@ public final class RowPasswordBinding implements ViewBinding {
     this.btnDelete = btnDelete;
     this.btnEditPassword = btnEditPassword;
     this.guideline = guideline;
-    this.rowPassword = rowPassword;
+    this.ivDown = ivDown;
+    this.ivUp = ivUp;
+    this.llHide = llHide;
     this.textInputLayout = textInputLayout;
     this.tvPassword = tvPassword;
     this.tvUserName = tvUserName;
@@ -74,7 +84,7 @@ public final class RowPasswordBinding implements ViewBinding {
 
   @Override
   @NonNull
-  public ConstraintLayout getRoot() {
+  public CardView getRoot() {
     return rootView;
   }
 
@@ -129,7 +139,23 @@ public final class RowPasswordBinding implements ViewBinding {
         break missingId;
       }
 
-      ConstraintLayout rowPassword = (ConstraintLayout) rootView;
+      id = R.id.iv_down;
+      ImageView ivDown = ViewBindings.findChildViewById(rootView, id);
+      if (ivDown == null) {
+        break missingId;
+      }
+
+      id = R.id.iv_up;
+      ImageView ivUp = ViewBindings.findChildViewById(rootView, id);
+      if (ivUp == null) {
+        break missingId;
+      }
+
+      id = R.id.ll_hide;
+      LinearLayout llHide = ViewBindings.findChildViewById(rootView, id);
+      if (llHide == null) {
+        break missingId;
+      }
 
       id = R.id.textInputLayout;
       TextInputLayout textInputLayout = ViewBindings.findChildViewById(rootView, id);
@@ -155,9 +181,9 @@ public final class RowPasswordBinding implements ViewBinding {
         break missingId;
       }
 
-      return new RowPasswordBinding((ConstraintLayout) rootView, btnAddFavorite, btnCopyPassword,
-          btnDelete, btnEditPassword, guideline, rowPassword, textInputLayout, tvPassword,
-          tvUserName, tvWebsite);
+      return new RowPasswordBinding((CardView) rootView, btnAddFavorite, btnCopyPassword, btnDelete,
+          btnEditPassword, guideline, ivDown, ivUp, llHide, textInputLayout, tvPassword, tvUserName,
+          tvWebsite);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

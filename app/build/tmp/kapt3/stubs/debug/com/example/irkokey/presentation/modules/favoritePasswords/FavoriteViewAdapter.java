@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.text.Editable;
 import android.text.InputType;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;

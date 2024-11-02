@@ -294,11 +294,14 @@ drawable baseline_delete_24
 drawable baseline_favorite_24
 drawable baseline_favorite_border_24
 drawable baseline_import_export_24
+drawable baseline_keyboard_arrow_down_24
+drawable baseline_keyboard_arrow_up_24
 drawable baseline_list_24
 drawable baseline_logout_24
 drawable baseline_password_24
 drawable baseline_search_24
 drawable button_rounded_corners
+drawable card_background
 drawable et_rounded
 drawable facebook
 drawable flickr
@@ -365,6 +368,9 @@ id et_username_input
 id et_website_input
 id guideline
 id imageView2
+id iv_down
+id iv_up
+id ll_hide
 id loginFragment
 id logout
 id main
@@ -379,8 +385,6 @@ id navigate_logout
 id pb_backup
 id register
 id registerActivity
-id row_favorite
-id row_password
 id rv_favorite_passwords
 id rv_passwords
 id splashActivity
@@ -461,6 +465,7 @@ string fill_fields
 string generate_password
 string got_it
 string have_lenght
+string hide_password
 string imported
 string importing_process
 string incorrect_pin
@@ -489,6 +494,7 @@ string register
 string save
 string search_password
 string security_warning
+string show_password
 string submit
 string sure
 string symbols

@@ -76,4 +76,6 @@
     <string name="incorrect_pin">Incorrect PIN</string>
     <string name="search_password">Search password</string>
     <string name="careful">When you import your backup, your current data will be replaced. Be careful!</string>
+    <string name="show_password">Show password</string>
+    <string name="hide_password">Hide password</string>
 </resources>

@@ -5,10 +5,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.cardview.widget.CardView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.irkokey.R;
@@ -20,7 +22,7 @@ import java.lang.String;
 
 public final class ItemFavoritePasswordBinding implements ViewBinding {
   @NonNull
-  private final ConstraintLayout rootView;
+  private final CardView rootView;
 
   @NonNull
   public final ImageButton btnCopyPassword;
@@ -29,7 +31,13 @@ public final class ItemFavoritePasswordBinding implements ViewBinding {
   public final ImageButton btnRemoveFavorite;
 
   @NonNull
-  public final ConstraintLayout rowFavorite;
+  public final ImageView ivDown;
+
+  @NonNull
+  public final ImageView ivUp;
+
+  @NonNull
+  public final LinearLayout llHide;
 
   @NonNull
   public final TextInputLayout textInputLayoutFav;
@@ -43,15 +51,17 @@ public final class ItemFavoritePasswordBinding implements ViewBinding {
   @NonNull
   public final TextView tvWebsite;
 
-  private ItemFavoritePasswordBinding(@NonNull ConstraintLayout rootView,
+  private ItemFavoritePasswordBinding(@NonNull CardView rootView,
       @NonNull ImageButton btnCopyPassword, @NonNull ImageButton btnRemoveFavorite,
-      @NonNull ConstraintLayout rowFavorite, @NonNull TextInputLayout textInputLayoutFav,
-      @NonNull TextInputEditText tvPasswordFav, @NonNull TextView tvUserName,
-      @NonNull TextView tvWebsite) {
+      @NonNull ImageView ivDown, @NonNull ImageView ivUp, @NonNull LinearLayout llHide,
+      @NonNull TextInputLayout textInputLayoutFav, @NonNull TextInputEditText tvPasswordFav,
+      @NonNull TextView tvUserName, @NonNull TextView tvWebsite) {
     this.rootView = rootView;
     this.btnCopyPassword = btnCopyPassword;
     this.btnRemoveFavorite = btnRemoveFavorite;
-    this.rowFavorite = rowFavorite;
+    this.ivDown = ivDown;
+    this.ivUp = ivUp;
+    this.llHide = llHide;
     this.textInputLayoutFav = textInputLayoutFav;
     this.tvPasswordFav = tvPasswordFav;
     this.tvUserName = tvUserName;
@@ -60,7 +70,7 @@ public final class ItemFavoritePasswordBinding implements ViewBinding {
 
   @Override
   @NonNull
-  public ConstraintLayout getRoot() {
+  public CardView getRoot() {
     return rootView;
   }
 
@@ -97,7 +107,23 @@ public final class ItemFavoritePasswordBinding implements ViewBinding {
         break missingId;
       }
 
-      ConstraintLayout rowFavorite = (ConstraintLayout) rootView;
+      id = R.id.iv_down;
+      ImageView ivDown = ViewBindings.findChildViewById(rootView, id);
+      if (ivDown == null) {
+        break missingId;
+      }
+
+      id = R.id.iv_up;
+      ImageView ivUp = ViewBindings.findChildViewById(rootView, id);
+      if (ivUp == null) {
+        break missingId;
+      }
+
+      id = R.id.ll_hide;
+      LinearLayout llHide = ViewBindings.findChildViewById(rootView, id);
+      if (llHide == null) {
+        break missingId;
+      }
 
       id = R.id.textInputLayoutFav;
       TextInputLayout textInputLayoutFav = ViewBindings.findChildViewById(rootView, id);
@@ -123,8 +149,9 @@ public final class ItemFavoritePasswordBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ItemFavoritePasswordBinding((ConstraintLayout) rootView, btnCopyPassword,
-          btnRemoveFavorite, rowFavorite, textInputLayoutFav, tvPasswordFav, tvUserName, tvWebsite);
+      return new ItemFavoritePasswordBinding((CardView) rootView, btnCopyPassword,
+          btnRemoveFavorite, ivDown, ivUp, llHide, textInputLayoutFav, tvPasswordFav, tvUserName,
+          tvWebsite);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
