@@ -294,6 +294,7 @@ drawable baseline_delete_24
 drawable baseline_favorite_24
 drawable baseline_favorite_border_24
 drawable baseline_import_export_24
+drawable baseline_list_24
 drawable baseline_logout_24
 drawable baseline_password_24
 drawable baseline_search_24
@@ -411,6 +412,7 @@ layout activity_auth
 layout activity_main
 layout activity_register
 layout activity_splash
+layout custom_toolbar
 layout dialog_edit
 layout dialog_pin
 layout fragment_backup

@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.IrkoKey" parent="Theme.Material3.DayNight">
+    <style name="Base.Theme.IrkoKey" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/ml_theme_primary</item>
         <item name="colorOnPrimary">@color/ml_theme_onPrimary</item>
         <item name="colorPrimaryContainer">@color/ml_theme_primaryContainer</item>

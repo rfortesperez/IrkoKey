@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fondo_14"
-    android:paddingBottom="100dp"
+    android:paddingBottom="80dp"
     tools:context=".presentation.modules.favoritePasswords.FavoriteFragment">
 
     <androidx.appcompat.widget.SearchView

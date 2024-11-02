@@ -3324,6 +3324,7 @@ int drawable baseline_delete_24 0x7f07007e
 int drawable baseline_favorite_24 0x7f07007f
 int drawable baseline_favorite_border_24 0x7f070080
 int drawable baseline_import_export_24 0x7f070081
+int drawable baseline_list_24 0x7f070113
 int drawable baseline_logout_24 0x7f070082
 int drawable baseline_password_24 0x7f070083
 int drawable baseline_search_24 0x7f070084
@@ -4171,6 +4172,7 @@ int layout activity_main 0x7f0c001d
 int layout activity_register 0x7f0c001e
 int layout activity_splash 0x7f0c001f
 int layout custom_dialog 0x7f0c0020
+int layout custom_toolbar 0x7f0c0079
 int layout design_bottom_navigation_item 0x7f0c0021
 int layout design_bottom_sheet_dialog 0x7f0c0022
 int layout design_layout_snackbar 0x7f0c0023

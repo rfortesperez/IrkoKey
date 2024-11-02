@@ -26,7 +26,7 @@ class ExplorePasswordFragment : Fragment() {
         super.onViewCreated(view, saveInstaceState)
 
         val titles = listOf(getString(R.string.create), getString(R.string.password))
-        val icons = listOf(R.drawable.baseline_create_24, R.drawable.baseline_password_24)
+        val icons = listOf(R.drawable.baseline_create_24, R.drawable.baseline_list_24)
 
         with(binding){
             activity?.let { viewPager2.adapter = FragmentPageAdapter(it) }
