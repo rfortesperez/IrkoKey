@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:2:1-45:12
-INJECTED from C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:2:1-45:12
-INJECTED from C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:2:1-45:12
-INJECTED from C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:2:1-45:12
+ADDED from C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:2:1-48:12
+INJECTED from C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:2:1-48:12
+INJECTED from C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:2:1-48:12
+INJECTED from C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:2:1-48:12
 MERGED from [androidx.databinding:viewbinding:8.4.0] C:\Users\rfort\.gradle\caches\transforms-4\109d5a5903709d51f58e04e74f102013\transformed\viewbinding-8.4.0\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.navigation:navigation-common:2.8.1] C:\Users\rfort\.gradle\caches\transforms-4\9145a30e9e4e085470c84978314e664b\transformed\navigation-common-2.8.1\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.navigation:navigation-common-ktx:2.8.1] C:\Users\rfort\.gradle\caches\transforms-4\0f274cafe2d63c57cbbf2de688e2f4da\transformed\navigation-common-ktx-2.8.1\AndroidManifest.xml:2:1-7:12
@@ -96,8 +96,8 @@ ADDED from C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidM
 	android:name
 		ADDED from C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:9:22-79
 application
-ADDED from C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:11:5-44:19
-INJECTED from C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:11:5-44:19
+ADDED from C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:11:5-47:19
+INJECTED from C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:11:5-47:19
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\rfort\.gradle\caches\transforms-4\6c4bb2aa17f3f516657b37d98b620346\transformed\material-1.12.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\rfort\.gradle\caches\transforms-4\6c4bb2aa17f3f516657b37d98b620346\transformed\material-1.12.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\rfort\.gradle\caches\transforms-4\289a3b0c972e545569f0a7e7f64b8178\transformed\constraintlayout-2.1.4\AndroidManifest.xml:9:5-20
@@ -143,43 +143,49 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\rfort\.gradle\cach
 	android:name
 		ADDED from C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:12:9-35
 activity#com.example.irkokey.presentation.modules.register.RegisterActivity
-ADDED from C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:22:9-24:40
+ADDED from C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:22:9-25:40
+	android:screenOrientation
+		ADDED from C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:24:13-49
 	android:exported
-		ADDED from C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:24:13-37
+		ADDED from C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:25:13-37
 	android:name
 		ADDED from C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:23:13-75
 activity#com.example.irkokey.presentation.modules.splash.SplashActivity
-ADDED from C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:26:9-33:20
+ADDED from C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:27:9-34:20
 	android:exported
-		ADDED from C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:28:13-36
+		ADDED from C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:29:13-36
 	android:name
-		ADDED from C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:27:13-71
+		ADDED from C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:28:13-71
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:29:13-32:29
+ADDED from C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:30:13-33:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:30:17-69
+ADDED from C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:31:17-69
 	android:name
-		ADDED from C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:30:25-66
+		ADDED from C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:31:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:31:17-77
+ADDED from C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:32:17-77
 	android:name
-		ADDED from C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:31:27-74
+		ADDED from C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:32:27-74
 activity#com.example.irkokey.presentation.modules.auth.AuthActivity
-ADDED from C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:35:9-38:51
+ADDED from C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:36:9-40:51
+	android:screenOrientation
+		ADDED from C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:38:13-49
 	android:exported
-		ADDED from C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:37:13-37
+		ADDED from C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:39:13-37
 	android:theme
-		ADDED from C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:38:13-48
+		ADDED from C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:40:13-48
 	android:name
-		ADDED from C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:36:13-67
+		ADDED from C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:37:13-67
 activity#com.example.irkokey.presentation.modules.main.MainActivity
-ADDED from C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:40:9-43:57
+ADDED from C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:42:9-46:57
+	android:screenOrientation
+		ADDED from C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:45:13-49
 	android:exported
-		ADDED from C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:42:13-37
+		ADDED from C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:44:13-37
 	android:theme
-		ADDED from C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:43:13-54
+		ADDED from C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:46:13-54
 	android:name
-		ADDED from C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:41:13-67
+		ADDED from C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml:43:13-67
 uses-sdk
 INJECTED from C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\rfort\AndroidStudioProjects\a21rociofp\app\src\main\AndroidManifest.xml

@@ -35,7 +35,8 @@
         android:theme="@style/Theme.Splash" >
         <activity
             android:name="com.example.irkokey.presentation.modules.register.RegisterActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name="com.example.irkokey.presentation.modules.splash.SplashActivity"
             android:exported="true" >
@@ -48,10 +49,12 @@
         <activity
             android:name="com.example.irkokey.presentation.modules.auth.AuthActivity"
             android:exported="false"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.Splash" />
         <activity
             android:name="com.example.irkokey.presentation.modules.main.MainActivity"
             android:exported="false"
+            android:screenOrientation="portrait"
             android:theme="@style/Base.Theme.IrkoKey" />
 
         <provider

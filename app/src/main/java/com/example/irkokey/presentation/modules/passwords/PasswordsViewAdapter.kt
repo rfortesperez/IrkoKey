@@ -5,10 +5,13 @@ import android.text.Editable
 import android.text.InputType
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.irkokey.common.utils.EncryptionUtil
 import com.example.irkokey.databinding.RowPasswordBinding
 import com.example.irkokey.domain.models.Password
+import com.example.irkokey.domain.models.WebsiteIcon
+import com.example.irkokey.domain.models.WebsiteIcons
 
 class PasswordsViewAdapter(
     private var passwordList: MutableList<Password>,
@@ -73,6 +76,17 @@ class PasswordsViewAdapter(
                 tvPassword.text = Editable.Factory.getInstance().newEditable(decryptedPassword)
                 tvPassword.inputType =
                     InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+
+                val matchingIcon: WebsiteIcon? = WebsiteIcons.icons.find{ it.websiteName.lowercase() == password.website.lowercase() }
+                if(matchingIcon != null){
+                    tvWebsite.setCompoundDrawablesWithIntrinsicBounds(
+                        ContextCompat.getDrawable(itemView.context, matchingIcon.iconResId),
+                        null,
+                        null,
+                        null
+                    )
+                }
+
 
                 btnDelete.setOnClickListener { listener.onDeleteClick(adapterPosition) }
                 btnEditPassword.setOnClickListener { listener.onEditClick(adapterPosition) }
