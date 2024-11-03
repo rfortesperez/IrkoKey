@@ -27,7 +27,7 @@
     <string name="lowercase_letters">tener letras minúsculas.</string>
     <string name="have_lenght">tener al menos 12 caracteres.</string>
     <string name="your_password">Tu contraseña debe:</string>
-    <string name="username">Nombre de usuario/a</string>
+    <string name="username">Nombre de usuario</string>
     <string name="website">Sitio web</string>
     <string name="new_password">Nueva contraseña</string>
     <string name="security_warning">¡Advertencia de seguridad!</string>
@@ -44,7 +44,7 @@
     <string name="copy_password">Copiar contraseña</string>
     <string name="generate_password">Generar contraseña</string>
     <string name="choice">O si lo prefieres, puedes obtener una contraseña generada automáticamente:</string>
-    <string name="wellcome">Bienvenido/a a IrkoKey</string>
+    <string name="wellcome">Bienvenido a IrkoKey</string>
     <string name="need_register">¡Necesitas registrarte!</string>
     <string name="introduce_email">Por favor, introduce tu correo electrónico</string>
     <string name="introduce_pin_register">Por favor, ahora introduce un PIN de 6 dígitos. ¡Necesitarás recordarlo para iniciar sesión!</string>
@@ -64,9 +64,9 @@
     <string name="do_not_change_name">No cambies el nombre del archivo exportado, o no podrás importarlo más tarde.</string>
     <string name="do_not_share_data">No compartas tus datos con nadie. Recuerda que tus datos son tu responsabilidad.</string>
     <string name="passwords">Contraseñas</string>
-    <string name="user_registered">¡Usuario/a registrado/a!</string>
+    <string name="user_registered">¡Usuario/a registrado!</string>
     <string name="wrong">Correo electrónico o contraseña incorrectos.</string>
-    <string name="check_again">Correo electrónico o PIN incorrectos. ¡Por favor, revisa!</string>
+    <string name="check_again">Correo electrónico o PIN incorrectos. ¡Por favor, verifica!</string>
     <string name="login_success">Inicio de sesión exitoso.</string>
     <string name="title_favorite">Favorito</string>
     <string name="importing_process">PIN correcto, importando datos…</string>
@@ -76,4 +76,6 @@
     <string name="incorrect_pin">PIN incorrecto</string>
     <string name="search_password">Buscar contraseña</string>
     <string name="careful">Cuando importes tu copia de seguridad, todos tus datos serán reemplazados. ¡Actúa con cuidado!</string>
+    <string name="show_password">Mostrar contraseña</string>
+    <string name="hide_password">Ocultar contraseña</string>
 </resources>

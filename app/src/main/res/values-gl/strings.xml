@@ -76,4 +76,6 @@
     <string name="incorrect_pin">PIN incorrecto</string>
     <string name="search_password">Buscar contrasinal</string>
     <string name="careful">Cando importes a túa copia de seguridade, todos os teus datos serán substituídos. ¡Actúa con coidado!</string>
+    <string name="show_password">Amosar contrasinal</string>
+    <string name="hide_password">Ocultar contrasinal</string>
 </resources>
