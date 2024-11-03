@@ -33,49 +33,7 @@ class PasswordsFragment : Fragment() {
     private lateinit var adapter: PasswordsViewAdapter
 
     @Inject
-    lateinit var passwordRepository: PasswordRepository
-
-    @Inject
     lateinit var encryptionUtil: EncryptionUtil
-
-    @Inject
-    lateinit var userRepository: UserRepository
-
-    private val listener = object : OnPassItemClick {
-
-        override fun onDeleteClick(position: Int) {
-            val password = passwordsList[position]
-            viewModel.confirmDeletePassword(password)
-        }
-
-        override fun onEditClick(position: Int) {
-            val password = passwordsList[position]
-            val dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_edit, null)
-            val editText = dialogView.findViewById<EditText>(R.id.et_new_password)
-            val dialog = AlertDialog.Builder(requireContext())
-                .setTitle(getString(R.string.edit))
-                .setView(dialogView)
-                .setPositiveButton(getString(R.string.save)) { _, _ ->
-                    val newPassword = editText.text.toString()
-                    viewModel.editPassword(password, newPassword)
-                }
-                .setNegativeButton(getString(R.string.cancel), null)
-                .create()
-
-            dialog.show()
-        }
-
-        override fun onAddFavoriteClick(position: Int) {
-            val password = passwordsList[position]
-            viewModel.addFavorite(password)
-            adapter.updatePassword(position, password)
-        }
-
-        override fun onCopyPasswordClick(position: Int) {
-            val password = passwordsList[position]
-            viewModel.copyPassword(password.password)
-        }
-    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentPasswordsBinding.inflate(inflater, container, false)
@@ -87,12 +45,11 @@ class PasswordsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         passwordsList = mutableListOf()
-        adapter = PasswordsViewAdapter(passwordsList, listener, encryptionUtil)
-        with(binding){
+        adapter = PasswordsViewAdapter(passwordsList, viewModel::handlePasswordAction, encryptionUtil)
+        with(binding) {
             rvPasswords.adapter = adapter
             rvPasswords.layoutManager = LinearLayoutManager(context)
 
-            // Search bar
             svSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                 override fun onQueryTextSubmit(query: String?): Boolean {
                     return false
@@ -100,15 +57,14 @@ class PasswordsFragment : Fragment() {
 
                 override fun onQueryTextChange(newText: String?): Boolean {
                     if (newText.isNullOrEmpty()) {
-                        passwordsList.clear() // Clear the list on empty search
-                        // Add back the original list
+                        passwordsList.clear()
                         passwordsList.addAll(adapter.getOriginalList())
-                        adapter.notifyDataSetChanged() // Update the adapter
+                        adapter.notifyDataSetChanged()
                     } else {
                         val filteredList = passwordsList.filter { password ->
                             password.website.contains(newText, ignoreCase = true)
                         }.toMutableList()
-                        if (filteredList.isEmpty()){
+                        if (filteredList.isEmpty()) {
                             Toast.makeText(context, getString(R.string.no_results), Toast.LENGTH_SHORT).show()
                         }
                         adapter.filterList(filteredList)
@@ -118,8 +74,8 @@ class PasswordsFragment : Fragment() {
             })
         }
 
-        viewModel.allPasswords.observe(viewLifecycleOwner){ passwords ->
-            val decryptedPasswords = passwords.map{password ->
+        viewModel.allPasswords.observe(viewLifecycleOwner) { passwords ->
+            val decryptedPasswords = passwords.map { password ->
                 password.copy(password = viewModel.getDecryptedPassword(password.password))
             }
             val diffCallback = PasswordDiffCallback(passwordsList, decryptedPasswords)
@@ -130,7 +86,14 @@ class PasswordsFragment : Fragment() {
             adapter.updateOriginalList(passwords.toMutableList())
             diffResult.dispatchUpdatesTo(adapter)
         }
-        viewModel.isCorrect.observe(viewLifecycleOwner){ isCorrect ->
+
+        viewModel.showEditPasswordDialog.observe(viewLifecycleOwner) { password ->
+            password?.let {
+                showEditPasswordDialog(it)
+            }
+        }
+
+        viewModel.isCorrect.observe(viewLifecycleOwner) { isCorrect ->
             if (!isCorrect) {
                 Snackbar.make(view, getString(R.string.password_not_strong), Snackbar.LENGTH_LONG)
                     .setAction(getString(R.string.got_it)) { }
@@ -165,8 +128,6 @@ class PasswordsFragment : Fragment() {
             .show()
     }
 
-
-
     private fun showCopyConfirmationDialog() {
         AlertDialog.Builder(requireContext())
             .setTitle(HtmlCompat.fromHtml("<font color='red' style= 'bold'>${getString(R.string.security_warning)}</font>", HtmlCompat.FROM_HTML_MODE_LEGACY))
@@ -175,5 +136,19 @@ class PasswordsFragment : Fragment() {
             .show()
     }
 
+    private fun showEditPasswordDialog(password: Password) {
+        val dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_edit, null)
+        val editText = dialogView.findViewById<EditText>(R.id.et_new_password)
+        val dialog = AlertDialog.Builder(requireContext())
+            .setTitle(getString(R.string.edit))
+            .setView(dialogView)
+            .setPositiveButton(getString(R.string.save)) { _, _ ->
+                val newPassword = editText.text.toString()
+                viewModel.editPassword(password, newPassword)
+            }
+            .setNegativeButton(getString(R.string.cancel), null)
+            .create()
 
+        dialog.show()
+    }
 }

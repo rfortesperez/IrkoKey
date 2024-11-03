@@ -22,18 +22,19 @@ import javax.inject.Inject
 
 @HiltViewModel
 class PasswordsViewModel @Inject constructor(
-    application: Application,
     private val passwordRepository: PasswordRepository,
     private val clipboardManager: ClipboardManager,
-    private val encryptionUtil: EncryptionUtil
+    val encryptionUtil: EncryptionUtil
 ) : ViewModel() {
 
     private val _allPasswords: LiveData<List<Password>> = passwordRepository.getAllPasswords().asLiveData()
     val allPasswords: LiveData<List<Password>> get() = _allPasswords
 
-    // Use SingleLiveEvent for isCorrect
     private val _isCorrect = SingleLiveEvent<Boolean>()
     val isCorrect: LiveData<Boolean> get() = _isCorrect
+
+    private val _showEditPasswordDialog = SingleLiveEvent<Password>()
+    val showEditPasswordDialog: LiveData<Password> get() = _showEditPasswordDialog
 
     private val _showDeleteConfirmation = SingleLiveEvent<Password>()
     val showDeleteConfirmation: LiveData<Password> get() = _showDeleteConfirmation
@@ -41,11 +42,20 @@ class PasswordsViewModel @Inject constructor(
     private val _isCopied = SingleLiveEvent<Boolean>()
     val isCopied: LiveData<Boolean> get() = _isCopied
 
-    fun confirmDeletePassword(password: Password) {
+    fun handlePasswordAction(action: PasswordAction) {
+        when (action) {
+            is PasswordAction.Delete -> confirmDeletePassword(action.password)
+            is PasswordAction.Edit -> showEditPasswordDialog(action.password)
+            is PasswordAction.AddFavorite -> addFavorite(action.password)
+            is PasswordAction.CopyPassword -> copyPassword(action.password.password)
+        }
+    }
+
+    private fun confirmDeletePassword(password: Password) {
         _showDeleteConfirmation.value = password
     }
 
-    fun addFavorite(password: Password) {
+    private fun addFavorite(password: Password) {
         viewModelScope.launch {
             passwordRepository.changeFavorite(password.id)
         }
@@ -57,10 +67,13 @@ class PasswordsViewModel @Inject constructor(
         }
     }
 
+    private fun showEditPasswordDialog(password: Password){
+        _showEditPasswordDialog.value = password
+    }
+
     fun editPassword(password: Password, newPassword: String) {
         viewModelScope.launch {
             if (isPasswordStrong(newPassword)) {
-
                 val encryptedPassword = encryptionUtil.encrypt(newPassword)
                 passwordRepository.updatePassword(password.id, encryptedPassword)
             } else {
@@ -73,26 +86,18 @@ class PasswordsViewModel @Inject constructor(
         return PasswordStrengthUtil.isPasswordStrong(newPassword)
     }
 
-    fun copyPassword(encryptedPassword: String) {
-
+    private fun copyPassword(encryptedPassword: String) {
         val decryptedPassword = encryptionUtil.decrypt(encryptedPassword)
         val clipboard = ClipData.newPlainText("password", decryptedPassword)
         clipboardManager.setPrimaryClip(clipboard)
         _isCopied.value = true
-        // Clear clipboard after 30 seconds
         GlobalScope.launch(Dispatchers.IO) {
             delay(30000L)
             clipboardManager.setPrimaryClip(ClipData.newPlainText("", ""))
         }
     }
 
-
-
     fun getDecryptedPassword(encryptedPassword: String): String {
-        Log.d("PasswordsViewModel", "Decrypting password")
-
-
         return encryptionUtil.decrypt(encryptedPassword)
     }
-
 }

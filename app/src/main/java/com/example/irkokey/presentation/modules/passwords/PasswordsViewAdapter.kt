@@ -14,12 +14,18 @@ import com.example.irkokey.domain.models.Password
 import com.example.irkokey.domain.models.WebsiteIcon
 import com.example.irkokey.domain.models.WebsiteIcons
 
+sealed class PasswordAction {
+    data class Delete(val password: Password) : PasswordAction()
+    data class Edit(val password: Password) : PasswordAction()
+    data class AddFavorite(val password: Password) : PasswordAction()
+    data class CopyPassword(val password: Password) : PasswordAction()
+}
+
 class PasswordsViewAdapter(
     private var passwordList: MutableList<Password>,
-    private val listener: OnPassItemClick,
+    private val actionListener: (PasswordAction) -> Unit,
     private val encryptionUtil: EncryptionUtil
 ) : RecyclerView.Adapter<PasswordsViewAdapter.ViewHolder>() {
-
 
     private var originalList: MutableList<Password> = passwordList.toMutableList()
 
@@ -34,7 +40,7 @@ class PasswordsViewAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(passwordList[position], listener, encryptionUtil)
+        holder.bind(passwordList[position], actionListener, encryptionUtil)
     }
 
     override fun getItemCount() = passwordList.size
@@ -43,7 +49,6 @@ class PasswordsViewAdapter(
         passwordList[position] = password
         notifyItemChanged(position)
     }
-
 
     @SuppressLint("NotifyDataSetChanged")
     fun filterList(filteredList: MutableList<Password>) {
@@ -65,11 +70,10 @@ class PasswordsViewAdapter(
         return originalList
     }
 
-
     class ViewHolder(private val binding: RowPasswordBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(password: Password, listener: OnPassItemClick, encryptionUtil: EncryptionUtil) =
+        fun bind(password: Password, actionListener: (PasswordAction) -> Unit, encryptionUtil: EncryptionUtil) =
             with(binding) {
                 tvWebsite.text = password.website
                 tvUserName.text = password.userName
@@ -78,8 +82,8 @@ class PasswordsViewAdapter(
                 tvPassword.inputType =
                     InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
 
-                val matchingIcon: WebsiteIcon? = WebsiteIcons.icons.find{ it.websiteName.lowercase() == password.website.lowercase() }
-                if(matchingIcon != null){
+                val matchingIcon: WebsiteIcon? = WebsiteIcons.icons.find { it.websiteName.lowercase() == password.website.lowercase() }
+                if (matchingIcon != null) {
                     tvWebsite.setCompoundDrawablesWithIntrinsicBounds(
                         ContextCompat.getDrawable(itemView.context, matchingIcon.iconResId),
                         null,
@@ -88,25 +92,23 @@ class PasswordsViewAdapter(
                     )
                 }
 
-                // show password and buttons for each password
-                ivDown.setOnClickListener{
+                // Hide and show password
+                ivDown.setOnClickListener {
                     it.visibility = View.GONE
                     ivUp.visibility = View.VISIBLE
                     llHide.visibility = View.VISIBLE
                 }
 
-                // hide password and buttons for each password
-                ivUp.setOnClickListener{
+                ivUp.setOnClickListener {
                     it.visibility = View.GONE
                     ivDown.visibility = View.VISIBLE
                     llHide.visibility = View.GONE
                 }
 
-
-                btnDelete.setOnClickListener { listener.onDeleteClick(adapterPosition) }
-                btnEditPassword.setOnClickListener { listener.onEditClick(adapterPosition) }
-                btnAddFavorite.setOnClickListener { listener.onAddFavoriteClick(adapterPosition) }
-                btnCopyPassword.setOnClickListener { listener.onCopyPasswordClick(adapterPosition) }
+                btnDelete.setOnClickListener { actionListener(PasswordAction.Delete(password)) }
+                btnEditPassword.setOnClickListener { actionListener(PasswordAction.Edit(password)) }
+                btnAddFavorite.setOnClickListener { actionListener(PasswordAction.AddFavorite(password)) }
+                btnCopyPassword.setOnClickListener { actionListener(PasswordAction.CopyPassword(password)) }
             }
     }
 }

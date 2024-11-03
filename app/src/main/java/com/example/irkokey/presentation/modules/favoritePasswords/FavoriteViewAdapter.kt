@@ -14,9 +14,15 @@ import com.example.irkokey.domain.models.Password
 import com.example.irkokey.domain.models.WebsiteIcon
 import com.example.irkokey.domain.models.WebsiteIcons
 
+sealed class PasswordAction {
+    data class RemoveFavorite(val password: Password) : PasswordAction()
+    data class CopyPassword(val password: Password) : PasswordAction()
+}
+
+
 class FavoriteViewAdapter(
     private var favoriteList: MutableList<Password>,
-    private val listener: OnFavItemClick,
+    private val actionListener: (PasswordAction) -> Unit,
     private val encryptionUtil: EncryptionUtil
 ) : RecyclerView.Adapter<FavoriteViewAdapter.ViewHolder>() {
 
@@ -33,7 +39,7 @@ class FavoriteViewAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(favoriteList[position], listener, encryptionUtil)
+        holder.bind(favoriteList[position], actionListener, encryptionUtil)
     }
 
     override fun getItemCount() = favoriteList.size
@@ -65,7 +71,7 @@ class FavoriteViewAdapter(
 
     class ViewHolder(private val binding: ItemFavoritePasswordBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(password: Password, listener: OnFavItemClick, encryptionUtil: EncryptionUtil) {
+        fun bind(password: Password, actionListener: (PasswordAction) -> Unit, encryptionUtil: EncryptionUtil) {
             with(binding) {
                 tvWebsite.text = password.website
                 tvUserName.text = password.userName
@@ -83,28 +89,21 @@ class FavoriteViewAdapter(
                         null
                     )
                 }
-                // show password and buttons for each password
-                ivDown.setOnClickListener{
+
+                ivDown.setOnClickListener {
                     it.visibility = View.GONE
                     ivUp.visibility = View.VISIBLE
                     llHide.visibility = View.VISIBLE
                 }
 
-                // hide password and buttons for each password
-                ivUp.setOnClickListener{
+                ivUp.setOnClickListener {
                     it.visibility = View.GONE
                     ivDown.visibility = View.VISIBLE
                     llHide.visibility = View.GONE
                 }
 
-
-
-                btnCopyPassword.setOnClickListener { listener.onCopyPasswordClick(adapterPosition) }
-                btnRemoveFavorite.setOnClickListener {
-                    listener.onRemoveFavoriteClick(
-                        adapterPosition
-                    )
-                }
+                btnCopyPassword.setOnClickListener { actionListener(PasswordAction.CopyPassword(password)) }
+                btnRemoveFavorite.setOnClickListener { actionListener(PasswordAction.RemoveFavorite(password)) }
             }
         }
     }

@@ -40,19 +40,6 @@ class FavoriteFragment : Fragment() {
     @Inject
     lateinit var userRepository: UserRepository
 
-    private val listener = object : OnFavItemClick {
-
-        override fun onCopyPasswordClick(position: Int) {
-            val password = favoritePasswordsList[position]
-            viewModel.copyPassword(password.password)
-        }
-
-        override fun onRemoveFavoriteClick(position: Int) {
-            val password = favoritePasswordsList[position]
-            viewModel.removeFavorite(password)
-        }
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -66,7 +53,7 @@ class FavoriteFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         favoritePasswordsList = mutableListOf()
-        adapter = FavoriteViewAdapter(favoritePasswordsList, listener, encryptionUtil)
+        adapter = FavoriteViewAdapter(favoritePasswordsList, ::handlePasswordAction, encryptionUtil)
 
         with(binding) {
             rvFavoritePasswords.layoutManager = LinearLayoutManager(context)
@@ -118,6 +105,13 @@ class FavoriteFragment : Fragment() {
 
     }
 
+    private fun handlePasswordAction(action: PasswordAction) {
+        when (action) {
+            is PasswordAction.CopyPassword -> viewModel.copyPassword(action.password.password)
+            is PasswordAction.RemoveFavorite -> viewModel.removeFavorite(action.password)
+        }
+    }
+
     private fun showCopyConfirmationDialog() {
         AlertDialog.Builder(requireContext())
             .setTitle(HtmlCompat.fromHtml("<font color='red' style= 'bold'>${getString(R.string.security_warning)}</font>", HtmlCompat.FROM_HTML_MODE_LEGACY))
@@ -137,4 +131,3 @@ class FavoriteFragment : Fragment() {
     }
 
 }
-

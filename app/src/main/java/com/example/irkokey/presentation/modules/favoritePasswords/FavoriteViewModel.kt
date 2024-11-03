@@ -23,9 +23,7 @@ class FavoriteViewModel @Inject constructor(
     private val passwordRepository: PasswordRepository,
     private val clipboardManager: ClipboardManager,
     private val encryptionUtil: EncryptionUtil
-) :
-    ViewModel() {
-
+) : ViewModel() {
 
     private val _allFavorites: LiveData<List<Password>> =
         passwordRepository.getAllFavorites().asLiveData()
@@ -35,7 +33,6 @@ class FavoriteViewModel @Inject constructor(
     val isCopied: LiveData<Boolean> get() = _isCopied
 
 
-    // get all favorites
     fun getAllFavorites() {
         passwordRepository.getAllFavorites()
     }
