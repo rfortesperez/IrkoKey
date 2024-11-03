@@ -404,9 +404,7 @@ public final class DaggerIrkoKeyApp_HiltComponents_SingletonC {
 
     @CanIgnoreReturnValue
     private PasswordsFragment injectPasswordsFragment2(PasswordsFragment instance) {
-      PasswordsFragment_MembersInjector.injectPasswordRepository(instance, singletonCImpl.providePasswordRepositoryProvider.get());
       PasswordsFragment_MembersInjector.injectEncryptionUtil(instance, singletonCImpl.provideEncryptionUtilProvider.get());
-      PasswordsFragment_MembersInjector.injectUserRepository(instance, singletonCImpl.provideUserRepositoryProvider.get());
       return instance;
     }
   }
@@ -569,7 +567,7 @@ public final class DaggerIrkoKeyApp_HiltComponents_SingletonC {
           return (T) new LoginViewModel(singletonCImpl.provideUserRepositoryProvider.get(), singletonCImpl.provideEncryptionUtilProvider.get());
 
           case 4: // com.example.irkokey.presentation.modules.passwords.PasswordsViewModel 
-          return (T) new PasswordsViewModel(ApplicationContextModule_ProvideApplicationFactory.provideApplication(singletonCImpl.applicationContextModule), singletonCImpl.providePasswordRepositoryProvider.get(), singletonCImpl.provideClipboardManagerProvider.get(), singletonCImpl.provideEncryptionUtilProvider.get());
+          return (T) new PasswordsViewModel(singletonCImpl.providePasswordRepositoryProvider.get(), singletonCImpl.provideClipboardManagerProvider.get(), singletonCImpl.provideEncryptionUtilProvider.get());
 
           case 5: // com.example.irkokey.presentation.modules.register.RegisterViewModel 
           return (T) new RegisterViewModel(singletonCImpl.providePreferencesProvider.get(), singletonCImpl.provideUserRepositoryProvider.get(), singletonCImpl.provideEncryptionUtilProvider.get());
