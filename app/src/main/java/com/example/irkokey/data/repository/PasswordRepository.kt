@@ -59,6 +59,4 @@ class PasswordRepository @Inject constructor(private val passwordDao: PasswordDa
     suspend fun getAllPasswordsList(): List<Password> {
         return passwordDao.getAllPasswordsList()
     }
-
-
 }

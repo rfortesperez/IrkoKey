@@ -5,11 +5,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.irkokey.R;
@@ -19,7 +19,7 @@ import java.lang.String;
 
 public final class FragmentBackupBinding implements ViewBinding {
   @NonNull
-  private final LinearLayout rootView;
+  private final ConstraintLayout rootView;
 
   @NonNull
   public final Button btnExport;
@@ -28,7 +28,25 @@ public final class FragmentBackupBinding implements ViewBinding {
   public final Button btnImport;
 
   @NonNull
+  public final TextView careful;
+
+  @NonNull
+  public final TextView chooseFolder;
+
+  @NonNull
+  public final TextView doNotChangeName;
+
+  @NonNull
+  public final TextView doNotShareData;
+
+  @NonNull
+  public final TextView needPin;
+
+  @NonNull
   public final ProgressBar pbBackup;
+
+  @NonNull
+  public final TextView takeCareData;
 
   @NonNull
   public final TextView tvBackup;
@@ -39,13 +57,22 @@ public final class FragmentBackupBinding implements ViewBinding {
   @NonNull
   public final TextView tvQuestion;
 
-  private FragmentBackupBinding(@NonNull LinearLayout rootView, @NonNull Button btnExport,
-      @NonNull Button btnImport, @NonNull ProgressBar pbBackup, @NonNull TextView tvBackup,
-      @NonNull TextView tvBackupDescription, @NonNull TextView tvQuestion) {
+  private FragmentBackupBinding(@NonNull ConstraintLayout rootView, @NonNull Button btnExport,
+      @NonNull Button btnImport, @NonNull TextView careful, @NonNull TextView chooseFolder,
+      @NonNull TextView doNotChangeName, @NonNull TextView doNotShareData,
+      @NonNull TextView needPin, @NonNull ProgressBar pbBackup, @NonNull TextView takeCareData,
+      @NonNull TextView tvBackup, @NonNull TextView tvBackupDescription,
+      @NonNull TextView tvQuestion) {
     this.rootView = rootView;
     this.btnExport = btnExport;
     this.btnImport = btnImport;
+    this.careful = careful;
+    this.chooseFolder = chooseFolder;
+    this.doNotChangeName = doNotChangeName;
+    this.doNotShareData = doNotShareData;
+    this.needPin = needPin;
     this.pbBackup = pbBackup;
+    this.takeCareData = takeCareData;
     this.tvBackup = tvBackup;
     this.tvBackupDescription = tvBackupDescription;
     this.tvQuestion = tvQuestion;
@@ -53,7 +80,7 @@ public final class FragmentBackupBinding implements ViewBinding {
 
   @Override
   @NonNull
-  public LinearLayout getRoot() {
+  public ConstraintLayout getRoot() {
     return rootView;
   }
 
@@ -90,9 +117,45 @@ public final class FragmentBackupBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.careful;
+      TextView careful = ViewBindings.findChildViewById(rootView, id);
+      if (careful == null) {
+        break missingId;
+      }
+
+      id = R.id.choose_folder;
+      TextView chooseFolder = ViewBindings.findChildViewById(rootView, id);
+      if (chooseFolder == null) {
+        break missingId;
+      }
+
+      id = R.id.do_not_change_name;
+      TextView doNotChangeName = ViewBindings.findChildViewById(rootView, id);
+      if (doNotChangeName == null) {
+        break missingId;
+      }
+
+      id = R.id.do_not_share_data;
+      TextView doNotShareData = ViewBindings.findChildViewById(rootView, id);
+      if (doNotShareData == null) {
+        break missingId;
+      }
+
+      id = R.id.need_pin;
+      TextView needPin = ViewBindings.findChildViewById(rootView, id);
+      if (needPin == null) {
+        break missingId;
+      }
+
       id = R.id.pb_backup;
       ProgressBar pbBackup = ViewBindings.findChildViewById(rootView, id);
       if (pbBackup == null) {
+        break missingId;
+      }
+
+      id = R.id.take_care_data;
+      TextView takeCareData = ViewBindings.findChildViewById(rootView, id);
+      if (takeCareData == null) {
         break missingId;
       }
 
@@ -114,8 +177,9 @@ public final class FragmentBackupBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentBackupBinding((LinearLayout) rootView, btnExport, btnImport, pbBackup,
-          tvBackup, tvBackupDescription, tvQuestion);
+      return new FragmentBackupBinding((ConstraintLayout) rootView, btnExport, btnImport, careful,
+          chooseFolder, doNotChangeName, doNotShareData, needPin, pbBackup, takeCareData, tvBackup,
+          tvBackupDescription, tvQuestion);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

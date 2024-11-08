@@ -3598,6 +3598,7 @@ id buttonPanel
 id cache_measures
 id callMeasure
 id cancel_button
+id careful
 id carryVelocity
 id center
 id centerCrop
@@ -3609,6 +3610,7 @@ id chain2
 id chains
 id checkbox
 id checked
+id choose_folder
 id chronometer
 id circle_center
 id clear_text
@@ -3654,6 +3656,8 @@ id disableIntraAutoTransition
 id disablePostScroll
 id disableScroll
 id disjoint
+id do_not_change_name
+id do_not_share_data
 id dragAnticlockwise
 id dragClockwise
 id dragDown
@@ -3832,6 +3836,7 @@ id navigation_bar_item_labels_group
 id navigation_bar_item_large_label_view
 id navigation_bar_item_small_label_view
 id navigation_header_container
+id need_pin
 id never
 id neverCompleteToEnd
 id neverCompleteToStart
@@ -3977,6 +3982,7 @@ id tag_transition_group
 id tag_unhandled_key_event_manager
 id tag_unhandled_key_listeners
 id tag_window_insets_animation_callback
+id take_care_data
 id text
 id text2
 id textEnd
@@ -4022,9 +4028,13 @@ id tv_backup
 id tv_backup_description
 id tv_capital_letters
 id tv_choice
+id tv_confirm_pin
 id tv_have_lenght
 id tv_introduce_data
+id tv_introduce_email
+id tv_introduce_pin_register
 id tv_lowercase_letters
+id tv_need_register
 id tv_numbers
 id tv_password
 id tv_password_fav
@@ -4033,6 +4043,7 @@ id tv_question
 id tv_symbols
 id tv_userName
 id tv_website
+id tv_wellcome
 id unchecked
 id uniform
 id unlabeled

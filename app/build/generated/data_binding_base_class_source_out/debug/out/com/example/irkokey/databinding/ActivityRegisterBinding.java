@@ -6,9 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.irkokey.R;
@@ -20,7 +21,7 @@ import java.lang.String;
 
 public final class ActivityRegisterBinding implements ViewBinding {
   @NonNull
-  private final LinearLayout rootView;
+  private final ConstraintLayout rootView;
 
   @NonNull
   public final Button btnRegister;
@@ -35,7 +36,7 @@ public final class ActivityRegisterBinding implements ViewBinding {
   public final TextInputEditText etPin;
 
   @NonNull
-  public final LinearLayout register;
+  public final ConstraintLayout register;
 
   @NonNull
   public final TextInputLayout tilConfirmPin;
@@ -43,10 +44,28 @@ public final class ActivityRegisterBinding implements ViewBinding {
   @NonNull
   public final TextInputLayout tilPin;
 
-  private ActivityRegisterBinding(@NonNull LinearLayout rootView, @NonNull Button btnRegister,
+  @NonNull
+  public final TextView tvConfirmPin;
+
+  @NonNull
+  public final TextView tvIntroduceEmail;
+
+  @NonNull
+  public final TextView tvIntroducePinRegister;
+
+  @NonNull
+  public final TextView tvNeedRegister;
+
+  @NonNull
+  public final TextView tvWellcome;
+
+  private ActivityRegisterBinding(@NonNull ConstraintLayout rootView, @NonNull Button btnRegister,
       @NonNull TextInputEditText etConfirmPin, @NonNull EditText etEmail,
-      @NonNull TextInputEditText etPin, @NonNull LinearLayout register,
-      @NonNull TextInputLayout tilConfirmPin, @NonNull TextInputLayout tilPin) {
+      @NonNull TextInputEditText etPin, @NonNull ConstraintLayout register,
+      @NonNull TextInputLayout tilConfirmPin, @NonNull TextInputLayout tilPin,
+      @NonNull TextView tvConfirmPin, @NonNull TextView tvIntroduceEmail,
+      @NonNull TextView tvIntroducePinRegister, @NonNull TextView tvNeedRegister,
+      @NonNull TextView tvWellcome) {
     this.rootView = rootView;
     this.btnRegister = btnRegister;
     this.etConfirmPin = etConfirmPin;
@@ -55,11 +74,16 @@ public final class ActivityRegisterBinding implements ViewBinding {
     this.register = register;
     this.tilConfirmPin = tilConfirmPin;
     this.tilPin = tilPin;
+    this.tvConfirmPin = tvConfirmPin;
+    this.tvIntroduceEmail = tvIntroduceEmail;
+    this.tvIntroducePinRegister = tvIntroducePinRegister;
+    this.tvNeedRegister = tvNeedRegister;
+    this.tvWellcome = tvWellcome;
   }
 
   @Override
   @NonNull
-  public LinearLayout getRoot() {
+  public ConstraintLayout getRoot() {
     return rootView;
   }
 
@@ -108,7 +132,7 @@ public final class ActivityRegisterBinding implements ViewBinding {
         break missingId;
       }
 
-      LinearLayout register = (LinearLayout) rootView;
+      ConstraintLayout register = (ConstraintLayout) rootView;
 
       id = R.id.til_confirm_pin;
       TextInputLayout tilConfirmPin = ViewBindings.findChildViewById(rootView, id);
@@ -122,8 +146,39 @@ public final class ActivityRegisterBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityRegisterBinding((LinearLayout) rootView, btnRegister, etConfirmPin,
-          etEmail, etPin, register, tilConfirmPin, tilPin);
+      id = R.id.tv_confirm_pin;
+      TextView tvConfirmPin = ViewBindings.findChildViewById(rootView, id);
+      if (tvConfirmPin == null) {
+        break missingId;
+      }
+
+      id = R.id.tv_introduce_email;
+      TextView tvIntroduceEmail = ViewBindings.findChildViewById(rootView, id);
+      if (tvIntroduceEmail == null) {
+        break missingId;
+      }
+
+      id = R.id.tv_introduce_pin_register;
+      TextView tvIntroducePinRegister = ViewBindings.findChildViewById(rootView, id);
+      if (tvIntroducePinRegister == null) {
+        break missingId;
+      }
+
+      id = R.id.tv_need_register;
+      TextView tvNeedRegister = ViewBindings.findChildViewById(rootView, id);
+      if (tvNeedRegister == null) {
+        break missingId;
+      }
+
+      id = R.id.tv_wellcome;
+      TextView tvWellcome = ViewBindings.findChildViewById(rootView, id);
+      if (tvWellcome == null) {
+        break missingId;
+      }
+
+      return new ActivityRegisterBinding((ConstraintLayout) rootView, btnRegister, etConfirmPin,
+          etEmail, etPin, register, tilConfirmPin, tilPin, tvConfirmPin, tvIntroduceEmail,
+          tvIntroducePinRegister, tvNeedRegister, tvWellcome);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

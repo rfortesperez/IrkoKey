@@ -3597,6 +3597,7 @@ int id buttonPanel 0x7f090074
 int id cache_measures 0x7f090075
 int id callMeasure 0x7f090076
 int id cancel_button 0x7f090077
+int id careful 0x7f090243
 int id carryVelocity 0x7f090078
 int id center 0x7f090079
 int id centerCrop 0x7f09007a
@@ -3608,6 +3609,7 @@ int id chain2 0x7f09007f
 int id chains 0x7f090080
 int id checkbox 0x7f090081
 int id checked 0x7f090082
+int id choose_folder 0x7f090244
 int id chronometer 0x7f090083
 int id circle_center 0x7f090084
 int id clear_text 0x7f090085
@@ -3653,6 +3655,8 @@ int id disableIntraAutoTransition 0x7f0900ac
 int id disablePostScroll 0x7f0900ad
 int id disableScroll 0x7f0900ae
 int id disjoint 0x7f0900af
+int id do_not_change_name 0x7f090245
+int id do_not_share_data 0x7f090246
 int id dragAnticlockwise 0x7f0900b0
 int id dragClockwise 0x7f0900b1
 int id dragDown 0x7f0900b2
@@ -3831,6 +3835,7 @@ int id navigation_bar_item_labels_group 0x7f09015e
 int id navigation_bar_item_large_label_view 0x7f09015f
 int id navigation_bar_item_small_label_view 0x7f090160
 int id navigation_header_container 0x7f090161
+int id need_pin 0x7f090247
 int id never 0x7f090162
 int id neverCompleteToEnd 0x7f090163
 int id neverCompleteToStart 0x7f090164
@@ -3976,6 +3981,7 @@ int id tag_transition_group 0x7f0901ef
 int id tag_unhandled_key_event_manager 0x7f0901f0
 int id tag_unhandled_key_listeners 0x7f0901f1
 int id tag_window_insets_animation_callback 0x7f0901f2
+int id take_care_data 0x7f090248
 int id text 0x7f0901f3
 int id text2 0x7f0901f4
 int id textEnd 0x7f0901f5
@@ -4021,9 +4027,13 @@ int id tv_backup 0x7f09021c
 int id tv_backup_description 0x7f09021d
 int id tv_capital_letters 0x7f09021e
 int id tv_choice 0x7f09021f
+int id tv_confirm_pin 0x7f090249
 int id tv_have_lenght 0x7f090220
 int id tv_introduce_data 0x7f090221
+int id tv_introduce_email 0x7f09024a
+int id tv_introduce_pin_register 0x7f09024b
 int id tv_lowercase_letters 0x7f090222
+int id tv_need_register 0x7f09024c
 int id tv_numbers 0x7f090223
 int id tv_password 0x7f090224
 int id tv_password_fav 0x7f090225
@@ -4032,6 +4042,7 @@ int id tv_question 0x7f090227
 int id tv_symbols 0x7f090228
 int id tv_userName 0x7f090229
 int id tv_website 0x7f09022a
+int id tv_wellcome 0x7f09024d
 int id unchecked 0x7f09022b
 int id uniform 0x7f09022c
 int id unlabeled 0x7f09022d

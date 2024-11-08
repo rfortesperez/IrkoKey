@@ -357,7 +357,11 @@ id btn_login
 id btn_register
 id btn_remove_favorite
 id btn_save
+id careful
+id choose_folder
 id create_title
+id do_not_change_name
+id do_not_share_data
 id et_confirm_pin
 id et_email
 id et_introduce_pin
@@ -382,6 +386,7 @@ id navigate_backup
 id navigate_explore_passwords
 id navigate_favorite
 id navigate_logout
+id need_pin
 id pb_backup
 id register
 id registerActivity
@@ -390,6 +395,7 @@ id rv_passwords
 id splashActivity
 id sv_search
 id tabLayout
+id take_care_data
 id textInputLayout
 id textInputLayoutFav
 id til_confirm_pin
@@ -400,9 +406,13 @@ id tv_backup
 id tv_backup_description
 id tv_capital_letters
 id tv_choice
+id tv_confirm_pin
 id tv_have_lenght
 id tv_introduce_data
+id tv_introduce_email
+id tv_introduce_pin_register
 id tv_lowercase_letters
+id tv_need_register
 id tv_numbers
 id tv_password
 id tv_password_fav
@@ -411,6 +421,7 @@ id tv_question
 id tv_symbols
 id tv_userName
 id tv_website
+id tv_wellcome
 id viewPager2
 layout activity_auth
 layout activity_main

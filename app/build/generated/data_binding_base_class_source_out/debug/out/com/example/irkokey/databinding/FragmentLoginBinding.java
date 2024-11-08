@@ -6,10 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.irkokey.R;
@@ -21,7 +21,7 @@ import java.lang.String;
 
 public final class FragmentLoginBinding implements ViewBinding {
   @NonNull
-  private final LinearLayout rootView;
+  private final ConstraintLayout rootView;
 
   @NonNull
   public final Button btnLogin;
@@ -38,7 +38,7 @@ public final class FragmentLoginBinding implements ViewBinding {
   @NonNull
   public final TextView tvIntroduceData;
 
-  private FragmentLoginBinding(@NonNull LinearLayout rootView, @NonNull Button btnLogin,
+  private FragmentLoginBinding(@NonNull ConstraintLayout rootView, @NonNull Button btnLogin,
       @NonNull EditText etEmail, @NonNull TextInputEditText etPasswordInput,
       @NonNull TextInputLayout tilLoginPassword, @NonNull TextView tvIntroduceData) {
     this.rootView = rootView;
@@ -51,7 +51,7 @@ public final class FragmentLoginBinding implements ViewBinding {
 
   @Override
   @NonNull
-  public LinearLayout getRoot() {
+  public ConstraintLayout getRoot() {
     return rootView;
   }
 
@@ -106,8 +106,8 @@ public final class FragmentLoginBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentLoginBinding((LinearLayout) rootView, btnLogin, etEmail, etPasswordInput,
-          tilLoginPassword, tvIntroduceData);
+      return new FragmentLoginBinding((ConstraintLayout) rootView, btnLogin, etEmail,
+          etPasswordInput, tilLoginPassword, tvIntroduceData);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

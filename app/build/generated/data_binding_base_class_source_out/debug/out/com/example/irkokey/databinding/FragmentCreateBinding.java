@@ -6,10 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ScrollView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.irkokey.R;
@@ -21,7 +21,7 @@ import java.lang.String;
 
 public final class FragmentCreateBinding implements ViewBinding {
   @NonNull
-  private final ScrollView rootView;
+  private final ConstraintLayout rootView;
 
   @NonNull
   public final Button btnGenerate;
@@ -65,7 +65,7 @@ public final class FragmentCreateBinding implements ViewBinding {
   @NonNull
   public final TextView tvSymbols;
 
-  private FragmentCreateBinding(@NonNull ScrollView rootView, @NonNull Button btnGenerate,
+  private FragmentCreateBinding(@NonNull ConstraintLayout rootView, @NonNull Button btnGenerate,
       @NonNull Button btnSave, @NonNull TextView createTitle,
       @NonNull TextInputEditText etPasswordInput, @NonNull EditText etUsernameInput,
       @NonNull EditText etWebsiteInput, @NonNull TextInputLayout tilCreatePassword,
@@ -92,7 +92,7 @@ public final class FragmentCreateBinding implements ViewBinding {
 
   @Override
   @NonNull
-  public ScrollView getRoot() {
+  public ConstraintLayout getRoot() {
     return rootView;
   }
 
@@ -201,9 +201,10 @@ public final class FragmentCreateBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentCreateBinding((ScrollView) rootView, btnGenerate, btnSave, createTitle,
-          etPasswordInput, etUsernameInput, etWebsiteInput, tilCreatePassword, tvCapitalLetters,
-          tvChoice, tvHaveLenght, tvLowercaseLetters, tvNumbers, tvPasswordRequirements, tvSymbols);
+      return new FragmentCreateBinding((ConstraintLayout) rootView, btnGenerate, btnSave,
+          createTitle, etPasswordInput, etUsernameInput, etWebsiteInput, tilCreatePassword,
+          tvCapitalLetters, tvChoice, tvHaveLenght, tvLowercaseLetters, tvNumbers,
+          tvPasswordRequirements, tvSymbols);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

@@ -1,242 +1,228 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/fondo_14">
+    android:layout_height="wrap_content"
+    android:background="@drawable/fondo_14"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="16dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+
+    <TextView
+        android:id="@+id/create_title"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/capriola_regular"
+        android:text="@string/new_password"
+        android:textAlignment="center"
+        android:textColor="@color/md_theme_inversePrimary_mediumContrast"
+        android:textSize="24sp"
+        android:textStyle="italic|bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/et_website_input"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:autofillHints="autofill:website"
+        android:background="@drawable/et_rounded"
+        android:hint="@string/website"
+        android:inputType="text"
+        android:padding="16dp"
+        android:singleLine="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_title" />
+
+    <EditText
+        android:id="@+id/et_username_input"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:autofillHints="autofill:username"
+        android:background="@drawable/et_rounded"
+        android:hint="@string/username"
+        android:inputType="text"
+        android:padding="16dp"
+        android:singleLine="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_website_input" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_create_password"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/et_rounded"
+        app:boxStrokeColor="@null"
+        app:boxStrokeWidth="0dp"
+        app:endIconMode="password_toggle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_username_input"
+        app:layout_constraintVertical_bias="0.0">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_password_input"
+            android:layout_width="320dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:textSize="16sp"
+            app:boxStrokeWidth="0dp" />
+
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/tv_password_requirements"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/capriola_regular"
+        android:text="@string/your_password"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/til_create_password" />
+
+    <TextView
+        android:id="@+id/tv_have_lenght"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginTop="8dp"
+        android:drawablePadding="16dp"
+        android:text="@string/have_lenght"
+        android:textColor="@color/md_theme_inversePrimary_mediumContrast"
+        android:textSize="16sp"
+        app:drawableStartCompat="@drawable/baseline_check_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_password_requirements" />
+
+    <TextView
+        android:id="@+id/tv_lowercase_letters"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginTop="4dp"
+        android:drawablePadding="16dp"
+        android:text="@string/lowercase_letters"
+        android:textColor="@color/md_theme_inversePrimary_mediumContrast"
+        android:textSize="16sp"
+        app:drawableStartCompat="@drawable/baseline_check_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_have_lenght" />
+
+    <TextView
+        android:id="@+id/tv_capital_letters"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginTop="4dp"
+        android:drawablePadding="16dp"
+        android:text="@string/capital_letters"
+        android:textColor="@color/md_theme_inversePrimary_mediumContrast"
+        android:textSize="16sp"
+        app:drawableStartCompat="@drawable/baseline_check_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_lowercase_letters" />
+
+    <TextView
+        android:id="@+id/tv_numbers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginTop="4dp"
+        android:drawablePadding="16dp"
+        android:text="@string/numbers"
+        android:textColor="@color/md_theme_inversePrimary_mediumContrast"
+        android:textSize="16sp"
+        app:drawableStartCompat="@drawable/baseline_check_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_capital_letters" />
+
+    <TextView
+        android:id="@+id/tv_symbols"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginTop="4dp"
+        android:drawablePadding="16dp"
+        android:text="@string/symbols"
+        android:textColor="@color/md_theme_inversePrimary_mediumContrast"
+        android:textSize="16sp"
+        app:drawableStartCompat="@drawable/baseline_check_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_numbers" />
+
+    <Button
+        android:id="@+id/btn_save"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/rounded_corners"
+        android:backgroundTint="@color/ic_launcher_background"
+        android:fontFamily="@font/capriola_regular"
+        android:padding="8dp"
+        android:text="@string/save"
+        android:textColor="@color/ml_theme_onSecondary"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_symbols" />
+
+    <TextView
+        android:id="@+id/tv_choice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginTop="8dp"
         android:gravity="center"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:text="@string/choice"
+        android:textColor="@color/md_theme_inversePrimary_mediumContrast"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_save" />
 
-        <TextView
-            android:id="@+id/create_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:fontFamily="@font/capriola_regular"
-            android:text="@string/new_password"
-            android:textAlignment="center"
-            android:textColor="@color/md_theme_inversePrimary_mediumContrast"
-            android:textSize="36sp"
-            android:textStyle="italic|bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/et_website_input"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="8dp"
-            android:autofillHints="autofill:website"
-            android:background="@drawable/et_rounded"
-            android:hint="@string/website"
-            android:inputType="text"
-            android:padding="16dp"
-            android:singleLine="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/create_title" />
-
-        <EditText
-            android:id="@+id/et_username_input"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:autofillHints="autofill:username"
-            android:background="@drawable/et_rounded"
-            android:hint="@string/username"
-            android:inputType="text"
-            android:padding="16dp"
-            android:singleLine="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_website_input" />
+    <Button
+        android:id="@+id/btn_generate"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/rounded_corners"
+        android:backgroundTint="@color/ic_launcher_background"
+        android:fontFamily="@font/capriola_regular"
+        android:padding="8dp"
+        android:text="@string/generate_password"
+        android:textColor="@color/ml_theme_onSecondary"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_choice" />
 
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_create_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:background="@drawable/et_rounded"
-            app:boxStrokeColor="@null"
-            app:boxStrokeWidth="0dp"
-            app:endIconMode="password_toggle"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/et_username_input"
-            app:layout_constraintVertical_bias="0.0">
+</androidx.constraintlayout.widget.ConstraintLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_password_input"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_gravity="center"
-                android:hint="@string/password"
-                android:inputType="textPassword"
-                android:textSize="16dp"
-                app:boxStrokeWidth="0dp" />
-
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <TextView
-            android:id="@+id/tv_password_requirements"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/capriola_regular"
-            android:text="@string/your_password"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/til_create_password" />
-
-        <TextView
-            android:id="@+id/tv_have_lenght"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="16dp"
-            android:drawablePadding="16dp"
-            android:text="@string/have_lenght"
-            android:textColor="@color/md_theme_inversePrimary_mediumContrast"
-            android:textSize="16sp"
-            app:drawableStartCompat="@drawable/baseline_check_24"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_password_requirements" />
-
-        <TextView
-            android:id="@+id/tv_lowercase_letters"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:layout_marginTop="4dp"
-            android:drawablePadding="16dp"
-            android:text="@string/lowercase_letters"
-            android:textColor="@color/md_theme_inversePrimary_mediumContrast"
-            android:textSize="16sp"
-            app:drawableStartCompat="@drawable/baseline_check_24"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_have_lenght" />
-
-        <TextView
-            android:id="@+id/tv_capital_letters"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="4dp"
-            android:drawablePadding="16dp"
-            android:text="@string/capital_letters"
-            android:textColor="@color/md_theme_inversePrimary_mediumContrast"
-            android:textSize="16sp"
-            app:drawableStartCompat="@drawable/baseline_check_24"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_lowercase_letters" />
-
-        <TextView
-            android:id="@+id/tv_numbers"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:layout_marginTop="4dp"
-            android:drawablePadding="16dp"
-            android:text="@string/numbers"
-            android:textColor="@color/md_theme_inversePrimary_mediumContrast"
-            android:textSize="16sp"
-            app:drawableStartCompat="@drawable/baseline_check_24"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_capital_letters" />
-
-        <TextView
-            android:id="@+id/tv_symbols"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:layout_marginTop="4dp"
-            android:drawablePadding="16dp"
-            android:text="@string/symbols"
-            android:textColor="@color/md_theme_inversePrimary_mediumContrast"
-            android:textSize="16sp"
-            app:drawableStartCompat="@drawable/baseline_check_24"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_numbers" />
-
-        <Button
-            android:id="@+id/btn_save"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/rounded_corners"
-            android:backgroundTint="@color/ic_launcher_background"
-            android:fontFamily="@font/capriola_regular"
-            android:padding="8dp"
-            android:text="@string/save"
-            android:textColor="@color/ml_theme_onSecondary"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_symbols" />
-
-        <TextView
-            android:id="@+id/tv_choice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:layout_marginTop="8dp"
-            android:gravity="center"
-            android:text="@string/choice"
-            android:textColor="@color/md_theme_inversePrimary_mediumContrast"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_save" />
-
-        <Button
-            android:id="@+id/btn_generate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="65dp"
-            android:background="@drawable/rounded_corners"
-            android:backgroundTint="@color/ic_launcher_background"
-            android:fontFamily="@font/capriola_regular"
-            android:padding="8dp"
-            android:text="@string/generate_password"
-            android:textColor="@color/ml_theme_onSecondary"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_save" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
