@@ -61,7 +61,7 @@
     <string name="need_pin">Necessites el teu PIN per importar o exportar les teves dades.</string>
     <string name="choose_folder">Les teves dades es guardaran en una carpeta de la teva elecció.</string>
     <string name="take_care_data">Ves amb compte amb les teves dades. Guarda-les en un lloc segur.</string>
-    <string name="do_not_change_name">No canviïs el nom del fitxer exportat, o no podràs importar-lo més tard.</string>
+    <string name="do_not_change_name">Assegura\'t que el nom del fitxer sigui irkokey.json, o no podràs importar-lo.</string>
     <string name="do_not_share_data">No comparteixis les teves dades amb ningú. Recorda que les teves dades són la teva responsabilitat.</string>
     <string name="passwords">Contrasenyes</string>
     <string name="user_registered">Usuari/a registrat!</string>

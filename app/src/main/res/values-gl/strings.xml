@@ -61,7 +61,7 @@
     <string name="need_pin">Necesitas o teu PIN para importar ou exportar os teus datos.</string>
     <string name="choose_folder">Os teus datos gardaranse nun cartafol da túa elección.</string>
     <string name="take_care_data">Ten coidado cos teus datos. Gárdaos nun lugar seguro.</string>
-    <string name="do_not_change_name">Non cambies o nome do ficheiro exportado, ou non poderás importalo máis tarde.</string>
+    <string name="do_not_change_name">Asegúrate de que o nome do ficheiro sexa irkokey.json, ou non poderás importalo.</string>
     <string name="do_not_share_data">Non compartas os teus datos con ninguén. Lembra que os teus datos son a túa responsabilidade.</string>
     <string name="passwords">Contrasinais</string>
     <string name="user_registered">Usuario rexistrado!</string>
@@ -69,8 +69,8 @@
     <string name="check_again">Correo electrónico ou PIN incorrectos. ¡Por favor, revisa!</string>
     <string name="login_success">Inicio de sesión exitoso.</string>
     <string name="title_favorite">Favorito</string>
-    <string name="importing_process">PIN correcto, importando datos...</string>
-    <string name="exporting_process">PIN correcto, exportando datos...</string>
+    <string name="importing_process">PIN correcto, importando datos…</string>
+    <string name="exporting_process">PIN correcto, exportando datos…</string>
     <string name="imported">Copia de seguridade importada</string>
     <string name="exported">Copia de seguridade exportada</string>
     <string name="incorrect_pin">PIN incorrecto</string>

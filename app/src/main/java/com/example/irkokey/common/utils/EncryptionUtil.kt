@@ -57,6 +57,7 @@ object EncryptionUtil {
         cipher.init(Cipher.ENCRYPT_MODE, secretKey, parameterSpec)
         val encryptedData = cipher.doFinal(data.toByteArray())
         val encryptedIvAndData = iv + encryptedData
+        Log.d("EncryptionUtil", "Encrypted data: ${Base64.encodeToString(encryptedIvAndData, Base64.DEFAULT)}")
         return Base64.encodeToString(encryptedIvAndData, Base64.DEFAULT)
     }
 
@@ -69,6 +70,7 @@ object EncryptionUtil {
         val parameterSpec = GCMParameterSpec(GCM_TAG_LENGTH * 8, iv)
         cipher.init(Cipher.DECRYPT_MODE, secretKey, parameterSpec)
         val decryptedData = cipher.doFinal(encryptedData)
+        Log.d("EncryptionUtil", "Decrypted data: ${String(decryptedData)}")
         return String(decryptedData)
     }
 

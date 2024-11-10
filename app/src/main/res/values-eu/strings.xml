@@ -61,7 +61,7 @@
     <string name="need_pin">Zure PINa behar duzu zure datuak inportatu edo esportatzeko.</string>
     <string name="choose_folder">Zure datuak aukeratutako karpeta batean gordeko dira.</string>
     <string name="take_care_data">Kontuz ibili zure datuekin. Gorde leku seguru batean.</string>
-    <string name="do_not_change_name">Ez aldatu esportatutako fitxategiaren izena, bestela ezin izango duzu geroago inportatu.</string>
+    <string name="do_not_change_name">Ziurtatu fitxategiaren izena irkokey.json dela, bestela ezin izango duzu inportatu.</string>
     <string name="do_not_share_data">Ez partekatu zure datuak inorekin. Gogoratu zure datuak zure erantzukizuna direla.</string>
     <string name="passwords">Pasahitzak</string>
     <string name="user_registered">Erabiltzailea erregistratuta!</string>

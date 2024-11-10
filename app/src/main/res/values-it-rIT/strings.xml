@@ -61,7 +61,7 @@
     <string name="need_pin">Hai bisogno del tuo PIN per importare o esportare i tuoi dati.</string>
     <string name="choose_folder">I tuoi dati saranno salvati in una cartella a tua scelta.</string>
     <string name="take_care_data">Fai attenzione ai tuoi dati. Salvali in un posto sicuro.</string>
-    <string name="do_not_change_name">Non cambiare il nome del file esportato, altrimenti non potrai importarlo più tardi.</string>
+    <string name="do_not_change_name">Assicurati che il nome del file sia irkokey.json, altrimenti non potrai importarlo.</string>
     <string name="do_not_share_data">Non condividere i tuoi dati con nessuno. Ricorda che i tuoi dati sono la tua responsabilità.</string>
     <string name="passwords">Password</string>
     <string name="user_registered">Utente registrato!</string>
