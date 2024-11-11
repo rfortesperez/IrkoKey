@@ -12,17 +12,27 @@ IrkoKey es una aplicación Android que permitirá a los usuarios guardar y gesti
 
 ## Instalación / Puesta en marcha
 
-> *TODO*: En este apartado describe con toda precisión y a poder ser con la mayor simplicidad/facilidad posible, cómo poner en marcha tu aplicación para probarla (en un ambiente local). Se valorará muy positivamente que este proceso sea lo más fácil posible, con una simple instrucción (p. e. un script de instalación).
-> Si tu proyecto es documental, realiza una especificación de cómo va a ser este proceso. En otras palabras, realiza este apartado independientemente que no haya implementación.
+ Se puede probar esta aplicación de tres maneras distintas, todas igual de sencillas. La primera sería directamente en un <u>emulador en Android Studio</u>. Podremos elegir entre distintos modelos de dispositivos, con diferentes API, tamaños de pantalla, RAM, etc. Una vez seleccionado solamente tendremos que pulsar el botón de reproducción (el triángulo verde), o pulsar Shift + F10.
+ 
+ Otra manera simple de probar la app es <u>a través de un dispositivo físico</u>. Para ello tendremos que activar las opciones de desarrollador de nuestro dispositivo. Para activarlas, iremos al apartado de *Ajustes* -> *Sobre el teléfono* -> y sobre el *número de compilación*, pulsaremos rápidamente unas 5-7 veces, hasta que aparezca un mensaje informándonos de que se han activado las opciones de desarrollador.
+
+ Hecho esto, tendremos que ir a *Ajustes* -> *Ajustes adicionales* -> *Opciones de desarrollador*, y activaremos la opción <u>Depuración USB</u>. Ahora, conectando nuestro dispositivo mediante un cable usb al ordenador, podremos instalar y probar la app en nuestro móvil.
+
+ A partir de la versión 3.0 de Android Studio, y de Android 10, ya se puede utilizar la <u>conexión inalámbrica</u> para poder depurar la app en nuestro dispositivo android sin necesidad de utilizar un cable USB, aunque hay que tener en cuenta que si tenemos Android 10 (API level 29) o inferior, primero debemos sincronizarlos por USB y posteriormente podremos conectarnos de manera inalámbrica.
 
 ## Uso
 
-> *TODO*: Es este apartado describe brevemente cómo se usará el software que proyectas. Si tiene una interfaz de terminal, describe aquí su sintaxis. Si tiene una interfaz gráfica de usuario, describe aquí **sólo el uso** (a modo de sumario) **de los aspectos más relevantes de su funcionamiento** (máxima brevedad, como si fuese un anuncio reclamo o comercial).
-> Si tu proyecto es documental, realiza una especificación de cómo planteas estas interfaces, con ejemplos incluso o esquemas de diseño. En otras palabras, realiza este apartado independientemente que no haya implementación.
+Irko Key es una bóveda digital personal. Protege tus datos más sensibles con este gestor de contraseñas. Cifrado AES que garantiza la seguridad de tus credenciales. Generador de contraseñas aleatorias que crea contraseñas únicas y robustas. Copias de seguridad que te permiten recuperar tus datos en cualquier momento. ¡Organiza, protege y simplifica tu vida digital con Irko Key!
 
 ## Sobre el autor
 
-> *TODO*: Realiza una breve descripción de quien eres (perfil profesional), tus puntos fuertes, o tecnologías que más dominas... y porqué te has decantado por este proyecto. **No más de 200 palabras**. Indica la forma fiable de contactar contigo en el presente y en el futuro.
+Soy una apasionada del desarrollo móvil y la ciberseguridad. Para finalizar mis estudios, buscaba un proyecto que me permitiera poner en práctica los conocimientos adquiridos y, al mismo tiempo, contribuir a la seguridad de los usuarios. Irko Key se alinea perfectamente con mis objetivos, ya que me brinda la oportunidad de desarrollar una aplicación útil y segura. Mi experiencia en Kotlin y Android Studio, junto con mi interés por la criptografía, me han sido de gran ayuda en la realización de este proyecto.
+
+Se puede contactar conmigo por las siguientes vías:
+
+[Linkedin](https://www.linkedin.com/in/rocío-fortes-pérez)
+[Email](mailto:rfortesperez@gmail.com)
+
 
 ## Licencia
 
