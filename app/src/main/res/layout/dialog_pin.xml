@@ -7,13 +7,14 @@
     android:padding="16dp">
 
     <com.google.android.material.textfield.TextInputLayout
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:hintAnimationEnabled="true"
         app:hintEnabled="true"
         app:boxStrokeWidth="0dp"
         app:endIconMode="password_toggle"
+        app:startIconTint="@color/md_theme_primary"
+        app:endIconTint="@color/md_theme_primary"
         app:startIconDrawable="@drawable/password">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -21,6 +22,9 @@
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:hint="@string/pin"
+            android:gravity="center"
+            android:textColor="@color/md_theme_primary"
+            android:textColorHint="@color/md_theme_primary"
             android:inputType="numberPassword"
             app:boxStrokeWidth = "0dp"/>
 
