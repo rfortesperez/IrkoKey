@@ -1,18 +1,28 @@
 # FASE DE PLANIFICACIÓN DO PROXECTO
 
-## Obxectivos do proxecto
+## Objetivos del proyecto
 
-## Guía de planificación do proxecto
+Crear una aplicación para la gestión de contraseñas de cualquier usuario. Esta aplicación debe ser intuitiva y sencilla de utilizar, a la par que segura. Ayudará al usuario a generar y guardar contraseñas seguras y lo suficientemente fuertes, para mejorar la seguridad de los sitios web que precise.
 
-### Metodoloxía
+
+## Guía de planificación del proyecto
+
+### Metodología
 
 
 ### Fases planificadas
 
-Descríbense as fases en que se divide o proxecto e as tarefas que se han levar a cabo en cada unha destas fases.
-Pódense indicar os recursos materiais e humanos asociados a cada tarefa ou, se son os mesmos, de maneira máis xeral.
+Este proyecto se ha desarrollado en las siguientes fases:
 
-#### Fase 1: Estudo de necesidades e modelo de negocio
+* **Fase 1**: Investigación.
+* **Fase 2**: Planificacion y diseño.
+* **Fase 3**: Creación y desarrollo de la IU (Interfaz de Usuario).
+* **Fase 4**: Desarrollo de la encriptación.
+* **Fase 5**: Creación funcionalidad de backup.
+* **Fase 6**: Internacionalización mediante el uso de archivos strings.
+* **Fase 7**: Pruebas.
+
+#### Fase 1: Investigación
 
 ##### Tarefa 1: xxxxxxxx
 

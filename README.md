@@ -36,13 +36,17 @@ Se puede contactar conmigo por las siguientes vías:
 
 ## Licencia
 
-> *TODO*: Es requisito INDISPENSABLE el licenciar explícitamente el proyecto software. Se recomienda licenciar con *GNU Free Documentation License Version 1.3*. Crear un fichero `LICENSE` en la raiz del repo, con tu fichero de licencia. Recuerda que si empleas una licencia de software libre estás autorizando la derivación de tu obra bajo la misma licencia que elijas, pudiendo dar continuidad, p. e. otro alumno, para continuar tu proyecto en otro curso.
-> Si tu proyecto es documental, recomendamos los términos de *GNU Free Documentation License Version 1.3*, crea igualmente el fichero `LICENSE`. Será especialmente valorado en este caso, la claridad de la especificación para que el proyecto pueda ser ejecutado partiendo de lo proyectado.
+Este software cuenta con una **licencia GPLv3** (GNU General Public License versión 3). Esto implica que cualquiera puede utilizar, modificar y distribuir este software, pero con ciertas implicaciones, que se detallan a continuación:
 
+* **Copyleft**: cualquier modificación o combinación de este código fuente deberá también ser licenciado bajo GPLv3. Así se impedirá la creación de versiones propietarias basadas en este software.
+* **Libertad de uso, estudio, modificación y distribución**: permite a cualquiera usar, copiar, distribuir, estudiar, modificar y mejorar el software.
+* **Requisitos de licencia**: exige que cualquier trabajo derivado sea licenciado bajo los mismos términos.
+* **Protección contra patentes**: se incluyen claúsulas para proteger contra la aplicación de patentes.
+
+Puede verse el texto completo haciendo click [aquí](/LICENSE)
 
 ## Índice
 
-> *TODO*: Simplemente indexa ordenadamente todo tu proyecto.
 
 1. Anteproyecto
      * 1.1. [Idea](#11-idea)
