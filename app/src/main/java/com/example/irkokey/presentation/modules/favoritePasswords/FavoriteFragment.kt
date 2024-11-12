@@ -129,5 +129,4 @@ class FavoriteFragment : Fragment() {
 
         adapter.filterList(newList)
     }
-
 }
