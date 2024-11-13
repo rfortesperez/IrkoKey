@@ -1,12 +1,23 @@
-# FASE DE DESEÑO
+# FASE DE DISEÑO
 
-## Modelo conceptual do dominio da aplicación e/ou Diagrama de clases [usando UML, ConML, ou linguaxe semellante].
+## Diagrama UML.
 
-## Casos de uso [descritos en fichas e/ou mediante esquemas; deben incluír o(s) tipo(s) de usuario implicados en cada caso de uso].
+![Diagrama UML Irko Key](/doc/img/Diagrama_UML.png)
+
+## Casos de uso 
+
+
+
+![Diagrama de Flujo Irko Key](/doc/img/Diagrama_Flujo.png)
 
 ## Deseño de interface de usuarios [mockups ou diagramas...].
 
 ## Diagrama de Base de Datos.
+![Diagrama ER](/doc/img/ERD_IrkoKey.png)
 
-## Diagrama de compoñentes software que constitúen o produto e de despregue.
+## Diagrama de componentes software que constituyen el producto y de despliegue.
+
+![Diagrama de componentes](/doc/img/Diagrama_Componentes.png)
+
+![Diagrama de secuencia](/doc/img/Diagrama_Secuencia.png)
 
