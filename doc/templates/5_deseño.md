@@ -1,13 +1,13 @@
 # FASE DE DISEÑO
 
-## Diagrama UML.
+## Diagrama de Clases.
 
-![Diagrama UML Irko Key](/doc/img/Diagrama_UML.png)
+![Diagrama UML Irko Key](/doc/img/Diagrama_de_Clases.png)
 
-## Casos de uso 
+## Casos de uso.
 
 
-
+## Diagrama de Flujo. 
 ![Diagrama de Flujo Irko Key](/doc/img/Diagrama_Flujo.png)
 
 ## Deseño de interface de usuarios [mockups ou diagramas...].
