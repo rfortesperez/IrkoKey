@@ -24,49 +24,77 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
-    // Provide the application context
+    /**
+     * Provides the application context.
+     * @param application The application instance.
+     * @return The application context.
+     */
     @Provides
     @Singleton
     fun provideContext(application: Application): Context {
         return application.applicationContext
     }
 
-    // Provide the preferences
+    /**
+     * Provides the preferences.
+     * @param context The application context.
+     * @return The Preferences instance.
+     */
     @Provides
     @Singleton
     fun providePreferences(context: Context): Preferences {
         return Preferences(context)
     }
 
-    // Provide password dao
+    /**
+     * Provides the PasswordDao.
+     * @param database The PasswordRoomDatabase instance.
+     * @return The PasswordDao instance.
+     */
     @Provides
     @Singleton
     fun providePasswordDao(database: PasswordRoomDatabase): PasswordDao {
         return database.passwordDao()
     }
 
-    // Provide user dao
+    /**
+     * Provides the UserDao.
+     * @param database The PasswordRoomDatabase instance.
+     * @return The UserDao instance.
+     */
     @Provides
     @Singleton
     fun provideUserDao(database: PasswordRoomDatabase): UserDao {
         return database.userDao()
     }
 
-    // Provide database
+    /**
+     * Provides the PasswordRoomDatabase.
+     * @param context The application context.
+     * @return The PasswordRoomDatabase instance.
+     */
     @Provides
     @Singleton
     fun provideDatabase(context: Context): PasswordRoomDatabase {
         return PasswordRoomDatabase.getDatabase(context)
     }
 
-    // Provide password repository
+    /**
+     * Provides the PasswordRepository.
+     * @param passwordDao The PasswordDao instance.
+     * @return The PasswordRepository instance.
+     */
     @Provides
     @Singleton
     fun providePasswordRepository(passwordDao: PasswordDao): PasswordRepository {
         return PasswordRepository(passwordDao)
     }
 
-    // Provide user repository
+    /**
+     * Provides the UserRepository.
+     * @param userDao The UserDao instance.
+     * @return The UserRepository instance.
+     */
     @Provides
     @Singleton
     fun provideUserRepository(userDao: UserDao): UserRepository {
@@ -74,23 +102,30 @@ object AppModule {
     }
 
 
-    // Provide EncryptionUtil
+    /**
+     * Provides the EncryptionUtil.
+     * @return The EncryptionUtil instance.
+     */
     @Provides
     @Singleton
     fun provideEncryptionUtil(): EncryptionUtil {
         return EncryptionUtil
     }
 
-    // Provide PasswordStrengthUtil
-
+    /**
+     * Provides the PasswordStrengthUtil.
+     * @return The PasswordStrengthUtil instance.
+     */
     @Provides
     @Singleton
     fun providePasswordStrengthUtil(): PasswordStrengthUtil {
         return PasswordStrengthUtil
     }
-
-
-    // Provide clipboard manager
+    /**
+     * Provides the ClipboardManager.
+     * @param context The application context.
+     * @return The ClipboardManager instance.
+     */
     @Provides
     @Singleton
     fun provideClipboardManager(context: Context): ClipboardManager {

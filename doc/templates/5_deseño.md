@@ -6,6 +6,7 @@
 
 ## Casos de uso.
 
+![Diagrama de Casos de Uso Irko Key](/doc/img/Diagrama_Casos_de_Uso.png)
 
 ## Diagrama de Flujo. 
 ![Diagrama de Flujo Irko Key](/doc/img/Diagrama_Flujo.png)

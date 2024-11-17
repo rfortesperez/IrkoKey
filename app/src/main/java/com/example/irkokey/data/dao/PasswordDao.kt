@@ -7,43 +7,83 @@ import androidx.room.Query
 import com.example.irkokey.domain.models.Password
 import kotlinx.coroutines.flow.Flow
 
-
+/**
+ * Data Access Object for the passwords table.
+ */
 @Dao
 interface PasswordDao {
 
-    // Insert a new website, username and password in the app
+    /**
+     * Inserts a new password into the database. If a password with the same id already exists, it will be replaced.
+     *
+     * @param password The password to be inserted.
+     */
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertPassword(password: Password)
 
-    // get all the data of the table passwords_table
+
+    /**
+     * Retrieves all passwords from the database, ordered by website in ascending order.
+     *
+     * @return A Flow that emits a list of all passwords.
+     */
     @Query("SELECT * FROM passwords_table ORDER BY website ASC")
     fun getAllPasswords(): Flow<List<Password>>
 
-    // get a password by its id
+    /**
+     * Retrieves a password by its id.
+     *
+     * @param id The id of the password to be retrieved.
+     * @return The password with the specified id.
+     */
     @Query("SELECT * FROM passwords_table WHERE id = :id")
     suspend fun getPasswordById(id: Int): Password
 
-    // update the password of a website
+    /**
+     * Updates the password of a specific entry in the database.
+     *
+     * @param id The id of the password to be updated.
+     * @param password The new password hash.
+     */
     @Query("UPDATE passwords_table SET password_hash = :password WHERE id = :id")
     suspend fun updatePassword(id: Int, password: String)
 
-    // delete a password from the table passwords_table
+    /**
+     * Deletes a password from the database.
+     *
+     * @param id The id of the password to be deleted.
+     */
     @Query("DELETE FROM passwords_table WHERE id = :id")
     suspend fun deletePassword(id: Int)
 
-    // change the favorite status of a password
+    /**
+     * Changes the favorite status of a password.
+     *
+     * @param id The id of the password to be updated.
+     * @param favorite The new favorite status.
+     */
     @Query("UPDATE passwords_table SET favorite = :favorite WHERE id = :id")
     suspend fun changeFavorite(id: Int, favorite: Boolean)
 
-    // get all the favorite passwords
+    /**
+     * Retrieves all favorite passwords from the database, ordered by website in ascending order.
+     *
+     * @return A Flow that emits a list of all favorite passwords.
+     */
     @Query("SELECT * FROM passwords_table WHERE favorite = true ORDER BY website ASC")
     fun getAllFavorites(): Flow<List<Password>>
 
-    // delete all the passwords from the table passwords_table
+    /**
+     * Deletes all passwords from the database.
+     */
     @Query("DELETE FROM passwords_table")
     suspend fun deleteAllPasswords()
 
-    // get all de passwords on a list
+    /**
+     * Retrieves all passwords from the database as a list.
+     *
+     * @return A list of all passwords.
+     */
     @Query("SELECT * FROM passwords_table")
     suspend fun getAllPasswordsList(): List<Password>
 

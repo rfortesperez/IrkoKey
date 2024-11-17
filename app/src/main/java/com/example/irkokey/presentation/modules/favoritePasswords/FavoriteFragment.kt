@@ -23,6 +23,10 @@ import com.example.irkokey.data.repository.UserRepository
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
+
+/**
+ * A Fragment that displays a list of favorite passwords and provides functionality to search, copy, and remove passwords from favorites.
+ */
 @AndroidEntryPoint
 class FavoriteFragment : Fragment() {
 
@@ -40,11 +44,7 @@ class FavoriteFragment : Fragment() {
     @Inject
     lateinit var userRepository: UserRepository
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentFavoriteBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -99,12 +99,17 @@ class FavoriteFragment : Fragment() {
         viewModel.isCopied.observe(viewLifecycleOwner) { isCopied ->
             if (isCopied) {
                 Toast.makeText(context, getString(R.string.password_copied), Toast.LENGTH_SHORT).show()
-                showCopyConfirmationDialog()
+                showCopyAlertDialog()
             }
         }
 
     }
 
+
+    /**
+     * Handles password actions such as copying and removing favorites.
+     * @param action The action to be handled.
+     */
     private fun handlePasswordAction(action: PasswordAction) {
         when (action) {
             is PasswordAction.CopyPassword -> viewModel.copyPassword(action.password.password)
@@ -112,7 +117,10 @@ class FavoriteFragment : Fragment() {
         }
     }
 
-    private fun showCopyConfirmationDialog() {
+    /**
+     * Shows an alert dialog to warn the user about the security risks of copying passwords.
+     */
+    private fun showCopyAlertDialog() {
         AlertDialog.Builder(requireContext())
             .setTitle(HtmlCompat.fromHtml("<font color='red' style= 'bold'>${getString(R.string.security_warning)}</font>", HtmlCompat.FROM_HTML_MODE_LEGACY))
             .setMessage(getString(R.string.copy_warning_message))
@@ -120,6 +128,11 @@ class FavoriteFragment : Fragment() {
             .show()
     }
 
+
+    /**
+     * Filters the favorite passwords list based on the search query.
+     * @param text The search query entered by the user.
+     */
     private fun filter(text: String) {
         val filteredList = favoritePasswordsList.filter { password ->
             password.website.contains(text, ignoreCase = true)

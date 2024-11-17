@@ -18,6 +18,13 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+/**
+ * ViewModel for managing favorite passwords.
+ * @param passwordRepository The repository for accessing password data.
+ * @param clipboardManager The system clipboard manager.
+ * @param encryptionUtil The utility for encrypting and decrypting passwords.
+ */
+
 @HiltViewModel
 class FavoriteViewModel @Inject constructor(
     private val passwordRepository: PasswordRepository,
@@ -25,18 +32,26 @@ class FavoriteViewModel @Inject constructor(
     private val encryptionUtil: EncryptionUtil
 ) : ViewModel() {
 
+    // LiveData for observing the list of all favorite passwords
     private val _allFavorites: LiveData<List<Password>> =
         passwordRepository.getAllFavorites().asLiveData()
     val allFavorites: LiveData<List<Password>> get() = _allFavorites
 
+    // LiveData for observing the copy status of a password
     private val _isCopied = SingleLiveEvent<Boolean>()
     val isCopied: LiveData<Boolean> get() = _isCopied
 
-
+    /**
+     * Fetches all favorite passwords from the repository.
+     */
     fun getAllFavorites() {
         passwordRepository.getAllFavorites()
     }
 
+    /**
+     * Copies the decrypted password to the clipboard and clears it after 30 seconds.
+     * @param encryptedPassword The encrypted password to be copied.
+     */
     @OptIn(DelicateCoroutinesApi::class)
     fun copyPassword(encryptedPassword: String) {
         var decryptedPassword = ""
@@ -55,6 +70,11 @@ class FavoriteViewModel @Inject constructor(
         }
     }
 
+
+    /**
+     * Removes a password from the favorites.
+     * @param password The password to be removed from favorites.
+     */
     fun removeFavorite(password: Password) {
         viewModelScope.launch {
             passwordRepository.changeFavorite(password.id)

@@ -14,6 +14,14 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+
+/**
+ * ViewModel class for handling the creation of new passwords.
+ * This ViewModel is annotated with `@HiltViewModel` to support dependency injection with Hilt.
+ *
+ * @property passwordRepository The repository for password data.
+ * @property encryptionUtil The utility class for encryption and decryption.
+ */
 @HiltViewModel
 class CreateViewModel @Inject constructor(
     application: Application,
@@ -32,7 +40,11 @@ class CreateViewModel @Inject constructor(
     val generatedPassword: LiveData<String> get() = _generatedPassword
 
 
-    // Save password to database after encrypting it
+    /**
+     * Saves the password to the database after encrypting it.
+     *
+     * @param password The password object to be saved.
+     */
     private fun savePassword(password: Password) {
         viewModelScope.launch {
             val encryptedPassword = encryptionUtil.encrypt(password.password)
@@ -42,7 +54,13 @@ class CreateViewModel @Inject constructor(
         }
     }
 
-    // Check if the password is strong enough and save it
+    /**
+     * Checks if the password is strong enough and saves it.
+     *
+     * @param website The website associated with the password.
+     * @param username The username associated with the password.
+     * @param password The password to be saved.
+     */
 
     fun didClickSaveButton(website: String, username: String, password: String) {
         if (website.isNotEmpty() && username.isNotEmpty() && password.isNotEmpty()) {
@@ -60,7 +78,9 @@ class CreateViewModel @Inject constructor(
         }
     }
 
-    // Respond to the click of the generate button
+    /**
+     * Responds to the click of the generate button.
+     */
     fun didClickGenerateButton() {
         val generatedPassword = generateStrongPassword()
         if(isPasswordStrong(generatedPassword)){
@@ -70,7 +90,12 @@ class CreateViewModel @Inject constructor(
         }
     }
 
-    // Generate a strong password
+    /**
+     * Generates a strong password.
+     *
+     * @param length The length of the password to be generated. Default is 12.
+     * @return The generated strong password.
+     */
     private fun generateStrongPassword(length: Int = 12): String{
         val chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#\$%^&*()-_=+<>?"
         return (1..length)
@@ -78,7 +103,12 @@ class CreateViewModel @Inject constructor(
             .joinToString("")
     }
 
-    // Check if the password is strong enough
+    /**
+     * Checks if the password is strong enough.
+     *
+     * @param password The password to be checked.
+     * @return True if the password is strong, false otherwise.
+     */
     private fun isPasswordStrong(password: String): Boolean {
         return PasswordStrengthUtil.isPasswordStrong(password)
     }

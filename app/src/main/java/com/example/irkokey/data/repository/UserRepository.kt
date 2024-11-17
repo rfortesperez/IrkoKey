@@ -6,15 +6,29 @@ import com.example.irkokey.data.dao.UserDao
 import com.example.irkokey.domain.models.User
 import javax.inject.Inject
 
+/**
+ * Repository class for managing user-related data operations.
+ *
+ * @property userDao The DAO for accessing user data.
+ */
 class UserRepository @Inject constructor(private val userDao: UserDao){
 
-    // Insert a new user in the app for registration
+    /**
+     * Inserts a new user into the database.
+     *
+     * @param user The user to be inserted.
+     */
     @WorkerThread
     suspend fun insertUser(user: User) {
         userDao.insertUser(user)
     }
 
-    // Get user by Id
+    /**
+     * Retrieves a user by their id.
+     *
+     * @param id The id of the user to be retrieved.
+     * @return The user with the specified id.
+     */
     @WorkerThread
     suspend fun getUser(id: Int): User {
         Log.d("UserRepository", "Getting user")
@@ -23,7 +37,9 @@ class UserRepository @Inject constructor(private val userDao: UserDao){
         return user
     }
 
-    // Delete all users
+    /**
+     * Deletes all users from the database.
+     */
     @WorkerThread
     suspend fun deleteAllUsers() {
         userDao.deleteAllUsers()

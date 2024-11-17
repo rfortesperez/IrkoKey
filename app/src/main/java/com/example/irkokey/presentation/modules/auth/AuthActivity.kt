@@ -5,6 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.irkokey.databinding.ActivityAuthBinding
 import dagger.hilt.android.AndroidEntryPoint
 
+/**
+ * Activity class for handling authentication.
+ * This activity is annotated with `@AndroidEntryPoint` to support dependency injection with Hilt.
+ */
 @AndroidEntryPoint
 class AuthActivity : AppCompatActivity() {
 

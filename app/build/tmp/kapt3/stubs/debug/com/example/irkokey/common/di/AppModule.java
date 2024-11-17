@@ -31,6 +31,11 @@ public final class AppModule {
         super();
     }
     
+    /**
+     * Provides the application context.
+     * @param application The application instance.
+     * @return The application context.
+     */
     @dagger.Provides
     @javax.inject.Singleton
     @org.jetbrains.annotations.NotNull
@@ -39,6 +44,11 @@ public final class AppModule {
         return null;
     }
     
+    /**
+     * Provides the preferences.
+     * @param context The application context.
+     * @return The Preferences instance.
+     */
     @dagger.Provides
     @javax.inject.Singleton
     @org.jetbrains.annotations.NotNull
@@ -47,6 +57,11 @@ public final class AppModule {
         return null;
     }
     
+    /**
+     * Provides the PasswordDao.
+     * @param database The PasswordRoomDatabase instance.
+     * @return The PasswordDao instance.
+     */
     @dagger.Provides
     @javax.inject.Singleton
     @org.jetbrains.annotations.NotNull
@@ -55,6 +70,11 @@ public final class AppModule {
         return null;
     }
     
+    /**
+     * Provides the UserDao.
+     * @param database The PasswordRoomDatabase instance.
+     * @return The UserDao instance.
+     */
     @dagger.Provides
     @javax.inject.Singleton
     @org.jetbrains.annotations.NotNull
@@ -63,6 +83,11 @@ public final class AppModule {
         return null;
     }
     
+    /**
+     * Provides the PasswordRoomDatabase.
+     * @param context The application context.
+     * @return The PasswordRoomDatabase instance.
+     */
     @dagger.Provides
     @javax.inject.Singleton
     @org.jetbrains.annotations.NotNull
@@ -71,6 +96,11 @@ public final class AppModule {
         return null;
     }
     
+    /**
+     * Provides the PasswordRepository.
+     * @param passwordDao The PasswordDao instance.
+     * @return The PasswordRepository instance.
+     */
     @dagger.Provides
     @javax.inject.Singleton
     @org.jetbrains.annotations.NotNull
@@ -79,6 +109,11 @@ public final class AppModule {
         return null;
     }
     
+    /**
+     * Provides the UserRepository.
+     * @param userDao The UserDao instance.
+     * @return The UserRepository instance.
+     */
     @dagger.Provides
     @javax.inject.Singleton
     @org.jetbrains.annotations.NotNull
@@ -87,6 +122,10 @@ public final class AppModule {
         return null;
     }
     
+    /**
+     * Provides the EncryptionUtil.
+     * @return The EncryptionUtil instance.
+     */
     @dagger.Provides
     @javax.inject.Singleton
     @org.jetbrains.annotations.NotNull
@@ -94,6 +133,10 @@ public final class AppModule {
         return null;
     }
     
+    /**
+     * Provides the PasswordStrengthUtil.
+     * @return The PasswordStrengthUtil instance.
+     */
     @dagger.Provides
     @javax.inject.Singleton
     @org.jetbrains.annotations.NotNull
@@ -101,6 +144,11 @@ public final class AppModule {
         return null;
     }
     
+    /**
+     * Provides the ClipboardManager.
+     * @param context The application context.
+     * @return The ClipboardManager instance.
+     */
     @dagger.Provides
     @javax.inject.Singleton
     @org.jetbrains.annotations.NotNull

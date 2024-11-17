@@ -11,6 +11,10 @@ import com.example.irkokey.R
 import com.example.irkokey.databinding.FragmentCreateBinding
 import dagger.hilt.android.AndroidEntryPoint
 
+/**
+ * Fragment class for creating a new password.
+ * This fragment is annotated with `@AndroidEntryPoint` to support dependency injection with Hilt.
+ */
 @AndroidEntryPoint
 class CreateFragment : Fragment() {
 
@@ -24,42 +28,75 @@ class CreateFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupUI()
+        observeViewModel()
+    }
+
+    /**
+     * Sets up the UI components and their click listeners.
+     */
+    private fun setupUI() {
         with(binding) {
-            btnSave.setOnClickListener {
-                createViewModel.didClickSaveButton(
-                    etWebsiteInput.text.toString(),
-                    etUsernameInput.text.toString(),
-                    etPasswordInput.text.toString()
-                )
-                etWebsiteInput.requestFocus() // Return focus to website input
-            }
-
-            btnGenerate.setOnClickListener{
-                createViewModel.didClickGenerateButton()
-            }
+            btnSave.setOnClickListener { handleSaveClick() }
+            btnGenerate.setOnClickListener { createViewModel.didClickGenerateButton() }
         }
+    }
 
-        createViewModel.generatedPassword.observe(viewLifecycleOwner){ password ->
+    /**
+     * Handles the save button click event.
+     */
+    private fun handleSaveClick() {
+        with(binding) {
+            createViewModel.didClickSaveButton(
+                etWebsiteInput.text.toString(),
+                etUsernameInput.text.toString(),
+                etPasswordInput.text.toString()
+            )
+            etWebsiteInput.requestFocus() // Return focus to website input
+        }
+    }
+
+    /**
+     * Observes the ViewModel LiveData properties and updates the UI accordingly.
+     */
+    private fun observeViewModel() {
+        createViewModel.generatedPassword.observe(viewLifecycleOwner) { password ->
             binding.etPasswordInput.setText(password)
         }
 
         createViewModel.isComplete.observe(viewLifecycleOwner) { isComplete ->
-            if(isComplete){
-                createViewModel.isCorrect.observe(viewLifecycleOwner){ isCorrect->
-                    if(isCorrect){
-                        Toast.makeText(context, getString(R.string.password_saved), Toast.LENGTH_SHORT).show()
-                        with(binding){
-                            etWebsiteInput.text.clear()
-                            etUsernameInput.text.clear()
-                            etPasswordInput.text?.clear()
-                        }
-                    }else{
-                        Toast.makeText(context, getString(R.string.password_not_strong), Toast.LENGTH_SHORT).show()
+            if (isComplete) {
+                createViewModel.isCorrect.observe(viewLifecycleOwner) { isCorrect ->
+                    if (isCorrect) {
+                        showToast(getString(R.string.password_saved))
+                        clearInputFields()
+                    } else {
+                        showToast(getString(R.string.password_not_strong))
                     }
                 }
-            }else{
-                Toast.makeText(context, getString(R.string.fill_fields), Toast.LENGTH_SHORT).show()
+            } else {
+                showToast(getString(R.string.fill_fields))
             }
+        }
+    }
+
+    /**
+     * Shows a toast message.
+     *
+     * @param message The message to be displayed in the toast.
+     */
+    private fun showToast(message: String) {
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+    }
+
+    /**
+     * Clears the input fields.
+     */
+    private fun clearInputFields() {
+        with(binding) {
+            etWebsiteInput.text.clear()
+            etUsernameInput.text.clear()
+            etPasswordInput.text?.clear()
         }
     }
 }

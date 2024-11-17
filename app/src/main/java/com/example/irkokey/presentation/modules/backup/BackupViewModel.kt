@@ -18,6 +18,15 @@ import kotlinx.coroutines.launch
 import org.json.JSONObject
 import javax.inject.Inject
 
+/**
+ * ViewModel class for handling backup operations.
+ * This ViewModel is annotated with `@HiltViewModel` to support dependency injection with Hilt.
+ *
+ * @property application The application context.
+ * @property userRepository The repository for user data.
+ * @property passwordRepository The repository for password data.
+ * @property encryptionUtil The utility class for encryption and decryption.
+ */
 @HiltViewModel
 class BackupViewModel @Inject constructor(
     private val application: Application,
@@ -26,19 +35,28 @@ class BackupViewModel @Inject constructor(
     private val encryptionUtil: EncryptionUtil
 ) : ViewModel() {
 
+    // LiveData for the progress of the backup operation
     private val _progress = MutableLiveData<Int>()
     val progress: LiveData<Int> get() = _progress
 
+    // LiveData for the export and import operations
     private val _isExported = SingleLiveEvent<Boolean>()
     val isExported: LiveData<Boolean> get() = _isExported
 
+    // LiveData for the import operation
     private val _isImported = SingleLiveEvent<Boolean>()
     val isImported: LiveData<Boolean> get() = _isImported
 
+    // LiveData for the PIN verification
     private val _isPinCorrect = SingleLiveEvent<Boolean>()
     val isPinCorrect: LiveData<Boolean> get() = _isPinCorrect
 
-    // Request the user to enter the PIN and export the data
+    /**
+     * Requests the user to enter the PIN and exports the data.
+     *
+     * @param userPin The PIN entered by the user.
+     * @param uri The URI where the data will be exported.
+     */
     fun requestPinAndExport(userPin: String, uri: Uri) {
         viewModelScope.launch {
             val user = userRepository.getUser(1)
@@ -55,7 +73,12 @@ class BackupViewModel @Inject constructor(
         }
     }
 
-    // Request the user to enter the PIN and import the data
+    /**
+     * Requests the user to enter the PIN and imports the data.
+     *
+     * @param userPin The PIN entered by the user.
+     * @param uri The URI from where the data will be imported.
+     */
     fun requestPinAndImport(userPin: String, uri: Uri) {
 
         viewModelScope.launch {
@@ -73,6 +96,11 @@ class BackupViewModel @Inject constructor(
         }
     }
 
+    /**
+     * Exports the database to an encrypted JSON file.
+     *
+     * @param uri The URI where the JSON file will be saved.
+     */
 
     private fun exportDatabaseToJson(uri: Uri) {
 
@@ -108,6 +136,11 @@ class BackupViewModel @Inject constructor(
         }
     }
 
+    /**
+     * Imports the data from an encrypted JSON file.
+     *
+     * @param uri The URI from where the JSON file will be read.
+     */
     private fun importDatafromJson(uri: Uri) {
 
         val moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()

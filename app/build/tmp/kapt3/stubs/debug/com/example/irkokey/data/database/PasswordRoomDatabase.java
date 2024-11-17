@@ -9,6 +9,9 @@ import com.example.irkokey.data.dao.UserDao;
 import com.example.irkokey.domain.models.Password;
 import com.example.irkokey.domain.models.User;
 
+/**
+ * The Room database for this app, containing the User and Password entities.
+ */
 @kotlin.Metadata(mv = {1, 9, 0}, k = 1, xi = 48, d1 = {"\u0000\u001a\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0002\b\'\u0018\u0000 \u00072\u00020\u0001:\u0001\u0007B\u0005\u00a2\u0006\u0002\u0010\u0002J\b\u0010\u0003\u001a\u00020\u0004H&J\b\u0010\u0005\u001a\u00020\u0006H&\u00a8\u0006\b"}, d2 = {"Lcom/example/irkokey/data/database/PasswordRoomDatabase;", "Landroidx/room/RoomDatabase;", "()V", "passwordDao", "Lcom/example/irkokey/data/dao/PasswordDao;", "userDao", "Lcom/example/irkokey/data/dao/UserDao;", "Companion", "app_debug"})
 @androidx.room.Database(entities = {com.example.irkokey.domain.models.User.class, com.example.irkokey.domain.models.Password.class}, version = 1, exportSchema = false)
 public abstract class PasswordRoomDatabase extends androidx.room.RoomDatabase {
@@ -22,9 +25,19 @@ public abstract class PasswordRoomDatabase extends androidx.room.RoomDatabase {
         super();
     }
     
+    /**
+     * Gets the PasswordDao for accessing password-related database operations.
+     *
+     * @return The PasswordDao instance.
+     */
     @org.jetbrains.annotations.NotNull
     public abstract com.example.irkokey.data.dao.PasswordDao passwordDao();
     
+    /**
+     * Gets the UserDao for accessing user-related database operations.
+     *
+     * @return The UserDao instance.
+     */
     @org.jetbrains.annotations.NotNull
     public abstract com.example.irkokey.data.dao.UserDao userDao();
     
@@ -35,6 +48,12 @@ public abstract class PasswordRoomDatabase extends androidx.room.RoomDatabase {
             super();
         }
         
+        /**
+         * Gets the singleton instance of the database. If it doesn't exist, creates it.
+         *
+         * @param context The application context.
+         * @return The PasswordRoomDatabase instance.
+         */
         @org.jetbrains.annotations.NotNull
         public final com.example.irkokey.data.database.PasswordRoomDatabase getDatabase(@org.jetbrains.annotations.NotNull
         android.content.Context context) {

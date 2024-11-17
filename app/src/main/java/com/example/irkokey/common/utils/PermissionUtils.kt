@@ -6,9 +6,16 @@ import android.content.pm.PackageManager
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 
+/**
+ * Utility object for handling permission requests.
+ */
 object PermissionUtils {
 
-    // Request storage permissions
+    /**
+     * Requests storage permissions (READ\_EXTERNAL\_STORAGE and WRITE\_EXTERNAL\_STORAGE) if they are not already granted.
+     *
+     * @param activity The activity from which the permissions are requested.
+     */
     fun requestStoragePermissions(activity: Activity){
         val permissions = arrayOf(
             Manifest.permission.READ_EXTERNAL_STORAGE,

@@ -23,13 +23,19 @@ import com.example.irkokey.R
 import com.example.irkokey.databinding.FragmentBackupBinding
 import dagger.hilt.android.AndroidEntryPoint
 
-
+/**
+ * Fragment class for handling backup operations.
+ * This fragment is annotated with `@AndroidEntryPoint` to support dependency injection with Hilt.
+ */
 @AndroidEntryPoint
 class BackupFragment : Fragment() {
 
     private lateinit var binding: FragmentBackupBinding
     private val backupViewModel: BackupViewModel by viewModels()
 
+    /**
+     * Launcher for requesting multiple permissions.
+     */
     private val requestPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()
     ) { permissions ->
         if (permissions.all { it.value }) {
@@ -39,6 +45,9 @@ class BackupFragment : Fragment() {
         }
     }
 
+    /**
+     * Launcher for creating a document.
+     */
     private val createFileLauncher = registerForActivityResult(
         CreateDocument("application/json")
     ) { uri ->
@@ -49,6 +58,9 @@ class BackupFragment : Fragment() {
         }
     }
 
+    /**
+     * Launcher for opening a document.
+     */
     private val openFileLauncher = registerForActivityResult(ActivityResultContracts.OpenDocument()
     ) { uri ->
         uri?.let {
@@ -126,6 +138,11 @@ class BackupFragment : Fragment() {
         }
     }
 
+    /**
+     * Checks if the necessary permissions are granted.
+     *
+     * @return True if permissions are granted, false otherwise.
+     */
     private fun hasPermissions(): Boolean {
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             Environment.isExternalStorageManager()
@@ -135,6 +152,9 @@ class BackupFragment : Fragment() {
         }
     }
 
+    /**
+     * Requests the necessary permissions.
+     */
     private fun requestPermissions() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             try {
@@ -155,6 +175,11 @@ class BackupFragment : Fragment() {
         }
     }
 
+    /**
+     * Shows a dialog for entering a PIN.
+     *
+     * @param onPinEntered Callback function to be invoked when the PIN is entered.
+     */
     private fun showPinDialog(onPinEntered: (String) -> Unit) {
         val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_pin, null)
         val pinEditText = dialogView.findViewById<EditText>(R.id.et_introduce_pin)
@@ -173,6 +198,9 @@ class BackupFragment : Fragment() {
             }.create().show()
     }
 
+    /**
+     * Observes the export progress and updates the progress bar.
+     */
     private fun observeExportProgress() {
         // Show the progress bar
         binding.pbBackup.visibility = View.VISIBLE
@@ -183,6 +211,9 @@ class BackupFragment : Fragment() {
         }
     }
 
+    /**
+     * Observes the import progress and updates the progress bar.
+     */
     private fun observeImportProgress() {
         // Show the progress bar
         binding.pbBackup.visibility = View.VISIBLE

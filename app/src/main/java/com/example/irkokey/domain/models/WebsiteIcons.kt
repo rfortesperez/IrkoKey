@@ -1,8 +1,14 @@
 package com.example.irkokey.domain.models
 
 import com.example.irkokey.R
-
+/**
+ * Object that holds a list of website icons.
+ */
 object WebsiteIcons {
+    /**
+     * List of website icons.
+     * Each icon is represented by a `WebsiteIcon` object containing the website name and the resource ID of the icon.
+     */
     val icons = listOf(
         WebsiteIcon("Amazon", R.drawable.amazon),
         WebsiteIcon("Apple", R.drawable.apple),
