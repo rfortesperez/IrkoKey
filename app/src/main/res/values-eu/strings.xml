@@ -71,6 +71,8 @@
     <string name="title_favorite">Gogokoena</string>
     <string name="importing_process">PIN zuzena, datuak inportatzen…</string>
     <string name="exporting_process">PIN zuzena, datuak esportatzen…</string>
+    <string name="added_to_favorite">Gogokoetara gehituta</string>
+    <string name="removed_from_favorite">Gogokoetatik kenduta</string>
     <string name="imported">Babeskopia inportatuta</string>
     <string name="exported">Babeskopia esportatuta</string>
     <string name="incorrect_pin">PIN okerra</string>

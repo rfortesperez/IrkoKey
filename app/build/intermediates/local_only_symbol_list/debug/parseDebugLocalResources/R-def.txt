@@ -303,6 +303,7 @@ mipmap ic_launcher
 mipmap ic_launcher_round
 navigation bottom_nav_graph
 navigation nav_graph
+string added_to_favorite
 string app_name
 string backup
 string can_import_export
@@ -361,6 +362,7 @@ string password_saved
 string passwords
 string pin
 string register
+string removed_from_favorite
 string save
 string search_password
 string security_warning

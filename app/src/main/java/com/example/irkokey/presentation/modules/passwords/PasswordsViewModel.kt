@@ -1,9 +1,7 @@
 package com.example.irkokey.presentation.modules.passwords
 
-import android.app.Application
 import android.content.ClipData
 import android.content.ClipboardManager
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
@@ -20,6 +18,14 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+/**
+ * ViewModel class for managing password-related actions and data.
+ * This ViewModel is annotated with `@HiltViewModel` to support dependency injection with Hilt.
+ *
+ * @property passwordRepository The repository for password data.
+ * @property clipboardManager The system clipboard manager.
+ * @property encryptionUtil The utility class for encryption and decryption.
+ */
 @HiltViewModel
 class PasswordsViewModel @Inject constructor(
     private val passwordRepository: PasswordRepository,
@@ -42,6 +48,14 @@ class PasswordsViewModel @Inject constructor(
     private val _isCopied = SingleLiveEvent<Boolean>()
     val isCopied: LiveData<Boolean> get() = _isCopied
 
+    private val _isFavorite = SingleLiveEvent<Boolean>()
+    val isFavorite: LiveData<Boolean> get() = _isFavorite
+
+    /**
+     * Handles different password actions.
+     *
+     * @param action The action to be handled.
+     */
     fun handlePasswordAction(action: PasswordAction) {
         when (action) {
             is PasswordAction.Delete -> confirmDeletePassword(action.password)
@@ -51,26 +65,56 @@ class PasswordsViewModel @Inject constructor(
         }
     }
 
+    /**
+     * Confirms the deletion of a password.
+     *
+     * @param password The password to be deleted.
+     */
     private fun confirmDeletePassword(password: Password) {
         _showDeleteConfirmation.value = password
     }
 
+    /**
+     * Adds a password to the favorites list.
+     *
+     * @param password The password to be added to favorites.
+     */
     private fun addFavorite(password: Password) {
         viewModelScope.launch {
             passwordRepository.changeFavorite(password.id)
+           if(password.isFavorite){
+               _isFavorite.value = true
+        }else{
+               _isFavorite.value = false
+           }
         }
     }
 
+    /**
+     * Deletes a password.
+     *
+     * @param password The password to be deleted.
+     */
     fun deletePassword(password: Password) {
         viewModelScope.launch {
             passwordRepository.deletePassword(password.id)
         }
     }
 
+    /**
+     * Shows the edit password dialog.
+     *
+     * @param password The password to be edited.
+     */
     private fun showEditPasswordDialog(password: Password){
         _showEditPasswordDialog.value = password
     }
-
+    /**
+     * Edits a password.
+     *
+     * @param password The password to be edited.
+     * @param newPassword The new password value.
+     */
     fun editPassword(password: Password, newPassword: String) {
         viewModelScope.launch {
             if (isPasswordStrong(newPassword)) {
@@ -82,10 +126,21 @@ class PasswordsViewModel @Inject constructor(
         }
     }
 
+    /**
+     * Checks if a password is strong.
+     *
+     * @param newPassword The new password to be checked.
+     * @return True if the password is strong, false otherwise.
+     */
     private fun isPasswordStrong(newPassword: String): Boolean {
         return PasswordStrengthUtil.isPasswordStrong(newPassword)
     }
 
+    /**
+     * Copies a password to the clipboard.
+     *
+     * @param encryptedPassword The encrypted password to be copied.
+     */
     private fun copyPassword(encryptedPassword: String) {
         val decryptedPassword = encryptionUtil.decrypt(encryptedPassword)
         val clipboard = ClipData.newPlainText("password", decryptedPassword)
@@ -97,6 +152,12 @@ class PasswordsViewModel @Inject constructor(
         }
     }
 
+    /**
+     * Decrypts a password.
+     *
+     * @param encryptedPassword The encrypted password to be decrypted.
+     * @return The decrypted password.
+     */
     fun getDecryptedPassword(encryptedPassword: String): String {
         return encryptionUtil.decrypt(encryptedPassword)
     }

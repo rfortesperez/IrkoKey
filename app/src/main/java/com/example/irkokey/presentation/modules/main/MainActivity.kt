@@ -11,6 +11,10 @@ import com.example.irkokey.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 
+/**
+ * MainActivity class that hosts the main UI components and handles navigation.
+ * This activity is annotated with `@AndroidEntryPoint` to support dependency injection with Hilt.
+ */
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
@@ -41,6 +45,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Shows a confirmation dialog for logging out.
+     */
     private fun showLogoutConfirmationDialog() {
         AlertDialog.Builder(this)
             .setTitle(HtmlCompat.fromHtml("<font color='red' style= 'bold'>${getString(R.string.logout)}</font>", HtmlCompat.FROM_HTML_MODE_LEGACY))

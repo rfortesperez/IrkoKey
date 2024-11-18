@@ -13,6 +13,11 @@ import com.example.irkokey.presentation.modules.main.FragmentPageAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 
+
+/**
+ * Fragment for exploring passwords.
+ * This fragment is annotated with `@AndroidEntryPoint` to support dependency injection with Hilt.
+ */
 @AndroidEntryPoint
 class ExplorePasswordFragment : Fragment() {
 

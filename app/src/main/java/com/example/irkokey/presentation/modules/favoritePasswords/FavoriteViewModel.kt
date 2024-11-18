@@ -41,6 +41,9 @@ class FavoriteViewModel @Inject constructor(
     private val _isCopied = SingleLiveEvent<Boolean>()
     val isCopied: LiveData<Boolean> get() = _isCopied
 
+    private val _isRemoved = SingleLiveEvent<Boolean>()
+    val isRemoved: LiveData<Boolean> get() = _isRemoved
+
     /**
      * Fetches all favorite passwords from the repository.
      */
@@ -79,5 +82,6 @@ class FavoriteViewModel @Inject constructor(
         viewModelScope.launch {
             passwordRepository.changeFavorite(password.id)
         }
+        _isRemoved.value = true
     }
 }

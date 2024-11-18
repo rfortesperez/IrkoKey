@@ -71,6 +71,8 @@
     <string name="title_favorite">Favorito</string>
     <string name="importing_process">PIN correto, a importar dados…</string>
     <string name="exporting_process">PIN correto, a exportar dados…</string>
+    <string name="added_to_favorite">Adicionado aos favoritos</string>
+    <string name="removed_from_favorite">Removido dos favoritos</string>
     <string name="imported">Cópia de segurança importada</string>
     <string name="exported">Cópia de segurança exportada</string>
     <string name="incorrect_pin">PIN incorreto</string>

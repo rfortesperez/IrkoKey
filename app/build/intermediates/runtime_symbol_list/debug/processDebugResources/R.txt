@@ -4169,6 +4169,7 @@ int string abc_searchview_description_voice 0x7f120017
 int string abc_shareactionprovider_share_with 0x7f120018
 int string abc_shareactionprovider_share_with_application 0x7f120019
 int string abc_toolbar_collapse_description 0x7f12001a
+int string added_to_favorite 0x7f1200f7
 int string androidx_startup 0x7f12001b
 int string app_name 0x7f12001c
 int string appbar_scrolling_view_behavior 0x7f12001d
@@ -4362,6 +4363,7 @@ int string path_password_eye_mask_visible 0x7f1200d8
 int string path_password_strike_through 0x7f1200d9
 int string pin 0x7f1200da
 int string register 0x7f1200db
+int string removed_from_favorite 0x7f1200f8
 int string save 0x7f1200dc
 int string search_menu_title 0x7f1200dd
 int string search_password 0x7f1200de

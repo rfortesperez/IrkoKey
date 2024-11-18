@@ -4170,6 +4170,7 @@ string abc_searchview_description_voice
 string abc_shareactionprovider_share_with
 string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
+string added_to_favorite
 string androidx_startup
 string app_name
 string appbar_scrolling_view_behavior
@@ -4363,6 +4364,7 @@ string path_password_eye_mask_visible
 string path_password_strike_through
 string pin
 string register
+string removed_from_favorite
 string save
 string search_menu_title
 string search_password

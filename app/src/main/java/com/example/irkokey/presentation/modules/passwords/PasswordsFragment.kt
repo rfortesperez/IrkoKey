@@ -105,6 +105,14 @@ class PasswordsFragment : Fragment() {
             updatePasswordsList(passwords)
         }
 
+        viewModel.isFavorite.observe(viewLifecycleOwner) { isFavorite ->
+            if (isFavorite) {
+                Toast.makeText(context, getString(R.string.removed_from_favorite), Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(context, getString(R.string.added_to_favorite), Toast.LENGTH_SHORT).show()
+            }
+        }
+
         viewModel.showEditPasswordDialog.observe(viewLifecycleOwner) { password ->
             password?.let { showEditPasswordDialog(it) }
         }

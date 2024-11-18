@@ -96,6 +96,13 @@ class FavoriteFragment : Fragment() {
             adapter.updateOriginalList(it.toMutableList())
             diffResult.dispatchUpdatesTo(adapter)
         }
+
+        viewModel.isRemoved.observe(viewLifecycleOwner) { isRemoved ->
+            if (isRemoved) {
+                Toast.makeText(context, getString(R.string.removed_from_favorite), Toast.LENGTH_SHORT).show()
+            }
+        }
+
         viewModel.isCopied.observe(viewLifecycleOwner) { isCopied ->
             if (isCopied) {
                 Toast.makeText(context, getString(R.string.password_copied), Toast.LENGTH_SHORT).show()
