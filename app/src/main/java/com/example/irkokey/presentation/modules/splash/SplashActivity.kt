@@ -10,7 +10,6 @@ import com.example.irkokey.R
 import com.example.irkokey.presentation.modules.auth.AuthActivity
 import com.example.irkokey.presentation.modules.register.RegisterActivity
 import dagger.hilt.android.AndroidEntryPoint
-
 @AndroidEntryPoint
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {
@@ -20,14 +19,26 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
-
+        initObservers()
         splashViewModel.initFlow()
-        splashViewModel.isLogged.observe(this) {isLogged ->
-            val destination = if (isLogged == true)
-                AuthActivity::class.java else RegisterActivity::class.java
-            Log.d("SplashActivity", "Navegando a $destination")
-            startActivity(Intent(this, destination))
-            finish()
+    }
+
+    /**
+     * Initializes the observers for LiveData.
+     */
+    private fun initObservers() {
+        splashViewModel.isLogged.observe(this) { isLogged ->
+            navigateToDestination(isLogged)
         }
+    }
+
+    /**
+     * Navigates to the appropriate activity based on the login status.
+     * @param isLogged Boolean indicating if the user is logged in.
+     */
+    private fun navigateToDestination(isLogged: Boolean?) {
+        val destination = if (isLogged == true) AuthActivity::class.java else RegisterActivity::class.java
+        startActivity(Intent(this, destination))
+        finish()
     }
 }

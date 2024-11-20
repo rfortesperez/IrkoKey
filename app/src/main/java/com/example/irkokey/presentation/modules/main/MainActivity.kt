@@ -10,7 +10,6 @@ import com.example.irkokey.R
 import com.example.irkokey.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
-
 /**
  * MainActivity class that hosts the main UI components and handles navigation.
  * This activity is annotated with `@AndroidEntryPoint` to support dependency injection with Hilt.
@@ -23,9 +22,14 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-
         setContentView(binding.root)
+        setupNavigation()
+    }
 
+    /**
+     * Sets up the navigation components and listeners.
+     */
+    private fun setupNavigation() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
         val navView: BottomNavigationView = binding.bottomNavigationView

@@ -9,6 +9,8 @@ import com.example.irkokey.data.repository.UserRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+
+private const val PIN_LENGTH = 6
 /**
  * ViewModel class for handling user login logic.
  * This ViewModel is annotated with `@HiltViewModel` to support dependency injection with Hilt.
@@ -20,8 +22,7 @@ import javax.inject.Inject
 @HiltViewModel
 class LoginViewModel @Inject constructor(private val userRepository: UserRepository, private val encryptionUtil: EncryptionUtil) : ViewModel() {
 
-    private val PIN_LENGTH = 6
-
+    // LiveData for error handling
     private val _isError = MutableLiveData<Boolean>()
     val isError: LiveData<Boolean> get() = _isError
 

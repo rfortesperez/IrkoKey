@@ -24,7 +24,6 @@ import javax.inject.Inject
  * @param clipboardManager The system clipboard manager.
  * @param encryptionUtil The utility for encrypting and decrypting passwords.
  */
-
 @HiltViewModel
 class FavoriteViewModel @Inject constructor(
     private val passwordRepository: PasswordRepository,
@@ -33,23 +32,15 @@ class FavoriteViewModel @Inject constructor(
 ) : ViewModel() {
 
     // LiveData for observing the list of all favorite passwords
-    private val _allFavorites: LiveData<List<Password>> =
-        passwordRepository.getAllFavorites().asLiveData()
-    val allFavorites: LiveData<List<Password>> get() = _allFavorites
+    val allFavorites: LiveData<List<Password>> = passwordRepository.getAllFavorites().asLiveData()
 
     // LiveData for observing the copy status of a password
     private val _isCopied = SingleLiveEvent<Boolean>()
     val isCopied: LiveData<Boolean> get() = _isCopied
 
+    // LiveData for observing the removal status of a password
     private val _isRemoved = SingleLiveEvent<Boolean>()
     val isRemoved: LiveData<Boolean> get() = _isRemoved
-
-    /**
-     * Fetches all favorite passwords from the repository.
-     */
-    fun getAllFavorites() {
-        passwordRepository.getAllFavorites()
-    }
 
     /**
      * Copies the decrypted password to the clipboard and clears it after 30 seconds.
@@ -57,22 +48,18 @@ class FavoriteViewModel @Inject constructor(
      */
     @OptIn(DelicateCoroutinesApi::class)
     fun copyPassword(encryptedPassword: String) {
-        var decryptedPassword = ""
         viewModelScope.launch {
-            decryptedPassword = encryptionUtil.decrypt(encryptedPassword)
-        }
+            val decryptedPassword = encryptionUtil.decrypt(encryptedPassword)
+            clipboardManager.setPrimaryClip(ClipData.newPlainText("password", decryptedPassword))
+            _isCopied.value = true
 
-        val clipboard = ClipData.newPlainText("password", decryptedPassword)
-        clipboardManager.setPrimaryClip(clipboard)
-        _isCopied.value = true
-
-        // Clear clipboard after 30 seconds
-        GlobalScope.launch(Dispatchers.IO) {
-            delay(30000L)
-            clipboardManager.setPrimaryClip(ClipData.newPlainText("", ""))
+            // Clear clipboard after 30 seconds
+            GlobalScope.launch(Dispatchers.IO) {
+                delay(30000L)
+                clipboardManager.setPrimaryClip(ClipData.newPlainText("", ""))
+            }
         }
     }
-
 
     /**
      * Removes a password from the favorites.
@@ -81,7 +68,7 @@ class FavoriteViewModel @Inject constructor(
     fun removeFavorite(password: Password) {
         viewModelScope.launch {
             passwordRepository.changeFavorite(password.id)
+            _isRemoved.value = true
         }
-        _isRemoved.value = true
     }
 }

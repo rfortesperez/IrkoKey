@@ -33,21 +33,27 @@ class PasswordsViewModel @Inject constructor(
     val encryptionUtil: EncryptionUtil
 ) : ViewModel() {
 
+    // LiveData for all passwords
     private val _allPasswords: LiveData<List<Password>> = passwordRepository.getAllPasswords().asLiveData()
     val allPasswords: LiveData<List<Password>> get() = _allPasswords
 
+    // LiveData to check if a password is correct
     private val _isCorrect = SingleLiveEvent<Boolean>()
     val isCorrect: LiveData<Boolean> get() = _isCorrect
 
+    // LiveData to show the edit password dialog
     private val _showEditPasswordDialog = SingleLiveEvent<Password>()
     val showEditPasswordDialog: LiveData<Password> get() = _showEditPasswordDialog
 
+    // LiveData to show the delete confirmation dialog
     private val _showDeleteConfirmation = SingleLiveEvent<Password>()
     val showDeleteConfirmation: LiveData<Password> get() = _showDeleteConfirmation
 
+    // LiveData to check if a password is copied
     private val _isCopied = SingleLiveEvent<Boolean>()
     val isCopied: LiveData<Boolean> get() = _isCopied
 
+    // LiveData to check if a password is favorite
     private val _isFavorite = SingleLiveEvent<Boolean>()
     val isFavorite: LiveData<Boolean> get() = _isFavorite
 
@@ -82,11 +88,7 @@ class PasswordsViewModel @Inject constructor(
     private fun addFavorite(password: Password) {
         viewModelScope.launch {
             passwordRepository.changeFavorite(password.id)
-           if(password.isFavorite){
-               _isFavorite.value = true
-        }else{
-               _isFavorite.value = false
-           }
+            _isFavorite.value = password.isFavorite
         }
     }
 

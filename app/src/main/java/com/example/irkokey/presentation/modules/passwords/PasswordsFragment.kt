@@ -22,11 +22,9 @@ import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
-
 /**
  * Fragment that displays a list of passwords and provides functionality to search, edit, delete, and copy passwords.
  */
-
 @AndroidEntryPoint
 class PasswordsFragment : Fragment() {
 
@@ -35,6 +33,7 @@ class PasswordsFragment : Fragment() {
     private lateinit var passwordsList: MutableList<Password>
     private lateinit var adapter: PasswordsViewAdapter
 
+    // Inject the EncryptionUtil to decrypt passwords.
     @Inject
     lateinit var encryptionUtil: EncryptionUtil
 
@@ -66,9 +65,7 @@ class PasswordsFragment : Fragment() {
      */
     private fun setupSearchView() {
         binding.svSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                return false
-            }
+            override fun onQueryTextSubmit(query: String?): Boolean = false
 
             override fun onQueryTextChange(newText: String?): Boolean {
                 filterPasswords(newText)
@@ -82,55 +79,29 @@ class PasswordsFragment : Fragment() {
      * @param newText The search query entered by the user.
      */
     private fun filterPasswords(newText: String?) {
-        if (newText.isNullOrEmpty()) {
-            passwordsList.clear()
-            passwordsList.addAll(adapter.getOriginalList())
-            adapter.notifyDataSetChanged()
+        val filteredList = if (newText.isNullOrEmpty()) {
+            adapter.getOriginalList()
         } else {
-            val filteredList = passwordsList.filter { password ->
-                password.website.contains(newText, ignoreCase = true)
-            }.toMutableList()
-            if (filteredList.isEmpty()) {
-                Toast.makeText(context, getString(R.string.no_results), Toast.LENGTH_SHORT).show()
-            }
-            adapter.filterList(filteredList)
+            passwordsList.filter { it.website.contains(newText, ignoreCase = true) }
+        }.toMutableList()
+
+        if (filteredList.isEmpty() && !newText.isNullOrEmpty()) {
+            Toast.makeText(context, getString(R.string.no_results), Toast.LENGTH_SHORT).show()
         }
+
+        adapter.filterList(filteredList)
     }
 
     /**
      * Observes the ViewModel LiveData and updates the UI accordingly.
      */
     private fun observeViewModel() {
-        viewModel.allPasswords.observe(viewLifecycleOwner) { passwords ->
-            updatePasswordsList(passwords)
-        }
-
-        viewModel.isFavorite.observe(viewLifecycleOwner) { isFavorite ->
-            if (isFavorite) {
-                Toast.makeText(context, getString(R.string.removed_from_favorite), Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(context, getString(R.string.added_to_favorite), Toast.LENGTH_SHORT).show()
-            }
-        }
-
-        viewModel.showEditPasswordDialog.observe(viewLifecycleOwner) { password ->
-            password?.let { showEditPasswordDialog(it) }
-        }
-
-        viewModel.isCorrect.observe(viewLifecycleOwner) { isCorrect ->
-            handlePasswordStrength(isCorrect)
-        }
-
-        viewModel.showDeleteConfirmation.observe(viewLifecycleOwner) { password ->
-            password?.let { showDeleteConfirmationDialog(it) }
-        }
-
-        viewModel.isCopied.observe(viewLifecycleOwner) { isCopied ->
-            if (isCopied) {
-                Toast.makeText(context, getString(R.string.password_copied), Toast.LENGTH_SHORT).show()
-                showCopyConfirmationDialog()
-            }
-        }
+        viewModel.allPasswords.observe(viewLifecycleOwner) { updatePasswordsList(it) }
+        viewModel.isFavorite.observe(viewLifecycleOwner) { showFavoriteToast(it) }
+        viewModel.showEditPasswordDialog.observe(viewLifecycleOwner) { it?.let { showEditPasswordDialog(it) } }
+        viewModel.isCorrect.observe(viewLifecycleOwner) { handlePasswordStrength(it) }
+        viewModel.showDeleteConfirmation.observe(viewLifecycleOwner) { it?.let { showDeleteConfirmationDialog(it) } }
+        viewModel.isCopied.observe(viewLifecycleOwner) { if (it) showCopyConfirmationDialog() }
     }
 
     /**
@@ -138,9 +109,7 @@ class PasswordsFragment : Fragment() {
      * @param passwords The new list of passwords.
      */
     private fun updatePasswordsList(passwords: List<Password>) {
-        val decryptedPasswords = passwords.map { password ->
-            password.copy(password = viewModel.getDecryptedPassword(password.password))
-        }
+        val decryptedPasswords = passwords.map { it.copy(password = viewModel.getDecryptedPassword(it.password)) }
         val diffCallback = PasswordDiffCallback(passwordsList, decryptedPasswords)
         val diffResult = DiffUtil.calculateDiff(diffCallback)
 
@@ -148,6 +117,15 @@ class PasswordsFragment : Fragment() {
         passwordsList.addAll(passwords)
         adapter.updateOriginalList(passwords.toMutableList())
         diffResult.dispatchUpdatesTo(adapter)
+    }
+
+    /**
+     * Shows a toast message based on the favorite status.
+     * @param isFavorite True if the password is a favorite, false otherwise.
+     */
+    private fun showFavoriteToast(isFavorite: Boolean) {
+        val message = if (isFavorite) R.string.removed_from_favorite else R.string.added_to_favorite
+        Toast.makeText(context, getString(message), Toast.LENGTH_SHORT).show()
     }
 
     /**
@@ -172,9 +150,7 @@ class PasswordsFragment : Fragment() {
         AlertDialog.Builder(requireContext())
             .setTitle(HtmlCompat.fromHtml("<font color='red' style= 'bold'>${getString(R.string.delete)}</font>", HtmlCompat.FROM_HTML_MODE_LEGACY))
             .setMessage(getString(R.string.sure))
-            .setPositiveButton(getString(R.string.yes)) { _, _ ->
-                viewModel.deletePassword(password)
-            }
+            .setPositiveButton(getString(R.string.yes)) { _, _ -> viewModel.deletePassword(password) }
             .setNegativeButton(getString(R.string.no), null)
             .show()
     }
@@ -182,7 +158,6 @@ class PasswordsFragment : Fragment() {
     /**
      * Shows a confirmation dialog after copying a password.
      */
-
     private fun showCopyConfirmationDialog() {
         AlertDialog.Builder(requireContext())
             .setTitle(HtmlCompat.fromHtml("<font color='red' style= 'bold'>${getString(R.string.security_warning)}</font>", HtmlCompat.FROM_HTML_MODE_LEGACY))
@@ -198,16 +173,12 @@ class PasswordsFragment : Fragment() {
     private fun showEditPasswordDialog(password: Password) {
         val dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_edit, null)
         val editText = dialogView.findViewById<EditText>(R.id.et_new_password)
-        val dialog = AlertDialog.Builder(requireContext())
+        AlertDialog.Builder(requireContext())
             .setTitle(getString(R.string.edit))
             .setView(dialogView)
-            .setPositiveButton(getString(R.string.save)) { _, _ ->
-                val newPassword = editText.text.toString()
-                viewModel.editPassword(password, newPassword)
-            }
+            .setPositiveButton(getString(R.string.save)) { _, _ -> viewModel.editPassword(password, editText.text.toString()) }
             .setNegativeButton(getString(R.string.cancel), null)
             .create()
-
-        dialog.show()
+            .show()
     }
 }

@@ -30,6 +30,7 @@ class ExplorePasswordFragment : Fragment() {
     override fun onViewCreated(view: View, saveInstaceState: Bundle?){
         super.onViewCreated(view, saveInstaceState)
 
+        // Set up the view pager and tab layout
         val titles = listOf(getString(R.string.create), getString(R.string.passwords))
         val icons = listOf(R.drawable.baseline_create_24, R.drawable.baseline_list_24)
 

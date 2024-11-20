@@ -23,7 +23,6 @@ import com.example.irkokey.data.repository.UserRepository
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
-
 /**
  * A Fragment that displays a list of favorite passwords and provides functionality to search, copy, and remove passwords from favorites.
  */
@@ -35,6 +34,7 @@ class FavoriteFragment : Fragment() {
     private lateinit var favoritePasswordsList: MutableList<Password>
     private lateinit var adapter: FavoriteViewAdapter
 
+    // Injected dependencies
     @Inject
     lateinit var passwordRepository: PasswordRepository
 
@@ -51,50 +51,59 @@ class FavoriteFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupRecyclerView()
+        setupSearchView()
+        observeViewModel()
+    }
 
+    /**
+     * Sets up the RecyclerView with an adapter and layout manager.
+     */
+    private fun setupRecyclerView() {
         favoritePasswordsList = mutableListOf()
         adapter = FavoriteViewAdapter(favoritePasswordsList, ::handlePasswordAction, encryptionUtil)
+        binding.rvFavoritePasswords.layoutManager = LinearLayoutManager(context)
+        binding.rvFavoritePasswords.adapter = adapter
+    }
 
-        with(binding) {
-            rvFavoritePasswords.layoutManager = LinearLayoutManager(context)
-            rvFavoritePasswords.adapter = adapter
+    /**
+     * Sets up the SearchView to filter the passwords list based on user input.
+     */
+    private fun setupSearchView() {
+        binding.svSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean = false
 
-            // Search bar
+            override fun onQueryTextChange(newText: String?): Boolean {
+                filterPasswords(newText)
+                return true
+            }
+        })
+    }
 
-            svSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-                override fun onQueryTextSubmit(query: String?): Boolean {
-                    return false
-                }
+    /**
+     * Filters the favorite passwords list based on the search query.
+     * @param newText The search query entered by the user.
+     */
+    private fun filterPasswords(newText: String?) {
+        val filteredList = if (newText.isNullOrEmpty()) {
+            adapter.getOriginalList()
+        } else {
+            favoritePasswordsList.filter { it.website.contains(newText, ignoreCase = true) }
+        }.toMutableList()
 
-                override fun onQueryTextChange(newText: String?): Boolean {
-                    if (newText.isNullOrEmpty()) {
-                        favoritePasswordsList.clear() // Clear the list on empty search
-                        // Add back the original list
-                        favoritePasswordsList.addAll(adapter.getOriginalList())
-                        adapter.notifyDataSetChanged() // Update the adapter
-                    } else {
-                        val filteredList = favoritePasswordsList.filter { password ->
-                            password.website.contains(newText, ignoreCase = true)
-                        }.toMutableList()
-                        if (filteredList.isEmpty()){
-                            Toast.makeText(context, getString(R.string.no_results), Toast.LENGTH_SHORT).show()
-                        }
-                        adapter.filterList(filteredList)
-                    }
-                    return true
-                }
-            })
+        if (filteredList.isEmpty() && !newText.isNullOrEmpty()) {
+            Toast.makeText(context, getString(R.string.no_results), Toast.LENGTH_SHORT).show()
         }
 
+        adapter.filterList(filteredList)
+    }
+
+    /**
+     * Observes the ViewModel LiveData and updates the UI accordingly.
+     */
+    private fun observeViewModel() {
         viewModel.allFavorites.observe(viewLifecycleOwner) {
-
-            val diffCallback = PasswordDiffCallback(favoritePasswordsList, it)
-            val diffResult = DiffUtil.calculateDiff(diffCallback)
-
-            favoritePasswordsList.clear()
-            favoritePasswordsList.addAll(it)
-            adapter.updateOriginalList(it.toMutableList())
-            diffResult.dispatchUpdatesTo(adapter)
+            updatePasswordsList(it)
         }
 
         viewModel.isRemoved.observe(viewLifecycleOwner) { isRemoved ->
@@ -109,9 +118,21 @@ class FavoriteFragment : Fragment() {
                 showCopyAlertDialog()
             }
         }
-
     }
 
+    /**
+     * Updates the passwords list and notifies the adapter of changes.
+     * @param passwords The new list of passwords.
+     */
+    private fun updatePasswordsList(passwords: List<Password>) {
+        val diffCallback = PasswordDiffCallback(favoritePasswordsList, passwords)
+        val diffResult = DiffUtil.calculateDiff(diffCallback)
+
+        favoritePasswordsList.clear()
+        favoritePasswordsList.addAll(passwords)
+        adapter.updateOriginalList(passwords.toMutableList())
+        diffResult.dispatchUpdatesTo(adapter)
+    }
 
     /**
      * Handles password actions such as copying and removing favorites.
@@ -133,20 +154,5 @@ class FavoriteFragment : Fragment() {
             .setMessage(getString(R.string.copy_warning_message))
             .setPositiveButton(HtmlCompat.fromHtml("<font color='red'>${getString(R.string.got_it)}</font>", HtmlCompat.FROM_HTML_MODE_LEGACY)) { _, _ -> }
             .show()
-    }
-
-
-    /**
-     * Filters the favorite passwords list based on the search query.
-     * @param text The search query entered by the user.
-     */
-    private fun filter(text: String) {
-        val filteredList = favoritePasswordsList.filter { password ->
-            password.website.contains(text, ignoreCase = true)
-        }
-        // convert the filtered list to mutable list
-        val newList = filteredList.toMutableList()
-
-        adapter.filterList(newList)
     }
 }

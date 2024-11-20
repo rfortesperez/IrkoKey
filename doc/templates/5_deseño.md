@@ -13,6 +13,9 @@
 
 ## Deseño de interface de usuarios [mockups ou diagramas...].
 
+![Mockup Registro](/doc/img/registro.jpg)
+
+
 ## Diagrama de Base de Datos.
 ![Diagrama ER](/doc/img/ERD_IrkoKey.png)
 

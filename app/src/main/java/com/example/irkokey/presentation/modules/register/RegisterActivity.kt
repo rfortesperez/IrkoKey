@@ -10,6 +10,10 @@ import com.example.irkokey.databinding.ActivityRegisterBinding
 import com.example.irkokey.presentation.modules.main.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 
+
+/**
+ * Activity for user registration.
+ */
 @AndroidEntryPoint
 class RegisterActivity : AppCompatActivity() {
 

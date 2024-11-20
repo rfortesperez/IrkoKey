@@ -27,15 +27,17 @@ class CreateViewModel @Inject constructor(
     application: Application,
     private val passwordRepository: PasswordRepository,
     private val encryptionUtil: EncryptionUtil,
+) : AndroidViewModel(application) {
 
-    ) : AndroidViewModel(application) {
-
+    // Live data to observe the state of the password creation.
     private val _isCorrect = SingleLiveEvent<Boolean>()
     val isCorrect: LiveData<Boolean> get() = _isCorrect
 
+    // Live data to observe the completion of the password creation.
     private val _isComplete = SingleLiveEvent<Boolean>()
     val isComplete: LiveData<Boolean> get() = _isComplete
 
+    // Live data to observe the generated password.
     private val _generatedPassword = SingleLiveEvent<String>()
     val generatedPassword: LiveData<String> get() = _generatedPassword
 
@@ -83,9 +85,9 @@ class CreateViewModel @Inject constructor(
      */
     fun didClickGenerateButton() {
         val generatedPassword = generateStrongPassword()
-        if(isPasswordStrong(generatedPassword)){
+        if (isPasswordStrong(generatedPassword)) {
             _generatedPassword.value = generatedPassword
-        }else{
+        } else {
             didClickGenerateButton()
         }
     }
@@ -96,8 +98,9 @@ class CreateViewModel @Inject constructor(
      * @param length The length of the password to be generated. Default is 12.
      * @return The generated strong password.
      */
-    private fun generateStrongPassword(length: Int = 12): String{
-        val chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#\$%^&*()-_=+<>?"
+    private fun generateStrongPassword(length: Int = 12): String {
+        val chars =
+            "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#\$%^&*()-_=+<>?"
         return (1..length)
             .map { chars.random() }
             .joinToString("")
