@@ -13,7 +13,13 @@
 
 ## Deseño de interface de usuarios [mockups ou diagramas...].
 
-![Mockup Registro](/doc/img/registro.jpg)
+![Mockup Splash](/doc/img/mockups/01_splash.png)
+![Mockup Registro](/doc/img/mockups/registro.png)
+![Mockup Login](/doc/img/mockups/login.png)
+![Mockup Crear](/doc/img/mockups/crear.png)
+![Mockup Listado](/doc/img/mockups/listado.png)
+![Mockup Editar](/doc/img/mockups/editar.png)
+![Mockup Backup](/doc/img/mockups/backup2.png)
 
 
 ## Diagrama de Base de Datos.
