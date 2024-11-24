@@ -33,6 +33,7 @@ Soy una apasionada del desarrollo móvil y la ciberseguridad. Para finalizar mis
 Se puede contactar conmigo por las siguientes vías:
 
 [Linkedin](https://www.linkedin.com/in/rocío-fortes-pérez)
+
 [Email](mailto:rfortesperez@gmail.com)
 
 
@@ -57,8 +58,9 @@ Puede verse el texto completo haciendo click [aquí](/LICENSE)
      * 1.4. [Requisitos No Funcionaes](#14-requisitos-no-funcionales)
      * 1.5. [Tecnologías](#15-tecnologías)
 2. [Planificación](#2-planificación)
-3. [Diseño](doc/templates/5_deseño.md)
-4. [Implantación](doc/templates/6_implantacion.md)
+3. [Diseño](#3-diseño)
+4. [Implantación](#4-implantación)
+5. [Referencias](#5-referencias)
 
 
 ## 1. Anteproyecto
@@ -280,10 +282,241 @@ La fase de investigación ha sido la más demandante en términos de tiempo dedi
 ## 3. Diseño
 
 
+## Diagrama de Clases.
+
+![Diagrama UML Irko Key](/doc/img/Diagrama_de_Clases.png)
+
+## Casos de uso.
+
+![Diagrama de Casos de Uso Irko Key](/doc/img/Diagrama_Casos_de_Uso.png)
+
+## Diagrama de Flujo. 
+![Diagrama de Flujo Irko Key](/doc/img/Diagrama_Flujo.png)
+
+## Deseño de interface de usuarios [mockups ou diagramas...].
+
+![Mockup Splash](/doc/img/mockups/01_splash.png)
+![Mockup Registro](/doc/img/mockups/registro.png)
+![Mockup Login](/doc/img/mockups/login.png)
+![Mockup Crear](/doc/img/mockups/crear.png)
+![Mockup Listado](/doc/img/mockups/listado.png)
+![Mockup Editar](/doc/img/mockups/editar.png)
+![Mockup Backup](/doc/img/mockups/backup2.png)
+
+
+## Diagrama de Base de Datos.
+![Diagrama ER](/doc/img/ERD_IrkoKey.png)
+
+## Diagrama de componentes software que constituyen el producto y de despliegue.
+
+![Diagrama de componentes](/doc/img/Diagrama_Componentes.png)
+
+![Diagrama de secuencia](/doc/img/Diagrama_Secuencia.png)
+
+## 4. Implantación
+### Manual técnico:
+
+#### Información relativa a la instalación: 
+
+* **Requerimientos de hardware**: 
+  * *Dispositivo móvil*: Cualquier móvil Android con versión 10 o superior.
+  * *Almacenamiento*: se requiere un mínimo de 30 Mb de almacenamiento interno para la instalación de la aplicación y el almacenamiento de la base de datos local.
+  
+* **Software necesario**:
+  * *Sistema Operativo*: Android 10 o superior.
+* **Configuración inicial seguridad**: 
+  * *Cifrado de datos*:  Todos los datos sensibles (contraseñas, etc.) se almacenan en la base de datos local cifrados utilizando el algoritmo AES/GCM/NoPadding 256.  
+  * *Copia de seguridad*:Las copias de seguridad se generan en formato JSON cifrado. La restauración de una copia de seguridad requiere la contraseña maestra del usuario.
+  * *Permisos*: la aplicación solicita los siguientes permisos:
+    * Acceso a keystore: Permite a la aplicación acceder al almacén de claves de Android.
+    * Acceso a ficheros: para poder leer y escribir datos en el almacenamiento externo del dispositivo.
+* **Carga inicial de datos en la base de datos**: la base de datos no posee datos por defecto, pero se pueden cargar datos desde un archivo json previamente creado por la aplicación (por ejemplo en otro dispositivo), siempre que sea el mismo usuario.
+* **Usuarios del sistema**: No aplica, ya que la aplicación es una aplicación móvil y no requiere usuarios del sistema.
+* **Usuarios de la aplicación**: Cualquier usuario con un dispositivo Android compatible puede instalar y utilizar la aplicación.
+
+
+### Información relativa a la administración del sistema:
+
+
+Dado que Irko Key es una aplicación móvil diseñada para funcionar de forma autónoma en el dispositivo del usuario, la administración del sistema se centra principalmente en las acciones que el propio usuario debe realizar para garantizar la seguridad e integridad de sus datos.
+
+* **Copias de seguridad**:
+  * *Realizar copias de seguridad periódicas*: Es fundamental que el usuario cree copias de seguridad de sus datos de forma regular. La aplicación permite exportar los datos a un archivo JSON cifrado, el cual puede ser almacenado en un lugar seguro (por ejemplo, en un servicio de almacenamiento en la nube o en un dispositivo externo).
+  * *Mantener la contraseña maestra a salvo*: La contraseña utilizada para cifrar los datos (el pin del usuario) no debe ser compartida con nadie.
+  
+* **Gestión de usuarios**: la aplicación está diseñada para ser utilizada por un único usuario (el propietario/a del dispositivo).
+* **Gestión de seguridad**: cada vez que se accede a la aplicación es necesario que el usuario introduzca sus credenciales.
+* **Gestión de incidencias**: será imprescindible que el usuario contacte conmigo en el siguiente email: rfortesperez@gmail.com, a ser posible con capturas de pantalla del incidente, para de esta manera tratar de solventarlo lo antes posible.
+
+### Información relativa al matenimiento del sistema: 
+
+* **Corrección de errores**: Si se reciben incidentes, se crearán actualizaciones para solventarlas.
+* **Añadir nuevas funcionalidades**: en versiones posteriores se planteará la implantación de autenticación mediante biometría.
+* **Adaptación por actualizaciones de software y/o hardware**: Se realizará constantemente un monitoreo de cambios para mantener la aplicación al día respecto a actualizaciones de Android, Kotlin, Room, y otras bibliotecas utilizadas en esta y en posteriores versiones de la aplicación.
+
+## Protección de datos de carácter persoal.
+
+Irko Key, como gestor de contraseñas, almacena información altamente sensible del usuario. Por ello, la protección de datos personales es una prioridad fundamental en el desarrollo y funcionamiento de la aplicación.
+
+Irko Key se adhiere a los siguientes principios de protección de datos:
+
+ * **Limitación de la finalidad**: Los datos recogidos se utilizan exclusivamente para el propósito de gestionar las contraseñas del usuario y no se comparten con terceros.
+* **Minimización de datos**: Solo se recolectan los datos estrictamente necesarios para el funcionamiento de la aplicación.
+* **Integridad y confidencialidad**: Los datos se protegen contra el procesamiento no autorizado o ilícito, mediante el cifrado con clave derivada del pin del usuario.
+
+##### Medidas de Seguridad Implementadas
+
+* **Cifrado**: Todos los datos se almacenan en el dispositivo de forma cifrada utilizando algoritmos de cifrado robustos.
+* **Acceso local**: Irko Key no se conecta a internet, lo que minimiza el riesgo de ataques externos.
+* **Contraseñas fuertes**: Se exige al usuario establecer contraseñas seguras para proteger el acceso a los diferentes websites.
+* **Copia de seguridad cifrada**: Las copias de seguridad se generan en formato JSON cifrado, lo que garantiza la confidencialidad de los datos incluso fuera del dispositivo.
+* **Actualizaciones de seguridad**: Se implementarán regularmente actualizaciones de seguridad para proteger la aplicación contra nuevas vulnerabilidades que se puedan detectar.
+
+##### Derechos del Usuario
+
+* **Acceso, rectificación y supresión de los datos del usuario**: dado que el almacenamiento de los datos se realiza al 100% en local, el usuario puede acceder, rectificar y eliminar sus datos cuando así lo desee sin tener que hacer solicitudes previas.
+
+* **Limitación del tratamiento**: El usuario puede solicitar la limitación del tratamiento de sus datos en determinadas circunstancias, como por ejemplo no dando permiso a la aplicación para acceder al almacenamiento del dispositivo.
+* **Portabilidad de los datos**: El usuario podrá realizar la portabilidad de sus datos mediante el archivo json creado en el proceso de exportación.
+
+##### Información Adicional
+
+* **Base legal del tratamiento**: El tratamiento de los datos personales se basa en el tratamiento explícito realizado por el usuario.
+* **Conservación de datos**: Los datos se conservarán mientras el usuario mantenga una copia de seguridad de la aplicación.
+* **Comunicación de incidencias de seguridad**: En caso de producirse una brecha de seguridad, se informará a los usuarios de forma inmediata.
+
+Irko Key está diseñada para proteger la privacidad y seguridad de los datos de sus usuarios. Sin embargo, es importante recordar que la seguridad de los datos también depende de las acciones del usuario, como el uso de contraseñas seguras y la realización de copias de seguridad periódicas.
+
+
+
+## Manual de usuario
+
+* **Formación usuario**: Irko Key es una aplicación muy simple e intuitiva que no necesitará formación previa de los usuarios para utilizarla.
+##### Manual de Usuario de Irko Key
+ 
+Irko Key es un gestor de contraseñas diseñado para ayudarte a almacenar de forma segura todas tus credenciales en un solo lugar. Gracias a su interfaz intuitiva y a las robustas medidas de seguridad implementadas, podrás acceder a tus contraseñas de forma rápida y sencilla, sin comprometer tu privacidad.
+
+##### Instalación y Configuración Inicial
+
+* **Descarga e instalación**: Descarga la aplicación Irko Key descargando el archivo Irko_Key.apk de este repositorio, y procede a instalarla como cualquier otra aplicación móvil. Es posible que tu dispositivo te pida que autorices el instalar aplicacaciones de terceros, puesto que esta aplicación todavía no está disponible en la Google PlayStore.
+* **Creación de cuenta**: Al iniciar la aplicación por primera vez, se te pedirá que crees una cuenta. Elige un pin único, que sea fuerte y que puedas recordar para proteger tus datos, y no lo compartas con nadie.
+  ![Mockup Registro](/doc/img/mockups/registro.png)
+
+##### Uso de la Aplicación
+
+* **Agregar una nueva contraseña**: En la pantalla de crear puedes añadir una nueva entrada. Introduce el nombre de la web o app, el nombre de usuario y la contraseña (que debe cumplir una serie de características para que sea una contraseña fuerte).
+ ![Mockup Crear](/doc/img/mockups/crear.png)
+  
+* **Buscar una contraseña**: Utiliza la barra de búsqueda para encontrar rápidamente la contraseña que necesitas, tanto en el apartado de contraseñas como en el apartado de favoritos. Puedes filtrar los resultados por nombre de la web o aplicación.
+  ![Mockup Listado](/doc/img/mockups/listado.png)
+* **Generar contraseñas seguras**: Irko Key incluye un generador de contraseñas aleatorias y seguras para ayudarte a crear contraseñas difíciles de adivinar.
+* **Copiar contraseña**: Pulsa sobre el botón con el icono de copiar para copiar automáticamente la contraseña al portapapeles, tanto en el listado de contraseñas como en favoritos.
+  ![Mockup copiar](/doc/img/mockups/copiar.png)
+* **Editar o eliminar una entrada**: Pulsa sobre la entrada que deseas modificar y utiliza el botón correspondiente para editarla (icono de lápiz) o eliminarla (icono de bote de basura).
+  ![Mockup Editar](/doc/img/mockups/editar.png)
+* **Copias de seguridad**: La aplicación dispone de un apartado de exportación e importación. Puedes realizar una copia de seguridad manual en cualquier momento exportando tus datos a un archivo JSON cifrado, de nombre irkokey.json, o recuperar tu información de ese mismo archivo, que siempre se debe de guardar a buen recaudo.
+  ![Mockup Backup](/doc/img/mockups/backup2.png)
+
+
+##### Seguridad y Privacidad
+
+* **Cifrado**: Todos los datos se almacenan en tu dispositivo de forma cifrada, lo que garantiza la máxima seguridad.
+* **Acceso local**: Irko Key no se conecta a internet, lo que reduce el riesgo de ataques externos.
+* **Contraseñas fuertes**: La aplicación te ayudará a crear y almacenar contraseñas seguras y únicas.
+* **Copias de seguridad cifradas**: Las copias de seguridad se generan en formato JSON cifrado, lo que protege tus datos incluso fuera del dispositivo.
+
+##### Solución de Problemas
+
+Si encuentras algún problema o tienes alguna duda, puedes ponerte en contacto conmigo en rfortesperez@gmail.com
+
+Irko Key es la herramienta perfecta para proteger tus contraseñas y mantener tu información segura. Gracias a su interfaz intuitiva y a las robustas medidas de seguridad, podrás disfrutar de una gestión de contraseñas sencilla y eficaz.
+
 ## Guía de contribución
 
-> *TODO*: Tratándose de un proyecto de software libre, es muy importante que expongas cómo se puede contribuir con tu proyecto. Algunos ejemplos de esto son realizar nuevas funcionalidades, corrección y/u optimización del código, realización de tests automatizados, nuevas interfaces de integración, desarrollo de plugins, etc. etc. Sé lo más conciso que puedas.
+¡Gracias por tu interés en contribuir a Irko Key! Tu aporte, por pequeño que sea, puede marcar una gran diferencia en el crecimiento y mejora continua de este proyecto de código abierto.
+¿Cómo puedes contribuir?
 
-## Links
+* **Desarrollo de nuevas funcionalidades**: Implementa nuevas características solicitadas por los usuarios (por ejemplo, soporte para nuevos tipos de cuentas, integración con otros servicios, implementación de biometría, etc). Explora nuevas ideas para mejorar la experiencia del usuario.
+* **Corrección de errores y optimización del código**: Identifica y corrige errores en el código existente. Mejora la eficiencia del código para un mejor rendimiento. Refactoriza el código para hacerlo más legible y mantenible.
+* **Desarrollo de pruebas automatizadas**: Escribe pruebas unitarias y de integración para garantizar la calidad del código y prevenir futuros errores.
+* **Desarrollo de plugins**: Crea plugins para ampliar las funcionalidades de Irko Key.
+* **Documentación**: Mejora la documentación existente (código, manual de usuario, etc.).
+* **Crea nuevos tutoriales y guías**.
+* **Diseño de interfaz de usuario**: Mejora la apariencia y usabilidad de la interfaz de usuario.
+* **Traducción**: Traduce la aplicación a nuevos idiomas.
+  
 
-> *TODO*: Enlaces externos y descipciones de estos enlaces que creas conveniente indicar aquí. Generalmente ya van a estar integrados con tu documentación, pero si requieres realizar un listado de ellos, este es el lugar.
+##### Primeros pasos para contribuir
+
+* Familiarízate con el proyecto: Lee el código fuente y la documentación existente.
+* Explora los posibles issues y las pull requests en el repositorio.
+* Participa en las discusiones en la comunidad.
+* Elige una tarea: Busca una tarea que te interese y que se ajuste a tus habilidades.
+* No dudes en preguntar si tienes alguna duda.
+* Crea una rama: Crea una nueva rama en el repositorio para trabajar en tu cambio.
+* Realiza los cambios: Realiza los cambios necesarios en el código. Asegúrate de que tus cambios cumplan con las guías de estilo del proyecto.
+* Realiza las pruebas: Realiza pruebas exhaustivas para asegurarte de que tus cambios no introducen nuevos errores.
+* Crea una pull request: Crea una pull request para que tus cambios sean revisados y fusionados con el código principal.
+
+##### Cómo empezar a contribuir a Irko Key
+
+*  Clona el repositorio:
+  ```Bash
+
+    git clone https://gitlab.iessanclemente.net/damd/a21rociofp.git
+```
+
+
+* Crea una nueva rama:
+```Bash
+
+git checkout -b mi-nueva-funcionalidad
+```
+
+* Realiza tus cambios y commitea tus cambios:
+
+```Bash
+
+git add .
+git commit -m "Mi nuevo cambio"
+```
+
+* Realiza un push a tu rama:
+```Bash
+
+git push origin mi-nueva-funcionalidad
+
+```
+
+* Envía una merge request: Sigue las instrucciones en GitLab para crear una [merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html).
+
+
+
+¡Gracias por tu contribución!
+
+## 5. Referencias y otros enlaces
+
+
+* [Creación logo](https://logo.com/)
+* [Material Design](https://m3.material.io/)
+* [Recycler View Android Developers](https://developer.android.com/develop/ui/views/layout/recyclerview?hl=es-419)
+* [Recycler View AristiDevs](https://www.youtube.com/watch?v=k3zoVAMuW5w&list=PL8ie04dqq7_OmayyHRawwWkX3ZkrYlsTa)
+* [Recycler View DevExpert](https://www.youtube.com/watch?v=IaYDkgwzil8&pp=ygUbcmVjeWNsZXJ2aWV3IGFuZHJvaWQgc3R1ZGlv)
+* [TabLayout Android Developers](https://developer.android.com/reference/com/google/android/material/tabs/TabLayout)
+* [TabLayout Geeks For Geeks](https://www.geeksforgeeks.org/android-material-tabs-in-kotlin/)
+* [TabLayout Philipp Lackner](https://www.youtube.com/watch?v=h41FnEH91D0&pp=ygUYdGFibGF5b3V0IGFuZHJvaWQgc3R1ZGlv)
+* [Bottom Navigation View Android Developers](https://developer.android.com/reference/com/google/android/material/bottomnavigation/BottomNavigationView)
+* [Bottom Navigation View Medium.com](https://medium.com/@mohammadvahidsoudagar264/complete-bottom-navigation-view-in-android-studio-using-navigation-components-02a32fce1359)
+* [Bottom Navigation View FoxAndroid](https://www.youtube.com/watch?v=YlIHxIAoHzU&pp=ygUgbmF2ZWdhY2lvbiBhbmRyb2lkIHN0dWRpbyBrb3RsaW4%3D)
+* [Documentación Room](https://developer.android.com/training/data-storage/room?hl=es-419#kts)
+* [Criptografía](https://developer.android.com/privacy-and-security/cryptography?hl=es-419)
+* [Cypher Android Developers](https://developer.android.com/reference/kotlin/javax/crypto/Cipher)
+* [Secretos criptográficos codificados Android Developers](https://developer.android.com/privacy-and-security/risks/hardcoded-cryptographic-secrets?hl=es-419)
+* [Uso Javax Crypto Segu-Info](https://blog.segu-info.com.ar/2020/05/android-buenas-practicas-de-desarrollo.html)
+* [Derivación de clave Wikipedia](https://es.wikipedia.org/wiki/Funci%C3%B3n_de_derivaci%C3%B3n_de_clave)
+* [Derivación de clave vpnunlimited.com](https://www.vpnunlimited.com/es/help/cybersecurity/key-derivation-function?srsltid=AfmBOooLEn6Xx5eqBPSOVw7LTXcWwGMMe7zDXBpg0xIrHIkynlY72Ky_)
+* [Uso Moshi para Json](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwiNgPex7fWJAxXuR_EDHdxEG3cQFnoECBcQAQ&url=https%3A%2F%2Fwww.alten.es%2Fmoshi-modernizando-el-analisis-json-en-android%2F&usg=AOvVaw07iS49qohMMJgWZxISleC4&opi=89978449)
+* [Moshi para Json Medium.com](https://medium.com/@prashantjadhav/choosing-the-right-json-library-for-your-android-app-moshi-vs-gson-351d2939e6a5)
+* [Permisos Android Developers](https://developer.android.com/guide/topics/permissions/overview?hl=es-419)
+* [Internacionalización Android Developers](https://developer.android.com/training/basics/supporting-devices/languages?hl=es-419)
+* [Internacionalización DevExpert](https://www.youtube.com/watch?v=_ADu65MR1bU)
