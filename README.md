@@ -399,7 +399,7 @@ Irko Key se adhiere a los siguientes principios de protección de datos:
 
 Irko Key está diseñada para proteger la privacidad y seguridad de los datos de sus usuarios. Sin embargo, es importante recordar que la seguridad de los datos también depende de las acciones del usuario, como el uso de contraseñas seguras y la realización de copias de seguridad periódicas.
 
-Puedes consultar el **manual de usario** haciendo click [aquí.](/doc/manual_usuario.md)
+#### Puedes consultar el manual de usario haciendo click [aquí.](/doc/manual_usuario.md)
 
 
 
