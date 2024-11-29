@@ -12,14 +12,9 @@ Irko Key es un gestor de contraseñas diseñado para ayudarte a almacenar de for
 
   
 * **Creación de cuenta**: Al iniciar la aplicación por primera vez, se te pedirá que crees una cuenta. Elige un pin único, que sea fuerte y que puedas recordar para proteger tus datos, y no lo compartas con nadie.
- <div style="text-align: center;">
+ <div style="display: flex; justify-content: center;">
      <img src = "/doc/img/mockups/registro.png" alt = "Formulario de registro" width = "200" height = "auto" />
  </div>
-
-
-
-
-
 
 
 
