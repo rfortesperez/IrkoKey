@@ -23,14 +23,14 @@ Irko Key es un gestor de contraseñas diseñado para ayudarte a almacenar de for
 <table>
     <tr>
        <td> <h5> Agregar una nueva contraseña:</h5> En la pantalla de crear puedes añadir una nueva entrada. Introduce el nombre de la web o app, el nombre de usuario y la contraseña (que debe cumplir una serie de características para que sea una contraseña fuerte).</td>
-       <td><img src = "/doc/img/mockups/crear.png" alt = "Formulario de registro"/></td>
+       <td><img src = "/doc/img/mockups/crear.png" alt = "Pantalla nueva contraseña"/></td>
     <tr>
 </table>
 
 <table>
     <tr>
-        <td> <h5>Buscar una contraseña</h5>: Utiliza la barra de búsqueda para encontrar rápidamente la contraseña que necesitas, tanto en el apartado de contraseñas como en el apartado de favoritos. Puedes filtrar los resultados por nombre de la web o aplicación.</td>
-        <td><img src = "/doc/img/mockups/listado.png" alt = "Formulario de registro"/></td>
+        <td> <h5>Buscar una contraseña:</h5> Utiliza la barra de búsqueda para encontrar rápidamente la contraseña que necesitas, tanto en el apartado de contraseñas como en el apartado de favoritos. Puedes filtrar los resultados por nombre de la web o aplicación.</td>
+        <td><img src = "/doc/img/mockups/listado.png" alt = "Barra de búsqueda"/></td>
     </tr>
 </table>
 
@@ -40,14 +40,14 @@ Irko Key es un gestor de contraseñas diseñado para ayudarte a almacenar de for
 <table>
     <tr>
         <td><h5>Copiar contraseña:</h5> Pulsa sobre el botón con el icono de copiar para copiar automáticamente la contraseña al portapapeles.
-        <td><img src = "/doc/img/mockups/copiar.png" alt = "Formulario de registro"/></td>
+        <td><img src = "/doc/img/mockups/copiar.png" alt = "Copiar contraseña" style="width: auto; height: 50%; align = center;"/></td>
     </tr>
 </table>
 
 <table>
     <tr>
-       <td> <h5>Editar o eliminar una entrada</h5>: Pulsa sobre la entrada que deseas modificar y utiliza el botón correspondiente para editarla (icono de lápiz) o eliminarla (icono de bote de basura).</td>
-       <td><img src = "/doc/img/mockups/editar.png" alt = "Formulario de registro"/></td>
+       <td> <h5>Editar o eliminar una entrada:</h5> Pulsa sobre la entrada que deseas modificar y utiliza el botón correspondiente para editarla (icono de lápiz) o eliminarla (icono de bote de basura).</td>
+       <td><img src = "/doc/img/mockups/editar.png" alt = "Editar o eliminar" style="width: auto; height: 50%; align = center;"/></td>
     </tr>
   </table>
 
