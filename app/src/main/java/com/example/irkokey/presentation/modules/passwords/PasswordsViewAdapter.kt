@@ -163,20 +163,8 @@ class PasswordsViewAdapter(
 
                 btnDelete.setOnClickListener { actionListener(PasswordAction.Delete(password)) }
                 btnEditPassword.setOnClickListener { actionListener(PasswordAction.Edit(password)) }
-                btnAddFavorite.setOnClickListener {
-                    actionListener(
-                        PasswordAction.AddFavorite(
-                            password
-                        )
-                    )
-                }
-                btnCopyPassword.setOnClickListener {
-                    actionListener(
-                        PasswordAction.CopyPassword(
-                            password
-                        )
-                    )
-                }
+                btnAddFavorite.setOnClickListener { actionListener(PasswordAction.AddFavorite(password)) }
+                btnCopyPassword.setOnClickListener {actionListener(PasswordAction.CopyPassword(password)) }
             }
     }
 }

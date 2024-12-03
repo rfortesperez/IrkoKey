@@ -60,7 +60,7 @@ Puede verse el texto completo haciendo click [aquí](/LICENSE)
 2. [Planificación](#2-planificación)
 3. [Diseño](#3-diseño)
 4. [Implantación](#4-implantación)
-5. [Referencias](#5-referencias)
+5. [Referencias](#5-referencias-y-otros-enlaces)
 
 
 ## 1. Anteproyecto
