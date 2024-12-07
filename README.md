@@ -20,7 +20,7 @@ IrkoKey es una aplicación Android que permitirá a los usuarios guardar y gesti
 
  A partir de la versión 3.0 de Android Studio, y de Android 10, ya se puede utilizar la conexión inalámbrica para poder depurar la app en nuestro dispositivo android sin necesidad de utilizar un cable USB, aunque hay que tener en cuenta que si tenemos Android 10 (API level 29) o inferior, primero debemos sincronizarlos por USB y posteriormente podremos conectarnos de manera inalámbrica.
 
- Por último, también podemos <u>descargar la apk</u> que se encuetra en la carpeta con ese mismo nombre, e instalarla como cualquier aplicación en nuestro dispositivo móvil.
+ Por último, también podemos <u>descargar la apk</u> que se encuetra en la raíz de este proyecto con ese mismo nombre (Irko_Key.apk), e instalarla como cualquier aplicación en nuestro dispositivo móvil.
 
 ## Uso
 
