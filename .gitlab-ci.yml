@@ -1,0 +1,8 @@
+pages:
+  stage: deploy
+  script:
+    - mkdir .public
+    - cp -r app/build/dokka/index.html .public
+  artifacts:
+    paths:
+      - .public
