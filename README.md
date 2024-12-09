@@ -328,7 +328,8 @@ Hay creado un Kdoc (documento similar al Javadoc) en el que puedes consultar tod
 
 ![Diagrama de componentes](/doc/img/Diagrama_Componentes.png)
 
-![Diagrama de secuencia](/doc/img/Diagrama_Secuencia.png)
+![Diagrama de secuencia](/doc/img/Diagrama_Secuencia.png) 
+</br></br>
 
 ## 4. Implantación
 
