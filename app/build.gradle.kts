@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
+    id("org.jetbrains.dokka") version "1.9.20"
 }
 
 android {
@@ -86,4 +87,8 @@ dependencies {
     testImplementation("androidx.room:room-testing:2.6.1")
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+}
+
+tasks.dokkaHtml.configure {
+    outputDirectory.set(buildDir.resolve("dokka"))
 }

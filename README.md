@@ -60,7 +60,10 @@ Puede verse el texto completo haciendo click [aquí](/LICENSE)
 2. [Planificación](#2-planificación)
 3. [Diseño](#3-diseño)
 4. [Implantación](#4-implantación)
-5. [Referencias](#5-referencias-y-otros-enlaces)
+5. [Manual de Usuario](/doc/manual_usuario.md)
+6. [Video Demostración](#6-video-demostración)
+7. [Guía de contribución](#7-guía-de-contribución)
+8. [Referencias](#8-referencias-y-otros-enlaces)
 
 
 ## 1. Anteproyecto
@@ -282,6 +285,8 @@ La fase de investigación ha sido la más demandante en términos de tiempo dedi
 ## 3. Diseño
 
 
+Hay creado un Kdoc (documento similar al Javadoc) en el que puedes consultar todas las clases y métodos de este proyecto, haciendo click **[aquí](/app/build/dokka/index.html)**
+
 ## Diagrama de Clases.
 
 ![Diagrama UML Irko Key](/doc/img/Diagrama_de_Clases.png)
@@ -399,12 +404,18 @@ Irko Key se adhiere a los siguientes principios de protección de datos:
 
 Irko Key está diseñada para proteger la privacidad y seguridad de los datos de sus usuarios. Sin embargo, es importante recordar que la seguridad de los datos también depende de las acciones del usuario, como el uso de contraseñas seguras y la realización de copias de seguridad periódicas.
 
+
+## 5. Manual de usuario
+
 #### Puedes consultar el manual de usario haciendo click [aquí.](/doc/manual_usuario.md)
 
 
+## 6. Video Demostración
+
+Para que puedas aprender de manera mucho más sencilla cómo utilizar esta aplicación, haciendo click **[aquí](https://drive.google.com/file/d/1MhRhyukdJlCANCUdyVTxTx1akteVeMvU/view?usp=drive_link)** podrás ver un video demostración y así sacar el máximo partido a Irko Key.
 
 
-## Guía de contribución
+## 7. Guía de contribución
 
 ¡Gracias por tu interés en contribuir a Irko Key! Tu aporte, por pequeño que sea, puede marcar una gran diferencia en el crecimiento y mejora continua de este proyecto de código abierto.
 ¿Cómo puedes contribuir?
@@ -467,7 +478,7 @@ git push origin mi-nueva-funcionalidad
 
 ¡Gracias por tu contribución!
 
-## 5. Referencias y otros enlaces
+## 8. Referencias y otros enlaces
 
 
 * [Creación logo](https://logo.com/)

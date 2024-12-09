@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>PasswordsViewModel</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+</head>
+<body>
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+    <div class="navigation--inner">
+        <div class="navigation-title">
+            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+            <div class="library-name">
+                    <a class="library-name--link" href="../../../index.html">
+                            app
+                    </a>
+            </div>
+            <div class="library-version">
+            </div>
+        </div>
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":app:dokkaHtml/release">androidJvm</button>
+        </div>
+    </div>
+    <div class="navigation-controls">
+        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+    </div>
+</nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="sidebar--inner" id="sideMenu"></div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="app::com.example.irkokey.presentation.modules.passwords/PasswordsViewModel///PointingToDeclaration//492899073">
+  <div class="breadcrumbs"><a href="../../../index.html">app</a><span class="delimiter">/</span><a href="../index.html">com.example.irkokey.presentation.modules.passwords</a><span class="delimiter">/</span><span class="current">PasswordsViewModel</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Passwords</span><wbr></wbr><span>View</span><wbr></wbr><span><span>Model</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">PasswordsViewModel</a> <span><span class="token annotation builtin">@</span><span data-unresolved-link="javax.inject/Inject///PointingToDeclaration/"><span class="token annotation builtin">Inject</span></span> </span><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">passwordRepository<span class="token operator">: </span><a href="../../com.example.irkokey.data.repository/-password-repository/index.html">PasswordRepository</a><span class="token punctuation">, </span></span><span class="parameter ">clipboardManager<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/content/ClipboardManager.html">ClipboardManager</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>encryptionUtil<span class="token operator">: </span><a href="../../com.example.irkokey.common.utils/-encryption-util/index.html">EncryptionUtil</a></span></span><span class="token punctuation">)</span> : <a href="https://developer.android.com/reference/kotlin/androidx/lifecycle/ViewModel.html">ViewModel</a></div><p class="paragraph">ViewModel class for managing password-related actions and data. This ViewModel is annotated with <code class="lang-kotlin">@HiltViewModel</code> to support dependency injection with Hilt.</p></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="-824822914%2FConstructors%2F492899073" anchor-label="PasswordsViewModel" id="-824822914%2FConstructors%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-passwords-view-model.html"><span>Passwords</span><wbr></wbr><span>View</span><wbr></wbr><span><span>Model</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-824822914%2FConstructors%2F492899073"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtml/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="javax.inject/Inject///PointingToDeclaration/"><span class="token annotation builtin">Inject</span></span></div></div><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">passwordRepository<span class="token operator">: </span><a href="../../com.example.irkokey.data.repository/-password-repository/index.html">PasswordRepository</a><span class="token punctuation">, </span></span><span class="parameter ">clipboardManager<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/content/ClipboardManager.html">ClipboardManager</a><span class="token punctuation">, </span></span><span class="parameter ">encryptionUtil<span class="token operator">: </span><a href="../../com.example.irkokey.common.utils/-encryption-util/index.html">EncryptionUtil</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="442348968%2FProperties%2F492899073" anchor-label="allPasswords" id="442348968%2FProperties%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="all-passwords.html"><span>all</span><wbr></wbr><span><span>Passwords</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="442348968%2FProperties%2F492899073"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="all-passwords.html">allPasswords</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/lifecycle/LiveData.html">LiveData</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../com.example.irkokey.domain.models/-password/index.html">Password</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2077154138%2FProperties%2F492899073" anchor-label="encryptionUtil" id="2077154138%2FProperties%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="encryption-util.html"><span>encryption</span><wbr></wbr><span><span>Util</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2077154138%2FProperties%2F492899073"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="encryption-util.html">encryptionUtil</a><span class="token operator">: </span><a href="../../com.example.irkokey.common.utils/-encryption-util/index.html">EncryptionUtil</a></div><div class="brief "><p class="paragraph">The utility class for encryption and decryption.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="872416913%2FProperties%2F492899073" anchor-label="isCopied" id="872416913%2FProperties%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-copied.html"><span>is</span><wbr></wbr><span><span>Copied</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="872416913%2FProperties%2F492899073"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="is-copied.html">isCopied</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/lifecycle/LiveData.html">LiveData</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-418605957%2FProperties%2F492899073" anchor-label="isCorrect" id="-418605957%2FProperties%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-correct.html"><span>is</span><wbr></wbr><span><span>Correct</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-418605957%2FProperties%2F492899073"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="is-correct.html">isCorrect</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/lifecycle/LiveData.html">LiveData</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1416900793%2FProperties%2F492899073" anchor-label="isFavorite" id="1416900793%2FProperties%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-favorite.html"><span>is</span><wbr></wbr><span><span>Favorite</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1416900793%2FProperties%2F492899073"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="is-favorite.html">isFavorite</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/lifecycle/LiveData.html">LiveData</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-875203806%2FProperties%2F492899073" anchor-label="showDeleteConfirmation" id="-875203806%2FProperties%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="show-delete-confirmation.html"><span>show</span><wbr></wbr><span>Delete</span><wbr></wbr><span><span>Confirmation</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-875203806%2FProperties%2F492899073"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="show-delete-confirmation.html">showDeleteConfirmation</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/lifecycle/LiveData.html">LiveData</a><span class="token operator">&lt;</span><a href="../../com.example.irkokey.domain.models/-password/index.html">Password</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-201752363%2FProperties%2F492899073" anchor-label="showEditPasswordDialog" id="-201752363%2FProperties%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="show-edit-password-dialog.html"><span>show</span><wbr></wbr><span>Edit</span><wbr></wbr><span>Password</span><wbr></wbr><span><span>Dialog</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-201752363%2FProperties%2F492899073"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="show-edit-password-dialog.html">showEditPasswordDialog</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/lifecycle/LiveData.html">LiveData</a><span class="token operator">&lt;</span><a href="../../com.example.irkokey.domain.models/-password/index.html">Password</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="264516373%2FFunctions%2F492899073" anchor-label="addCloseable" id="264516373%2FFunctions%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../com.example.irkokey.presentation.modules.splash/-splash-view-model/index.html#264516373%2FFunctions%2F492899073"><span>add</span><wbr></wbr><span><span>Closeable</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="264516373%2FFunctions%2F492899073"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../../com.example.irkokey.presentation.modules.splash/-splash-view-model/index.html#264516373%2FFunctions%2F492899073"><span class="token function">addCloseable</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span><span class="token annotation builtin">@</span><a href="https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html"><span class="token annotation builtin">NonNull</span></a> </span>p0<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/io/Closeable.html">Closeable</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-799674921%2FFunctions%2F492899073" anchor-label="deletePassword" id="-799674921%2FFunctions%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="delete-password.html"><span>delete</span><wbr></wbr><span><span>Password</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-799674921%2FFunctions%2F492899073"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="delete-password.html"><span class="token function">deletePassword</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">password<span class="token operator">: </span><a href="../../com.example.irkokey.domain.models/-password/index.html">Password</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Deletes a password.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1328141181%2FFunctions%2F492899073" anchor-label="editPassword" id="1328141181%2FFunctions%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="edit-password.html"><span>edit</span><wbr></wbr><span><span>Password</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1328141181%2FFunctions%2F492899073"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="edit-password.html"><span class="token function">editPassword</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">password<span class="token operator">: </span><a href="../../com.example.irkokey.domain.models/-password/index.html">Password</a><span class="token punctuation">, </span></span><span class="parameter ">newPassword<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Edits a password.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-522787018%2FFunctions%2F492899073" anchor-label="getDecryptedPassword" id="-522787018%2FFunctions%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-decrypted-password.html"><span>get</span><wbr></wbr><span>Decrypted</span><wbr></wbr><span><span>Password</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-522787018%2FFunctions%2F492899073"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="get-decrypted-password.html"><span class="token function">getDecryptedPassword</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">encryptedPassword<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Decrypts a password.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-691394649%2FFunctions%2F492899073" anchor-label="handlePasswordAction" id="-691394649%2FFunctions%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="handle-password-action.html"><span>handle</span><wbr></wbr><span>Password</span><wbr></wbr><span><span>Action</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-691394649%2FFunctions%2F492899073"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="handle-password-action.html"><span class="token function">handlePasswordAction</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">action<span class="token operator">: </span><a href="../-password-action/index.html">PasswordAction</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Handles different password actions.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2024 Copyright</span><span
+                class="pull-right"><span>Generated by </span><a
+                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
