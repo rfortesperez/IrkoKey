@@ -62,8 +62,8 @@ Puede verse el texto completo haciendo click [aquí](/LICENSE)
 4. [Implantación](#4-implantación)
 5. [Manual de Usuario](/doc/manual_usuario.md)
 6. [Video Demostración](#6-video-demostración)
-7. [Guía de contribución](#7-guía-de-contribución)
-8. [Referencias](#8-referencias-y-otros-enlaces)
+7. [Guía de Contribución](#7-guía-de-contribución)
+8. [Referencias y Otros Enlaces](#8-referencias-y-otros-enlaces)
 
 
 ## 1. Anteproyecto
@@ -285,7 +285,7 @@ La fase de investigación ha sido la más demandante en términos de tiempo dedi
 ## 3. Diseño
 
 
-Hay creado un Kdoc (documento similar al Javadoc) en el que puedes consultar todas las clases y métodos de este proyecto, haciendo click **[aquí](/app/build/dokka/index.html)**
+Hay creado un Kdoc (documento similar al Javadoc) en el que puedes consultar todas las clases y métodos de este proyecto, haciendo click **[aquí](https://gitlab.iessanclemente.net/damd/a21rociofp/index.html)**
 
 ## Diagrama de Clases.
 
