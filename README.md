@@ -60,7 +60,7 @@ Puede verse el texto completo haciendo click [aquí](/LICENSE)
 2. [Planificación](#2-planificación)
 3. [Diseño](#3-diseño)
 4. [Implantación](#4-implantación)
-5. [Manual de Usuario](/doc/manual_usuario.md)
+5. [Manual de Usuario](#5-manual-de-usuario)
 6. [Video Demostración](#6-video-demostración)
 7. [Guía de Contribución](#7-guía-de-contribución)
 8. [Referencias y Otros Enlaces](#8-referencias-y-otros-enlaces)
@@ -329,11 +329,6 @@ Hay creado un Kdoc (documento similar al Javadoc) en el que puedes consultar tod
 ![Diagrama de componentes](/doc/img/Diagrama_Componentes.png)
 
 ![Diagrama de secuencia](/doc/img/Diagrama_Secuencia.png)
-
-
-
-
-<br>
 
 ## 4. Implantación
 
