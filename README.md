@@ -330,7 +330,10 @@ Hay creado un Kdoc (documento similar al Javadoc) en el que puedes consultar tod
 
 ![Diagrama de secuencia](/doc/img/Diagrama_Secuencia.png)
 
+
+
 ## 4. Implantación
+
 ### Manual técnico:
 
 #### Información relativa a la instalación: 
