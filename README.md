@@ -285,7 +285,7 @@ La fase de investigación ha sido la más demandante en términos de tiempo dedi
 ## 3. Diseño
 
 
-Hay creado un Kdoc (documento similar al Javadoc) en el que puedes consultar todas las clases y métodos de este proyecto, haciendo click **[aquí](/app/build/dokka/index.html)**
+Hay creado un Kdoc (documento similar al Javadoc) en el que puedes consultar todas las clases y métodos de este proyecto, haciendo click **[aquí](https://gitlab.iessanclemente.net/damd/a21rociofp/app/build/dokka/index.html)**
 
 ## Diagrama de Clases.
 
@@ -329,6 +329,9 @@ Hay creado un Kdoc (documento similar al Javadoc) en el que puedes consultar tod
 ![Diagrama de componentes](/doc/img/Diagrama_Componentes.png)
 
 ![Diagrama de secuencia](/doc/img/Diagrama_Secuencia.png)
+
+
+
 
 <br>
 
