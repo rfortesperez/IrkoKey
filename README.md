@@ -271,7 +271,7 @@ La fase de investigación ha sido la más demandante en términos de tiempo dedi
 
 ## 3. Diseño
 
-Hay creado un Kdoc (documento similar al Javadoc) en el que puedes consultar todas las clases y métodos de este proyecto, haciendo click **[aquí](/app/build/dokka/index.html)**
+Hay creado un Kdoc (documento similar al Javadoc) en el que puedes consultar todas las clases y métodos de este proyecto. Para poder utilizarlo de manera sencilla y cómoda, clona este repositorio, y accede al archivo *index.html*, alojado en app/build/dokka.
 
 ### Diagrama de Clases
 
