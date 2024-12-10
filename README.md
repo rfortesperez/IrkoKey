@@ -277,7 +277,7 @@ Hay creado un Kdoc (documento similar al Javadoc) en el que puedes consultar tod
 
 ![Diagrama UML Irko Key](/doc/img/Diagrama_de_Clases.png)
 
-### Casos de uso.
+### Casos de uso
 
 ![Diagrama de Casos de Uso Irko Key](/doc/img/Diagrama_Casos_de_Uso.png)
 
@@ -285,18 +285,18 @@ Hay creado un Kdoc (documento similar al Javadoc) en el que puedes consultar tod
 
 ![Diagrama de Flujo Irko Key](/doc/img/Diagrama_Flujo.png)
 
-#### Diseño de interfaces de usuario.
+#### Diseño de interfaces de usuario
 
 | ![pantalla splash](/doc/img/mockups/01_splash.png) | ![pantalla registro](/doc/img/mockups/registro.png) |
 |----------------------------------------------------|-----------------------------------------------------|
 | ![pantalla login](/doc/img/mockups/login.png)      | ![pantalla crear](/doc/img/mockups/crear.png)       |
 
-![Mockup Listado](/doc/img/mockups/listado.png)
+![Mockup Listado](/doc/img/mockups/listado.png)   
 
 | ![dialogo editar](/doc/img/mockups/editar.png) | ![pantalla backup](/doc/img/mockups/backup2.png) |
 |------------------------------------------------|-------------------------------------------------|
 
-##### Diagrama de Base de Datos.
+##### Diagrama de Base de Datos
 
 ![Diagrama ER](/doc/img/ERD_IrkoKey.png)
 
