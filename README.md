@@ -329,7 +329,9 @@ Hay creado un Kdoc (documento similar al Javadoc) en el que puedes consultar tod
 ![Diagrama de componentes](/doc/img/Diagrama_Componentes.png)
 
 ![Diagrama de secuencia](/doc/img/Diagrama_Secuencia.png) 
-</br></br>
+
+
+Y con este diagrama de secuencia, terminaríamos la parte de diseño y de los distintos diagramas.
 
 ## 4. Implantación
 
