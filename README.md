@@ -60,10 +60,10 @@ Puede verse el texto completo haciendo click [aquí](/LICENSE)
 2. [Planificación](#2-planificación)
 3. [Diseño](#3-diseño)
 4. [Implantación](#4-implantación)
-5. [Manual de Usuario](#5-manual-de-usuario)
-6. [Video Demostración](#6-video-demostración)
-7. [Guía de Contribución](#7-guía-de-contribución)
-8. [Referencias y Otros Enlaces](#8-referencias-y-otros-enlaces)
+5. [Manual de Usuario]
+6. [Video Demostración]
+7. [Guía de Contribución]
+8. [Referencias y Otros Enlaces]
 
 
 ## 1. Anteproyecto
