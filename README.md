@@ -1,10 +1,6 @@
 # Proyecto fin de ciclo
 
-
-
 ## Descripción
-
-
 
 Hoy en día, la gestión de contraseñas de manera adecuada es algo imprescindible. Cada día que pasa hay nuevas amenazas de ciberseguridad, y una de las debilidades más grandes que tenemos son las contraseñas débiles, por miedo a no recordarlas cuando son necesarias, o el emplear siempre y para todo la misma contraseña por miedo a olvidarla.
 
@@ -12,15 +8,15 @@ IrkoKey es una aplicación Android que permitirá a los usuarios guardar y gesti
 
 ## Instalación / Puesta en marcha
 
- Se puede probar esta aplicación de tres maneras distintas, todas igual de sencillas. La primera sería directamente en un <u>emulador en Android Studio</u>. Podremos elegir entre distintos modelos de dispositivos, con diferentes API, tamaños de pantalla, RAM, etc. Una vez seleccionado solamente tendremos que pulsar el botón de reproducción (el triángulo verde), o pulsar Shift + F10.
- 
- Otra manera simple de probar la app es <u>a través de un dispositivo físico</u>. Para ello tendremos que activar las opciones de desarrollador de nuestro dispositivo. Para activarlas, iremos al apartado de *Ajustes* -> *Sobre el teléfono* -> y sobre el *número de compilación*, pulsaremos rápidamente unas 5-7 veces, hasta que aparezca un mensaje informándonos de que se han activado las opciones de desarrollador.
+ Se puede probar esta aplicación de tres maneras distintas, todas igual de sencillas. La primera sería directamente en un ***emulador en Android Studio***. Podremos elegir entre distintos modelos de dispositivos, con diferentes API, tamaños de pantalla, RAM, etc. Una vez seleccionado solamente tendremos que pulsar el botón de reproducción (el triángulo verde), o pulsar Shift + F10.
 
- Hecho esto, tendremos que ir a *Ajustes* -> *Ajustes adicionales* -> *Opciones de desarrollador*, y activaremos la opción <u>Depuración USB</u>. Ahora, conectando nuestro dispositivo mediante un cable usb al ordenador, podremos instalar y probar la app en nuestro móvil.
+ Otra manera simple de probar la app es ***a través de un dispositivo físico***. Para ello tendremos que activar las opciones de desarrollador de nuestro dispositivo. Para activarlas, iremos al apartado de *Ajustes* -> *Sobre el teléfono* -> y sobre el *número de compilación*, pulsaremos rápidamente unas 5-7 veces, hasta que aparezca un mensaje informándonos de que se han activado las opciones de desarrollador.
+
+ Hecho esto, tendremos que ir a *Ajustes* -> *Ajustes adicionales* -> *Opciones de desarrollador*, y activaremos la opción *Depuración USB*. Ahora, conectando nuestro dispositivo mediante un cable usb al ordenador, podremos instalar y probar la app en nuestro móvil.
 
  A partir de la versión 3.0 de Android Studio, y de Android 10, ya se puede utilizar la conexión inalámbrica para poder depurar la app en nuestro dispositivo android sin necesidad de utilizar un cable USB, aunque hay que tener en cuenta que si tenemos Android 10 (API level 29) o inferior, primero debemos sincronizarlos por USB y posteriormente podremos conectarnos de manera inalámbrica.
 
- Por último, también podemos <u>descargar la apk</u> que se encuetra en la raíz de este proyecto con ese mismo nombre (Irko_Key.apk), e instalarla como cualquier aplicación en nuestro dispositivo móvil.
+ Por último, también podemos ***descargar la apk*** que se encuetra en la raíz de este proyecto con ese mismo nombre (Irko_Key.apk), e instalarla como cualquier aplicación en nuestro dispositivo móvil.
 
 ## Uso
 
@@ -36,7 +32,6 @@ Se puede contactar conmigo por las siguientes vías:
 
 [Email](mailto:rfortesperez@gmail.com)
 
-
 ## Licencia
 
 Este software cuenta con una **licencia GPLv3** (GNU General Public License versión 3). Esto implica que cualquiera puede utilizar, modificar y distribuir este software, pero con ciertas implicaciones, que se detallan a continuación:
@@ -50,7 +45,6 @@ Puede verse el texto completo haciendo click [aquí](/LICENSE)
 
 ## Índice
 
-
 1. Anteproyecto
      * 1.1. [Idea](#11-idea)
      * 1.2. [Objetivos](#12-objetivos)
@@ -60,11 +54,10 @@ Puede verse el texto completo haciendo click [aquí](/LICENSE)
 2. [Planificación](#2-planificación)
 3. [Diseño](#3-diseño)
 4. [Implantación](#4-implantación)
-5. [Manual de Usuario]
-6. [Video Demostración]
-7. [Guía de Contribución]
-8. [Referencias y Otros Enlaces]
-
+5. [Manual de Usuario](#5-manual-de-usuario)
+6. [Video Demostración](#6-video-demostración)
+7. [Guía de Contribución](#7-guía-de-contribución)
+8. [Referencias y Otros Enlaces](#8-referencias-y-otros-enlaces)
 
 ## 1. Anteproyecto
 
@@ -87,6 +80,7 @@ Llegados a ese punto, el usuario podrá enviarlo o guardarlo donde considere pre
 * Actualmente hay aplicaciones con esta misma idea, tales como son LastPass, Proton Pass, Bitwarden, Keeper... que son aplicaciones muy eficientes y muy completas y que cubren las necesidades de los usuarios con respecto a la gestión de las contraseñas.
   
 ## 1.2 Objetivos
+
 * Desarrollar una aplicación Android que permita ver, crear, guardar, actualizar, borrar y copiar contraseñas, así como guardar el nombre de usuario de cada sitio web.
 * Implementar un almacenamiento seguro en local empleando cifrado.
 * Emplear Room para la persistencia de datos.
@@ -94,6 +88,7 @@ Llegados a ese punto, el usuario podrá enviarlo o guardarlo donde considere pre
 * Incluír un mecanismo de exportación e importación de los datos guardados en la aplicación, para su posterior recuperación en el mismo o en otro dispositivo.
   
 ## 1.3 Requisitos Funcionales
+
 * Gestión de contraseñas: Los usuarios podrán ver, crear, guardar, actualizar, borrar y copiar al portapapeles las contraseñas, así como los nombres de usuario empleados.
 * Cifrado: Las contraseñas se van a almacenar cifradas en la base de datos local.
 * Interfaz de usuario: Una interfaz moderna, y que sea muy amigable e intuitiva para el usuario.
@@ -101,12 +96,13 @@ Llegados a ese punto, el usuario podrá enviarlo o guardarlo donde considere pre
 * Cifrado de datos: de la base de datos previa a su exportación.
   
 ## 1.4 Requisitos no funcionales
+
 * Seguridad: se aportará mediante la implementación de técnicas seguras de autenticación para un acceso seguro.
 * Usabilidad: la interfaz de usuario será intuitiva, simple y fácil de emplear.
 * Rendimiento: la aplicación deberá ser rápida y eficiente manejando los datos, ya que los móviles no tienen tanta capacidad como un ordenador, y además para no malgastar batería.
   
-
 ## 1.5 Tecnologías
+
 * Desarrollo de la app: Android Studio.
 * Base de datos local: Room
 * Lenguaje de programación: Kotlin
@@ -114,16 +110,13 @@ Llegados a ese punto, el usuario podrá enviarlo o guardarlo donde considere pre
 
 ## 2. Planificación
 
-
 ## Objetivos del proyecto
 
 Crear una aplicación para la gestión de contraseñas de cualquier usuario. Esta aplicación debe ser intuitiva y sencilla de utilizar, a la par que segura. Ayudará al usuario a generar y guardar contraseñas seguras y lo suficientemente fuertes, para mejorar la seguridad de los sitios web que precise.
 
-
 ## Guía de planificación del proyecto
 
 ### Metodología
-
 
 ### Fases planificadas
 
@@ -145,7 +138,7 @@ Descripción: Estudio detallado de otras aplicaciones similares ya existentes en
 
 Duración: 1 semana
 
-* ##### Tarea 2: Investigación de tecnologías necesarias 
+* ##### Tarea 2: Investigación de tecnologías necesarias
 
 Descripción: Se trata de averiguar qué tecnologías son necesarias para poder crear una aplicación de las caracteríasticas que quiero crear.
 
@@ -156,7 +149,6 @@ Duración: 1 semana
 Descripción: Consulta de la documentación oficial de Android Studio y de las librerías necesarias, como Room, Moshi, Hilt, ect.
 
 Duración: 1 semana
-
 
 #### Fase 2: Planificacion
 
@@ -172,7 +164,7 @@ Descripción: Hay que pensar las pantallas que tendrá la aplicación, y cómo q
 
 Duración: 3 días
 
-#### Fase 3: Creación de la Interfaz de Usuario.
+#### Fase 3: Creación de la Interfaz de Usuario
 
 * ##### Tarea 1: Creación de la splash
 
@@ -192,66 +184,61 @@ Descripción: creación de los distintos fragmentos para las distintas tareas qu
 
 Duración: 3 días.
 
-
-* ##### Tarea 4: Implementación de la navegación entre pantallas.
+* ##### Tarea 4: Implementación de la navegación entre pantallas
 
 Descripción: Se implementan los grafos de navegación de la aplicación, y se crean los mecanismos para que funcione. Algunos botones ya adquieren su funcionalidad definitiva.
 
 Duración: 2 días.
 
+#### Fase 4: Desarrollo de la encriptación
 
-#### Fase 4: Desarrollo de la encriptación.
-
-* ##### Tarea 1: Creación de la base de datos.
+* ##### Tarea 1: Creación de la base de datos
 
 Descripción: Se crea la base de datos para poder guardar toda la información del usuario y de sus contraseñas. Los botones de la pantalla de creación de contraseñas y los de la de muestra de contraseñas ya adquieren sus funcionalidades definitvas.
 
 Duración: 1 día.
 
-* ##### Tarea 2: Encriptación.
+* ##### Tarea 2: Encriptación
 
 Descripción: Todos las contraseñas se cifran antes de entrar en la base de datos, y se descifran al salir de la base de datos para ser mostradas al usuario. Además, también será necesario encriptar y desencriptar el archivo json que se empleará para la copia de seguridad.
 
 Duración: 10 días
 
-#### Fase 5: Creación funcionalidad de backup.
+#### Fase 5: Creación funcionalidad de backup
 
-* ##### Tarea 1: Permisos de usuario y creación del archivo json.
+* ##### Tarea 1: Permisos de usuario y creación del archivo json
 
 Descripción: Se añaden los permisos pertinentes al Manifest de la aplicación, para que el usuario autorice a la aplicación a acceder a los archivos del dispositivo, para que el usuario pueda guardar/recuperar archivos de copia de seguridad. Se elige el formato json por su versatilidad. Se crea el mecanismo de exportación tras crear el archivo y cifrarlo. Se pide el pin del usuario para poder realizar esta operación.
 
 Duración: 4 días.
 
-
-* ##### Tarea 2: Importación del json.
+* ##### Tarea 2: Importación del json
 
 Descripción: Una vez que el usuario tiene su json cifrado, y tras comprobar que el pin es el correcto, se importa el archivo, se descifra y se guardan los datos en la base de datos.
 
 Duración: 3 días
 
+#### Fase 6: Internacionalización
 
-#### Fase 6: Internacionalización.
-
-* ##### Tarea 1: Creación de archivos strings.xml.
-
+* ##### Tarea 1: Creación de archivos strings.xml
+  
 Descripción: Se crean diferentes archivos strings.xml para poder utilizar la aplicación en distintos idiomas. En este caso concreto, en esta primera versión estará disponible en español, gallego, catalán, euskera, inglés, francés, italiano y portugués.
 
 Duración: 2 días.
 
-#### Fase 7: Pruebas.
+#### Fase 7: Pruebas
 
-* ##### Tarea 1: Pruebas en distintos dispositivos.
+* ##### Tarea 1: Pruebas en distintos dispositivos
 
 Descripción: Se realizan pruebas de funcionamiento con distintos dispositivos virtuales (Pixel 5 y Pixel 8), y en dispositivo fisico (Poco X4 Pro 5G). Se retocan temas de visualización en modo oscuro, colores y situación de algunos botones para que se vea sin problema sea el dispositivo que sea.
 
 Duración: 3 días
 
-* ##### Tarea 2: Pruebas de importación y exportación.
+* ##### Tarea 2: Pruebas de importación y exportación
 
 Descripción: Se crea un json de la aplicación y se procede a guardarlo por ejemplo en google drive. Se instala la aplicación en otro dispositivo, y se comprueba que se puede importar, siempre y cuando se introduzcan las credenciales correctas.
 
 Duración: 4 dias.
-
 
 ### Diagrama de Gantt
 
@@ -277,75 +264,61 @@ La fase de investigación ha sido la más demandante en términos de tiempo dedi
 |Internacionalización|16 h| 35 €/h| 560 €|
 |Pruebas|28 h| 35 €/h| 980 €|
 
-| TOTAL HORAS| TOTAL PROYECTO | 
+| TOTAL HORAS| TOTAL PROYECTO |
 | :--: | :--: |
 |**280 h**| **9800 €**|
 
-
 ## 3. Diseño
-
 
 Hay creado un Kdoc (documento similar al Javadoc) en el que puedes consultar todas las clases y métodos de este proyecto, haciendo click **[aquí](/app/build/dokka/index.html)**
 
-##### Diagrama de Clases.
+### Diagrama de Clases
 
 ![Diagrama UML Irko Key](/doc/img/Diagrama_de_Clases.png)
 
-##### Casos de uso.
+### Casos de uso.
 
 ![Diagrama de Casos de Uso Irko Key](/doc/img/Diagrama_Casos_de_Uso.png)
 
-##### Diagrama de Flujo. 
+### Diagrama de Flujo
+
 ![Diagrama de Flujo Irko Key](/doc/img/Diagrama_Flujo.png)
 
 #### Diseño de interfaces de usuario.
 
-<table>
-<tr>
-  <td><img src = "/doc/img/mockups/01_splash.png" alt = "pantalla splash"/></td>
-  <td><img src = "/doc/img/mockups/registro.png" alt = "pantalla registro"/></td>  
-</tr>
-<tr>
-  <td><img src = "/doc/img/mockups/login.png" alt = "pantalla login"/></td>
-  <td><img src = "/doc/img/mockups/crear.png" alt = "pantalla crear"/></td>
-</tr>
-</table>
+| ![pantalla splash](/doc/img/mockups/01_splash.png) | ![pantalla registro](/doc/img/mockups/registro.png) |
+|----------------------------------------------------|-----------------------------------------------------|
+| ![pantalla login](/doc/img/mockups/login.png)      | ![pantalla crear](/doc/img/mockups/crear.png)       |
 
 ![Mockup Listado](/doc/img/mockups/listado.png)
 
-<table>
-<tr>
-  <td><img src = "/doc/img/mockups/editar.png" alt = "dialogo editar"/></td>
-  <td><img src = "/doc/img/mockups/backup2.png" alt = "pantalla backup"/></td>  
-</tr>
-</table>
-
+| ![dialogo editar](/doc/img/mockups/editar.png) | ![pantalla backup](/doc/img/mockups/backup2.png) |
+|------------------------------------------------|-------------------------------------------------|
 
 ##### Diagrama de Base de Datos.
+
 ![Diagrama ER](/doc/img/ERD_IrkoKey.png)
 
 ##### Diagrama de componentes y de secuencia.
 
 ![Diagrama de componentes](/doc/img/Diagrama_Componentes.png)
 
-![Diagrama de secuencia](/doc/img/Diagrama_Secuencia.png) 
-
-
-Y con este diagrama de secuencia, terminaríamos la parte de diseño y de los distintos diagramas.
+![Diagrama de secuencia](/doc/img/Diagrama_Secuencia.png)
 
 ## 4. Implantación
 
-### Manual técnico:
+### Manual técnico
 
-#### Información relativa a la instalación: 
+#### Información relativa a la instalación
 
-* **Requerimientos de hardware**: 
+* **Requerimientos de hardware**
+  
   * *Dispositivo móvil*: Cualquier móvil Android con versión 10 o superior.
   * *Almacenamiento*: se requiere un mínimo de 30 Mb de almacenamiento interno para la instalación de la aplicación y el almacenamiento de la base de datos local.
   
-* **Software necesario**:
+* **Software necesario**
   * *Sistema Operativo*: Android 10 o superior.
-* **Configuración inicial seguridad**: 
+* **Configuración inicial seguridad**
   * *Cifrado de datos*:  Todos los datos sensibles (contraseñas, etc.) se almacenan en la base de datos local cifrados utilizando el algoritmo AES/GCM/NoPadding 256.  
   * *Copia de seguridad*:Las copias de seguridad se generan en formato JSON cifrado. La restauración de una copia de seguridad requiere la contraseña maestra del usuario.
   * *Permisos*: la aplicación solicita los siguientes permisos:
@@ -355,9 +328,7 @@ Y con este diagrama de secuencia, terminaríamos la parte de diseño y de los di
 * **Usuarios del sistema**: No aplica, ya que la aplicación es una aplicación móvil y no requiere usuarios del sistema.
 * **Usuarios de la aplicación**: Cualquier usuario con un dispositivo Android compatible puede instalar y utilizar la aplicación.
 
-
 ### Información relativa a la administración del sistema:
-
 
 Dado que Irko Key es una aplicación móvil diseñada para funcionar de forma autónoma en el dispositivo del usuario, la administración del sistema se centra principalmente en las acciones que el propio usuario debe realizar para garantizar la seguridad e integridad de sus datos.
 
@@ -369,23 +340,23 @@ Dado que Irko Key es una aplicación móvil diseñada para funcionar de forma au
 * **Gestión de seguridad**: cada vez que se accede a la aplicación es necesario que el usuario introduzca sus credenciales.
 * **Gestión de incidencias**: será imprescindible que el usuario contacte conmigo en el siguiente email: rfortesperez@gmail.com, a ser posible con capturas de pantalla del incidente, para de esta manera tratar de solventarlo lo antes posible.
 
-### Información relativa al matenimiento del sistema: 
+### Información relativa al matenimiento del sistema
 
 * **Corrección de errores**: Si se reciben incidentes, se crearán actualizaciones para solventarlas.
 * **Añadir nuevas funcionalidades**: en versiones posteriores se planteará la implantación de autenticación mediante biometría.
 * **Adaptación por actualizaciones de software y/o hardware**: Se realizará constantemente un monitoreo de cambios para mantener la aplicación al día respecto a actualizaciones de Android, Kotlin, Room, y otras bibliotecas utilizadas en esta y en posteriores versiones de la aplicación.
 
-## Protección de datos de carácter persoal.
+## Protección de datos de carácter persoal
 
 Irko Key, como gestor de contraseñas, almacena información altamente sensible del usuario. Por ello, la protección de datos personales es una prioridad fundamental en el desarrollo y funcionamiento de la aplicación.
 
 Irko Key se adhiere a los siguientes principios de protección de datos:
 
- * **Limitación de la finalidad**: Los datos recogidos se utilizan exclusivamente para el propósito de gestionar las contraseñas del usuario y no se comparten con terceros.
+* **Limitación de la finalidad**: Los datos recogidos se utilizan exclusivamente para el propósito de gestionar las contraseñas del usuario y no se comparten con terceros.
 * **Minimización de datos**: Solo se recolectan los datos estrictamente necesarios para el funcionamiento de la aplicación.
 * **Integridad y confidencialidad**: Los datos se protegen contra el procesamiento no autorizado o ilícito, mediante el cifrado con clave derivada del pin del usuario.
 
-##### Medidas de Seguridad Implementadas
+### Medidas de Seguridad Implementadas
 
 * **Cifrado**: Todos los datos se almacenan en el dispositivo de forma cifrada utilizando algoritmos de cifrado robustos.
 * **Acceso local**: Irko Key no se conecta a internet, lo que minimiza el riesgo de ataques externos.
@@ -393,14 +364,14 @@ Irko Key se adhiere a los siguientes principios de protección de datos:
 * **Copia de seguridad cifrada**: Las copias de seguridad se generan en formato JSON cifrado, lo que garantiza la confidencialidad de los datos incluso fuera del dispositivo.
 * **Actualizaciones de seguridad**: Se implementarán regularmente actualizaciones de seguridad para proteger la aplicación contra nuevas vulnerabilidades que se puedan detectar.
 
-##### Derechos del Usuario
+### Derechos del Usuario
 
 * **Acceso, rectificación y supresión de los datos del usuario**: dado que el almacenamiento de los datos se realiza al 100% en local, el usuario puede acceder, rectificar y eliminar sus datos cuando así lo desee sin tener que hacer solicitudes previas.
 
 * **Limitación del tratamiento**: El usuario puede solicitar la limitación del tratamiento de sus datos en determinadas circunstancias, como por ejemplo no dando permiso a la aplicación para acceder al almacenamiento del dispositivo.
 * **Portabilidad de los datos**: El usuario podrá realizar la portabilidad de sus datos mediante el archivo json creado en el proceso de exportación.
 
-##### Información Adicional
+### Información Adicional
 
 * **Base legal del tratamiento**: El tratamiento de los datos personales se basa en el tratamiento explícito realizado por el usuario.
 * **Conservación de datos**: Los datos se conservarán mientras el usuario mantenga una copia de seguridad de la aplicación.
@@ -408,16 +379,13 @@ Irko Key se adhiere a los siguientes principios de protección de datos:
 
 Irko Key está diseñada para proteger la privacidad y seguridad de los datos de sus usuarios. Sin embargo, es importante recordar que la seguridad de los datos también depende de las acciones del usuario, como el uso de contraseñas seguras y la realización de copias de seguridad periódicas.
 
-
 ## 5. Manual de usuario
 
-#### Puedes consultar el manual de usario haciendo click [aquí.](/doc/manual_usuario.md)
-
+### Puedes consultar el manual de usario haciendo click [aquí.](/doc/manual_usuario.md)
 
 ## 6. Video Demostración
 
 Para que puedas aprender de manera mucho más sencilla cómo utilizar esta aplicación, haciendo click **[aquí](https://drive.google.com/file/d/1MhRhyukdJlCANCUdyVTxTx1akteVeMvU/view?usp=drive_link)** podrás ver un video demostración y así sacar el máximo partido a Irko Key.
-
 
 ## 7. Guía de contribución
 
@@ -433,8 +401,7 @@ Para que puedas aprender de manera mucho más sencilla cómo utilizar esta aplic
 * **Diseño de interfaz de usuario**: Mejora la apariencia y usabilidad de la interfaz de usuario.
 * **Traducción**: Traduce la aplicación a nuevos idiomas.
   
-
-##### Primeros pasos para contribuir
+### Primeros pasos para contribuir
 
 * Familiarízate con el proyecto: Lee el código fuente y la documentación existente.
 * Explora los posibles issues y las pull requests en el repositorio.
@@ -446,19 +413,20 @@ Para que puedas aprender de manera mucho más sencilla cómo utilizar esta aplic
 * Realiza las pruebas: Realiza pruebas exhaustivas para asegurarte de que tus cambios no introducen nuevos errores.
 * Crea una pull request: Crea una pull request para que tus cambios sean revisados y fusionados con el código principal.
 
-##### Cómo empezar a contribuir a Irko Key
+### Cómo empezar a contribuir a Irko Key
 
 *  Clona el repositorio:
   ```Bash
 
     git clone https://gitlab.iessanclemente.net/damd/a21rociofp.git
+    
 ```
-
 
 * Crea una nueva rama:
 ```Bash
 
 git checkout -b mi-nueva-funcionalidad
+
 ```
 
 * Realiza tus cambios y commitea tus cambios:
@@ -467,9 +435,11 @@ git checkout -b mi-nueva-funcionalidad
 
 git add .
 git commit -m "Mi nuevo cambio"
+
 ```
 
 * Realiza un push a tu rama:
+
 ```Bash
 
 git push origin mi-nueva-funcionalidad
@@ -478,12 +448,9 @@ git push origin mi-nueva-funcionalidad
 
 * Envía una merge request: Sigue las instrucciones en GitLab para crear una [merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html).
 
-
-
 ¡Gracias por tu contribución!
 
 ## 8. Referencias y otros enlaces
-
 
 * [Creación logo](https://logo.com/)
 * [Material Design](https://m3.material.io/)
