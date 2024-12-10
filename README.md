@@ -51,14 +51,13 @@ Puede verse el texto completo haciendo click [aquí](/LICENSE)
      * 1.3. [Requisitos Funcionales](#13-requisitos-funcionales)
      * 1.4. [Requisitos No Funcionaes](#14-requisitos-no-funcionales)
      * 1.5. [Tecnologías](#15-tecnologías)
-2. [Planificación](#2-planificación)
+2. [Planificación](#2-planificacion)
 3. [Diseño](#3-diseño)
-4. [Implantación](#4-implantación)
+4. [Implantación](#4-implantacion)
 5. [Manual de Usuario](#5-manual-de-usuario)
-6. [Video Demostración](#6-video-demostración)
-7. [Guía de Contribución](#7-guía-de-contribución)
-8. [Referencias y Otros Enlaces](#8-referencias-y-otros-enlaces)
-
+6. [Video Demostración](#6-video-demostracion)
+7. [Guía de Contribución](#7-guia-de-contribucion)
+8. [Referencias y Otros Enlaces](#8-referencias)
 
 ## 1. Anteproyecto
 
@@ -109,17 +108,17 @@ Llegados a ese punto, el usuario podrá enviarlo o guardarlo donde considere pre
 * Lenguaje de programación: Kotlin
 * Cifrado: Biblioteca de cifrado AES.
 
-## 2. Planificación
+## 2. PLANIFICACION
 
-## Objetivos del proyecto
+### Objetivos del proyecto
 
 Crear una aplicación para la gestión de contraseñas de cualquier usuario. Esta aplicación debe ser intuitiva y sencilla de utilizar, a la par que segura. Ayudará al usuario a generar y guardar contraseñas seguras y lo suficientemente fuertes, para mejorar la seguridad de los sitios web que precise.
 
-## Guía de planificación del proyecto
+### Guía de planificación del proyecto
 
-### Metodología
+#### Metodología
 
-### Fases planificadas
+#### Fases planificadas
 
 Este proyecto se ha desarrollado en las siguientes fases:
 
@@ -269,7 +268,7 @@ La fase de investigación ha sido la más demandante en términos de tiempo dedi
 | :--: | :--: |
 |**280 h**| **9800 €**|
 
-## 3. Diseño
+## 3. DISEÑO
 
 Hay creado un Kdoc (documento similar al Javadoc) en el que puedes consultar todas las clases y métodos de este proyecto. Para poder utilizarlo de manera sencilla y cómoda, clona este repositorio, y accede al archivo *index.html*, alojado en app/build/dokka.
 
@@ -306,7 +305,7 @@ Hay creado un Kdoc (documento similar al Javadoc) en el que puedes consultar tod
 
 ![Diagrama de secuencia](/doc/img/Diagrama_Secuencia.png)
 
-## 4. Implantación
+## 4. IMPLANTACION
 
 ### Manual técnico
 
@@ -384,11 +383,11 @@ Irko Key está diseñada para proteger la privacidad y seguridad de los datos de
 
 ### Puedes consultar el manual de usario haciendo click [aquí.](/doc/manual_usuario.md)
 
-## 6. Video Demostración
+## 6. VIDEO DEMOSTRACION
 
 Para que puedas aprender de manera mucho más sencilla cómo utilizar esta aplicación, haciendo click **[aquí](https://drive.google.com/file/d/1MhRhyukdJlCANCUdyVTxTx1akteVeMvU/view?usp=drive_link)** podrás ver un video demostración y así sacar el máximo partido a Irko Key.
 
-## 7. Guía de contribución
+## 7. GUIA DE CONTRIBUCION
 
 ¡Gracias por tu interés en contribuir a Irko Key! Tu aporte, por pequeño que sea, puede marcar una gran diferencia en el crecimiento y mejora continua de este proyecto de código abierto.
 ¿Cómo puedes contribuir?
@@ -451,7 +450,7 @@ git push origin mi-nueva-funcionalidad
 
 ¡Gracias por tu contribución!
 
-## 8. Referencias y otros enlaces
+## 8. REFERENCIAS
 
 * [Creación logo](https://logo.com/)
 * [Material Design](https://m3.material.io/)
