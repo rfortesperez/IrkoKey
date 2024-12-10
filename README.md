@@ -287,18 +287,18 @@ La fase de investigación ha sido la más demandante en términos de tiempo dedi
 
 Hay creado un Kdoc (documento similar al Javadoc) en el que puedes consultar todas las clases y métodos de este proyecto, haciendo click **[aquí](/app/build/dokka/index.html)**
 
-## Diagrama de Clases.
+#### Diagrama de Clases.
 
 ![Diagrama UML Irko Key](/doc/img/Diagrama_de_Clases.png)
 
-## Casos de uso.
+#### Casos de uso.
 
 ![Diagrama de Casos de Uso Irko Key](/doc/img/Diagrama_Casos_de_Uso.png)
 
-## Diagrama de Flujo. 
+#### Diagrama de Flujo. 
 ![Diagrama de Flujo Irko Key](/doc/img/Diagrama_Flujo.png)
 
-## Diseño de interfaces de usuario.
+#### Diseño de interfaces de usuario.
 
 <table>
 <tr>
@@ -321,10 +321,10 @@ Hay creado un Kdoc (documento similar al Javadoc) en el que puedes consultar tod
 </table>
 
 
-## Diagrama de Base de Datos.
+#### Diagrama de Base de Datos.
 ![Diagrama ER](/doc/img/ERD_IrkoKey.png)
 
-## Diagrama de componentes software que constituyen el producto y de despliegue.
+#### Diagrama de componentes software que constituyen el producto y de despliegue.
 
 ![Diagrama de componentes](/doc/img/Diagrama_Componentes.png)
 
