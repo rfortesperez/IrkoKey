@@ -59,6 +59,7 @@ Puede verse el texto completo haciendo click [aquí](/LICENSE)
 7. [Guía de Contribución](#7-guía-de-contribución)
 8. [Referencias y Otros Enlaces](#8-referencias-y-otros-enlaces)
 
+
 ## 1. Anteproyecto
 
 Hoy en día, la gestión de contraseñas de manera adecuada es algo imprescindible. Cada día que pasa hay nuevas amenazas de ciberseguridad, y una de las mayores debilidades que tenemos son las contraseñas débiles o, emplear siempre y para todo la misma contraseña por miedo a olvidarla.
